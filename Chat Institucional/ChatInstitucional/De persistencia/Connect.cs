@@ -17,7 +17,7 @@ namespace ChatInstitucional.De_persistencia
         {
             try
             {
-                connection = new MySqlConnection("server=127.0.0.1; database=bd chat; Uid=root; Pass=;");
+                connection = new MySqlConnection("server=127.0.0.1; database=bd_chat; Uid=root; Pass=;");
             }
             catch
             {
@@ -25,47 +25,58 @@ namespace ChatInstitucional.De_persistencia
             }
         }
 
-        public bool AgregarAlumno(Alumno a)
+        public bool AgregarAlumno(Alumno a) // AGREGAR ALUMNO A LA BDD
         {
             bool added = false;
+            DataTable dataTable = new DataTable();
 
             try
             {
                 connection.Open(); 
-                MySqlCommand CheckPersona = new MySqlCommand("SELECT cedula FROM persona WHERE cedula = " + a.GetCI() + ";", connection);
-                CheckPersona.ExecuteNonQuery();
-                //Checkea si existe la persona
+                MySqlCommand CheckPersona = new MySqlCommand("SELECT cedula FROM persona;", connection);
+                MySqlDataAdapter AdapterPersona = new MySqlDataAdapter(CheckPersona);
+                AdapterPersona.Fill(dataTable);
 
-                if (CheckPersona.ToString() == a.GetCI().ToString())
+                for (int i = 0; i < dataTable.Rows.Count; i++) //Checkea si existe la persona 
                 {
-                    MySqlCommand CheckAlumno = new MySqlCommand("SELECT cedula FROM alumno WHERE cedula = " + a.GetCI() + ";", connection);
-                    CheckAlumno.ExecuteNonQuery();
-                    //Checkea si existe el alumno
-
-                    if (CheckPersona.ToString() == CheckAlumno.ToString())
+                    if (dataTable.Rows[i]["cedula"].Equals(53557824))
                     {
-                        //El alumno ya existe
-                        added = false;
+                        MySqlCommand CheckAlumno = new MySqlCommand("SELECT cedula FROM alumno WHERE cedula = 53557824;", connection);
+                        MySqlDataAdapter AdapterAlumno = new MySqlDataAdapter(CheckAlumno);
+                        AdapterAlumno.Fill(dataTable);
+
+                        for (int c = 0; c < dataTable.Rows.Count; c++) //Checkea si existe el alumno
+                        {
+                            if (!dataTable.Rows[c]["cedula"].Equals(53557824))
+                            {
+                                MySqlCommand command = new MySqlCommand("UPDATE persona SET nombre = 'Ismael', apellido = 'Aloy', passwd = 'noAdmin1234', foto = null, nickname = 'Elisma2711', activo = false, logueado = false WHERE cedula = 53557824;", connection);
+                                command.ExecuteNonQuery();
+                                MySqlCommand query = new MySqlCommand("INSERT INTO Alumno(cedula,idGrupo) VALUES(53557824,1);", connection);
+                                query.ExecuteNonQuery(); //SE EJECUTA PERO DEVUELVE UNA EXCEPCION ¯\_(ツ)_/¯ XDDD
+                                added = true;
+                            }
+                            else
+                            {
+                                //El alumno ya existe
+                                added = false;
+                                Console.WriteLine("IF ALUMNO");
+                            }
+                        }  
                     }
                     else
                     {
-                        MySqlCommand command = new MySqlCommand("UPDATE persona SET nombre = 'Ismael', apellido = 'Aloy', passwd = 'noAdmin1234', foto = null, nickname = 'Elisma2711', activo = false, logueado = false WHERE cedula = 53557824;", connection);
-                        command.ExecuteNonQuery();
-                        MySqlCommand query = new MySqlCommand("INSERT INTO Alumno(cedula,idGrupo) VALUES(" + a.GetCI() + "," + a.GetIdGrupo() + ");", connection);
-                        query.ExecuteNonQuery();
-                        added = true;
+                        added = false;
+                        //No existe una persona con esa cedula
+                        Console.WriteLine("IF PERSONA");
                     }
                 }
-                else
-                {
-                    added = false;
-                    //No existe una persona con esa cedula
-                }
+                
             }
             catch
             {
                 //Ocurrio un error en la creacion del alumno
                 added = false;
+                Console.WriteLine("TRY AND CATCH");
             }
             finally
             {
@@ -135,7 +146,7 @@ namespace ChatInstitucional.De_persistencia
             //Mandar mensaje
         }
 
-        public bool LogInBDD(int ci, string pass)
+        public bool LogInBDD(int ci, string pass) // INICIAR SESION
         {
             bool ExistePersona = false;
             try
@@ -163,7 +174,7 @@ namespace ChatInstitucional.De_persistencia
             return ExistePersona;
         }
 
-        public bool LogOutBDD(int ci)
+        public bool LogOutBDD(int ci) // CERRAR SESION
         {
             bool Salio = false;
             try

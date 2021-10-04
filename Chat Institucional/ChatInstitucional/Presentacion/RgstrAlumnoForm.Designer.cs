@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RgstrAlumnoForm));
             this.Btn_Back = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,10 +49,6 @@
             this.Text_Nickname = new System.Windows.Forms.TextBox();
             this.Combo_Grupo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.Error_Nick = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Error_CI = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Error_Pass1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Error_Pass2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -62,10 +57,6 @@
             this.Lbl_RgstrDocente = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_Nick)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_CI)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_Pass1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_Pass2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -279,22 +270,6 @@
             this.label8.TabIndex = 30;
             this.label8.Text = "Grupo:";
             // 
-            // Error_Nick
-            // 
-            this.Error_Nick.ContainerControl = this;
-            // 
-            // Error_CI
-            // 
-            this.Error_CI.ContainerControl = this;
-            // 
-            // Error_Pass1
-            // 
-            this.Error_Pass1.ContainerControl = this;
-            // 
-            // Error_Pass2
-            // 
-            this.Error_Pass2.ContainerControl = this;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
@@ -422,10 +397,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro Alumno";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Error_Nick)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_CI)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_Pass1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Error_Pass2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -456,10 +427,6 @@
         private System.Windows.Forms.TextBox Text_Nickname;
         private System.Windows.Forms.ComboBox Combo_Grupo;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ErrorProvider Error_Nick;
-        private System.Windows.Forms.ErrorProvider Error_CI;
-        private System.Windows.Forms.ErrorProvider Error_Pass1;
-        private System.Windows.Forms.ErrorProvider Error_Pass2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;

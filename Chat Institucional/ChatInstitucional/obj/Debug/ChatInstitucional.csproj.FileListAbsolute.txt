@@ -14,3 +14,19 @@ C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\v0.3 - ComboBox fu
 C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\v0.3 - ComboBox funciona\ChatInstitucional\obj\Debug\ChatInstitucional.csproj.CopyComplete
 C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\v0.3 - ComboBox funciona\ChatInstitucional\obj\Debug\ChatInstitucional.exe
 C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\v0.3 - ComboBox funciona\ChatInstitucional\obj\Debug\ChatInstitucional.pdb
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\bin\Debug\ChatInstitucional.exe.config
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\bin\Debug\ChatInstitucional.exe
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\bin\Debug\ChatInstitucional.pdb
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\bin\Debug\MySql.Data.dll
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.csprojAssemblyReference.cache
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.ConsultaFormAlumno.resources
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.LoginForm.resources
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.MainFormAlumno.resources
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.RgstrAlumnoForm.resources
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.RgstrDocenteForm.resources
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Properties.Resources.resources
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.csproj.GenerateResource.cache
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.csproj.CoreCompileInputs.cache
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.csproj.CopyComplete
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.exe
+C:\Users\Ismael\Desktop\ES ACA\Chat-Institucional-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.pdb
