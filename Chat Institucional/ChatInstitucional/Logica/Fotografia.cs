@@ -8,16 +8,21 @@ namespace ChatInstitucional.Logica
 {
     class Fotografia
     {
-        protected object imagen;
+        protected object Imagen;
 
-        public void IngresarFotografia(Fotografia f)
+        public Fotografia()
         {
-            //Ingresa la imagen a bdd
+
         }
 
-        public void EliminarFotografia(Fotografia f)
+        public object GetImagen()
         {
-            //La elimina de la bdd de manera lógica
+            return Imagen;
+        }
+
+        public void SetImagen(object img)
+        {
+            Imagen = img;
         }
     }
 }

@@ -14,20 +14,30 @@ namespace ChatInstitucional.Presentacion
     public partial class MainFormAlumno : Form
     {
         Validacion validacion = new Validacion();
+        Persona persona = new Persona();
+        Alumno alumno = new Alumno();
+        Docente docente = new Docente();
+        PrincipalForm pf = new PrincipalForm();
+        ConsultaFormAlumno cf = new ConsultaFormAlumno();
+        ChatFormAlumno chf = new ChatFormAlumno();
+        SettingsFormAlumno sf = new SettingsFormAlumno();
+        CursosAlumnoForm cuf = new CursosAlumnoForm();
 
         public MainFormAlumno()
         {
             InitializeComponent();
-        }
 
-        private void Bienvenida_Load(object sender, EventArgs e)
-        {
-            //Ver clase PictureBox
-        }
+            Lbl_UserName.Text = validacion.AlumnoActual(Validacion.UsuarioActual).GetNombre() + " " + validacion.AlumnoActual(Validacion.UsuarioActual).GetApellido();
+            Lbl_UserGrupo.Text = validacion.AlumnoActual(Validacion.UsuarioActual).GetIdGrupo().ToString();
+            // devuelve valores raros cuando se cambia en connect por la ci
 
-        private void Btn_Cursos_Click(object sender, EventArgs e)
-        {
-            //CursosForm
+            pf.TopLevel = false;
+            pf.AutoScroll = true;
+            Pnl_Der.Controls.Add(pf);
+            pf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "PRINCIPAL";
+
+            pf.Show();
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)
@@ -42,7 +52,7 @@ namespace ChatInstitucional.Presentacion
             {
 
             }
-            //Poner MessageBox del LoL y cambiar estado de logueado en persona en bdd
+            //Poner MessageBox del LoL o algo parecido
         }
 
         private void Btn_Minimize_Click(object sender, EventArgs e)
@@ -50,15 +60,84 @@ namespace ChatInstitucional.Presentacion
             WindowState = FormWindowState.Minimized;
         }
 
+        private void Btn_Cursos_Click(object sender, EventArgs e)
+        {
+            //CursosForm
+            cuf.TopLevel = false;
+            cuf.AutoScroll = true;
+            Pnl_Der.Controls.Add(cuf);
+            cuf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "MIS CURSOS";
+
+            pf.Hide();
+            cuf.Show();   //Muestra este
+            cf.Hide();
+            chf.Hide();
+            sf.Hide();
+        }
+
         private void Btn_Consultas_Click(object sender, EventArgs e)
         {
-            ConsultaFormAlumno consultaForm = new ConsultaFormAlumno();
-            consultaForm.TopLevel = false;
-            consultaForm.AutoScroll = true;
-            Pnl_Der.Controls.Add(consultaForm);
-            consultaForm.Dock = DockStyle.Fill;
+            //ConsultaForm
+            cf.TopLevel = false;
+            cf.AutoScroll = true;
+            Pnl_Der.Controls.Add(cf);
+            cf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "CONSULTAS";
 
-            consultaForm.Show();
+            pf.Hide();
+            cuf.Hide();
+            cf.Show();  //Muestra este
+            chf.Hide();
+            sf.Hide();
+        }
+
+        private void Btn_Chats_Click(object sender, EventArgs e)
+        {
+            //ChatForm
+            chf.TopLevel = false;
+            chf.AutoScroll = true;
+            Pnl_Der.Controls.Add(chf);
+            chf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "MIS CHATS";
+
+            pf.Hide();
+            cuf.Hide();
+            cf.Hide();
+            chf.Show(); //Muestra este
+            sf.Hide();
+        }
+
+        private void Btn_Settings_Click(object sender, EventArgs e)
+        {
+            //SettingsForm
+            sf.TopLevel = false;
+            sf.AutoScroll = true;
+            Pnl_Der.Controls.Add(sf);
+            sf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "CONFIGURACIÓN";
+
+            pf.Hide();
+            cuf.Hide();
+            cf.Hide();
+            chf.Hide();
+            sf.Show();  //Muestra este
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            //PrincipalForm
+            pf.TopLevel = false;
+            pf.AutoScroll = true;
+            Pnl_Der.Controls.Add(pf);
+            pf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "PRINCIPAL";
+
+            pf.Show();  //Muestra este
+            cuf.Hide();
+            cf.Hide();
+            chf.Hide();
+            sf.Hide();
         }
     }
 }

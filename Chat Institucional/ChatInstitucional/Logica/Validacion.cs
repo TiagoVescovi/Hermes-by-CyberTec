@@ -11,11 +11,20 @@ namespace ChatInstitucional.Logica
     class Validacion
     {
         Connect connect = new Connect();
+        Persona persona = new Persona();
+        Alumno alumno = new Alumno();
+        Docente docente = new Docente();
+
         public static int UsuarioActual { get; set; }
 
         public Validacion()
         {
             
+        }
+
+        public Alumno AlumnoActual(int ci)
+        {
+            return connect.AlumnoActual(ci);
         }
 
         public bool ValidarLogin(int ci, String pass)

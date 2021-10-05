@@ -189,7 +189,7 @@ namespace ChatInstitucional.De_persistencia
             return ExistePersona;
         }
 
-        public bool LogOutBDD(int ci) // CERRAR SESION
+        public bool LogOutBDD(int ci) // CERRAR SESION // Arreglarlo para q muestre el usuario en el main
         {
             bool Salio = false;
 
@@ -232,6 +232,54 @@ namespace ChatInstitucional.De_persistencia
             }
                 
             return idGrupos;
+        }
+
+        public  Alumno AlumnoActual(int ci)
+        {
+            Alumno alumno = new Alumno();
+            DataTable dataTable = new DataTable();
+            Grupo grupo = new Grupo();
+
+            try
+            {
+                connection.Open();  //En la bdd tenes q cambiar grupo.nombre por grupo.nombreGr sino no te va a funcionar       //Si cambias aca donde dice la cedula por el parametro se buguea
+                MySqlCommand command = new MySqlCommand("SELECT p.cedula, nombre, apellido, passwd, foto, nickname, activo, logueado, a.idGrupo, nombreGr FROM persona p, alumno a, grupo g WHERE p.cedula = a.cedula AND p.cedula = 145632623 AND a.idGrupo = g.idGrupo;", connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                Console.WriteLine(dataTable.Rows.Count);
+
+                alumno.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
+                alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
+                alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
+                alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
+                // Ver como agregar atributo foto aca
+                alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
+                alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
+                alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
+                alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
+                grupo.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
+                grupo.SetNombre(dataTable.Rows[0]["nombreGr"].ToString());
+
+                Console.WriteLine(dataTable.Rows[0]["cedula"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["nombre"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["apellido"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["passwd"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["nickname"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["activo"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["logueado"].ToString());
+                Console.WriteLine(dataTable.Rows[0]["idGrupo"].ToString());
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return alumno;
         }
     }
 }

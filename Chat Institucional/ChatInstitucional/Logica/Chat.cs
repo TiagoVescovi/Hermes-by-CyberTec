@@ -15,5 +15,25 @@ namespace ChatInstitucional.Logica
         {
 
         }
+
+        public DateTime GetHoraIni()
+        {
+            return HoraIni;
+        }
+
+        public void SetHoraIni(DateTime ini)
+        {
+            HoraIni = ini;
+        }
+
+        public DateTime GetHoraFin()
+        {
+            return HoraFin;
+        }
+
+        public void SetHoraFin(DateTime fin)
+        {
+            HoraFin = fin;
+        }
     }
 }

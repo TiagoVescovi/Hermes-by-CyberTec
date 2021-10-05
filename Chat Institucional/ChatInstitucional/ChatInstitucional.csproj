@@ -55,11 +55,11 @@
     <Compile Include="Logica\Alumno.cs" />
     <Compile Include="Logica\Asincronica.cs" />
     <Compile Include="Logica\Chat.cs" />
+    <Compile Include="Logica\CIValidator.cs" />
     <Compile Include="Logica\Consulta.cs" />
     <Compile Include="Logica\Docente.cs" />
     <Compile Include="Logica\Fotografia.cs" />
     <Compile Include="Logica\Grupo.cs" />
-    <Compile Include="Logica\Historial.cs" />
     <Compile Include="Logica\Horario.cs" />
     <Compile Include="Logica\Materia.cs" />
     <Compile Include="Logica\Mensaje.cs" />
@@ -78,6 +78,12 @@
     <Compile Include="Presentacion\ConsultaFormAlumno.Designer.cs">
       <DependentUpon>ConsultaFormAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\CursosAlumnoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\CursosAlumnoForm.Designer.cs">
+      <DependentUpon>CursosAlumnoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="Presentacion\MainFormAlumno.Designer.cs">
       <DependentUpon>MainFormAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\PrincipalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PrincipalForm.Designer.cs">
+      <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\SettingsFormAlumno.cs">
       <SubType>Form</SubType>
@@ -110,8 +122,14 @@
       <DependentUpon>RgstrDocenteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\ChatFormAlumno.resx">
+      <DependentUpon>ChatFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\ConsultaFormAlumno.resx">
       <DependentUpon>ConsultaFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\CursosAlumnoForm.resx">
+      <DependentUpon>CursosAlumnoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -119,11 +137,17 @@
     <EmbeddedResource Include="Presentacion\MainFormAlumno.resx">
       <DependentUpon>MainFormAlumno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\PrincipalForm.resx">
+      <DependentUpon>PrincipalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\RgstrAlumnoForm.resx">
       <DependentUpon>RgstrAlumnoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\RgstrDocenteForm.resx">
       <DependentUpon>RgstrDocenteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\SettingsFormAlumno.resx">
+      <DependentUpon>SettingsFormAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\favicon %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descarga.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

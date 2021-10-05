@@ -8,18 +8,65 @@ namespace ChatInstitucional.Logica
 {
     class Consulta
     {
-        protected string Emisor;
-        protected string Receptor;
-        protected string Informacion;
+        protected int IdConsulta;
+        protected int CiAlumno;
+        protected int CiProfesor;
+        protected int IdMateria;
+        protected int IdGrupo;
 
         public Consulta()
         {
             
         }
 
-        public string GetEmisor()
+        public int GetIdConsulta()
         {
-            return Emisor;
+            return IdConsulta;
+        }
+
+        public void SetIdConsulta(int idcon)
+        {
+            IdConsulta = idcon;
+        }
+
+        public int GetCiAlumno()
+        {
+            return CiAlumno;
+        }
+
+        public void SetCiAlumno(int cialum)
+        {
+            CiAlumno = cialum;
+        }
+
+        public int GetCiProfesor()
+        {
+            return CiProfesor;
+        }
+
+        public void SetCiProfesor(int ciprof)
+        {
+            CiProfesor = ciprof;
+        }
+
+        public int GetIdMateria()
+        {
+            return IdMateria;
+        }
+
+        public void SetIdMateria(int idmate)
+        {
+            IdMateria = idmate;
+        }
+
+        public int GetIdGrupo()
+        {
+            return IdGrupo;
+        }
+
+        public void SetIdGrupo(int idgr)
+        {
+            IdGrupo = idgr;
         }
     }
 }

@@ -38,18 +38,19 @@
             this.Btn_Settings = new System.Windows.Forms.Button();
             this.Btn_Consultas = new System.Windows.Forms.Button();
             this.Btn_Chats = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Pnl_Der = new System.Windows.Forms.Panel();
             this.Pnl_User = new System.Windows.Forms.Panel();
             this.Lbl_UserGrupo = new System.Windows.Forms.Label();
             this.Lbl_UserName = new System.Windows.Forms.Label();
+            this.Lbl_FormAbierto = new System.Windows.Forms.Label();
             this.Pic_Perfil = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.Pnl_Izq.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Pnl_User.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -139,6 +140,7 @@
             this.Btn_Settings.TabIndex = 2;
             this.Btn_Settings.Text = "CONFIGURACIÓN";
             this.Btn_Settings.UseVisualStyleBackColor = false;
+            this.Btn_Settings.Click += new System.EventHandler(this.Btn_Settings_Click);
             // 
             // Btn_Consultas
             // 
@@ -168,27 +170,19 @@
             this.Btn_Chats.TabIndex = 2;
             this.Btn_Chats.Text = "MIS CHATS";
             this.Btn_Chats.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.LogoPNG;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.Btn_Chats.Click += new System.EventHandler(this.Btn_Chats_Click);
             // 
             // Pnl_Der
             // 
             this.Pnl_Der.Location = new System.Drawing.Point(234, 149);
             this.Pnl_Der.Name = "Pnl_Der";
-            this.Pnl_Der.Size = new System.Drawing.Size(716, 427);
+            this.Pnl_Der.Size = new System.Drawing.Size(717, 427);
             this.Pnl_Der.TabIndex = 27;
             // 
             // Pnl_User
             // 
             this.Pnl_User.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Pnl_User.Controls.Add(this.Lbl_FormAbierto);
             this.Pnl_User.Controls.Add(this.Lbl_UserGrupo);
             this.Pnl_User.Controls.Add(this.Lbl_UserName);
             this.Pnl_User.Controls.Add(this.Pic_Perfil);
@@ -215,15 +209,41 @@
             this.Lbl_UserName.TabIndex = 1;
             this.Lbl_UserName.Text = "Nombre de usuario";
             // 
+            // Lbl_FormAbierto
+            // 
+            this.Lbl_FormAbierto.AutoSize = true;
+            this.Lbl_FormAbierto.Font = new System.Drawing.Font("Cambria", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_FormAbierto.ForeColor = System.Drawing.Color.MediumBlue;
+            this.Lbl_FormAbierto.Location = new System.Drawing.Point(16, 30);
+            this.Lbl_FormAbierto.Name = "Lbl_FormAbierto";
+            this.Lbl_FormAbierto.Size = new System.Drawing.Size(190, 41);
+            this.Lbl_FormAbierto.TabIndex = 3;
+            this.Lbl_FormAbierto.Text = "PRINCIPAL";
+            // 
             // Pic_Perfil
             // 
+            this.Pic_Perfil.Image = global::ChatInstitucional.Properties.Resources.descarga;
             this.Pic_Perfil.Location = new System.Drawing.Point(620, 14);
+            this.Pic_Perfil.Margin = new System.Windows.Forms.Padding(0);
             this.Pic_Perfil.Name = "Pic_Perfil";
             this.Pic_Perfil.Size = new System.Drawing.Size(84, 78);
+            this.Pic_Perfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Perfil.TabIndex = 0;
             this.Pic_Perfil.TabStop = false;
             // 
-            // MainForm
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.LogoPNG;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // MainFormAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -236,17 +256,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "MainForm";
+            this.Name = "MainFormAlumno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chat Institucional";
-            this.Load += new System.EventHandler(this.Bienvenida_Load);
             this.panel1.ResumeLayout(false);
             this.Pnl_Izq.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Pnl_User.ResumeLayout(false);
             this.Pnl_User.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,5 +287,6 @@
         private System.Windows.Forms.PictureBox Pic_Perfil;
         private System.Windows.Forms.Label Lbl_UserName;
         private System.Windows.Forms.Label Lbl_UserGrupo;
+        private System.Windows.Forms.Label Lbl_FormAbierto;
     }
 }
