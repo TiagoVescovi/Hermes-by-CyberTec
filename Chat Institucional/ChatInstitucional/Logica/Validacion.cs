@@ -33,7 +33,7 @@ namespace ChatInstitucional.Logica
             return connect.AgregarAlumno(a);
         }
 
-        public DataTable TraerAlumno()
+        public DataTable TraerGrupo()
         {
             return connect.TraerIdGrupo();
         }

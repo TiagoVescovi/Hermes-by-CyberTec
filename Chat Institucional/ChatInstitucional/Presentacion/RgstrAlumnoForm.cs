@@ -22,11 +22,12 @@ namespace ChatInstitucional.Presentacion
         public RgstrAlumnoForm()
         {
             InitializeComponent();
-            DataTable idgrupos = validacion.TraerAlumno();
+            DataTable idgrupos = validacion.TraerGrupo();
             for (int i = 0; i < idgrupos.Rows.Count; i++)
             {
                 Combo_Grupo.Items.Add(idgrupos.Rows[i]["nombre"]);
             }
+            
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)
