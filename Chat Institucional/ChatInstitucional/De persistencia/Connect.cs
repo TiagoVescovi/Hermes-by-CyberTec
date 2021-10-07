@@ -27,8 +27,6 @@ namespace ChatInstitucional.De_persistencia
 
         public bool AgregarAlumno(Alumno a) // AGREGAR ALUMNO A LA BDD
         {
-
-            
             bool added = false;
             int ci = a.GetCI();
             string nickname = a.GetNickname();
@@ -234,7 +232,7 @@ namespace ChatInstitucional.De_persistencia
             return idGrupos;
         }
 
-        public  Alumno AlumnoActual(int ci)
+        public Alumno AlumnoActual(int ci)
         {
             Alumno alumno = new Alumno();
             DataTable dataTable = new DataTable();
@@ -280,6 +278,54 @@ namespace ChatInstitucional.De_persistencia
             }
 
             return alumno;
+        }
+
+        public DataTable TraerIdMateria()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                MySqlCommand comando = new MySqlCommand("SELECT m.nombre as 'nombreMat', p.nombre, p.apellido, m.idMateria FROM materia m, enseña e, persona p WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula;", connection); // Pq materia no se relaciona con orientacion?
+                MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+                adapter.Fill(dataTable);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dataTable;
+        }
+
+        public bool EnviarConsulta(Asincronica a)
+        {
+            Asincronica asincronica = new Asincronica();
+            bool consulto = false;
+
+            try
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (53557824,413515145,1,1);", connection);
+                command.ExecuteNonQuery();
+                MySqlCommand comando = new MySqlCommand("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (1,'Realizada','Alto gei');", connection);
+                comando.ExecuteNonQuery();
+                consulto = true;
+            }
+            catch
+            {
+                consulto = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return consulto;
         }
     }
 }

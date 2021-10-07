@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Pnl_Pendiente = new System.Windows.Forms.Panel();
-            this.Pnl_EnProceso = new System.Windows.Forms.Panel();
-            this.Pnl_Resueltas = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.Combo_Materia = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Txt_Consulta = new System.Windows.Forms.TextBox();
+            this.Btn_Enviar = new System.Windows.Forms.Button();
+            this.Dgv_Pendiente = new System.Windows.Forms.DataGridView();
+            this.Dgv_Contestada = new System.Windows.Forms.DataGridView();
+            this.Dgv_Recibida = new System.Windows.Forms.DataGridView();
+            this.Btn_Open = new System.Windows.Forms.Button();
+            this.Btn_Refresh = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Pendiente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Contestada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Recibida)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,38 +48,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(52, 146);
+            this.label1.Location = new System.Drawing.Point(52, 153);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Estado de las consultas";
-            // 
-            // Pnl_Pendiente
-            // 
-            this.Pnl_Pendiente.BackColor = System.Drawing.Color.Red;
-            this.Pnl_Pendiente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Pnl_Pendiente.Location = new System.Drawing.Point(12, 174);
-            this.Pnl_Pendiente.Name = "Pnl_Pendiente";
-            this.Pnl_Pendiente.Size = new System.Drawing.Size(227, 241);
-            this.Pnl_Pendiente.TabIndex = 1;
-            // 
-            // Pnl_EnProceso
-            // 
-            this.Pnl_EnProceso.BackColor = System.Drawing.Color.Yellow;
-            this.Pnl_EnProceso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Pnl_EnProceso.Location = new System.Drawing.Point(245, 174);
-            this.Pnl_EnProceso.Name = "Pnl_EnProceso";
-            this.Pnl_EnProceso.Size = new System.Drawing.Size(227, 241);
-            this.Pnl_EnProceso.TabIndex = 2;
-            // 
-            // Pnl_Resueltas
-            // 
-            this.Pnl_Resueltas.BackColor = System.Drawing.Color.Green;
-            this.Pnl_Resueltas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Pnl_Resueltas.Location = new System.Drawing.Point(478, 174);
-            this.Pnl_Resueltas.Name = "Pnl_Resueltas";
-            this.Pnl_Resueltas.Size = new System.Drawing.Size(227, 241);
-            this.Pnl_Resueltas.TabIndex = 2;
             // 
             // label2
             // 
@@ -94,34 +72,99 @@
             this.Combo_Materia.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Combo_Materia.ForeColor = System.Drawing.Color.White;
             this.Combo_Materia.FormattingEnabled = true;
-            this.Combo_Materia.Location = new System.Drawing.Point(26, 70);
+            this.Combo_Materia.Location = new System.Drawing.Point(120, 33);
             this.Combo_Materia.Name = "Combo_Materia";
-            this.Combo_Materia.Size = new System.Drawing.Size(172, 27);
-            this.Combo_Materia.TabIndex = 4;
+            this.Combo_Materia.Size = new System.Drawing.Size(453, 27);
+            this.Combo_Materia.TabIndex = 1;
             // 
-            // textBox1
+            // Txt_Consulta
             // 
-            this.textBox1.Location = new System.Drawing.Point(219, 32);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(327, 93);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Redacta la consulta aquí";
+            this.Txt_Consulta.Location = new System.Drawing.Point(244, 75);
+            this.Txt_Consulta.Multiline = true;
+            this.Txt_Consulta.Name = "Txt_Consulta";
+            this.Txt_Consulta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Txt_Consulta.Size = new System.Drawing.Size(329, 93);
+            this.Txt_Consulta.TabIndex = 2;
+            this.Txt_Consulta.Text = "Redacta la consulta aquí";
             // 
-            // button1
+            // Btn_Enviar
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumBlue;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(579, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 27);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "ENVIAR";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Btn_Enviar.BackColor = System.Drawing.Color.MediumBlue;
+            this.Btn_Enviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Enviar.FlatAppearance.BorderSize = 0;
+            this.Btn_Enviar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Enviar.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Enviar.ForeColor = System.Drawing.Color.White;
+            this.Btn_Enviar.Location = new System.Drawing.Point(579, 108);
+            this.Btn_Enviar.Name = "Btn_Enviar";
+            this.Btn_Enviar.Size = new System.Drawing.Size(125, 27);
+            this.Btn_Enviar.TabIndex = 3;
+            this.Btn_Enviar.Text = "ENVIAR";
+            this.Btn_Enviar.UseVisualStyleBackColor = false;
+            this.Btn_Enviar.Click += new System.EventHandler(this.Btn_Enviar_Click);
+            // 
+            // Dgv_Pendiente
+            // 
+            this.Dgv_Pendiente.BackgroundColor = System.Drawing.Color.Red;
+            this.Dgv_Pendiente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Pendiente.GridColor = System.Drawing.Color.White;
+            this.Dgv_Pendiente.Location = new System.Drawing.Point(12, 174);
+            this.Dgv_Pendiente.Name = "Dgv_Pendiente";
+            this.Dgv_Pendiente.Size = new System.Drawing.Size(227, 241);
+            this.Dgv_Pendiente.TabIndex = 0;
+            // 
+            // Dgv_Contestada
+            // 
+            this.Dgv_Contestada.BackgroundColor = System.Drawing.Color.Yellow;
+            this.Dgv_Contestada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Contestada.GridColor = System.Drawing.Color.White;
+            this.Dgv_Contestada.Location = new System.Drawing.Point(245, 174);
+            this.Dgv_Contestada.Name = "Dgv_Contestada";
+            this.Dgv_Contestada.Size = new System.Drawing.Size(227, 241);
+            this.Dgv_Contestada.TabIndex = 1;
+            // 
+            // Dgv_Recibida
+            // 
+            this.Dgv_Recibida.BackgroundColor = System.Drawing.Color.Green;
+            this.Dgv_Recibida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Recibida.GridColor = System.Drawing.Color.White;
+            this.Dgv_Recibida.Location = new System.Drawing.Point(478, 174);
+            this.Dgv_Recibida.Name = "Dgv_Recibida";
+            this.Dgv_Recibida.Size = new System.Drawing.Size(227, 241);
+            this.Dgv_Recibida.TabIndex = 2;
+            // 
+            // Btn_Open
+            // 
+            this.Btn_Open.BackColor = System.Drawing.Color.MediumBlue;
+            this.Btn_Open.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Open.FlatAppearance.BorderSize = 0;
+            this.Btn_Open.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Open.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Open.ForeColor = System.Drawing.Color.White;
+            this.Btn_Open.Location = new System.Drawing.Point(579, 141);
+            this.Btn_Open.Name = "Btn_Open";
+            this.Btn_Open.Size = new System.Drawing.Size(83, 27);
+            this.Btn_Open.TabIndex = 4;
+            this.Btn_Open.Text = "ABRIR";
+            this.Btn_Open.UseVisualStyleBackColor = false;
+            this.Btn_Open.Click += new System.EventHandler(this.Btn_Open_Click);
+            // 
+            // Btn_Refresh
+            // 
+            this.Btn_Refresh.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Refresh.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Refresh.FlatAppearance.BorderSize = 0;
+            this.Btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Refresh.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refresh.ForeColor = System.Drawing.Color.White;
+            this.Btn_Refresh.Location = new System.Drawing.Point(668, 141);
+            this.Btn_Refresh.Name = "Btn_Refresh";
+            this.Btn_Refresh.Size = new System.Drawing.Size(36, 27);
+            this.Btn_Refresh.TabIndex = 5;
+            this.Btn_Refresh.UseVisualStyleBackColor = false;
+            this.Btn_Refresh.Click += new System.EventHandler(this.Btn_Refresh_Click);
             // 
             // ConsultaFormAlumno
             // 
@@ -129,19 +172,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(716, 427);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Btn_Refresh);
+            this.Controls.Add(this.Btn_Open);
+            this.Controls.Add(this.Dgv_Pendiente);
+            this.Controls.Add(this.Dgv_Recibida);
+            this.Controls.Add(this.Dgv_Contestada);
+            this.Controls.Add(this.Btn_Enviar);
+            this.Controls.Add(this.Txt_Consulta);
             this.Controls.Add(this.Combo_Materia);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Pnl_Resueltas);
-            this.Controls.Add(this.Pnl_EnProceso);
-            this.Controls.Add(this.Pnl_Pendiente);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultaFormAlumno";
             this.ShowInTaskbar = false;
             this.Text = "ConsultaForm";
+            this.Load += new System.EventHandler(this.ConsultaFormAlumno_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Pendiente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Contestada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Recibida)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,12 +199,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel Pnl_Pendiente;
-        private System.Windows.Forms.Panel Pnl_EnProceso;
-        private System.Windows.Forms.Panel Pnl_Resueltas;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Combo_Materia;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Txt_Consulta;
+        private System.Windows.Forms.Button Btn_Enviar;
+        private System.Windows.Forms.DataGridView Dgv_Pendiente;
+        private System.Windows.Forms.DataGridView Dgv_Contestada;
+        private System.Windows.Forms.DataGridView Dgv_Recibida;
+        private System.Windows.Forms.Button Btn_Open;
+        private System.Windows.Forms.Button Btn_Refresh;
     }
 }

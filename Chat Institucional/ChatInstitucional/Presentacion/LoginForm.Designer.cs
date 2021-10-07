@@ -46,9 +46,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Lbl_Forgot = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Login
@@ -150,6 +152,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.Lbl_RgstrAlumno);
@@ -183,6 +186,12 @@
             this.Lbl_Forgot.Name = "Lbl_Forgot";
             this.Lbl_Forgot.Click += new System.EventHandler(this.Lbl_Forgot_Click);
             // 
+            // pictureBox2
+            // 
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.TabStop = false;
+            // 
             // LoginForm
             // 
             resources.ApplyResources(this, "$this");
@@ -203,6 +212,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +237,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label Lbl_Forgot;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
