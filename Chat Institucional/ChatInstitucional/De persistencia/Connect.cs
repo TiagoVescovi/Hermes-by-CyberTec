@@ -25,6 +25,75 @@ namespace ChatInstitucional.De_persistencia
             }
         }
 
+        public bool Modify(string query)
+        {
+            bool modified = false;
+
+            try
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                modified = true;
+            }
+            catch
+            {
+                modified = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return modified;
+        }
+
+        public bool Insert(string query)
+        {
+            bool insertado = false; //Generalizar los Inserts y Selects
+
+            try
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                insertado = true;
+            }
+            catch
+            {
+                insertado = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return insertado;
+        }
+
+        public DataTable Select(string query)
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dataTable;
+        }
+
         public bool AgregarAlumno(Alumno a) // AGREGAR ALUMNO A LA BDD
         {
             bool added = false;
@@ -84,7 +153,7 @@ namespace ChatInstitucional.De_persistencia
                         Console.WriteLine("IF PERSONA");
                     }
                 }
-        }
+            }
             catch
             {
                 //Ocurrio un error en la creacion del alumno
@@ -149,16 +218,6 @@ namespace ChatInstitucional.De_persistencia
             return added;
         }*/
 
-        public void CrearConsulta()
-        {
-            //Crear consulta
-        }
-
-        public void MandarMensaje()
-        {
-            //Mandar mensaje
-        }
-
         public bool LogInBDD(int ci, string pass) // INICIAR SESION
         {
             bool ExistePersona = false;
@@ -187,7 +246,7 @@ namespace ChatInstitucional.De_persistencia
             return ExistePersona;
         }
 
-        public bool LogOutBDD(int ci) // CERRAR SESION // Arreglarlo para q muestre el usuario en el main
+        public bool LogOutBDD(int ci) // CERRAR SESION
         {
             bool Salio = false;
 
@@ -206,7 +265,7 @@ namespace ChatInstitucional.De_persistencia
             {
                 connection.Close();
             }
-            
+
             return Salio;
         }
 
@@ -241,7 +300,7 @@ namespace ChatInstitucional.De_persistencia
             try
             {
                 connection.Open();  //En la bdd tenes q cambiar grupo.nombre por grupo.nombreGr sino no te va a funcionar       //Si cambias aca donde dice la cedula por el parametro se buguea
-                MySqlCommand command = new MySqlCommand("SELECT p.cedula, nombre, apellido, passwd, foto, nickname, activo, logueado, a.idGrupo, nombreGr FROM persona p, alumno a, grupo g WHERE p.cedula = a.cedula AND p.cedula = 145632623 AND a.idGrupo = g.idGrupo;", connection);
+                MySqlCommand command = new MySqlCommand("SELECT * FROM persona p, alumno a, grupo g WHERE p.cedula = a.cedula AND p.cedula = 145632623 AND a.idGrupo = g.idGrupo;", connection);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
@@ -258,6 +317,8 @@ namespace ChatInstitucional.De_persistencia
                 alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
                 grupo.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
                 grupo.SetNombre(dataTable.Rows[0]["nombreGr"].ToString());
+                grupo.SetAno(Convert.ToInt32(dataTable.Rows[0]["año"]));
+                grupo.SetIdOrientacion(Convert.ToInt32(dataTable.Rows[0]["idOrientacion"]));
 
                 Console.WriteLine(dataTable.Rows[0]["cedula"].ToString());
                 Console.WriteLine(dataTable.Rows[0]["nombre"].ToString());
@@ -286,7 +347,7 @@ namespace ChatInstitucional.De_persistencia
             try
             {
                 connection.Open();
-                MySqlCommand comando = new MySqlCommand("SELECT m.nombre as 'nombreMat', p.nombre, p.apellido, m.idMateria FROM materia m, enseña e, persona p WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula;", connection); // Pq materia no se relaciona con orientacion?
+                MySqlCommand comando = new MySqlCommand("SELECT p.cedula, m.nombre as 'nombreMat', p.nombre, p.apellido, m.idMateria FROM materia m, enseña e, persona p WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula;", connection);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
                 adapter.Fill(dataTable);
             }
@@ -302,17 +363,16 @@ namespace ChatInstitucional.De_persistencia
             return dataTable;
         }
 
-        public bool EnviarConsulta(Asincronica a)
+        public bool SubirConsulta(Asincronica a)
         {
-            Asincronica asincronica = new Asincronica();
             bool consulto = false;
 
             try
             {
-                connection.Open();
-                MySqlCommand command = new MySqlCommand("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (53557824,413515145,1,1);", connection);
+                connection.Open(); //Poner metodos de Asincronica
+                MySqlCommand command = new MySqlCommand("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (" + a.GetCiAlumno() + "," + a.GetCiProfesor() + "," + a.GetIdMateria() + "," + a.GetIdGrupo() + ");", connection);
                 command.ExecuteNonQuery();
-                MySqlCommand comando = new MySqlCommand("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (1,'Realizada','Alto gei');", connection);
+                MySqlCommand comando = new MySqlCommand("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (" + a.GetIdConsulta() + ",'" + a.GetEstado() + "','" + a.GetContenido() + "');", connection);
                 comando.ExecuteNonQuery();
                 consulto = true;
             }

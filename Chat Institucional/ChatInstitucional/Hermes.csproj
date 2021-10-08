@@ -121,6 +121,12 @@
     <Compile Include="Presentacion\RgstrDocenteForm.Designer.cs">
       <DependentUpon>RgstrDocenteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\VerConsultasAlumnoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\VerConsultasAlumnoForm.Designer.cs">
+      <DependentUpon>VerConsultasAlumnoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentacion\ChatFormAlumno.resx">
       <DependentUpon>ChatFormAlumno.cs</DependentUpon>
@@ -149,6 +155,9 @@
     <EmbeddedResource Include="Presentacion\SettingsFormAlumno.resx">
       <DependentUpon>SettingsFormAlumno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\VerConsultasAlumnoForm.resx">
+      <DependentUpon>VerConsultasAlumnoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -171,9 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LoginBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CyberTecPNG.jpg" />

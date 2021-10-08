@@ -93,16 +93,6 @@ namespace ChatInstitucional.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LoginBackground {
-            get {
-                object obj = ResourceManager.GetObject("LoginBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap LogoPNG {
             get {
                 object obj = ResourceManager.GetObject("LogoPNG", resourceCulture);

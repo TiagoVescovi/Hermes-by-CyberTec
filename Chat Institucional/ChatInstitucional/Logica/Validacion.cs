@@ -22,6 +22,16 @@ namespace ChatInstitucional.Logica
             
         }
 
+        public bool Insert(string query)
+        {
+            return connect.Insert(query);
+        }
+
+        public DataTable Select(string query)
+        {
+            return connect.Select(query);
+        }
+
         public Alumno AlumnoActual(int ci) //Hacer GrupoActual(int ci, int id) q busque el alumno en esa cedula a q grupo pertenece
         {
             return connect.AlumnoActual(ci);
@@ -52,9 +62,9 @@ namespace ChatInstitucional.Logica
             return connect.TraerIdMateria();
         }
 
-        public bool EnviarConsulta(Asincronica a)
+        public bool SubirConsulta(Asincronica a)
         {
-            return connect.EnviarConsulta(a);
+            return connect.SubirConsulta(a);
         }
     }
 }
