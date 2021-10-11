@@ -16,5 +16,10 @@ namespace ChatInstitucional.Presentacion
         {
             InitializeComponent();
         }
+
+        private void Btn_Enviar_Click(object sender, EventArgs e)
+        {
+            //Envia el mensaje
+        }
     }
 }

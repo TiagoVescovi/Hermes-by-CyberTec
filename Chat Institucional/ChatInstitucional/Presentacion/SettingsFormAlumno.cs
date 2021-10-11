@@ -7,14 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChatInstitucional.Logica;
 
 namespace ChatInstitucional.Presentacion
 {
     public partial class SettingsFormAlumno : Form
     {
+        Validacion validacion = new Validacion();
+
         public SettingsFormAlumno()
         {
             InitializeComponent();
+        }
+
+        private void Btn_ChangeNick_Click(object sender, EventArgs e)
+        {
+            //Cambia el nickname
+            DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su Nickname?","Cambiar Nickname",MessageBoxButtons.YesNo);
+            if(result == DialogResult.Yes)
+            {
+                validacion.Modify("UPDATE persona SET nickname = '" + Text_Nick.Text + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
+            }
+        }
+
+        private void Btn_BajaUser_Click(object sender, EventArgs e)
+        {
+            //Elimina logicamente al usuario
+            DialogResult result = MessageBox.Show("¿Está segur@ que desea eliminar su usuario?\nSi lo hace no podrá volver a iniciar sesión", "Eliminar usuario", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                validacion.Modify("UPDATE persona SET activo = false WHERE cedula = " + Validacion.UsuarioActual + ";");
+            }
+        }
+
+        private void Btn_SubirFoto_Click(object sender, EventArgs e)
+        {
+            //Subir foto a bdd
+        }
+
+        private void Btn_ChangeFoto_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //Encontrar la manera de usar esto
+                //validacion.Modify("UPDATE persona SET foto = false WHERE cedula = " + Validacion.UsuarioActual + ";");
+            }
         }
     }
 }

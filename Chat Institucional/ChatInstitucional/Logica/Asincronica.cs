@@ -9,7 +9,7 @@ namespace ChatInstitucional.Logica
     class Asincronica : Consulta
     {
         protected string Estado;
-        protected byte[] Contenido;
+        protected string Contenido;
 
         public Asincronica()
         {
@@ -26,12 +26,12 @@ namespace ChatInstitucional.Logica
             Estado = state;
         }
 
-        public byte[] GetContenido()
+        public string GetContenido()
         {
             return Contenido;
         }
 
-        public void SetContenido(byte[] content)
+        public void SetContenido(string content)
         {
             Contenido = content;
         }

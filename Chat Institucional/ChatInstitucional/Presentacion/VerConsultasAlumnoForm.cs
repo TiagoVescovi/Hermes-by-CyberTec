@@ -15,12 +15,18 @@ namespace ChatInstitucional.Presentacion
     {
         Validacion validacion = new Validacion();
 
-        public VerConsultasAlumnoForm()
+        public VerConsultasAlumnoForm(int IdConsulta)
         {
             InitializeComponent();
 
-            //Muestra la consulta -- Muestra System.Byte[] -- Ver como arreglarlo
-            Text_Consulta.Text = validacion.Select("SELECT contenido FROM asincronica a, consulta c WHERE a.idConsulta = c.idConsulta AND a.idConsulta = 2;").Rows[0]["contenido"].ToString();
+            //Muestra la consulta -- Muestra System.Byte[] -- Ver como arreglarlo -- Arreglado cambiando de blob a varchar
+            Text_Consulta.Text = validacion.Select("SELECT contenido FROM asincronica WHERE idConsulta = " + IdConsulta + ";").Rows[0]["contenido"].ToString();
+        }
+
+        private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)
+        {
+            //this.Text = "Consulta de " + validacion.Select("SELECT ")  
+            //Poner el nombre del alumno en el titulo del form -- Terminarlo
         }
     }
 }

@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Combo_Materia = new System.Windows.Forms.ComboBox();
-            this.Txt_Consulta = new System.Windows.Forms.TextBox();
+            this.Text_Consulta = new System.Windows.Forms.TextBox();
             this.Btn_Enviar = new System.Windows.Forms.Button();
             this.Dgv_Realizada = new System.Windows.Forms.DataGridView();
             this.Dgv_Contestada = new System.Windows.Forms.DataGridView();
@@ -76,15 +76,15 @@
             this.Combo_Materia.Size = new System.Drawing.Size(288, 27);
             this.Combo_Materia.TabIndex = 1;
             // 
-            // Txt_Consulta
+            // Text_Consulta
             // 
-            this.Txt_Consulta.Location = new System.Drawing.Point(414, 12);
-            this.Txt_Consulta.Multiline = true;
-            this.Txt_Consulta.Name = "Txt_Consulta";
-            this.Txt_Consulta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Txt_Consulta.Size = new System.Drawing.Size(291, 93);
-            this.Txt_Consulta.TabIndex = 2;
-            this.Txt_Consulta.Text = "Redacta la consulta aquí";
+            this.Text_Consulta.Location = new System.Drawing.Point(414, 12);
+            this.Text_Consulta.Multiline = true;
+            this.Text_Consulta.Name = "Text_Consulta";
+            this.Text_Consulta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Text_Consulta.Size = new System.Drawing.Size(291, 93);
+            this.Text_Consulta.TabIndex = 2;
+            this.Text_Consulta.Text = "Redacta la consulta aquí";
             // 
             // Btn_Enviar
             // 
@@ -166,7 +166,7 @@
             this.Controls.Add(this.Dgv_Recibida);
             this.Controls.Add(this.Dgv_Contestada);
             this.Controls.Add(this.Btn_Enviar);
-            this.Controls.Add(this.Txt_Consulta);
+            this.Controls.Add(this.Text_Consulta);
             this.Controls.Add(this.Combo_Materia);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -189,7 +189,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Combo_Materia;
-        private System.Windows.Forms.TextBox Txt_Consulta;
+        private System.Windows.Forms.TextBox Text_Consulta;
         private System.Windows.Forms.Button Btn_Enviar;
         private System.Windows.Forms.DataGridView Dgv_Realizada;
         private System.Windows.Forms.DataGridView Dgv_Contestada;

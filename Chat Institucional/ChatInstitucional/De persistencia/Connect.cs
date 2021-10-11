@@ -368,8 +368,8 @@ namespace ChatInstitucional.De_persistencia
             bool consulto = false;
 
             try
-            {
-                connection.Open(); //Poner metodos de Asincronica
+            {   //No puebla bien Asincronica
+                connection.Open();
                 MySqlCommand command = new MySqlCommand("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (" + a.GetCiAlumno() + "," + a.GetCiProfesor() + "," + a.GetIdMateria() + "," + a.GetIdGrupo() + ");", connection);
                 command.ExecuteNonQuery();
                 MySqlCommand comando = new MySqlCommand("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (" + a.GetIdConsulta() + ",'" + a.GetEstado() + "','" + a.GetContenido() + "');", connection);

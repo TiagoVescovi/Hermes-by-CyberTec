@@ -22,6 +22,11 @@ namespace ChatInstitucional.Logica
             
         }
 
+        public bool Modify(string query)
+        {
+            return connect.Modify(query);
+        }
+
         public bool Insert(string query)
         {
             return connect.Insert(query);

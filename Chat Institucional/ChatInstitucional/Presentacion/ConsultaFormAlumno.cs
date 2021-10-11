@@ -31,7 +31,7 @@ namespace ChatInstitucional.Presentacion
         {
             //Llena los DataGridView
             try
-            {
+            {   //Muestra todos los profesores(? o algo asi muy raro -- Ver el form ejecutado para entender
                 Dgv_Realizada.DataSource = validacion.Select("SELECT p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND estado = 'Realizada' AND ciAlumno = " + Validacion.UsuarioActual + ";");
                 Dgv_Contestada.DataSource = validacion.Select("SELECT p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND estado = 'Contestada' AND ciAlumno = " + Validacion.UsuarioActual + ";");
                 Dgv_Recibida.DataSource = validacion.Select("SELECT p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND estado = 'Recibida' AND ciAlumno = " + Validacion.UsuarioActual + ";");
@@ -44,18 +44,22 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_Enviar_Click(object sender, EventArgs e)
         {
+            //Crea Consulta y crea Asincronica
             Asincronica asincronica = new Asincronica();
             try
-            {               //Mas abajo tiera error pq no le estas pasando el idGrupo
-                asincronica.SetIdConsulta(Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta WHERE idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + ");").Rows[0]["idConsulta"]));
+            {       //No puebla bien Asincronica
+                asincronica.SetIdConsulta(Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + ");").Rows[0]["idConsulta"]));
                 Console.WriteLine(asincronica.GetIdConsulta().ToString()); //sacar
                 asincronica.SetCiAlumno(Validacion.UsuarioActual);
                 asincronica.SetCiProfesor(Convert.ToInt32(validacion.TraerIdMateria().Rows[Combo_Materia.SelectedIndex]["cedula"]));
                 Console.WriteLine(asincronica.GetCiProfesor()); //sacar
                 asincronica.SetIdMateria(Convert.ToInt32(validacion.Select("SELECT p.cedula, m.nombre as 'nombreMat', p.nombre, p.apellido, m.idMateria FROM materia m, enseña e, persona p WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula;").Rows[Combo_Materia.SelectedIndex]["idMateria"]));
                 Console.WriteLine(asincronica.GetIdMateria()); //sacar
-                
-                //PQ TIENE Q TENER IDGRUPO @TIAGO? contestamelo en wpp
+                asincronica.SetIdGrupo(Convert.ToInt32(validacion.Select("SELECT idGrupo FROM alumno WHERE cedula = " + Validacion.UsuarioActual + ";").Rows[0]["idGrupo"]));
+                Console.WriteLine(asincronica.GetIdGrupo()); //sacar
+                asincronica.SetEstado("Realizada");
+                asincronica.SetContenido(Text_Consulta.Text);
+                Console.WriteLine(asincronica.GetContenido()); //sacar
 
                 if (validacion.SubirConsulta(asincronica))
                 {
@@ -86,7 +90,8 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Realizada_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Doble click en el rojo
-            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm();
+            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(11);  //Ver como tomar el idConsulta del DataGridView
+            //Dgv_Realizada.SelectedRows   Para poner el nombre del alumno como titulo del form
             ver.ShowDialog();
         }
 

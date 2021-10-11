@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChatInstitucional.Logica;
 
-
 // mensaje(idMensaje,hora,contenido,idAutor)
 // Enviado(idChat,idMensaje)
 
