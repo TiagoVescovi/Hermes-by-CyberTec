@@ -67,9 +67,9 @@ namespace ChatInstitucional.Logica
             return connect.TraerIdMateria();
         }
 
-        public bool SubirConsulta(Asincronica a)
+        /*public bool SubirConsulta(Asincronica a)
         {
             return connect.SubirConsulta(a);
-        }
+        }*/
     }
 }

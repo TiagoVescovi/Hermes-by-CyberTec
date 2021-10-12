@@ -363,15 +363,16 @@ namespace ChatInstitucional.De_persistencia
             return dataTable;
         }
 
-        public bool SubirConsulta(Asincronica a)
+        /*public bool SubirConsulta(Asincronica a)
         {
             bool consulto = false;
 
             try
-            {   //No puebla bien Asincronica
+            {   
                 connection.Open();
                 MySqlCommand command = new MySqlCommand("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (" + a.GetCiAlumno() + "," + a.GetCiProfesor() + "," + a.GetIdMateria() + "," + a.GetIdGrupo() + ");", connection);
                 command.ExecuteNonQuery();
+                a.SetIdConsulta(Convert.ToInt32(Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + ");").Rows[0]["idConsulta"]));
                 MySqlCommand comando = new MySqlCommand("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (" + a.GetIdConsulta() + ",'" + a.GetEstado() + "','" + a.GetContenido() + "');", connection);
                 comando.ExecuteNonQuery();
                 consulto = true;
@@ -386,7 +387,7 @@ namespace ChatInstitucional.De_persistencia
             }
 
             return consulto;
-        }
+        }*/
     }
 }
 

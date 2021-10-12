@@ -104,12 +104,15 @@
             // 
             // Dgv_Realizada
             // 
+            this.Dgv_Realizada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Dgv_Realizada.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             this.Dgv_Realizada.BackgroundColor = System.Drawing.Color.Red;
             this.Dgv_Realizada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Realizada.GridColor = System.Drawing.Color.White;
             this.Dgv_Realizada.Location = new System.Drawing.Point(12, 174);
             this.Dgv_Realizada.Name = "Dgv_Realizada";
             this.Dgv_Realizada.ReadOnly = true;
+            this.Dgv_Realizada.RowHeadersWidth = 20;
             this.Dgv_Realizada.Size = new System.Drawing.Size(227, 241);
             this.Dgv_Realizada.TabIndex = 0;
             this.Dgv_Realizada.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Realizada_CellMouseDoubleClick);
