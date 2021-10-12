@@ -42,16 +42,28 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_SubirFoto_Click(object sender, EventArgs e)
         {
-            //Subir foto a bdd
+            //Cambiar foto en el programa -- Parece q esto funciona bien
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string imagen = openFileDialog1.FileName;
+                    Picture_ImgPerfil.Image = Image.FromFile(imagen);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
         }
 
         private void Btn_ChangeFoto_Click(object sender, EventArgs e)
         {
+            //Subir imagen a bdd -- Arreglar
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                //Encontrar la manera de usar esto
-                //validacion.Modify("UPDATE persona SET foto = false WHERE cedula = " + Validacion.UsuarioActual + ";");
+                validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
             }
         }
     }

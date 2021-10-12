@@ -38,6 +38,7 @@ namespace ChatInstitucional.Presentacion
             Lbl_FormAbierto.Text = "PRINCIPAL";
 
             pf.Show();
+
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)

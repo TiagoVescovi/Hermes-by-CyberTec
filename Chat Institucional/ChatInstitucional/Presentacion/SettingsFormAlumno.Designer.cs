@@ -39,6 +39,7 @@
             this.Combo_Idioma = new System.Windows.Forms.ComboBox();
             this.Btn_ChangeFoto = new System.Windows.Forms.Button();
             this.Btn_SubirFoto = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_ImgPerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,11 +126,11 @@
             // 
             // Btn_ChangeFoto
             // 
-            this.Btn_ChangeFoto.Location = new System.Drawing.Point(617, 224);
+            this.Btn_ChangeFoto.Location = new System.Drawing.Point(536, 253);
             this.Btn_ChangeFoto.Name = "Btn_ChangeFoto";
-            this.Btn_ChangeFoto.Size = new System.Drawing.Size(75, 23);
+            this.Btn_ChangeFoto.Size = new System.Drawing.Size(150, 23);
             this.Btn_ChangeFoto.TabIndex = 9;
-            this.Btn_ChangeFoto.Text = "CAMBIAR";
+            this.Btn_ChangeFoto.Text = "APLICAR";
             this.Btn_ChangeFoto.UseVisualStyleBackColor = true;
             this.Btn_ChangeFoto.Click += new System.EventHandler(this.Btn_ChangeFoto_Click);
             // 
@@ -137,11 +138,15 @@
             // 
             this.Btn_SubirFoto.Location = new System.Drawing.Point(536, 224);
             this.Btn_SubirFoto.Name = "Btn_SubirFoto";
-            this.Btn_SubirFoto.Size = new System.Drawing.Size(75, 23);
+            this.Btn_SubirFoto.Size = new System.Drawing.Size(150, 23);
             this.Btn_SubirFoto.TabIndex = 10;
             this.Btn_SubirFoto.Text = "SUBIR";
             this.Btn_SubirFoto.UseVisualStyleBackColor = true;
             this.Btn_SubirFoto.Click += new System.EventHandler(this.Btn_SubirFoto_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "ofdImagen";
             // 
             // SettingsFormAlumno
             // 
@@ -181,5 +186,6 @@
         private System.Windows.Forms.ComboBox Combo_Idioma;
         private System.Windows.Forms.Button Btn_ChangeFoto;
         private System.Windows.Forms.Button Btn_SubirFoto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
