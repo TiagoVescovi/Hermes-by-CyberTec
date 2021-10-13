@@ -36,7 +36,10 @@ namespace ChatInstitucional.Presentacion
             DialogResult result = MessageBox.Show("¿Está segur@ que desea eliminar su usuario?\nSi lo hace no podrá volver a iniciar sesión", "Eliminar usuario", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                validacion.Modify("UPDATE persona SET activo = false WHERE cedula = " + Validacion.UsuarioActual + ";");
+                if(validacion.Modify("UPDATE persona SET activo = false WHERE cedula = " + Validacion.UsuarioActual + ";"))
+                {
+                    MessageBox.Show("No se pudo eliminar el usuario");
+                }
             }
         }
 
@@ -63,7 +66,10 @@ namespace ChatInstitucional.Presentacion
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
+                if(validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
+                {
+                    MessageBox.Show("No se pudo cargar correctamente la imágen");
+                }
             }
         }
     }

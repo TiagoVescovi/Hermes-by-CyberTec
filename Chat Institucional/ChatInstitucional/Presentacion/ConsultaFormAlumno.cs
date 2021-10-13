@@ -79,7 +79,7 @@ namespace ChatInstitucional.Presentacion
                     asincronica.SetIdConsulta(Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + ");").Rows[0]["idConsulta"]));
                     if (validacion.Insert("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (" + asincronica.GetIdConsulta() + ",'" + asincronica.GetEstado() + "','" + asincronica.GetContenido() + "');"))
                     {
-                        MessageBox.Show("Consulta enviada satisfacrotiamente");
+                        MessageBox.Show("Consulta enviada satisfactoriamente");
                     }
                 }
             }
