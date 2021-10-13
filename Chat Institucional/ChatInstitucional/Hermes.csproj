@@ -22,6 +22,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatItems\Incomming.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatItems\Incomming.Designer.cs">
+      <DependentUpon>Incomming.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChatItems\Outgoing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChatItems\Outgoing.Designer.cs">
+      <DependentUpon>Outgoing.cs</DependentUpon>
+    </Compile>
     <Compile Include="De persistencia\Connect.cs" />
     <Compile Include="Logica\Administrador.cs" />
     <Compile Include="Logica\Alumno.cs" />
@@ -65,6 +79,7 @@
     <Compile Include="Logica\Mensaje.cs" />
     <Compile Include="Logica\Orientacion.cs" />
     <Compile Include="Logica\Persona.cs" />
+    <Compile Include="Logica\Utils.cs" />
     <Compile Include="Logica\Validacion.cs" />
     <Compile Include="Presentacion\ChatFormAlumno.cs">
       <SubType>Form</SubType>
@@ -128,6 +143,12 @@
       <DependentUpon>VerConsultasAlumnoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChatItems\Incomming.resx">
+      <DependentUpon>Incomming.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatItems\Outgoing.resx">
+      <DependentUpon>Outgoing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\ChatFormAlumno.resx">
       <DependentUpon>ChatFormAlumno.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +216,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alien_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

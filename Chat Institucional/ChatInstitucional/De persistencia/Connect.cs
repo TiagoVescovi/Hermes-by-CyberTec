@@ -103,6 +103,7 @@ namespace ChatInstitucional.De_persistencia
             string apellido = a.GetApellido();
             string pass = a.GetPass();
             int idGrupo = a.GetIdGrupo();
+            //Foto como atributo de persona
 
             DataTable dataTablePer = new DataTable();
             DataTable dataTableAlum = new DataTable();

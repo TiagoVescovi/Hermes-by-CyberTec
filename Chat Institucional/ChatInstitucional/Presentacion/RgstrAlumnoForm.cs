@@ -46,6 +46,8 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_RegAlumno_Click(object sender, EventArgs e)
         {
+            Fotografia foto = new Fotografia();
+            //foto.SetImagen(); --- Ver como usar el objeto Fotografia aca y en SettingsForm
             string Nickname = Text_Nickname.Text;
             int Cedula = Convert.ToInt32(Text_Cedula.Text);
             string Nombre = Text_Nombre.Text;
