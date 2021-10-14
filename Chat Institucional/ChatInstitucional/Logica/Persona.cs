@@ -13,6 +13,7 @@ namespace ChatInstitucional.Logica
         protected string Apellido;
         protected string Pass;
         protected string Nickname;
+        protected byte[] foto;
         protected bool Activo;
         protected bool Logueado;
 
@@ -89,6 +90,14 @@ namespace ChatInstitucional.Logica
         public void SetLogueado(bool log)
         {
             Logueado = log;
+        }
+        public byte[] GetFoto()
+        {
+            return foto;
+        }
+        public void SetFoto(byte[] picture)
+        {
+            picture = foto;
         }
     }
 }

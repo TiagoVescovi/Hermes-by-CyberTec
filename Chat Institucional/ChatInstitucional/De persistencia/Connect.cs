@@ -17,12 +17,36 @@ namespace ChatInstitucional.De_persistencia
         {
             try
             {
-                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=bd_chat; Uid=root; Password=;SSL MODE = 0");
+                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=bd_chat; Uid=root; Password=SQL@123;SSL MODE = 0");
             }
             catch
             {
-            Console.Write("Error en la conexion");
+                Console.Write("Error en la conexion");
             }
+        }
+
+        public bool ModifyPicture(byte[] picture,int ci)
+        {
+            bool modified = false;
+
+            try
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand("UPDATE persona SET foto = @foto WHERE cedula = " + ci + ";", connection);
+                command.Parameters.AddWithValue("@foto", picture);
+                command.ExecuteNonQuery();
+                modified = true;
+            }
+            catch
+            {
+                modified = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return modified;
         }
 
         public bool Modify(string query)
@@ -297,6 +321,7 @@ namespace ChatInstitucional.De_persistencia
             Alumno alumno = new Alumno();
             DataTable dataTable = new DataTable();
             Grupo grupo = new Grupo();
+            Fotografia foto = new Fotografia();
 
             try
             {
@@ -311,7 +336,10 @@ namespace ChatInstitucional.De_persistencia
                 alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
                 alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
                 alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
-                // Ver como agregar atributo foto aca
+
+                // Ver como agregar atributo foto 
+                alumno.SetFoto(((byte[])dataTable.Rows[0]["foto"]));
+
                 alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
                 alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                 alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
@@ -330,9 +358,9 @@ namespace ChatInstitucional.De_persistencia
                 Console.WriteLine(dataTable.Rows[0]["logueado"].ToString());
                 Console.WriteLine(dataTable.Rows[0]["idGrupo"].ToString());
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e);
             }
             finally
             {
@@ -352,9 +380,9 @@ namespace ChatInstitucional.De_persistencia
                 MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
                 adapter.Fill(dataTable);
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e);
             }
             finally
             {

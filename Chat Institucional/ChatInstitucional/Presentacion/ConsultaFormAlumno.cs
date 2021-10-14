@@ -14,7 +14,6 @@ namespace ChatInstitucional.Presentacion
 {
     public partial class ConsultaFormAlumno : Form
     {
-        int cedulaConsulta = 0;
         Validacion validacion = new Validacion();
         int IdConsulta = 0;
 
@@ -130,8 +129,6 @@ namespace ChatInstitucional.Presentacion
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
             ver.ShowDialog();
 
-        }
-
-     
+        }     
     }
 }
