@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChatInstitucional.ChatItems;
+using ChatInstitucional.Logica;
 
 namespace ChatInstitucional.Presentacion
 {
     public partial class ChatFormAlumno : Form
     {
+        Validacion validacion = new Validacion();
+
         public ChatFormAlumno()
         {
             InitializeComponent();
+             
         }
 
         private void ChatFormAlumno_Load(object sender, EventArgs e)
@@ -31,7 +35,7 @@ namespace ChatInstitucional.Presentacion
         void Send()
         {
             if (Text_Mensaje.Text.Trim().Length == 0) return;
-
+            
             AddOutgoing(Text_Mensaje.Text);
             Text_Mensaje.Text = string.Empty;
         }
@@ -59,6 +63,7 @@ namespace ChatInstitucional.Presentacion
             if (e.KeyCode == Keys.Return)
             {
                 Send();
+                
             }
         }
     }

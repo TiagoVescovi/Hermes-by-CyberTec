@@ -14,6 +14,7 @@ namespace ChatInstitucional.Presentacion
     public partial class SettingsFormAlumno : Form
     {
         Validacion validacion = new Validacion();
+        Fotografia fotografia = new Fotografia();
 
         public SettingsFormAlumno()
         {
@@ -46,12 +47,16 @@ namespace ChatInstitucional.Presentacion
         private void Btn_SubirFoto_Click(object sender, EventArgs e)
         {
             //Cambiar foto en el programa -- Parece q esto funciona bien
+            openFileDialog1.Filter = "Imagenes|*.jpg;*.jpeg;*.png;*.gif;";
+            openFileDialog1.Title = "Seleccione su nueva imágen";
+            
             try
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string imagen = openFileDialog1.FileName;
                     Picture_ImgPerfil.Image = Image.FromFile(imagen);
+                    
                 }
             }
             catch (Exception ex)
@@ -63,10 +68,14 @@ namespace ChatInstitucional.Presentacion
         private void Btn_ChangeFoto_Click(object sender, EventArgs e)
         {
             //Subir imagen a bdd -- Arreglar
+            byte[] foto = fotografia.ImageToByte(Picture_ImgPerfil.Image);
+
+
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if(validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
+               // if(validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
+                if(validacion.ModifyPicture(foto,Validacion.UsuarioActual))
                 {
                     MessageBox.Show("No se pudo cargar correctamente la imágen");
                 }

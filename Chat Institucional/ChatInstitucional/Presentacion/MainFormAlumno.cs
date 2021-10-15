@@ -22,13 +22,21 @@ namespace ChatInstitucional.Presentacion
         ChatFormAlumno chf = new ChatFormAlumno();
         SettingsFormAlumno sf = new SettingsFormAlumno();
         CursosAlumnoForm cuf = new CursosAlumnoForm();
+        Fotografia foto = new Fotografia();
 
         public MainFormAlumno()
         {
             InitializeComponent();
-
+            
             Lbl_UserName.Text = validacion.AlumnoActual(Validacion.UsuarioActual).GetNombre() + " " + validacion.AlumnoActual(Validacion.UsuarioActual).GetApellido();
             Lbl_UserGrupo.Text = validacion.AlumnoActual(Validacion.UsuarioActual).GetIdGrupo().ToString();
+            try
+            {
+                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(validacion.AlumnoActual(Validacion.UsuarioActual).GetFoto()));
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
             // devuelve valores raros cuando se cambia en connect por la ci
 
             pf.TopLevel = false;
