@@ -60,8 +60,7 @@ namespace ChatInstitucional.Presentacion
             //Crea Consulta y crea Asincronica
             Asincronica asincronica = new Asincronica();
             try
-            {       //No puebla bien Asincronica
-                
+            {
                 asincronica.SetCiAlumno(Validacion.UsuarioActual);
                 asincronica.SetCiProfesor(Convert.ToInt32(validacion.TraerIdMateria().Rows[Combo_Materia.SelectedIndex]["cedula"]));
                 Console.WriteLine(asincronica.GetCiProfesor()); //sacar
@@ -106,29 +105,30 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Realizada_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Doble click en el rojo
-            //Ver como tomar el idConsulta del DataGridView
-            //Dgv_Realizada.SelectedRows   Para poner el nombre del alumno como titulo del form
-            verconsulta(Dgv_Realizada);
+            int index = Dgv_Realizada.CurrentRow.Index;
+            IdConsulta = Convert.ToInt32(Dgv_Realizada.Rows[index].Cells[0].Value);
+            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
+            ver.ShowDialog();
         }
 
         private void Dgv_Contestada_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Doble click en el amarillo
-            verconsulta(Dgv_Contestada);
+            int index = Dgv_Contestada.CurrentRow.Index;
+            IdConsulta = Convert.ToInt32(Dgv_Contestada.Rows[index].Cells[0].Value);
+            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
+            validacion.Modify("UPDATE asincronica SET estado = 'Recibida' WHERE idConuslta = " + IdConsulta + ";");
+            ver.ShowDialog();
+            //Agregar atributo respuesta
         }
 
         private void Dgv_Recibida_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Doble click en el verde
-            verconsulta(Dgv_Recibida);
-        }
-        public void verconsulta(DataGridView dgvA)
-        {
-            int index = dgvA.CurrentRow.Index;
-            IdConsulta = Convert.ToInt32(dgvA.Rows[index].Cells[0].Value);
+            int index = Dgv_Recibida.CurrentRow.Index;
+            IdConsulta = Convert.ToInt32(Dgv_Recibida.Rows[index].Cells[0].Value);
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
             ver.ShowDialog();
-
-        }     
+        }
     }
 }

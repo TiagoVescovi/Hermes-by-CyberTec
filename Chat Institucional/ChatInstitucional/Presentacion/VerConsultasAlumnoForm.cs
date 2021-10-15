@@ -25,8 +25,7 @@ namespace ChatInstitucional.Presentacion
 
         private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)
         {
-            //this.Text = "Consulta de " + validacion.Select("SELECT ")  
-            //Poner el nombre del alumno en el titulo del form -- Terminarlo
+            //Poner el nombre del alumno en el titulo del form -- Capaz q no
         }
     }
 }

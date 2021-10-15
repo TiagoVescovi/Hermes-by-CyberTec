@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatFormAlumno));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Pnl_Chat = new System.Windows.Forms.Panel();
-            this.outcomming1 = new ChatInstitucional.ChatItems.Outcomming();
-            this.incomming1 = new ChatInstitucional.ChatItems.Incomming();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Refresh = new System.Windows.Forms.Button();
             this.Dgv_Chats = new System.Windows.Forms.DataGridView();
             this.Pnl_Mensajemandar = new System.Windows.Forms.Panel();
             this.Btn_Send = new System.Windows.Forms.Button();
             this.Text_Mensaje = new System.Windows.Forms.TextBox();
             this.Pnl_Arriba = new System.Windows.Forms.Panel();
+            this.Lbl_Tema = new System.Windows.Forms.Label();
             this.Btn_Opciones = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Pnl_Chat.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Chats)).BeginInit();
             this.Pnl_Mensajemandar.SuspendLayout();
             this.Pnl_Arriba.SuspendLayout();
@@ -49,42 +47,40 @@
             // 
             // Pnl_Chat
             // 
+            this.Pnl_Chat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Pnl_Chat.AutoScroll = true;
-            this.Pnl_Chat.Controls.Add(this.outcomming1);
-            this.Pnl_Chat.Controls.Add(this.incomming1);
-            this.Pnl_Chat.Location = new System.Drawing.Point(256, 64);
+            this.Pnl_Chat.Location = new System.Drawing.Point(250, 64);
             this.Pnl_Chat.Name = "Pnl_Chat";
-            this.Pnl_Chat.Size = new System.Drawing.Size(460, 331);
+            this.Pnl_Chat.Size = new System.Drawing.Size(467, 331);
             this.Pnl_Chat.TabIndex = 0;
-            // 
-            // outcomming1
-            // 
-            this.outcomming1.BackColor = System.Drawing.Color.Transparent;
-            this.outcomming1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.outcomming1.Location = new System.Drawing.Point(0, 63);
-            this.outcomming1.Mensaje = "Hola mundo";
-            this.outcomming1.Name = "outcomming1";
-            this.outcomming1.Size = new System.Drawing.Size(460, 63);
-            this.outcomming1.TabIndex = 1;
-            // 
-            // incomming1
-            // 
-            this.incomming1.Avatar = ((System.Drawing.Image)(resources.GetObject("incomming1.Avatar")));
-            this.incomming1.BackColor = System.Drawing.Color.Transparent;
-            this.incomming1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.incomming1.Location = new System.Drawing.Point(0, 0);
-            this.incomming1.Mensaje = "Hola mundo";
-            this.incomming1.Name = "incomming1";
-            this.incomming1.Size = new System.Drawing.Size(460, 63);
-            this.incomming1.TabIndex = 0;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Btn_Refresh);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(716, 34);
+            this.panel2.Size = new System.Drawing.Size(717, 34);
             this.panel2.TabIndex = 0;
+            // 
+            // Btn_Refresh
+            // 
+            this.Btn_Refresh.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Refresh.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Refresh.FlatAppearance.BorderSize = 0;
+            this.Btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Refresh.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refresh.ForeColor = System.Drawing.Color.White;
+            this.Btn_Refresh.Location = new System.Drawing.Point(3, 4);
+            this.Btn_Refresh.Name = "Btn_Refresh";
+            this.Btn_Refresh.Size = new System.Drawing.Size(36, 27);
+            this.Btn_Refresh.TabIndex = 6;
+            this.Btn_Refresh.UseVisualStyleBackColor = false;
+            this.Btn_Refresh.Click += new System.EventHandler(this.Btn_Refresh_Click);
             // 
             // Dgv_Chats
             // 
@@ -99,14 +95,14 @@
             this.Dgv_Chats.ColumnHeadersHeight = 4;
             this.Dgv_Chats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dgv_Chats.ColumnHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Chats.Dock = System.Windows.Forms.DockStyle.Left;
             this.Dgv_Chats.EnableHeadersVisualStyles = false;
             this.Dgv_Chats.Location = new System.Drawing.Point(0, 34);
@@ -114,21 +110,25 @@
             this.Dgv_Chats.Name = "Dgv_Chats";
             this.Dgv_Chats.ReadOnly = true;
             this.Dgv_Chats.RowHeadersVisible = false;
-            this.Dgv_Chats.Size = new System.Drawing.Size(256, 393);
+            this.Dgv_Chats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dgv_Chats.Size = new System.Drawing.Size(250, 393);
             this.Dgv_Chats.TabIndex = 1;
+            this.Dgv_Chats.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Chats_CellMouseDoubleClick);
             // 
             // Pnl_Mensajemandar
             // 
             this.Pnl_Mensajemandar.Controls.Add(this.Btn_Send);
             this.Pnl_Mensajemandar.Controls.Add(this.Text_Mensaje);
             this.Pnl_Mensajemandar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Pnl_Mensajemandar.Location = new System.Drawing.Point(256, 393);
+            this.Pnl_Mensajemandar.Location = new System.Drawing.Point(250, 393);
             this.Pnl_Mensajemandar.Name = "Pnl_Mensajemandar";
-            this.Pnl_Mensajemandar.Size = new System.Drawing.Size(460, 34);
+            this.Pnl_Mensajemandar.Size = new System.Drawing.Size(467, 34);
             this.Pnl_Mensajemandar.TabIndex = 0;
             // 
             // Btn_Send
             // 
+            this.Btn_Send.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Send.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Send.BackgroundImage = global::ChatInstitucional.Properties.Resources.send;
             this.Btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -145,6 +145,9 @@
             // 
             // Text_Mensaje
             // 
+            this.Text_Mensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Text_Mensaje.Location = new System.Drawing.Point(3, 8);
             this.Text_Mensaje.Name = "Text_Mensaje";
             this.Text_Mensaje.Size = new System.Drawing.Size(413, 20);
@@ -153,16 +156,26 @@
             // 
             // Pnl_Arriba
             // 
-            this.Pnl_Arriba.Controls.Add(this.label1);
+            this.Pnl_Arriba.Controls.Add(this.Lbl_Tema);
             this.Pnl_Arriba.Controls.Add(this.Btn_Opciones);
             this.Pnl_Arriba.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Pnl_Arriba.Location = new System.Drawing.Point(256, 34);
+            this.Pnl_Arriba.Location = new System.Drawing.Point(250, 34);
             this.Pnl_Arriba.Name = "Pnl_Arriba";
-            this.Pnl_Arriba.Size = new System.Drawing.Size(460, 31);
+            this.Pnl_Arriba.Size = new System.Drawing.Size(467, 31);
             this.Pnl_Arriba.TabIndex = 0;
+            // 
+            // Lbl_Tema
+            // 
+            this.Lbl_Tema.AutoSize = true;
+            this.Lbl_Tema.Location = new System.Drawing.Point(6, 9);
+            this.Lbl_Tema.Name = "Lbl_Tema";
+            this.Lbl_Tema.Size = new System.Drawing.Size(59, 13);
+            this.Lbl_Tema.TabIndex = 5;
+            this.Lbl_Tema.Text = "Tema Chat";
             // 
             // Btn_Opciones
             // 
+            this.Btn_Opciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Opciones.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Opciones.BackgroundImage = global::ChatInstitucional.Properties.Resources.menu_vertical;
             this.Btn_Opciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -176,20 +189,11 @@
             this.Btn_Opciones.TabIndex = 4;
             this.Btn_Opciones.UseVisualStyleBackColor = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Nombre Apellido";
-            // 
             // ChatFormAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 427);
+            this.ClientSize = new System.Drawing.Size(717, 427);
             this.Controls.Add(this.Pnl_Arriba);
             this.Controls.Add(this.Pnl_Mensajemandar);
             this.Controls.Add(this.Dgv_Chats);
@@ -199,7 +203,7 @@
             this.Name = "ChatFormAlumno";
             this.Text = "ChatForm";
             this.Load += new System.EventHandler(this.ChatFormAlumno_Load);
-            this.Pnl_Chat.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Chats)).EndInit();
             this.Pnl_Mensajemandar.ResumeLayout(false);
             this.Pnl_Mensajemandar.PerformLayout();
@@ -218,8 +222,7 @@
         private System.Windows.Forms.Panel Pnl_Arriba;
         private System.Windows.Forms.TextBox Text_Mensaje;
         private System.Windows.Forms.Button Btn_Send;
-        private ChatItems.Incomming incomming1;
-        private ChatItems.Outcomming outcomming1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbl_Tema;
+        private System.Windows.Forms.Button Btn_Refresh;
     }
 }

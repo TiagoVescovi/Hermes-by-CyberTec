@@ -39,7 +39,11 @@ namespace ChatInstitucional.Presentacion
             {
                 if(validacion.Modify("UPDATE persona SET activo = false WHERE cedula = " + Validacion.UsuarioActual + ";"))
                 {
-                    MessageBox.Show("No se pudo eliminar el usuario");
+                    MessageBox.Show("Usuario eliminado satisfactoriamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar al usuario");
                 }
             }
         }
@@ -77,7 +81,11 @@ namespace ChatInstitucional.Presentacion
                // if(validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
                 if(validacion.ModifyPicture(foto,Validacion.UsuarioActual))
                 {
-                    MessageBox.Show("No se pudo cargar correctamente la imágen");
+                    MessageBox.Show("La imágen se subió correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo subir la imágen");
                 }
             }
         }

@@ -27,6 +27,7 @@ namespace ChatInstitucional.Logica
         {
             Imagen = img;
         }
+
         //Convierte Byte a Imagen
         public MemoryStream ByteToImage(byte[] array)
         {

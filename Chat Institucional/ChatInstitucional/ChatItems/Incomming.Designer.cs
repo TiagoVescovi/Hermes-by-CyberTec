@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Lbl_Text = new System.Windows.Forms.Label();
+            this.Lbl_Name = new System.Windows.Forms.Label();
+            this.Lbl_Time = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -41,55 +41,69 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(114)))), ((int)(((byte)(245)))));
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.Lbl_Text);
             this.panel1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Location = new System.Drawing.Point(55, 4);
+            this.panel1.Location = new System.Drawing.Point(55, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 92);
+            this.panel1.Size = new System.Drawing.Size(281, 82);
             this.panel1.TabIndex = 3;
             // 
-            // label1
+            // Lbl_Text
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Lbl_Text.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(0, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(278, 85);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Hola mundo";
+            this.Lbl_Text.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_Text.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.Lbl_Text.Location = new System.Drawing.Point(0, 0);
+            this.Lbl_Text.MinimumSize = new System.Drawing.Size(278, 20);
+            this.Lbl_Text.Name = "Lbl_Text";
+            this.Lbl_Text.Size = new System.Drawing.Size(278, 79);
+            this.Lbl_Text.TabIndex = 0;
+            this.Lbl_Text.Text = "Hola mundo";
             // 
-            // pictureBox1
+            // Lbl_Name
             // 
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.alien_48px;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.Lbl_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Lbl_Name.AutoSize = true;
+            this.Lbl_Name.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Name.Location = new System.Drawing.Point(196, 0);
+            this.Lbl_Name.Name = "Lbl_Name";
+            this.Lbl_Name.Size = new System.Drawing.Size(67, 11);
+            this.Lbl_Name.TabIndex = 4;
+            this.Lbl_Name.Text = "Nombre Apellido";
+            // 
+            // Lbl_Time
+            // 
+            this.Lbl_Time.AutoSize = true;
+            this.Lbl_Time.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Time.Location = new System.Drawing.Point(3, 0);
+            this.Lbl_Time.Name = "Lbl_Time";
+            this.Lbl_Time.Size = new System.Drawing.Size(93, 11);
+            this.Lbl_Time.TabIndex = 5;
+            this.Lbl_Time.Text = "YYYY-MM-DD HH:MM:SS";
             // 
             // Incomming
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.Lbl_Time);
+            this.Controls.Add(this.Lbl_Name);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
             this.Name = "Incomming";
             this.Size = new System.Drawing.Size(395, 99);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbl_Text;
+        private System.Windows.Forms.Label Lbl_Name;
+        private System.Windows.Forms.Label Lbl_Time;
     }
 }

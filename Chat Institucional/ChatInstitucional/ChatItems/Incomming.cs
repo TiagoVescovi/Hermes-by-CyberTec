@@ -22,12 +22,12 @@ namespace ChatInstitucional.ChatItems
         {
             get
             {
-                return label1.Text;
+                return Lbl_Text.Text;
             }
 
             set
             {
-                label1.Text = value;
+                Lbl_Text.Text = value;
 
                 AdjustHeight();
             }
@@ -35,15 +35,16 @@ namespace ChatInstitucional.ChatItems
 
         void AdjustHeight()
         {
-            pictureBox1.Location = new Point(4, 3);
-            label1.Height = Utils.GetTextHeight(label1) + 10;
+            Lbl_Time.Location = new Point(4, 3);
+            Lbl_Text.Height = Utils.GetTextHeight(Lbl_Text) + 10;
+            
+            panel1.Height = Lbl_Text.Top + panel1.Top + Lbl_Text.Height;
 
-            panel1.Height = label1.Top + panel1.Top + label1.Height;
-
-            this.Height = panel1.Bottom + 10;
+            this.Height = panel1.Bottom + 10 + Lbl_Time.Top + Lbl_Time.Height;
         }
 
-        public Image Avatar { get => pictureBox1.Image; set => pictureBox1.Image = value; }
+        public string Nombre { get => Lbl_Name.Text; set => Lbl_Name.Text = value; }
+        public string Fecha { get => Lbl_Time.Text; set => Lbl_Time.Text = value; }
 
         private void IncommingResize(object sender, EventArgs e)
         {
