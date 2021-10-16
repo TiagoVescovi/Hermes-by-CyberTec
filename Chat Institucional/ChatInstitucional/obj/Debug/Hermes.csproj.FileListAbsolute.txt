@@ -90,3 +90,4 @@ C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitu
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\Hermes.csproj.CopyComplete
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.exe
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.pdb
+C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.Exit.resources

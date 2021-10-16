@@ -93,20 +93,27 @@ namespace ChatInstitucional.Presentacion
             Pnl_Chat.Controls.Clear();
             int index = Dgv_Chats.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Chats.Rows[index].Cells[0].Value);
-            Lbl_Tema.Text = Dgv_Chats.Rows[index].Cells[1].Value.ToString();
+            Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[1].Value.ToString();
             
             for(int i = 0; i< mensaje.TraerMensaje(IdConsulta).Rows.Count; i++)
             {
                 if (!mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
                 {
                     Persona persona = new Persona();
-                    AddIncomming(mensaje.TraerMensaje(IdConsulta).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdConsulta).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"])).Rows[0]["nombre"].ToString() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"])).Rows[0]["apellido"].ToString());
+                    AddIncomming(mensaje.TraerMensaje(IdConsulta).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdConsulta).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"])).GetApellido());
                 }
                 else
                 {
                     AddOutgoing(mensaje.TraerMensaje(IdConsulta).Rows[i]["contenido"].ToString());
                 }
             }
+        }
+
+        private void Btn_Tema_Click(object sender, EventArgs e)
+        {
+            // Lista de personas q perticipan en el chat
+            // Conectados/desconectados
+            // Marcar diferente Host y Docentes
         }
     }
 }

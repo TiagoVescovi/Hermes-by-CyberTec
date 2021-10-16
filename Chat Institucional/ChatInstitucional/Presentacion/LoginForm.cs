@@ -59,7 +59,8 @@ namespace ChatInstitucional.Presentacion
                         MainFormAlumno mfo = new MainFormAlumno();
                         this.Hide();
                         Validacion.UsuarioActual = cedula;
-                        mfo.Show();
+                        mfo.ShowDialog();
+                        this.Show();
                     }
                     else
                     {

@@ -99,6 +99,12 @@
     <Compile Include="Presentacion\CursosAlumnoForm.Designer.cs">
       <DependentUpon>CursosAlumnoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Exit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Exit.Designer.cs">
+      <DependentUpon>Exit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\CursosAlumnoForm.resx">
       <DependentUpon>CursosAlumnoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Exit.resx">
+      <DependentUpon>Exit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

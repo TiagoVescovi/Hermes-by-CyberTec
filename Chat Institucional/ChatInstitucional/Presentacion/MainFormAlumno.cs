@@ -23,21 +23,11 @@ namespace ChatInstitucional.Presentacion
         SettingsFormAlumno sf = new SettingsFormAlumno();
         CursosAlumnoForm cuf = new CursosAlumnoForm();
         Fotografia foto = new Fotografia();
+        Grupo grupo = new Grupo();
 
         public MainFormAlumno()
         {
             InitializeComponent();
-            
-            Lbl_UserName.Text = validacion.AlumnoActual(Validacion.UsuarioActual).GetNombre() + " " + validacion.AlumnoActual(Validacion.UsuarioActual).GetApellido();
-            Lbl_UserGrupo.Text = validacion.AlumnoActual(Validacion.UsuarioActual).GetIdGrupo().ToString();
-            try
-            {
-                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(validacion.AlumnoActual(Validacion.UsuarioActual).GetFoto()));
-            }catch(Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            // devuelve valores raros cuando se cambia en connect por la ci
 
             pf.TopLevel = false;
             pf.AutoScroll = true;
@@ -49,18 +39,54 @@ namespace ChatInstitucional.Presentacion
 
         }
 
+        private void MainFormAlumno_Load(object sender, EventArgs e)
+        {
+            Lbl_UserName.Text = alumno.BuscarAlumno(Validacion.UsuarioActual).GetNombre() + " " + alumno.BuscarAlumno(Validacion.UsuarioActual).GetApellido();
+            Lbl_UserGrupo.Text = grupo.TraerGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).GetNombre().ToString();
+
+            try
+            {
+                //Siguue sin funcionar
+                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.GetFoto()));
+                //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
         private void Btn_Close_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Está segur@ que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            Exit exit = new Exit();
+            exit.ShowDialog();
+            if(exit.Respuesta() == 0)
             {
                 validacion.ValidarLogOut(Validacion.UsuarioActual);
-                Application.Exit();
+                this.Close();
             }
             else
             {
-
+                if (exit.Respuesta() == 1)
+                {
+                    // No hace nada aca xd
+                }
+                else
+                {
+                    validacion.ValidarLogOut(Validacion.UsuarioActual);
+                    Application.Exit();
+                }
             }
+            //DialogResult result = MessageBox.Show("¿Está segur@ que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo);
+            //if (result == DialogResult.Yes)
+            //{
+            //    validacion.ValidarLogOut(Validacion.UsuarioActual);
+            //    Application.Exit();
+            //}
+            //else
+            //{
+
+            //}
             //Poner MessageBox del LoL o algo parecido
         }
 
@@ -148,5 +174,6 @@ namespace ChatInstitucional.Presentacion
             chf.Hide();
             sf.Hide();
         }
+        
     }
 }

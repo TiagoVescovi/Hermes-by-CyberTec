@@ -117,7 +117,7 @@ namespace ChatInstitucional.Presentacion
             int index = Dgv_Contestada.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Contestada.Rows[index].Cells[0].Value);
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
-            validacion.Modify("UPDATE asincronica SET estado = 'Recibida' WHERE idConuslta = " + IdConsulta + ";");
+            validacion.Update("UPDATE asincronica SET estado = 'Recibida' WHERE idConuslta = " + IdConsulta + ";");
             ver.ShowDialog();
             //Agregar atributo respuesta
         }

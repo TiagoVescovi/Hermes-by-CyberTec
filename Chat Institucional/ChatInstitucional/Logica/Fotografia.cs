@@ -11,19 +11,19 @@ namespace ChatInstitucional.Logica
 {
     class Fotografia
     {
-        protected object Imagen;
+        protected byte[] Imagen;
 
         public Fotografia()
         {
 
         }
 
-        public object GetImagen()
+        public byte[] GetImagen()
         {
             return Imagen;
         }
 
-        public void SetImagen(object img)
+        public void SetImagen(byte[] img)
         {
             Imagen = img;
         }
@@ -42,6 +42,12 @@ namespace ChatInstitucional.Logica
             imagenIn.Save(ms, ImageFormat.Jpeg);
 
             return ms.ToArray();
+        }
+
+        public bool CambiarImagen(Fotografia foto)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Update("UPDATE persona SET foto = '" + foto.GetImagen() + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
         }
     }
 }

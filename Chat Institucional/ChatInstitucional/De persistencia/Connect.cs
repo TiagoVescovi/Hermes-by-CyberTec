@@ -25,51 +25,51 @@ namespace ChatInstitucional.De_persistencia
             }
         }
 
-        public bool ModifyPicture(byte[] picture,int ci)
+        //public bool ModifyPicture(byte[] picture,int ci)
+        //{
+        //    bool modified = false;
+
+        //    try
+        //    {
+        //        connection.Open();
+        //        MySqlCommand command = new MySqlCommand("UPDATE persona SET foto = @foto WHERE cedula = " + ci + ";", connection);
+        //        command.Parameters.AddWithValue("@foto", picture);
+        //        command.ExecuteNonQuery();
+        //        modified = true;
+        //    }
+        //    catch
+        //    {
+        //        modified = false;
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+
+        //    return modified;
+        //}
+
+        public bool Update(string query)
         {
-            bool modified = false;
-
-            try
-            {
-                connection.Open();
-                MySqlCommand command = new MySqlCommand("UPDATE persona SET foto = @foto WHERE cedula = " + ci + ";", connection);
-                command.Parameters.AddWithValue("@foto", picture);
-                command.ExecuteNonQuery();
-                modified = true;
-            }
-            catch
-            {
-                modified = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return modified;
-        }
-
-        public bool Modify(string query)
-        {
-            bool modified = false;
+            bool updated = false;
 
             try
             {
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
-                modified = true;
+                updated = true;
             }
             catch
             {
-                modified = false;
+                updated = false;
             }
             finally
             {
                 connection.Close();
             }
 
-            return modified;
+            return updated;
         }
 
         public bool Insert(string query)
@@ -118,79 +118,27 @@ namespace ChatInstitucional.De_persistencia
             return dataTable;
         }
 
-        public bool AgregarAlumno(Alumno a) // AGREGAR ALUMNO A LA BDD
+        public bool Buscar(string query)
         {
-            bool added = false;
-            int ci = a.GetCI();
-            string nickname = a.GetNickname();
-            string nombre = a.GetNombre();
-            string apellido = a.GetApellido();
-            string pass = a.GetPass();
-            int idGrupo = a.GetIdGrupo();
-            //Foto como atributo de persona
-
-            DataTable dataTablePer = new DataTable();
-            DataTable dataTableAlum = new DataTable();
+            bool existe = false;
 
             try
             {
-                connection.Open(); 
-                MySqlCommand CheckPersona = new MySqlCommand("SELECT cedula FROM persona;", connection);
-                MySqlDataAdapter AdapterPersona = new MySqlDataAdapter(CheckPersona);
-                AdapterPersona.Fill(dataTablePer);
-
-                for (int i = 0; i < dataTablePer.Rows.Count; i++) //Checkea si existe la persona 
-                {
-                    Console.Write(dataTablePer.Rows[i]["cedula"].ToString());
-
-                    if (dataTablePer.Rows[i]["cedula"].Equals(ci))
-                    {
-                        MySqlCommand CheckAlumno = new MySqlCommand("SELECT cedula FROM alumno;", connection);
-                        MySqlDataAdapter AdapterAlumno = new MySqlDataAdapter(CheckAlumno);
-                        AdapterAlumno.Fill(dataTableAlum);
-
-                        //capaz conviene hacer do while
-                        bool exist = false;
-                        for (int c = 0; c < dataTableAlum.Rows.Count; c++) //Checkea si existe el alumno
-                        {
-                            if (dataTableAlum.Rows[c]["cedula"].Equals(ci))
-                            {
-                                Console.WriteLine("Entró acá");
-                                exist = true;
-                            }
-                        }
-                        if (!exist)
-                        {
-                            MySqlCommand insertAlum = new MySqlCommand("INSERT INTO Alumno(cedula,idGrupo) VALUES(1,1);", connection);
-                            Console.WriteLine("se rompió?");
-                            insertAlum.ExecuteNonQuery();
-                            Console.WriteLine("no encontró");
-                            MySqlCommand command = new MySqlCommand("UPDATE persona SET nombre = '" + nombre + "', apellido = '" + apellido + "', passwd = '" + pass + "', foto = null, nickname = '" + nickname + "', activo = false, logueado = false WHERE cedula = " + ci + ";", connection);
-                            command.ExecuteNonQuery();
-                            Console.WriteLine("Actualizo bien datos");
-                            Console.WriteLine("noup, anda perfecto ;)");
-                            added = true;
-                        }
-                    }
-                    else
-                    {
-                        //No existe una persona con esa cedula
-                        Console.WriteLine("IF PERSONA");
-                    }
-                }
+                connection.Open();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                existe = true;
             }
             catch
             {
-                //Ocurrio un error en la creacion del alumno
-                added = false;
-                Console.WriteLine("Si D:");
+                existe = false;
             }
             finally
             {
                 connection.Close();
             }
 
-            return added;
+            return existe;
         }
 
         /*public bool AgregarDocente(Docente d)

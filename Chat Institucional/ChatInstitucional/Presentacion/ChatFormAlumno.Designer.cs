@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Pnl_Chat = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_Refresh = new System.Windows.Forms.Button();
@@ -37,7 +37,7 @@
             this.Btn_Send = new System.Windows.Forms.Button();
             this.Text_Mensaje = new System.Windows.Forms.TextBox();
             this.Pnl_Arriba = new System.Windows.Forms.Panel();
-            this.Lbl_Tema = new System.Windows.Forms.Label();
+            this.Btn_Tema = new System.Windows.Forms.Button();
             this.Btn_Opciones = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Chats)).BeginInit();
@@ -95,14 +95,14 @@
             this.Dgv_Chats.ColumnHeadersHeight = 4;
             this.Dgv_Chats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dgv_Chats.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv_Chats.Dock = System.Windows.Forms.DockStyle.Left;
             this.Dgv_Chats.EnableHeadersVisualStyles = false;
             this.Dgv_Chats.Location = new System.Drawing.Point(0, 34);
@@ -156,22 +156,30 @@
             // 
             // Pnl_Arriba
             // 
-            this.Pnl_Arriba.Controls.Add(this.Lbl_Tema);
+            this.Pnl_Arriba.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Pnl_Arriba.Controls.Add(this.Btn_Tema);
             this.Pnl_Arriba.Controls.Add(this.Btn_Opciones);
-            this.Pnl_Arriba.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl_Arriba.Location = new System.Drawing.Point(250, 34);
             this.Pnl_Arriba.Name = "Pnl_Arriba";
             this.Pnl_Arriba.Size = new System.Drawing.Size(467, 31);
             this.Pnl_Arriba.TabIndex = 0;
             // 
-            // Lbl_Tema
+            // Btn_Tema
             // 
-            this.Lbl_Tema.AutoSize = true;
-            this.Lbl_Tema.Location = new System.Drawing.Point(6, 9);
-            this.Lbl_Tema.Name = "Lbl_Tema";
-            this.Lbl_Tema.Size = new System.Drawing.Size(59, 13);
-            this.Lbl_Tema.TabIndex = 5;
-            this.Lbl_Tema.Text = "Tema Chat";
+            this.Btn_Tema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Tema.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Tema.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Tema.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Tema.FlatAppearance.BorderSize = 0;
+            this.Btn_Tema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Tema.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Tema.Location = new System.Drawing.Point(6, 1);
+            this.Btn_Tema.Name = "Btn_Tema";
+            this.Btn_Tema.Size = new System.Drawing.Size(422, 27);
+            this.Btn_Tema.TabIndex = 5;
+            this.Btn_Tema.Text = "Tema Chat";
+            this.Btn_Tema.UseVisualStyleBackColor = false;
+            this.Btn_Tema.Click += new System.EventHandler(this.Btn_Tema_Click);
             // 
             // Btn_Opciones
             // 
@@ -183,7 +191,7 @@
             this.Btn_Opciones.FlatAppearance.BorderSize = 0;
             this.Btn_Opciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Opciones.Font = new System.Drawing.Font("Impact", 2.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Opciones.Location = new System.Drawing.Point(428, 1);
+            this.Btn_Opciones.Location = new System.Drawing.Point(433, 1);
             this.Btn_Opciones.Name = "Btn_Opciones";
             this.Btn_Opciones.Size = new System.Drawing.Size(31, 27);
             this.Btn_Opciones.TabIndex = 4;
@@ -208,7 +216,6 @@
             this.Pnl_Mensajemandar.ResumeLayout(false);
             this.Pnl_Mensajemandar.PerformLayout();
             this.Pnl_Arriba.ResumeLayout(false);
-            this.Pnl_Arriba.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,7 +229,7 @@
         private System.Windows.Forms.Panel Pnl_Arriba;
         private System.Windows.Forms.TextBox Text_Mensaje;
         private System.Windows.Forms.Button Btn_Send;
-        private System.Windows.Forms.Label Lbl_Tema;
         private System.Windows.Forms.Button Btn_Refresh;
+        private System.Windows.Forms.Button Btn_Tema;
     }
 }

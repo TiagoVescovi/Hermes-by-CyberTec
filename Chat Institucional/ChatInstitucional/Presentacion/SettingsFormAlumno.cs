@@ -27,7 +27,7 @@ namespace ChatInstitucional.Presentacion
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su Nickname?","Cambiar Nickname",MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
             {
-                validacion.Modify("UPDATE persona SET nickname = '" + Text_Nick.Text + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
+                validacion.Update("UPDATE persona SET nickname = '" + Text_Nick.Text + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
             }
         }
 
@@ -37,9 +37,12 @@ namespace ChatInstitucional.Presentacion
             DialogResult result = MessageBox.Show("¿Está segur@ que desea eliminar su usuario?\nSi lo hace no podrá volver a iniciar sesión", "Eliminar usuario", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if(validacion.Modify("UPDATE persona SET activo = false WHERE cedula = " + Validacion.UsuarioActual + ";"))
+                Alumno a = new Alumno();
+                a.SetCI(Validacion.UsuarioActual);
+                if(a.EliminarAlumno(a))
                 {
                     MessageBox.Show("Usuario eliminado satisfactoriamente");
+                    Application.Exit();
                 }
                 else
                 {
@@ -78,10 +81,12 @@ namespace ChatInstitucional.Presentacion
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-               // if(validacion.Modify("UPDATE persona SET foto = LOAD_FILE('" + Picture_ImgPerfil.Image + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
-                if(validacion.ModifyPicture(foto,Validacion.UsuarioActual))
+                Fotografia fotografia = new Fotografia();
+                fotografia.SetImagen(foto);
+                if(fotografia.CambiarImagen(fotografia))
                 {
                     MessageBox.Show("La imágen se subió correctamente");
+                    // Cuando se suba q aparezca arriba
                 }
                 else
                 {

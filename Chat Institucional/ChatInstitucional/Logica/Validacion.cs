@@ -22,15 +22,15 @@ namespace ChatInstitucional.Logica
             
         }
 
-        public bool Modify(string query)
+        public bool Update(string query)
         {
-            return connect.Modify(query);
+            return connect.Update(query);
         }
 
-        public bool ModifyPicture(byte[] picture,int cedula)
-        {
-            return connect.ModifyPicture(picture,cedula);
-        }
+        //public bool ModifyPicture(byte[] picture,int cedula)
+        //{
+        //    return connect.ModifyPicture(picture,cedula);
+        //}
 
         public bool Insert(string query)
         {
@@ -42,7 +42,7 @@ namespace ChatInstitucional.Logica
             return connect.Select(query);
         }
 
-        public Alumno AlumnoActual(int ci) //Hacer GrupoActual(int ci, int id) q busque el alumno en esa cedula a q grupo pertenece
+        public Alumno AlumnoActual(int ci)
         {
             return connect.AlumnoActual(ci);
         }
@@ -57,15 +57,10 @@ namespace ChatInstitucional.Logica
             return connect.LogOutBDD(ci);
         }
 
-        public bool CrearAlumno(Alumno a)
-        {
-            return connect.AgregarAlumno(a);
-        }
-
-        public DataTable TraerGrupo()
-        {
-            return connect.TraerIdGrupo();
-        }
+        //public DataTable TraerGrupo()
+        //{
+        //    return connect.TraerIdGrupo();
+        //}
 
         public DataTable TraerIdMateria()
         {

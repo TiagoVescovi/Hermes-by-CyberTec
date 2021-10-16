@@ -20,11 +20,12 @@ namespace ChatInstitucional.Presentacion
 
         public RgstrAlumnoForm()
         {
-            InitializeComponent();
-            DataTable idgrupos = validacion.TraerGrupo();
+            InitializeComponent(); 
+
+            DataTable idgrupos = validacion.Select("SELECT * FROM grupo;"); // Mejorarlo
             for (int i = 0; i < idgrupos.Rows.Count; i++)
             {
-                Combo_Grupo.Items.Add(idgrupos.Rows[i]["nombre"]);
+                Combo_Grupo.Items.Add(idgrupos.Rows[i]["nombreGr"]);
             }
             
         }
@@ -47,7 +48,7 @@ namespace ChatInstitucional.Presentacion
         private void Btn_RegAlumno_Click(object sender, EventArgs e)
         {
             Fotografia foto = new Fotografia();
-            //foto.SetImagen(); --- Ver como usar el objeto Fotografia aca y en SettingsForm
+            foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
             string Nickname = Text_Nickname.Text;
             int Cedula = Convert.ToInt32(Text_Cedula.Text);
             string Nombre = Text_Nombre.Text;
@@ -71,10 +72,11 @@ namespace ChatInstitucional.Presentacion
                         alumno.SetPass(Pass);
                         grupo.SetIdGrupo(Grupo);
                         alumno.SetGrupo(grupo.GetIdGrupo());
+                        alumno.SetFoto(foto.GetImagen());
 
-                        if (validacion.CrearAlumno(alumno))
+                        if (alumno.IngresarAlumno(alumno))
                         {
-                            DialogResult result = MessageBox.Show("Usuario alumno creado satisfactoriamente.\nYa puede iniciar sesión.", "Usuario creado", MessageBoxButtons.OK);
+                            DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador le de permiso para ingresar.", "Usuario creado", MessageBoxButtons.OK);
                             if (result == DialogResult.OK)
                             {
                                 this.Close();
