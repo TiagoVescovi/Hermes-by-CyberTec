@@ -75,6 +75,7 @@
             // Exit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(182, 132);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Btn_LogOut);

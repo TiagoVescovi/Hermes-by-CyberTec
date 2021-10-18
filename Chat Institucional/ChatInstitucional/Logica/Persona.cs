@@ -168,18 +168,30 @@ namespace ChatInstitucional.Logica
             Persona persona = new Persona();
             DataTable dataTable = new DataTable();
 
-            dataTable = validacion.Select("SELECT * FROM persona WHERE cedula = " + ci + ";");
+            try
+            {
+                dataTable = validacion.Select("SELECT * FROM persona WHERE cedula = " + ci + ";");
 
-            persona.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
-            persona.SetNombre(dataTable.Rows[0]["nombre"].ToString());
-            persona.SetApellido(dataTable.Rows[0]["apellido"].ToString());
-            persona.SetPass(dataTable.Rows[0]["passwd"].ToString());
-            persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
-            persona.SetNickname(dataTable.Rows[0]["nickname"].ToString());
-            persona.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
-            persona.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
-            
+                persona.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
+                persona.SetNombre(dataTable.Rows[0]["nombre"].ToString());
+                persona.SetApellido(dataTable.Rows[0]["apellido"].ToString());
+                persona.SetPass(dataTable.Rows[0]["passwd"].ToString());
+                persona.SetNickname(dataTable.Rows[0]["nickname"].ToString());
+                persona.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
+                persona.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
+                persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+            }
+            catch
+            {
+
+            }
             return persona;
+        }
+
+        public DataTable ListarPersonas()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM persona;");
         }
     }
 }

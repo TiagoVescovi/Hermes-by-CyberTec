@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ChatInstitucional.Logica
 {
@@ -49,6 +50,18 @@ namespace ChatInstitucional.Logica
         public void Eliminar()
         {
 
+        }
+        
+        public DataTable LlenarComboBoxConsulta()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM materia m, enseña e, persona p, grupo g WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula AND e.idGrupo = g.idGrupo;");
+        }
+
+        public DataTable ListarMaterias(int grupo)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM materia m, enseña e, persona p, grupo g WHERE m.idMateria = e.idMateria AND p.cedula = e.ciProfesor AND g.idGrupo = e.idGrupo AND g.idGrupo = " + grupo + ";");
         }
     }
 }

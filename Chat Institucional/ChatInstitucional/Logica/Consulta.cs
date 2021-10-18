@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ChatInstitucional.Logica
 {
@@ -67,6 +68,18 @@ namespace ChatInstitucional.Logica
         public void SetIdGrupo(int idgr)
         {
             IdGrupo = idgr;
+        }
+
+        public bool SubirConsulta(Consulta c)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Insert("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (" + c.GetCiAlumno() + "," + c.GetCiProfesor() + "," + c.GetIdMateria() + "," + c.GetIdGrupo() + ");");
+        }
+
+        public DataTable ListarConsultas()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM consulta;");
         }
     }
 }

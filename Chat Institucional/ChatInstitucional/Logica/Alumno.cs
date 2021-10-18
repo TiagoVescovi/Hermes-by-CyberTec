@@ -48,12 +48,11 @@ namespace ChatInstitucional.Logica
             {
                 if (a.BuscarPersona(ci).GetCI() == ci) //Checkea si existe en persona
                 {
-                    Console.WriteLine("PRIMER IF");  // Agregar q el nick no se puede repetir
+                    // Agregar q el nick no se puede repetir
 
                     if (a.BuscarAlumno(ci).GetCI() == ci) //Checkea si existe en alumno
                     {
                         // Ya existe el alumno
-                        Console.WriteLine("IF ALUMNO");
                         added = false;
                     }
                     else
@@ -61,22 +60,18 @@ namespace ChatInstitucional.Logica
                         // Lo inserta en Alumno
                         if (validacion.Insert("INSERT INTO Alumno(cedula,idGrupo) VALUES (" + ci + "," + idGrupo + ");"))
                         {
-                            Console.WriteLine("INSERTA");
                             // Le hace update a Persona
                             if (a.ModificarPersona(a))
                             {
-                                Console.WriteLine("UPDATEA");
                                 added = true;
                             }
                             else
                             {
-                                Console.WriteLine("NO PUDO UPDATEAR PERSONA");
                                 added = false;
                             }
                         }
                         else
                         {
-                            Console.WriteLine("NO PUDO CREAR ALUMNO");
                             added = false;
                         }
                     }
@@ -84,7 +79,6 @@ namespace ChatInstitucional.Logica
                 else
                 {
                     //No existe una persona con esa cedula
-                    Console.WriteLine("IF PERSONA");
                     added = false;
                 }
             }
@@ -92,7 +86,6 @@ namespace ChatInstitucional.Logica
             {
                 //Ocurrio un error en la creacion del alumno
                 added = false;
-                Console.WriteLine("TRY AND CATCH");
                 Console.WriteLine(ex.ToString());
             }
 
@@ -119,20 +112,33 @@ namespace ChatInstitucional.Logica
             Alumno alumno = new Alumno();
             DataTable dataTable = new DataTable();
             Validacion validacion = new Validacion();
-            
-            dataTable = validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND p.cedula = " + ced + ";");
 
-            alumno.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
-            alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
-            alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
-            alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
-            alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
-            alumno.SetFoto((byte[])dataTable.Rows[0]["foto"]); // MAS RARO ESTO PERO FUNCIONA
-            alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
-            alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
-            alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
+            try
+            {
+                dataTable = validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND p.cedula = " + ced + ";");
+
+                alumno.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
+                alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
+                alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
+                alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
+                alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
+                alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
+                alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
+                alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
+                alumno.SetFoto((byte[])dataTable.Rows[0]["foto"]); // MAS RARO ESTO PERO FUNCIONA
+            }
+            catch
+            {
+
+            }
 
             return alumno;
+        }
+
+        public DataTable ListarAlumnos()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM alumno;");
         }
     }
 }

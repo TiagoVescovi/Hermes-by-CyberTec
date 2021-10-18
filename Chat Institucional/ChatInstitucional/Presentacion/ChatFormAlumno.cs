@@ -107,6 +107,9 @@ namespace ChatInstitucional.Presentacion
                     AddOutgoing(mensaje.TraerMensaje(IdConsulta).Rows[i]["contenido"].ToString());
                 }
             }
+
+            Text_Mensaje.Enabled = true;
+            Btn_Send.Enabled = true;
         }
 
         private void Btn_Tema_Click(object sender, EventArgs e)

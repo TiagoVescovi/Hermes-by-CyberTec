@@ -10,7 +10,7 @@ namespace ChatInstitucional.Logica
     class Grupo
     {
         protected int IdGrupo;
-        protected string Nombre;
+        protected string NombreGr;
         protected int Ano;
         protected int IdOrientacion;
 
@@ -31,12 +31,12 @@ namespace ChatInstitucional.Logica
 
         public string GetNombre()
         {
-            return Nombre;
+            return NombreGr;
         }
 
         public void SetNombre(string nom)
         {
-            Nombre = nom;
+            NombreGr = nom;
         }
 
         public int GetAno()
@@ -64,13 +64,26 @@ namespace ChatInstitucional.Logica
             Grupo grupo = new Grupo();
             Validacion validacion = new Validacion();
             DataTable dataTable = new DataTable();
-            dataTable = validacion.Select("SELECT * FROM grupo WHERE idGrupo = " + id + ";");
-            grupo.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
-            grupo.SetNombre(dataTable.Rows[0]["nombreGr"].ToString());
-            grupo.SetAno(Convert.ToInt32(dataTable.Rows[0]["año"]));
-            grupo.SetIdOrientacion(Convert.ToInt32(dataTable.Rows[0]["idOrientacion"]));
+            try
+            {
+                dataTable = validacion.Select("SELECT * FROM grupo WHERE idGrupo = " + id + ";");
 
+                grupo.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
+                grupo.SetNombre(dataTable.Rows[0]["nombreGr"].ToString());
+                grupo.SetAno(Convert.ToInt32(dataTable.Rows[0]["año"]));
+                grupo.SetIdOrientacion(Convert.ToInt32(dataTable.Rows[0]["idOrientacion"]));
+            }
+            catch
+            {
+
+            }
             return grupo;
+        }
+
+        public DataTable LlenarComboBox()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM grupo g, orientacion o WHERE g.idOrientacion = o.idOrientacion;");
         }
     }
 }

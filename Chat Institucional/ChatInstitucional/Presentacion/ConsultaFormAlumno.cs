@@ -26,28 +26,21 @@ namespace ChatInstitucional.Presentacion
         private void ConsultaFormAlumno_Load(object sender, EventArgs e)
         {
             //Llena el Combo_Materia
-            
-            DataTable nomMateria = validacion.TraerIdMateria(); //Generar tabla paralela para agarrar id
-            
-            /*for (int i = 0; i<110; i++)
-            {
-                if(a.Rows[i].Equals(b.Rows[i])
-                    idconsulta= a.
-            }*/
 
+            Materia materia = new Materia();
 
-            for (int i = 0; i < nomMateria.Rows.Count; i++)
+            for (int i = 0; i < materia.LlenarComboBoxConsulta().Rows.Count; i++)
             {
-                Combo_Materia.Items.Add(nomMateria.Rows[i]["nombreMat"] + " - " + nomMateria.Rows[i]["nombre"] + " " + nomMateria.Rows[i]["apellido"]);
+                Combo_Materia.Items.Add(materia.LlenarComboBoxConsulta().Rows[i][1] + " - " + materia.LlenarComboBoxConsulta().Rows[i][6] + " " + materia.LlenarComboBoxConsulta().Rows[i][7] + " - " + materia.LlenarComboBoxConsulta().Rows[i][14]); //Agregarle el grupo al lado del nombre
             }
 
             //Llena los DataGridView
             try
             {
-                Dgv_Realizada.DataSource = validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idConsulta AND estado = 'Realizada' AND ciAlumno = " + Validacion.UsuarioActual + ";");
-                Dgv_Contestada.DataSource = validacion.Select("SELECT c.idConsulta as '. ', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idConsulta AND estado = 'Contestada' AND ciAlumno = " + Validacion.UsuarioActual + ";");
-                Dgv_Recibida.DataSource = validacion.Select("SELECT c.idConsulta as ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idConsulta AND estado = 'Reccibida' AND ciAlumno = " + Validacion.UsuarioActual + ";");
-
+                Asincronica asincronica = new Asincronica();
+                Dgv_Realizada.DataSource = asincronica.TraerRealizadas(Validacion.UsuarioActual);
+                Dgv_Contestada.DataSource = asincronica.TraerContestadas(Validacion.UsuarioActual);
+                Dgv_Recibida.DataSource = asincronica.TraerRecibidas(Validacion.UsuarioActual);
             }
             catch
             {
@@ -58,27 +51,61 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Enviar_Click(object sender, EventArgs e)
         {
             //Crea Consulta y crea Asincronica
-            Asincronica asincronica = new Asincronica();
+            Persona persona = new Persona();
+            Materia materia = new Materia();
+            Alumno alumno = new Alumno();
             try
             {
-                asincronica.SetCiAlumno(Validacion.UsuarioActual);
-                asincronica.SetCiProfesor(Convert.ToInt32(validacion.TraerIdMateria().Rows[Combo_Materia.SelectedIndex]["cedula"]));
-                Console.WriteLine(asincronica.GetCiProfesor()); //sacar
-                asincronica.SetIdMateria(Convert.ToInt32(validacion.Select("SELECT p.cedula, m.nombre as 'nombreMat', p.nombre, p.apellido, m.idMateria FROM materia m, enseña e, persona p WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula;").Rows[Combo_Materia.SelectedIndex]["idMateria"]));
-                Console.WriteLine(asincronica.GetIdMateria()); //sacar
-                asincronica.SetIdGrupo(Convert.ToInt32(validacion.Select("SELECT idGrupo FROM alumno WHERE cedula = " + Validacion.UsuarioActual + ";").Rows[0]["idGrupo"]));
-                Console.WriteLine(asincronica.GetIdGrupo()); //sacar
-                asincronica.SetEstado("Realizada");
-                asincronica.SetContenido(Text_Consulta.Text);
-                Console.WriteLine(asincronica.GetContenido()); //sacar
+                int ciAlumno = Validacion.UsuarioActual;
+                int ciProfesor = persona.BuscarPersona(Convert.ToInt32(materia.LlenarComboBoxConsulta().Rows[Combo_Materia.SelectedIndex]["cedula"])).GetCI();
+                int idMateria = Convert.ToInt32(materia.LlenarComboBoxConsulta().Rows[Combo_Materia.SelectedIndex][0]);
+                int idGrupo = alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo();
+                string estado = "Realizada";
+                string consulta = Text_Consulta.Text;
+                string respuesta = ".";
 
-                if (validacion.Insert("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (" + asincronica.GetCiAlumno() + "," + asincronica.GetCiProfesor() + "," + asincronica.GetIdMateria() + "," + asincronica.GetIdGrupo() + ");"))
+                if (!String.IsNullOrEmpty(ciAlumno.ToString()) && !String.IsNullOrEmpty(ciProfesor.ToString()) && !String.IsNullOrEmpty(idMateria.ToString()) && !String.IsNullOrEmpty(idGrupo.ToString()) && !String.IsNullOrEmpty(estado) && !String.IsNullOrEmpty(consulta) && consulta != "Redacta la consulta aquí" && !String.IsNullOrEmpty(respuesta))
                 {
-                    asincronica.SetIdConsulta(Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + ");").Rows[0]["idConsulta"]));
-                    if (validacion.Insert("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (" + asincronica.GetIdConsulta() + ",'" + asincronica.GetEstado() + "','" + asincronica.GetContenido() + "');"))
+                    Console.WriteLine("no lo toma nulo o vacio");
+                    Asincronica asincronica = new Asincronica();
+                    asincronica.SetCiAlumno(ciAlumno);
+                    asincronica.SetCiProfesor(ciProfesor);
+                    asincronica.SetIdMateria(idMateria);
+                    asincronica.SetIdGrupo(idGrupo);
+                    asincronica.SetEstado(estado);
+                    asincronica.SetConsulta(consulta);
+
+                    if (asincronica.SubirConsulta(asincronica))
                     {
-                        MessageBox.Show("Consulta enviada satisfactoriamente");
+                        asincronica.SetIdConsulta(asincronica.ConseguirIdConsulta(Validacion.UsuarioActual));
+
+                        if (asincronica.SubirAsincronica(asincronica))
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Consulta enviada satisfactoriamente", "Consulta enviada", MessageBoxButtons.OK);
+                            if(dialogResult == DialogResult.OK)
+                            {
+                                Dgv_Realizada.DataSource = asincronica.TraerRealizadas(Validacion.UsuarioActual);
+                                Dgv_Contestada.DataSource = asincronica.TraerContestadas(Validacion.UsuarioActual);
+                                Dgv_Recibida.DataSource = asincronica.TraerRecibidas(Validacion.UsuarioActual);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo procesar la operación");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al enviar la consulta asincrónica");
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error al enviar la consulta");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese una consulta válida");
                 }
             }
             catch
@@ -92,9 +119,10 @@ namespace ChatInstitucional.Presentacion
             //Lo mismo q el Load
             try
             {
-                Dgv_Realizada.DataSource = validacion.Select("SELECT c.idConsulta, p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idConsulta AND estado = 'Realizada' AND ciAlumno = " + Validacion.UsuarioActual + ";");
-                Dgv_Contestada.DataSource = validacion.Select("SELECT c.idConsulta, p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idConsulta AND estado = 'Contestada' AND ciAlumno = " + Validacion.UsuarioActual + ";");
-                Dgv_Recibida.DataSource = validacion.Select("SELECT c.idConsulta, p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idConsulta AND estado = 'Reccibida' AND ciAlumno = " + Validacion.UsuarioActual + ";");
+                Asincronica asincronica = new Asincronica();
+                Dgv_Realizada.DataSource = asincronica.TraerRealizadas(Validacion.UsuarioActual);
+                Dgv_Contestada.DataSource = asincronica.TraerContestadas(Validacion.UsuarioActual);
+                Dgv_Recibida.DataSource = asincronica.TraerRecibidas(Validacion.UsuarioActual);
             }
             catch
             {
@@ -105,10 +133,12 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Realizada_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Doble click en el rojo
+            // De repente no funciona ninguno de estos
+            Asincronica asincronica = new Asincronica();
             int index = Dgv_Realizada.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Realizada.Rows[index].Cells[0].Value);
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
-            ver.ShowDialog();
+            ver.Show();
         }
 
         private void Dgv_Contestada_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -117,8 +147,8 @@ namespace ChatInstitucional.Presentacion
             int index = Dgv_Contestada.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Contestada.Rows[index].Cells[0].Value);
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
-            validacion.Update("UPDATE asincronica SET estado = 'Recibida' WHERE idConuslta = " + IdConsulta + ";");
-            ver.ShowDialog();
+            validacion.Update("UPDATE asincronica SET estado = 'Recibida' WHERE idAsincronica = " + IdConsulta + ";");
+            ver.Show();
             //Agregar atributo respuesta
         }
 
@@ -128,7 +158,7 @@ namespace ChatInstitucional.Presentacion
             int index = Dgv_Recibida.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Recibida.Rows[index].Cells[0].Value);
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
-            ver.ShowDialog();
+            ver.Show();
         }
     }
 }

@@ -54,7 +54,7 @@ namespace ChatInstitucional.Presentacion
                 {
                     int cedula = Convert.ToInt32(Text_User.Text);
                     String pass = Text_Pass.Text;
-                    if(validacion.ValidarLogin(cedula, pass) == true)
+                    if(validacion.ValidarLogin(cedula, pass))
                     {
                         MainFormAlumno mfo = new MainFormAlumno();
                         this.Hide();

@@ -15,12 +15,13 @@ namespace ChatInstitucional.Presentacion
     {
         Validacion validacion = new Validacion();
 
-        public VerConsultasAlumnoForm(int IdConsulta)
+        public VerConsultasAlumnoForm(int IdAsincronica)
         {
             InitializeComponent();
 
             //Muestra la consulta -- Muestra System.Byte[] -- Ver como arreglarlo -- Arreglado cambiando de blob a varchar
-            Text_Consulta.Text = validacion.Select("SELECT contenido FROM asincronica WHERE idConsulta = " + IdConsulta + ";").Rows[0]["contenido"].ToString();
+            Text_Consulta.Text = validacion.Select("SELECT consulta FROM asincronica WHERE idAsincronica = " + IdAsincronica + ";").Rows[0]["contenido"].ToString();
+            Text_Respuesta.Text = validacion.Select("SELECT respuesta FROM asincronica WHERE idAsincronica = " + IdAsincronica + ";").Rows[0]["respuesta"].ToString();
         }
 
         private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)

@@ -22,7 +22,8 @@ namespace ChatInstitucional.Presentacion
 
         private void PrincipalForm_Load(object sender, EventArgs e)
         {
-            label1.Text = "BIENVENID@ " + validacion.AlumnoActual(Validacion.UsuarioActual).GetNickname();
+            Persona persona = new Persona();
+            label1.Text = "BIENVENID@ " + persona.BuscarPersona(Validacion.UsuarioActual).GetNickname();
         }
     }
 }

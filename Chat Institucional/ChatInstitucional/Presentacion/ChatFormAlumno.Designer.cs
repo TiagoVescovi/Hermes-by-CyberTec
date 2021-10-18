@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Pnl_Chat = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_Refresh = new System.Windows.Forms.Button();
@@ -95,14 +95,14 @@
             this.Dgv_Chats.ColumnHeadersHeight = 4;
             this.Dgv_Chats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dgv_Chats.ColumnHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Chats.Dock = System.Windows.Forms.DockStyle.Left;
             this.Dgv_Chats.EnableHeadersVisualStyles = false;
             this.Dgv_Chats.Location = new System.Drawing.Point(0, 34);
@@ -133,6 +133,7 @@
             this.Btn_Send.BackgroundImage = global::ChatInstitucional.Properties.Resources.send;
             this.Btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Send.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Send.Enabled = false;
             this.Btn_Send.FlatAppearance.BorderSize = 2;
             this.Btn_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Send.Font = new System.Drawing.Font("Impact", 2.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,6 +149,7 @@
             this.Text_Mensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Text_Mensaje.Enabled = false;
             this.Text_Mensaje.Location = new System.Drawing.Point(3, 8);
             this.Text_Mensaje.Name = "Text_Mensaje";
             this.Text_Mensaje.Size = new System.Drawing.Size(413, 20);

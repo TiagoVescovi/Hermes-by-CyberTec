@@ -36,7 +36,6 @@ namespace ChatInstitucional.Presentacion
             Lbl_FormAbierto.Text = "PRINCIPAL";
 
             pf.Show();
-
         }
 
         private void MainFormAlumno_Load(object sender, EventArgs e)
@@ -46,9 +45,10 @@ namespace ChatInstitucional.Presentacion
 
             try
             {
-                //Siguue sin funcionar
+                //Sigue sin funcionar
                 Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.GetFoto()));
                 //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
+                //Pic_Perfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto()); -- Este tampoco
             }
             catch (Exception ex)
             {
@@ -77,17 +77,6 @@ namespace ChatInstitucional.Presentacion
                     Application.Exit();
                 }
             }
-            //DialogResult result = MessageBox.Show("¿Está segur@ que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo);
-            //if (result == DialogResult.Yes)
-            //{
-            //    validacion.ValidarLogOut(Validacion.UsuarioActual);
-            //    Application.Exit();
-            //}
-            //else
-            //{
-
-            //}
-            //Poner MessageBox del LoL o algo parecido
         }
 
         private void Btn_Minimize_Click(object sender, EventArgs e)

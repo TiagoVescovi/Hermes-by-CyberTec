@@ -20,12 +20,12 @@ namespace ChatInstitucional.Presentacion
 
         public RgstrAlumnoForm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
-            DataTable idgrupos = validacion.Select("SELECT * FROM grupo;"); // Mejorarlo
-            for (int i = 0; i < idgrupos.Rows.Count; i++)
+            Grupo grupo = new Grupo();
+            for (int i = 0; i < grupo.LlenarComboBox().Rows.Count; i++)
             {
-                Combo_Grupo.Items.Add(idgrupos.Rows[i]["nombreGr"]);
+                Combo_Grupo.Items.Add(grupo.LlenarComboBox().Rows[i]["nombreGr"] + " " + grupo.LlenarComboBox().Rows[i]["nombre"]);
             }
             
         }
@@ -48,35 +48,28 @@ namespace ChatInstitucional.Presentacion
         private void Btn_RegAlumno_Click(object sender, EventArgs e)
         {
             Fotografia foto = new Fotografia();
+
             foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
-            string Nickname = Text_Nickname.Text;
-            int Cedula = Convert.ToInt32(Text_Cedula.Text);
-            string Nombre = Text_Nombre.Text;
-            string Apellido = Text_Apellido.Text;
-            string Pass = Text_Pass.Text;
-            string PassCheck = Text_PassCheck.Text;
-            int Grupo = Combo_Grupo.SelectedIndex;
 
             try
             {
-                if(!String.IsNullOrEmpty(Nickname) && !String.IsNullOrEmpty(Cedula.ToString()) && !String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellido) && !String.IsNullOrEmpty(Pass) && !String.IsNullOrEmpty(PassCheck) && !String.IsNullOrEmpty(Grupo.ToString()))
+                if(!String.IsNullOrEmpty(Text_Nickname.Text) && !String.IsNullOrEmpty(Text_Cedula.Text) && !String.IsNullOrEmpty(Text_Nombre.Text) && !String.IsNullOrEmpty(Text_Apellido.Text) && !String.IsNullOrEmpty(Text_Pass.Text) && !String.IsNullOrEmpty(Text_PassCheck.Text) && !String.IsNullOrEmpty(Combo_Grupo.SelectedIndex.ToString()))
                 {
-                    if(Pass == PassCheck)
+                    if(Text_Pass.Text == Text_PassCheck.Text)
                     {
-                        Grupo grupo = new Grupo();
                         Alumno alumno = new Alumno();
-                        alumno.SetNickname(Nickname);
-                        alumno.SetCI(Cedula);
-                        alumno.SetNombre(Nombre);
-                        alumno.SetApellido(Apellido);
-                        alumno.SetPass(Pass);
-                        grupo.SetIdGrupo(Grupo);
-                        alumno.SetGrupo(grupo.GetIdGrupo());
+                        Grupo grupo = new Grupo();
+                        alumno.SetNickname(Text_Nickname.Text);
+                        alumno.SetCI(Convert.ToInt32(Text_Cedula.Text));
+                        alumno.SetNombre(Text_Nombre.Text);
+                        alumno.SetApellido(Text_Apellido.Text);
+                        alumno.SetPass(Text_Pass.Text);
+                        alumno.SetGrupo(Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupo.SelectedIndex][0]));
                         alumno.SetFoto(foto.GetImagen());
 
                         if (alumno.IngresarAlumno(alumno))
                         {
-                            DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador le de permiso para ingresar.", "Usuario creado", MessageBoxButtons.OK);
+                            DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador valide su usuario para iniciar sesión.", "Usuario creado", MessageBoxButtons.OK);
                             if (result == DialogResult.OK)
                             {
                                 this.Close();

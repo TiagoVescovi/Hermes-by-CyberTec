@@ -143,4 +143,3 @@ SELECT * FROM mensaje;
 SELECT * FROM orientacion;
 SELECT * FROM participa;
 SELECT * FROM persona;
-
