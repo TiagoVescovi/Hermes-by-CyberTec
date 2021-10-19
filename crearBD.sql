@@ -92,6 +92,7 @@ PRIMARY KEY(idMensaje));
 CREATE TABLE Participa(
 idChat INT(20) NOT NULL,
 ciAlumno INT(8) NOT NULL,
+participando BOOL default true,
 FOREIGN KEY(idChat) REFERENCES Chat(idChat),
 FOREIGN KEY(ciAlumno) REFERENCES Alumno(cedula),
 PRIMARY KEY(idChat,ciAlumno));

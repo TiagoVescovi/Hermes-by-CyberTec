@@ -44,10 +44,10 @@ namespace ChatInstitucional.Logica
             return ms.ToArray();
         }
 
-        public bool CambiarImagen(Fotografia foto)
+        public bool CambiarImagen(byte[] foto, int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE persona SET foto = '" + foto.GetImagen() + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
+            return validacion.Update("UPDATE persona SET foto = '" + foto + "' WHERE cedula = " + ci + ";");
         }
     }
 }

@@ -14,19 +14,21 @@ namespace ChatInstitucional.Presentacion
     public partial class VerConsultasAlumnoForm : Form
     {
         Validacion validacion = new Validacion();
+        int idAsincronica;
 
         public VerConsultasAlumnoForm(int IdAsincronica)
         {
             InitializeComponent();
 
-            //Muestra la consulta -- Muestra System.Byte[] -- Ver como arreglarlo -- Arreglado cambiando de blob a varchar
-            Text_Consulta.Text = validacion.Select("SELECT consulta FROM asincronica WHERE idAsincronica = " + IdAsincronica + ";").Rows[0]["contenido"].ToString();
-            Text_Respuesta.Text = validacion.Select("SELECT respuesta FROM asincronica WHERE idAsincronica = " + IdAsincronica + ";").Rows[0]["respuesta"].ToString();
+            idAsincronica = IdAsincronica;
         }
 
         private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)
         {
+            Asincronica asincronica = new Asincronica();
             //Poner el nombre del alumno en el titulo del form -- Capaz q no
+            Text_Consulta.Text = asincronica.VerAsincronica(idAsincronica).GetConsulta().ToString();
+            Text_Respuesta.Text = asincronica.VerAsincronica(idAsincronica).GetRespuesta().ToString();
         }
     }
 }

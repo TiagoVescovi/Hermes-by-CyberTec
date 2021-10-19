@@ -57,12 +57,12 @@ namespace ChatInstitucional.Logica
                     }
                     else
                     {
-                        // Lo inserta en Alumno
-                        if (validacion.Insert("INSERT INTO Alumno(cedula,idGrupo) VALUES (" + ci + "," + idGrupo + ");"))
+                        if (a.ModificarPersona(a))
                         {
                             // Le hace update a Persona
-                            if (a.ModificarPersona(a))
+                            if (validacion.Insert("INSERT INTO Alumno(cedula,idGrupo) VALUES (" + ci + "," + idGrupo + ");"))
                             {
+                                // Lo inserta en Alumno
                                 added = true;
                             }
                             else
@@ -99,11 +99,11 @@ namespace ChatInstitucional.Logica
             return validacion.Update("UPDATE persona SET activo = 0 WHERE cedula = " + a.GetCI() + ";");
         }
 
-        public bool ModificarAlumno(Alumno a)
+        public bool ModificarAlumno(string atributo, string cambio, int ci)
         {
             //Modify alumno
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE alumno SET idGrupo = " + a.GetIdGrupo() + " WHERE cedula = " + a.GetCI() + ";");
+            return validacion.Update("UPDATE alumno SET " + atributo + " = " + cambio + " WHERE cedula = " + ci + ";");
         }
 
         public Alumno BuscarAlumno(int ced)
@@ -127,9 +127,9 @@ namespace ChatInstitucional.Logica
                 alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
                 alumno.SetFoto((byte[])dataTable.Rows[0]["foto"]); // MAS RARO ESTO PERO FUNCIONA
             }
-            catch
+            catch(Exception e)
             {
-
+                Console.WriteLine(e.ToString());
             }
 
             return alumno;

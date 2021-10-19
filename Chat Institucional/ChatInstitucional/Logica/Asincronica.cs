@@ -110,7 +110,7 @@ namespace ChatInstitucional.Logica
 
             try
             {
-                dataTable = validacion.Select("SELECT * FROM asincronica WHERE idAsincronica = "+id+";");
+                dataTable = validacion.Select("SELECT * FROM asincronica WHERE idAsincronica = " + id + ";");
 
                 asincronica.SetIdConsulta(Convert.ToInt32(dataTable.Rows[0][0]));
                 asincronica.SetEstado(dataTable.Rows[0][1].ToString());

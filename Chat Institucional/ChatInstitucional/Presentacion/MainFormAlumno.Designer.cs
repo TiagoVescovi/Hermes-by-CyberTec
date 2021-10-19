@@ -238,7 +238,7 @@
             this.Pic_Perfil.Margin = new System.Windows.Forms.Padding(0);
             this.Pic_Perfil.Name = "Pic_Perfil";
             this.Pic_Perfil.Size = new System.Drawing.Size(72, 69);
-            this.Pic_Perfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pic_Perfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Perfil.TabIndex = 0;
             this.Pic_Perfil.TabStop = false;
             // 

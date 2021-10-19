@@ -134,7 +134,6 @@ namespace ChatInstitucional.Presentacion
         {
             //Doble click en el rojo
             // De repente no funciona ninguno de estos
-            Asincronica asincronica = new Asincronica();
             int index = Dgv_Realizada.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Realizada.Rows[index].Cells[0].Value);
             VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);

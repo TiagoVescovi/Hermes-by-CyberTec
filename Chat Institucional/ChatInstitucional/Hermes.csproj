@@ -142,6 +142,12 @@
     <Compile Include="Presentacion\RgstrDocenteForm.Designer.cs">
       <DependentUpon>RgstrDocenteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\TemaChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\TemaChatForm.Designer.cs">
+      <DependentUpon>TemaChatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\VerConsultasAlumnoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\SettingsFormAlumno.resx">
       <DependentUpon>SettingsFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\TemaChatForm.resx">
+      <DependentUpon>TemaChatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\VerConsultasAlumnoForm.resx">
       <DependentUpon>VerConsultasAlumnoForm.cs</DependentUpon>

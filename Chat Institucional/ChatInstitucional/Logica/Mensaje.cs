@@ -85,10 +85,10 @@ namespace ChatInstitucional.Logica
             return subido;
         }
 
-        public DataTable TraerMensaje(int idCons)
+        public DataTable TraerMensaje(int idChat)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM mensaje WHERE idChat = " + idCons + ";");
+            return validacion.Select("SELECT * FROM mensaje WHERE idChat = " + idChat + ";");
         }
     }
 }

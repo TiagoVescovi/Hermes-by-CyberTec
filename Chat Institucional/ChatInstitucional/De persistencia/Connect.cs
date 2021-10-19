@@ -25,29 +25,29 @@ namespace ChatInstitucional.De_persistencia
             }
         }
 
-        //public bool ModifyPicture(byte[] picture,int ci)
-        //{
-        //    bool modified = false;
+        public bool ModifyPicture(byte[] picture, int ci)
+        {
+            bool modified = false;
 
-        //    try
-        //    {
-        //        connection.Open();
-        //        MySqlCommand command = new MySqlCommand("UPDATE persona SET foto = @foto WHERE cedula = " + ci + ";", connection);
-        //        command.Parameters.AddWithValue("@foto", picture);
-        //        command.ExecuteNonQuery();
-        //        modified = true;
-        //    }
-        //    catch
-        //    {
-        //        modified = false;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
+            try
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand("UPDATE persona SET foto = @foto WHERE cedula = " + ci + ";", connection);
+                command.Parameters.AddWithValue("@foto", picture);
+                command.ExecuteNonQuery();
+                modified = true;
+            }
+            catch
+            {
+                modified = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
 
-        //    return modified;
-        //}
+            return modified;
+        }
 
         public bool Update(string query)
         {

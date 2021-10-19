@@ -16,7 +16,7 @@ namespace ChatInstitucional.Presentacion
     {
         Validacion validacion = new Validacion();
         Mensaje mensaje = new Mensaje();
-        int IdConsulta = 0;
+        int IdChat = 0;
 
         public ChatFormAlumno()
         {
@@ -26,7 +26,8 @@ namespace ChatInstitucional.Presentacion
         private void ChatFormAlumno_Load(object sender, EventArgs e)
         {
             //Llenar el Dgv_Chats
-            Dgv_Chats.DataSource = validacion.Select("SELECT c.idConsulta AS 'Código', m.nombre AS 'Tema' FROM consulta c, participa p, materia m WHERE c.idConsulta = p.idConsulta AND c.idMateria = m.idMateria AND p.ciAlumno = " + Validacion.UsuarioActual + ";");
+            Chat chat = new Chat();
+            Dgv_Chats.DataSource = chat.LlenarChats(Validacion.UsuarioActual);
         }
 
         private void Btn_Send_Click(object sender, EventArgs e)
@@ -39,9 +40,8 @@ namespace ChatInstitucional.Presentacion
             if (Text_Mensaje.Text.Trim().Length == 0) return;
 
             mensaje.SetContenido(Text_Mensaje.Text);
-            mensaje.SetHora(DateTime.Now); //Formato no es el mismo q DateTime en la BD
-            Console.WriteLine(mensaje.GetHora()); //sacar
-            mensaje.SetIdChat(IdConsulta);
+            mensaje.SetHora(DateTime.Now); //Formato no es el mismo q DateTime en la BD -- Arreglado
+            mensaje.SetIdChat(IdChat);
             mensaje.SetIdAutor(Validacion.UsuarioActual);
 
             AddOutgoing(mensaje.GetContenido());
@@ -84,7 +84,8 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Refresh_Click(object sender, EventArgs e)
         {
             //Refresca el Dgv_Chats
-            Dgv_Chats.DataSource = validacion.Select("SELECT c.idConsulta AS 'Código', m.nombre AS 'Tema' FROM consulta c, participa p, materia m WHERE c.idConsulta = p.idConsulta AND c.idMateria = m.idMateria AND p.ciAlumno = " + Validacion.UsuarioActual + ";");
+            Chat chat = new Chat();
+            Dgv_Chats.DataSource = chat.LlenarChats(Validacion.UsuarioActual);
         }
 
         private void Dgv_Chats_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -92,31 +93,54 @@ namespace ChatInstitucional.Presentacion
             //Abre el chat y lo llena con lo q hay en tabla Mensaje
             Pnl_Chat.Controls.Clear();
             int index = Dgv_Chats.CurrentRow.Index;
-            IdConsulta = Convert.ToInt32(Dgv_Chats.Rows[index].Cells[0].Value);
+            IdChat = Convert.ToInt32(Dgv_Chats.Rows[index].Cells[0].Value);
             Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[1].Value.ToString();
             
-            for(int i = 0; i< mensaje.TraerMensaje(IdConsulta).Rows.Count; i++)
+            for(int i = 0; i< mensaje.TraerMensaje(IdChat).Rows.Count; i++)
             {
-                if (!mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
                 {
                     Persona persona = new Persona();
-                    AddIncomming(mensaje.TraerMensaje(IdConsulta).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdConsulta).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdConsulta).Rows[i]["idAutor"])).GetApellido());
+                    AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
                 }
                 else
                 {
-                    AddOutgoing(mensaje.TraerMensaje(IdConsulta).Rows[i]["contenido"].ToString());
+                    AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
                 }
             }
 
             Text_Mensaje.Enabled = true;
             Btn_Send.Enabled = true;
+            Btn_Tema.Enabled = true;
+            Btn_Opciones.Enabled = true;
         }
 
         private void Btn_Tema_Click(object sender, EventArgs e)
         {
             // Lista de personas q perticipan en el chat
-            // Conectados/desconectados
-            // Marcar diferente Host y Docentes
+            // Conectados/desconectados -- FALTA ESTO
+            // Diferencia al Host y al Docente
+            TemaChatForm tCF = new TemaChatForm(IdChat);
+            tCF.ShowDialog();
+        }
+
+        private void Btn_Opciones_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Seguro@ que quiere salir del chat?", "Abandonar chat", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                // AAAAAAAAAAAAAAAAAAAAAA HAY Q VOLVER A CAMBIAR LA BD
+                // HAY Q HACERLE BAJA LOGICA EN PARTICIPA
+                // Esto lo voy a dejar para recordar el momento exacto en el q me quise matar al enterarme q habia q cambiar por 190391810° vez la BD
+                if(validacion.Update("UPDATE participa SET participando = false WHERE ciAlumno = " + Validacion.UsuarioActual + ";"))
+                {
+                    MessageBox.Show("Abandonaste el chat");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo concretar la operación");
+                }
+            }
         }
     }
 }

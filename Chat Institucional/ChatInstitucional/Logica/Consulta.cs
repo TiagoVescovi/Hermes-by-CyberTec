@@ -81,5 +81,28 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM consulta;");
         }
+
+        public Consulta BuscarConsulta(int id)
+        {
+            Validacion validacion = new Validacion();
+            Consulta consulta = new Consulta();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = validacion.Select("SELECT * FROM consulta WHERE idConsulta = " + id + ";");
+
+                consulta.SetIdConsulta(Convert.ToInt32(dataTable.Rows[0][0]));
+                consulta.SetCiAlumno(Convert.ToInt32(dataTable.Rows[0][1]));
+                consulta.SetCiProfesor(Convert.ToInt32(dataTable.Rows[0][2]));
+                consulta.SetIdMateria(Convert.ToInt32(dataTable.Rows[0][3]));
+                consulta.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0][4]));
+            }
+            catch
+            {
+
+            }
+            return consulta;
+        }
     }
 }

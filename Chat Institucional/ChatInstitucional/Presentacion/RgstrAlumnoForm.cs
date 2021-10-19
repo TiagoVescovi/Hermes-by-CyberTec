@@ -65,7 +65,7 @@ namespace ChatInstitucional.Presentacion
                         alumno.SetApellido(Text_Apellido.Text);
                         alumno.SetPass(Text_Pass.Text);
                         alumno.SetGrupo(Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupo.SelectedIndex][0]));
-                        alumno.SetFoto(foto.GetImagen());
+                        alumno.SetFoto(foto.GetImagen()); //Hay un lugar en el q esto no funca
 
                         if (alumno.IngresarAlumno(alumno))
                         {

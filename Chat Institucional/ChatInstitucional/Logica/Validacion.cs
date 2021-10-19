@@ -27,10 +27,10 @@ namespace ChatInstitucional.Logica
             return connect.Update(query);
         }
 
-        //public bool ModifyPicture(byte[] picture,int cedula)
-        //{
-        //    return connect.ModifyPicture(picture,cedula);
-        //}
+        public bool ModifyPicture(byte[] picture, int cedula)
+        {
+            return connect.ModifyPicture(picture, cedula);
+        }
 
         public bool Insert(string query)
         {

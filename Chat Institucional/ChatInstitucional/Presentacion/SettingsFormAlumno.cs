@@ -27,7 +27,10 @@ namespace ChatInstitucional.Presentacion
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su Nickname?","Cambiar Nickname",MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
             {
-                validacion.Update("UPDATE persona SET nickname = '" + Text_Nick.Text + "' WHERE cedula = " + Validacion.UsuarioActual + ";");
+                if(validacion.Update("UPDATE persona SET nickname = '" + Text_Nick.Text + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
+                {
+                    MessageBox.Show("Nickname cambiado existosamente");
+                }
             }
         }
 
@@ -83,7 +86,7 @@ namespace ChatInstitucional.Presentacion
             {
                 Fotografia fotografia = new Fotografia();
                 fotografia.SetImagen(foto);
-                if(fotografia.CambiarImagen(fotografia))
+                if(fotografia.CambiarImagen(foto, Validacion.UsuarioActual))
                 {
                     MessageBox.Show("La imágen se subió correctamente");
                     // Cuando se suba q aparezca arriba

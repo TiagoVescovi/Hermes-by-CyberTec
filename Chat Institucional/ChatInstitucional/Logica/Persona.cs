@@ -128,7 +128,7 @@ namespace ChatInstitucional.Logica
                 else
                 {
                     // No existe
-                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,activo,logueado) VALUES (" + p.GetCI() + ",'" + p.GetNombre() + "','" + p.GetApellido() + "','','" + p.GetFoto() + "','" + p.GetNickname() + "'," + p.GetActivo() + "," + p.GetLogueado() + ");"))
+                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,activo,logueado) VALUES (" + p.GetCI() + ",'" + p.GetNombre() + "','" + p.GetApellido() + "','" + p.GetFoto() + "','" + p.GetNickname() + "'," + p.GetActivo() + "," + p.GetLogueado() + ");"))
                     {
                         added = true;
                     }
@@ -157,7 +157,30 @@ namespace ChatInstitucional.Logica
         {
             // Modificar
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE persona SET nombre = '" + p.GetNombre() + "', apellido = '" + p.GetApellido() + "', passwd = '" + p.GetPass() + "', foto = '" + p.GetFoto() + "', nickname = '" + p.GetNickname() + "', activo = " + p.GetActivo() + ", logueado = " + p.GetLogueado() + " WHERE cedula = " + p.GetCI() + ";");
+            bool modified = false;
+            try
+            {
+                if(validacion.Update("UPDATE persona SET nombre = '" + p.GetNombre() + "', apellido = '" + p.GetApellido() + "', passwd = '" + p.GetPass() + "', nickname = '" + p.GetNickname() + "', activo = " + p.GetActivo() + ", logueado = " + p.GetLogueado() + " WHERE cedula = " + p.GetCI() + ";"))
+                {
+                    if(validacion.ModifyPicture(p.GetFoto(), p.GetCI()))
+                    {
+                        modified = true;
+                    }
+                    else
+                    {
+                        modified = false;
+                    }
+                }
+                else
+                {
+                    modified = false;
+                }    
+            }
+            catch
+            {
+                Console.WriteLine("NO SE PUDO");
+            }
+            return modified;
         }
 
         public Persona BuscarPersona(int ci)
@@ -179,7 +202,7 @@ namespace ChatInstitucional.Logica
                 persona.SetNickname(dataTable.Rows[0]["nickname"].ToString());
                 persona.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                 persona.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
-                persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                //persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
             }
             catch
             {

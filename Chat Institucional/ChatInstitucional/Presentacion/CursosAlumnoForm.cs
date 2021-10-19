@@ -13,6 +13,7 @@ namespace ChatInstitucional.Presentacion
 {
     public partial class CursosAlumnoForm : Form
     {
+        int idChat = 0;
         public CursosAlumnoForm()
         {
             InitializeComponent();
@@ -44,6 +45,40 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Materias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Se activan los botones dependiendo de si hay o no un chat ya creado
+            DataTable dataTable = new DataTable();
+            Chat chat = new Chat();
+            Consulta consulta = new Consulta();
+            Validacion validacion = new Validacion();
+            Materia materia = new Materia();
+            Alumno alumno = new Alumno();
+
+            int idgrupo = alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo();
+            int index = Dgv_Materias.CurrentRow.Index;
+
+            for(int i = 0; i < materia.ListarMaterias(idgrupo).Rows.Count; i++) // Releer esto a ver q hice mal
+            {
+                if(Dgv_Materias.Rows[index].Cells[0].Value.ToString() == materia.ListarMaterias(idgrupo).Rows[i][1].ToString())
+                {
+                    int idmateria = Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[i][0]);
+
+                    for(int c = 0; c < chat.ListarConsultas().Rows.Count; c++)
+                    {
+                        if (idmateria == Convert.ToInt32(chat.ListarConsultas().Rows[c][3]))
+                        {
+                            int idchat = Convert.ToInt32(chat.ListarConsultas().Rows[c][0]);
+                            
+                            if(idgrupo == chat.BuscarChat(idchat).GetIdGrupo())
+                            {
+                                Btn_Unirse.Enabled = true;
+                            }
+                            else
+                            {
+                                Btn_Crear.Enabled = true;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
