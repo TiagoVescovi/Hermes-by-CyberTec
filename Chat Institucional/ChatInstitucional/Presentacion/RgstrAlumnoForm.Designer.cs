@@ -289,6 +289,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
             this.pictureBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox2.Location = new System.Drawing.Point(133, 81);
             this.pictureBox2.Name = "pictureBox2";

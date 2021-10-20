@@ -36,9 +36,24 @@
             // 
             // Dgv_Participantes
             // 
+            this.Dgv_Participantes.AllowUserToAddRows = false;
+            this.Dgv_Participantes.AllowUserToDeleteRows = false;
+            this.Dgv_Participantes.AllowUserToResizeColumns = false;
+            this.Dgv_Participantes.AllowUserToResizeRows = false;
+            this.Dgv_Participantes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Participantes.BackgroundColor = System.Drawing.Color.White;
+            this.Dgv_Participantes.CausesValidation = false;
+            this.Dgv_Participantes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dgv_Participantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Participantes.GridColor = System.Drawing.Color.Black;
             this.Dgv_Participantes.Location = new System.Drawing.Point(21, 29);
             this.Dgv_Participantes.Name = "Dgv_Participantes";
+            this.Dgv_Participantes.ReadOnly = true;
+            this.Dgv_Participantes.RowHeadersVisible = false;
+            this.Dgv_Participantes.RowHeadersWidth = 96;
+            this.Dgv_Participantes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dgv_Participantes.Size = new System.Drawing.Size(284, 429);
             this.Dgv_Participantes.TabIndex = 0;
             // 

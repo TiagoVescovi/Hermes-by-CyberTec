@@ -40,7 +40,7 @@ namespace ChatInstitucional.Logica
         public DataTable LlenarChats(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM consulta co, chat ch, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND p.ciAlumno = " + ci + ";");
+            return validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND p.ciAlumno = " + ci + ";");
         }
 
         public DataTable Participantes(int id)
@@ -104,30 +104,126 @@ namespace ChatInstitucional.Logica
             return created;
         }
 
-        public bool UnirseChat(Chat c)
+        public int UnirseChat(Chat c)
         {
-            bool joined = false;
+            int joined = 0;
+            // 0 = no se pudo unir
+            // 1 = se pudo unir
+            // 2 = ya se habia unido
             Validacion validacion = new Validacion();
+            DataTable dataTable = new DataTable();
+            dataTable = validacion.Select("SELECT * FROM participa WHERE idChat = " + c.GetIdConsulta() + " AND ciAlumno = " + c.GetCiAlumno() + ";");
 
-            for(int i = 0; i < c.ListarConsultas().Rows.Count; i++)
+            try
             {
-                if(c.GetIdConsulta() == Convert.ToInt32(validacion.Select("SELECT * FROM participa;").Rows[i][0]) && c.GetCiAlumno() == Convert.ToInt32(validacion.Select("SELECT * FROM participa;").Rows[i][4]))
+                if (dataTable.Rows.Count == 0)
                 {
-                    joined = false;
-                }
-                else
-                {
-                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ";"))
+                    // No pertenece al chat entonces lo agrega
+                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ");"))
                     {
-                        joined = true;
+                        // Lo agrega al chat
+                        joined = 1;
                     }
                     else
                     {
-                        joined = false;
+                        if (c.GetIdConsulta() == Convert.ToInt32(dataTable.Rows[0][0]) && c.GetCiAlumno() == Convert.ToInt32(dataTable.Rows[0][1]) && Convert.ToBoolean(dataTable.Rows[0][2]) == true)
+                        {
+                            // Ya existe el alumno en ese chat
+                            joined = 2;
+                        }
+                        else
+                        {
+                            // Vuelve al default
+                            joined = 0;
+                        }
+                    }
+                }
+                else 
+                {
+                    joined = 0;
+                }
+            }
+            catch (Exception e)
+            {
+                joined = 0;
+            }
+            return joined;
+        }
+
+        public bool ValidarChat(Chat c)
+        {
+            bool validated = false;
+            Validacion validacion = new Validacion();
+            Chat chat = new Chat();
+
+            try
+            {
+                if (validacion.Select("SELECT idMateria, idGrupo FROM consulta, chat WHERE idConsulta = idChat AND idMateria = " + c.GetIdMateria() + " AND idGrupo = " + c.GetIdGrupo() + ";") == null)
+                {
+                    validated = false;
+                }
+                else
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable = validacion.Select("SELECT * FROM consulta, chat WHERE idConsulta = idChat AND idMateria = " + c.GetIdMateria() + " AND idGrupo = " + c.GetIdGrupo() + ";");
+                    for(int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        if(c.GetIdMateria() == Convert.ToInt32(dataTable.Rows[i][3]) && c.GetIdGrupo() == Convert.ToInt32(dataTable.Rows[i][4]) && !String.IsNullOrEmpty(dataTable.Rows[i][6].ToString()) && String.IsNullOrEmpty(dataTable.Rows[i][7].ToString()))
+                        {
+                            // Existe un chat al q se puede unir
+                            validated = true;
+                        }
+                        else
+                        {
+                            // Tiene q crear el chat
+                            validated = false;
+                        }
                     }
                 }
             }
-            return joined;
+            catch (Exception e)
+            {
+                validated = false;
+            }
+
+            return validated;
+        }
+
+        public int ConseguirIdChat(Chat c)
+        {
+            Validacion validacion = new Validacion();
+            return Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta co, chat ch WHERE co.idConsulta = ch.idChat AND idMateria = " + c.GetIdMateria() + " AND idgrupo = " + c.GetIdGrupo() + ";").Rows[0][0]);
+        }
+
+        public bool TerminarChat(Chat c)
+        {
+            bool ended = false;
+            Validacion validacion = new Validacion();
+
+            try
+            {
+                if (validacion.Update("UPDATE chat SET horaFin = '" + c.GetHoraFin() + "' WHERE idChat = " + c.GetIdConsulta() + ";"))
+                {
+                    if (validacion.Update("UPDATE participa SET participando = false WHERE idChat = " + c.GetIdConsulta() + ";"))
+                    {
+                        ended = true;
+                    }
+                    else
+                    {
+                        ended = false;
+                    }
+                }
+                else
+                {
+                    ended = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                ended = false;
+            }
+            return ended;
         }
     }
 }

@@ -103,6 +103,26 @@ namespace ChatInstitucional.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HermesLogo {
+            get {
+                object obj = ResourceManager.GetObject("HermesLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HermesLogo1 {
+            get {
+                object obj = ResourceManager.GetObject("HermesLogo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LogoPNG {
             get {
                 object obj = ResourceManager.GetObject("LogoPNG", resourceCulture);

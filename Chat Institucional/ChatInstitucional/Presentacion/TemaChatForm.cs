@@ -20,30 +20,38 @@ namespace ChatInstitucional.Presentacion
             InitializeComponent();
 
             idCh = idChat;
+            Chat chat = new Chat();
+            if (Validacion.UsuarioActual == chat.BuscarChat(idCh).GetCiAlumno())
+            {
+                Btn_Fin.Enabled = true;
+            }
+            else
+            {
+                Btn_Fin.Enabled = false;
+            }
         }
 
         private void TemaChat_Load(object sender, EventArgs e)
         {
             Chat chat = new Chat();
             Persona persona = new Persona();
-            Consulta consulta = new Consulta();
             
-            Dgv_Participantes.Columns.Add("Nombre", "nombre");
-            Dgv_Participantes.Columns.Add("Apellido", "apellido");
-            Dgv_Participantes.Columns.Add("Tipo", "tipo");
+            Dgv_Participantes.Columns.Add("Nombre", "NOMBRE");
+            Dgv_Participantes.Columns.Add("Apellido", "APELLIDO");
+            Dgv_Participantes.Columns.Add("Tipo", "TIPO");
 
-            Dgv_Participantes.Rows.Add(persona.BuscarPersona(consulta.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[0][0])).GetCiProfesor()).GetNombre() + persona.BuscarPersona(consulta.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[0][0])).GetCiProfesor()).GetApellido() + "Docente");
+            Dgv_Participantes.Rows.Add(persona.BuscarPersona(chat.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[0][0])).GetCiProfesor()).GetNombre(),persona.BuscarPersona(chat.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[0][0])).GetCiProfesor()).GetApellido(),"Docente");
 
             for (int i = 0; i < chat.Participantes(idCh).Rows.Count; i++)
             {
-                if (Convert.ToInt32(chat.Participantes(idCh).Rows[i][1]) == consulta.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[i][0])).GetCiAlumno())
+                if (Convert.ToInt32(chat.Participantes(idCh).Rows[i][1]) == chat.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[i][0])).GetCiAlumno())
                 {
-                    Dgv_Participantes.Rows.Add(persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetNombre() + persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetApellido() + "Anfitrión");
+                    Dgv_Participantes.Rows.Add(persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetNombre(),persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetApellido(),"Anfitrión");
                     Btn_Fin.Enabled = true;
                 }
                 else
                 {
-                    Dgv_Participantes.Rows.Add(persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetNombre() + persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetApellido() + " ");
+                    Dgv_Participantes.Rows.Add(persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetNombre(),persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetApellido()," ");
                 }
             }
         }
@@ -55,8 +63,29 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_Fin_Click(object sender, EventArgs e)
         {
-            // Solo lo ve el Host
+            // Solo lo ve el Host -- Esta en el Load
             // Setea la horaFin del chat
+            // Cambia todos los participa.participando a 0 de todos los alumnos del chat
+            // Al docente le deberia dejar de aparecer -- No estoy seguro de como hacerlo -- Cuando haga la app docente lo arreglo
+
+            Chat chat = new Chat();
+            Validacion validacion = new Validacion();
+
+            chat.BuscarChat(idCh).SetHoraFin(DateTime.Now);
+
+            DialogResult dialogResult = MessageBox.Show("¿Está segur@ de que quiere finalizar el chat?\nNo podrá volver a acceder a él una vez terminado", "Terminar chat", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                if (chat.TerminarChat(chat))
+                {
+                    MessageBox.Show("Finalizaste el chat");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo terminar el chat");
+                }
+            }
         }
     }
 }

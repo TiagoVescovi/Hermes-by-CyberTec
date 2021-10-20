@@ -121,6 +121,9 @@
   <data name="menu_vertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu_vertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="HermesLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HermesLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="send" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\send.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,5 +144,8 @@
   </data>
   <data name="alien_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\alien_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HermesLogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HermesLogo.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

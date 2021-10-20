@@ -142,6 +142,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "VerConsultasAlumnoForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
             this.Load += new System.EventHandler(this.VerConsultasAlumnoForm_Load);
