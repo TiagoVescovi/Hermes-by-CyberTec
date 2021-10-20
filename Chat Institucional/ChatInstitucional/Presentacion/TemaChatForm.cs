@@ -39,6 +39,7 @@ namespace ChatInstitucional.Presentacion
                 if (Convert.ToInt32(chat.Participantes(idCh).Rows[i][1]) == consulta.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[i][0])).GetCiAlumno())
                 {
                     Dgv_Participantes.Rows.Add(persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetNombre() + persona.BuscarPersona(Convert.ToInt32(chat.Participantes(idCh).Rows[i][1])).GetApellido() + "Anfitrión");
+                    Btn_Fin.Enabled = true;
                 }
                 else
                 {
@@ -50,6 +51,12 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Volver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_Fin_Click(object sender, EventArgs e)
+        {
+            // Solo lo ve el Host
+            // Setea la horaFin del chat
         }
     }
 }

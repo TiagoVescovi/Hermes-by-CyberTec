@@ -95,5 +95,10 @@ namespace ChatInstitucional.Presentacion
                 MessageBox.Show("Ocurrió un error con el programa.\nReinicie e intente otra vez.");
             }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://cybertecuy.wordpress.com");
+        }
     }
 }

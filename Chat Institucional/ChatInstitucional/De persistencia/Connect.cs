@@ -194,21 +194,25 @@ namespace ChatInstitucional.De_persistencia
         public bool LogInBDD(int ci, string pass) // INICIAR SESION
         {
             bool ExistePersona = false;
+            DataTable dataTable = new DataTable();
+
             try
             {
                 connection.Open();
                 MySqlCommand CheckPersona = new MySqlCommand("SELECT cedula FROM persona WHERE cedula = " + ci + " AND activo = true AND logueado = false AND passwd = '" + pass + "';", connection);
-                CheckPersona.ExecuteNonQuery();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(CheckPersona);
+                adapter.Fill(dataTable);
 
-                if (CheckPersona.ToString() != null)
+                if (!String.IsNullOrEmpty(dataTable.Rows[0][0].ToString()))
                 {
                     MySqlCommand UpdateLogueado = new MySqlCommand("UPDATE persona SET logueado = true WHERE cedula = " + ci + ";", connection);
                     UpdateLogueado.ExecuteNonQuery();
                     ExistePersona = true;
                 }
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.ToString());
                 ExistePersona = false;
             }
             finally

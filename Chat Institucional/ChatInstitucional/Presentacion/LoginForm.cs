@@ -82,5 +82,12 @@ namespace ChatInstitucional.Presentacion
         {
             //Olvidaste tu contraseña?
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://cybertecuy.wordpress.com");
+            // Ver como hacer q salga un mensaje q diga algo como
+            // "Página web"
+        }
     }
 }

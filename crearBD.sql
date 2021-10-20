@@ -29,7 +29,8 @@ PRIMARY KEY(cedula));
 CREATE TABLE Materia(
 idMateria INT(5) NOT NULL auto_increment,
 nombre VARCHAR(30) NOT NULL,
-PRIMARY KEY(idMateria));
+PRIMARY KEY(idMateria),
+UNIQUE KEY (nombre));
 
 CREATE TABLE Horario(
 ciProfesor INT(8) NOT NULL,

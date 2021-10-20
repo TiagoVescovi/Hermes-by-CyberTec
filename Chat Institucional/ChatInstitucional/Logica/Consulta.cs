@@ -70,6 +70,12 @@ namespace ChatInstitucional.Logica
             IdGrupo = idgr;
         }
 
+        public int ConseguirIdConsulta(int ci)
+        {
+            Validacion validacion = new Validacion();
+            return Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + ci + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + ci + ");").Rows[0]["idConsulta"]);
+        }
+
         public bool SubirConsulta(Consulta c)
         {
             Validacion validacion = new Validacion();

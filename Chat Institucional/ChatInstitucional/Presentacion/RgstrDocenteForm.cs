@@ -37,5 +37,10 @@ namespace ChatInstitucional.Presentacion
         {
             //Metodo para el insert a bdd de Docente
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://cybertecuy.wordpress.com");
+        }
     }
 }

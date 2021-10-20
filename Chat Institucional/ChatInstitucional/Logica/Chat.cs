@@ -9,32 +9,32 @@ namespace ChatInstitucional.Logica
 {
     class Chat : Consulta
     {
-        protected DateTime HoraIni;
-        protected DateTime HoraFin;
+        protected string HoraIni;
+        protected string HoraFin;
 
         public Chat()
         {
 
         }
 
-        public DateTime GetHoraIni()
+        public string GetHoraIni()
         {
             return HoraIni;
         }
 
         public void SetHoraIni(DateTime ini)
         {
-            HoraIni = ini;
+            HoraIni = ini.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        public DateTime GetHoraFin()
+        public string GetHoraFin()
         {
             return HoraFin;
         }
 
         public void SetHoraFin(DateTime fin)
         {
-            HoraFin = fin;
+            HoraFin = fin.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         public DataTable LlenarChats(int ci)
@@ -78,6 +78,56 @@ namespace ChatInstitucional.Logica
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM chat;");
+        }
+
+        public bool CrearChat(Chat c)
+        {
+            bool created = false;
+            Validacion validacion = new Validacion();
+
+            try
+            {
+                if(validacion.Insert("INSERT INTO chat(idChat,horaIni) VALUES (" + c.GetIdConsulta() + ",'" + c.GetHoraIni() + "';"))
+                {
+                    created = true;
+                }
+                else
+                {
+                    created = false;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                created = false;
+            }
+            return created;
+        }
+
+        public bool UnirseChat(Chat c)
+        {
+            bool joined = false;
+            Validacion validacion = new Validacion();
+
+            for(int i = 0; i < c.ListarConsultas().Rows.Count; i++)
+            {
+                if(c.GetIdConsulta() == Convert.ToInt32(validacion.Select("SELECT * FROM participa;").Rows[i][0]) && c.GetCiAlumno() == Convert.ToInt32(validacion.Select("SELECT * FROM participa;").Rows[i][4]))
+                {
+                    joined = false;
+                }
+                else
+                {
+                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ";"))
+                    {
+                        joined = true;
+                    }
+                    else
+                    {
+                        joined = false;
+                    }
+                }
+            }
+            return joined;
         }
     }
 }

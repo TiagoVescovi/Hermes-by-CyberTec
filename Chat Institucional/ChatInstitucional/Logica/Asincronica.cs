@@ -48,12 +48,6 @@ namespace ChatInstitucional.Logica
             Respuesta = ans;
         }
 
-        public int ConseguirIdConsulta(int ci)
-        {
-            Validacion validacion = new Validacion();
-            return Convert.ToInt32(validacion.Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + ci + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + ci + ");").Rows[0]["idConsulta"]);
-        }
-
         public DataTable ListarAsincronica()
         {
             Validacion validacion = new Validacion();

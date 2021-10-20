@@ -40,11 +40,11 @@ namespace ChatInstitucional.Presentacion
 
         private void MainFormAlumno_Load(object sender, EventArgs e)
         {
-            Lbl_UserName.Text = alumno.BuscarAlumno(Validacion.UsuarioActual).GetNombre() + " " + alumno.BuscarAlumno(Validacion.UsuarioActual).GetApellido();
-            Lbl_UserGrupo.Text = grupo.TraerGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).GetNombre().ToString();
-
             try
             {
+                Lbl_UserName.Text = alumno.BuscarAlumno(Validacion.UsuarioActual).GetNombre() + " " + alumno.BuscarAlumno(Validacion.UsuarioActual).GetApellido();
+                Lbl_UserGrupo.Text = grupo.TraerGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).GetNombre().ToString();
+
                 //Sigue sin funcionar
                 Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto()));
                 Console.WriteLine(foto.ByteToImage(alumno.GetFoto()).ToString());
