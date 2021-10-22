@@ -1,5 +1,5 @@
 using System;
-namespace Validator
+namespace ChatInstitucional.Logica
 {
     public class CIValidator
     {

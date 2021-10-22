@@ -81,17 +81,29 @@
     <Compile Include="Logica\Persona.cs" />
     <Compile Include="Logica\Utils.cs" />
     <Compile Include="Logica\Validacion.cs" />
-    <Compile Include="Presentacion\ChatFormAlumno.cs">
+    <Compile Include="Presentacion\AgendaDocenteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\ChatFormAlumno.Designer.cs">
-      <DependentUpon>ChatFormAlumno.cs</DependentUpon>
+    <Compile Include="Presentacion\AgendaDocenteForm.Designer.cs">
+      <DependentUpon>AgendaDocenteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\ChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\ChatForm.Designer.cs">
+      <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\ConsultaFormAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\ConsultaFormAlumno.Designer.cs">
       <DependentUpon>ConsultaFormAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\ConsultaFormDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\ConsultaFormDocente.Designer.cs">
+      <DependentUpon>ConsultaFormDocente.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\CursosAlumnoForm.cs">
       <SubType>Form</SubType>
@@ -129,11 +141,11 @@
     <Compile Include="Presentacion\PrincipalForm.Designer.cs">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\SettingsFormAlumno.cs">
+    <Compile Include="Presentacion\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\SettingsFormAlumno.Designer.cs">
-      <DependentUpon>SettingsFormAlumno.cs</DependentUpon>
+    <Compile Include="Presentacion\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Logica\Program.cs" />
     <Compile Include="Presentacion\RgstrAlumnoForm.cs">
@@ -154,11 +166,11 @@
     <Compile Include="Presentacion\TemaChatForm.Designer.cs">
       <DependentUpon>TemaChatForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\VerConsultasAlumnoForm.cs">
+    <Compile Include="Presentacion\VerConsultasForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\VerConsultasAlumnoForm.Designer.cs">
-      <DependentUpon>VerConsultasAlumnoForm.cs</DependentUpon>
+    <Compile Include="Presentacion\VerConsultasForm.Designer.cs">
+      <DependentUpon>VerConsultasForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChatItems\Incomming.resx">
@@ -167,11 +179,17 @@
     <EmbeddedResource Include="ChatItems\Outgoing.resx">
       <DependentUpon>Outgoing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\ChatFormAlumno.resx">
-      <DependentUpon>ChatFormAlumno.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\AgendaDocenteForm.resx">
+      <DependentUpon>AgendaDocenteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\ChatForm.resx">
+      <DependentUpon>ChatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\ConsultaFormAlumno.resx">
       <DependentUpon>ConsultaFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\ConsultaFormDocente.resx">
+      <DependentUpon>ConsultaFormDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\CursosAlumnoForm.resx">
       <DependentUpon>CursosAlumnoForm.cs</DependentUpon>
@@ -182,8 +200,14 @@
     <EmbeddedResource Include="Presentacion\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\MainFormAlumno.es-UY.resx">
+      <DependentUpon>MainFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\MainFormAlumno.resx">
       <DependentUpon>MainFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\MainFormDocente.es-UY.resx">
+      <DependentUpon>MainFormDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\MainFormDocente.resx">
       <DependentUpon>MainFormDocente.cs</DependentUpon>
@@ -197,14 +221,14 @@
     <EmbeddedResource Include="Presentacion\RgstrDocenteForm.resx">
       <DependentUpon>RgstrDocenteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\SettingsFormAlumno.resx">
-      <DependentUpon>SettingsFormAlumno.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\TemaChatForm.resx">
       <DependentUpon>TemaChatForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\VerConsultasAlumnoForm.resx">
-      <DependentUpon>VerConsultasAlumnoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\VerConsultasForm.resx">
+      <DependentUpon>VerConsultasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -48,67 +48,73 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
+            LogIn();
+        }
+
+        private void LogIn()
+        {
+            Administrador administrador = new Administrador();
+            Docente docente = new Docente();
+            Alumno alumno = new Alumno();
+
             try
             {
-                if(!String.IsNullOrEmpty(Text_User.Text) && !String.IsNullOrEmpty(Text_Pass.Text))
+                if (!String.IsNullOrEmpty(Text_User.Text) && !String.IsNullOrEmpty(Text_Pass.Text))
                 {
-                    int cedula = Convert.ToInt32(Text_User.Text);
+                    string cedula = Text_User.Text;
+                    string[] ced = cedula.Split('-');
                     String pass = Text_Pass.Text;
-                    if(validacion.ValidarLogin(cedula, pass))
+                    if (CIValidator.Validate(cedula))
                     {
-                        Administrador administrador = new Administrador();
-                        Docente docente = new Docente();
-                        Alumno alumno = new Alumno();
-                        Persona persona = new Persona();
-                        int main = 0;
-
-                        for(int i = 0; i < persona.ListarPersonas().Rows.Count; i++)
+                        if (administrador.ValidarAdmin(int.Parse(ced[0]), pass))
                         {
-                            // Aca no se puede usar un Switch -- No entiendo como funciona el switch -- Re raro
+                            // Abre MainFormAdmin
+                        }
+                        else if (docente.ValidarDocente(int.Parse(ced[0]), pass))
+                        {
+                            // Abre MainFormDocente
 
-                            if (cedula == Convert.ToInt32(administrador.ListarAdmins().Rows[i][0])) // El break esta mal aca
+                            MainFormDocente mfd = new MainFormDocente();
+                            Validacion.UsuarioActual = int.Parse(ced[0]);
+                            if (docente.LogIn(Validacion.UsuarioActual))
                             {
-                                // Abre MainFormAdmin
-                                main = 1;
-                                break;
-                            }
-                            else if (cedula == Convert.ToInt32(docente.ListarDocentes().Rows[i][0]))
-                            {
-                                // Abre MainFormDocente
-                                main = 2;
-
-                                MainFormDocente mfd = new MainFormDocente();
                                 this.Hide();
-                                Validacion.UsuarioActual = cedula;
                                 mfd.ShowDialog();
                                 this.Show();
-
-                                break;
-                            }
-                            else if (cedula == Convert.ToInt32(alumno.ListarAlumnos().Rows[i][0]))
-                            {
-                                // Abre MainFormAlumno
-                                main = 3;
-
-                                MainFormAlumno mfo = new MainFormAlumno();
-                                this.Hide();
-                                Validacion.UsuarioActual = cedula;
-                                mfo.ShowDialog();
-                                this.Show();
-
-                                break;
                             }
                             else
                             {
-                                main = 0;
+                                MessageBox.Show("No se pudo iniciar sesión");
                             }
                         }
-                        
+                        else if (alumno.ValidarAlumno(int.Parse(ced[0]), pass))
+                        {
+                            // Abre MainFormAlumno
+
+                            MainFormAlumno mfa = new MainFormAlumno();
+                            Validacion.UsuarioActual = int.Parse(ced[0]);
+                            if (alumno.LogIn(Validacion.UsuarioActual))
+                            {
+                                this.Hide();
+                                mfa.ShowDialog();
+                                this.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo iniciar sesión");
+                            }
+                        }
+                        else
+                        {
+                            // No se encontro nada
+                            MessageBox.Show("No se hayaron las credenciales");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("No se hayaron las credenciales");
+                        MessageBox.Show("Ingrese una cédula de identidad válida");
                     }
+                        
                 }
                 else
                 {
@@ -123,7 +129,8 @@ namespace ChatInstitucional.Presentacion
 
         private void Lbl_Forgot_Click(object sender, EventArgs e)
         {
-            //Olvidaste tu contraseña?
+            // Olvidaste tu contraseña?
+            // Que le salga un mensaje al admin q esta cedula olvido la pass
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -131,6 +138,36 @@ namespace ChatInstitucional.Presentacion
             System.Diagnostics.Process.Start("https://cybertecuy.wordpress.com");
             // Ver como hacer q salga un mensaje q diga algo como
             // "Página web"
+        }
+
+        private void Text_User_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            {
+                // Solo se pueden poner numeros
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                // No se puede poner mas de un -
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == (char)13)
+            {
+                // Apreta el enter
+                LogIn();
+            }
+        }
+
+        private void Text_Pass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                // Apreta el enter
+                LogIn();
+            }
         }
     }
 }

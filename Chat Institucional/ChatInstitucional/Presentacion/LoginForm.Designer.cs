@@ -68,6 +68,7 @@
             // 
             resources.ApplyResources(this.Text_User, "Text_User");
             this.Text_User.Name = "Text_User";
+            this.Text_User.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Text_User_KeyPress);
             // 
             // label1
             // 
@@ -80,6 +81,7 @@
             resources.ApplyResources(this.Text_Pass, "Text_Pass");
             this.Text_Pass.Name = "Text_Pass";
             this.Text_Pass.UseSystemPasswordChar = true;
+            this.Text_Pass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Text_Pass_KeyPress);
             // 
             // label4
             // 

@@ -90,5 +90,11 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM mensaje WHERE idChat = " + idChat + ";");
         }
+
+        public DataTable RecargarMensajes(int idChat)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM mensaje WHERE idchat = " + idChat + " AND idMensaje >= ALL (SELECT idMensaje FROM mensaje WHERE idChat = " + idChat + ");");
+        }
     }
 }

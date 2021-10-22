@@ -41,8 +41,8 @@ namespace ChatInstitucional.Logica
         {
             Validacion validacion = new Validacion();
             DataTable dataTable = new DataTable();
-            DataTable alumno = validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND ch.idChat = co.idConsulta AND p.ciAlumno = " + ci + " AND ch.horaFin IS NULL AND p.participando = true;");
-            DataTable docente = validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND ch.idChat = co.idConsulta AND p.ciProfesor = " + ci + " AND ch.horaFin IS NULL AND p.participando = true;");
+            DataTable alumno = validacion.Select("SELECT * FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND ch.idChat = co.idConsulta AND p.ciAlumno = " + ci + " AND ch.horaFin IS NULL AND p.participando = true;");
+            DataTable docente = validacion.Select("SELECT * FROM chat ch, consulta co, materia m WHERE co.idMateria = m.idMateria AND ch.idChat = co.idConsulta AND co.ciProfesor = " + ci + " AND ch.horaFin IS NULL;");
 
             if (alumno.Rows.Count > 0)  // Cambiar todos los q estan asi por switchs pq son mas rapidos
             {
@@ -163,6 +163,7 @@ namespace ChatInstitucional.Logica
             catch (Exception e)
             {
                 joined = 0;
+                Console.WriteLine(e.ToString());
             }
             return joined;
         }
@@ -201,6 +202,7 @@ namespace ChatInstitucional.Logica
             catch (Exception e)
             {
                 validated = false;
+                Console.WriteLine(e.ToString());
             }
 
             return validated;

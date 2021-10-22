@@ -35,7 +35,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_RegDocente_Click(object sender, EventArgs e)
         {
-            //Metodo para el insert a bdd de Docente
+            // Metodo para el insert a bdd de Docente
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

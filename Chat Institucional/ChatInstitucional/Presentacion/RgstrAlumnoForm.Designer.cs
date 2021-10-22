@@ -57,6 +57,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Lbl_RgstrDocente = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -380,6 +388,87 @@
             this.label11.TabIndex = 9;
             this.label11.Text = "REGÍSTRATE:";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Cambria", 10F);
+            this.label12.Location = new System.Drawing.Point(503, 478);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 16);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "* Obligatorio";
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(494, 395);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 21);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(494, 349);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(23, 21);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(494, 304);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 21);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "*";
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(494, 259);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(23, 21);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "*";
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(494, 215);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(23, 21);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "*";
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(494, 169);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(23, 21);
+            this.label18.TabIndex = 38;
+            this.label18.Text = "*";
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(494, 124);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(23, 21);
+            this.label19.TabIndex = 39;
+            this.label19.Text = "*";
+            // 
             // RgstrAlumnoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,6 +476,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(747, 514);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.Combo_Grupo);
@@ -406,6 +496,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Text_Cedula);
             this.Controls.Add(this.Btn_RegAlumno);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RgstrAlumnoForm";
@@ -451,5 +548,13 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }

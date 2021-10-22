@@ -38,9 +38,9 @@ namespace ChatInstitucional.Presentacion
             try
             {
                 Asincronica asincronica = new Asincronica();
-                Dgv_Realizada.DataSource = asincronica.TraerRealizadas(Validacion.UsuarioActual);
-                Dgv_Contestada.DataSource = asincronica.TraerContestadas(Validacion.UsuarioActual);
-                Dgv_Recibida.DataSource = asincronica.TraerRecibidas(Validacion.UsuarioActual);
+                Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
+                Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
+                Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
             }
             catch
             {
@@ -84,9 +84,9 @@ namespace ChatInstitucional.Presentacion
                             DialogResult dialogResult = MessageBox.Show("Consulta enviada satisfactoriamente", "Consulta enviada", MessageBoxButtons.OK);
                             if(dialogResult == DialogResult.OK)
                             {
-                                Dgv_Realizada.DataSource = asincronica.TraerRealizadas(Validacion.UsuarioActual);
-                                Dgv_Contestada.DataSource = asincronica.TraerContestadas(Validacion.UsuarioActual);
-                                Dgv_Recibida.DataSource = asincronica.TraerRecibidas(Validacion.UsuarioActual);
+                                Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
+                                Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
+                                Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
                             }
                             else
                             {
@@ -120,9 +120,9 @@ namespace ChatInstitucional.Presentacion
             try
             {
                 Asincronica asincronica = new Asincronica();
-                Dgv_Realizada.DataSource = asincronica.TraerRealizadas(Validacion.UsuarioActual);
-                Dgv_Contestada.DataSource = asincronica.TraerContestadas(Validacion.UsuarioActual);
-                Dgv_Recibida.DataSource = asincronica.TraerRecibidas(Validacion.UsuarioActual);
+                Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
+                Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
+                Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
             }
             catch
             {
@@ -136,7 +136,7 @@ namespace ChatInstitucional.Presentacion
             // De repente no funciona ninguno de estos
             int index = Dgv_Realizada.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Realizada.Rows[index].Cells[0].Value);
-            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
+            VerConsultasForm ver = new VerConsultasForm(IdConsulta, Validacion.UsuarioActual);
             ver.Show();
         }
 
@@ -145,7 +145,7 @@ namespace ChatInstitucional.Presentacion
             //Doble click en el amarillo
             int index = Dgv_Contestada.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Contestada.Rows[index].Cells[0].Value);
-            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
+            VerConsultasForm ver = new VerConsultasForm(IdConsulta, Validacion.UsuarioActual);
             validacion.Update("UPDATE asincronica SET estado = 'Recibida' WHERE idAsincronica = " + IdConsulta + ";");
             ver.Show();
             //Agregar atributo respuesta
@@ -156,7 +156,7 @@ namespace ChatInstitucional.Presentacion
             //Doble click en el verde
             int index = Dgv_Recibida.CurrentRow.Index;
             IdConsulta = Convert.ToInt32(Dgv_Recibida.Rows[index].Cells[0].Value);
-            VerConsultasAlumnoForm ver = new VerConsultasAlumnoForm(IdConsulta);
+            VerConsultasForm ver = new VerConsultasForm(IdConsulta, Validacion.UsuarioActual);
             ver.Show();
         }
     }

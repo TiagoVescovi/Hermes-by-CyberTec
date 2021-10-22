@@ -140,5 +140,22 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM alumno;");
         }
+
+        public bool ValidarAlumno(int ci, string pass)
+        {
+            Alumno alumno = new Alumno();
+            Validacion validacion = new Validacion();
+            bool exists = false;
+
+            if (validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND a.cedula = " + ci + " AND passwd = '" + pass + "';").Rows.Count > 0) 
+            {
+                exists = true;
+            }
+            else
+            {
+                exists = false;
+            }
+            return exists;
+        }
     }
 }

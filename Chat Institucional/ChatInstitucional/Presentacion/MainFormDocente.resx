@@ -117,7 +117,537 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Lbl_FormAbierto.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Lbl_FormAbierto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 26.25pt, style=Bold</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Lbl_FormAbierto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_FormAbierto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 30</value>
+  </data>
+  <data name="Lbl_FormAbierto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 41</value>
+  </data>
+  <data name="Lbl_FormAbierto.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Lbl_FormAbierto.Text" xml:space="preserve">
+    <value>PRINCIPAL</value>
+  </data>
+  <data name="&gt;&gt;Lbl_FormAbierto.Name" xml:space="preserve">
+    <value>Lbl_FormAbierto</value>
+  </data>
+  <data name="&gt;&gt;Lbl_FormAbierto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_FormAbierto.Parent" xml:space="preserve">
+    <value>Pnl_User</value>
+  </data>
+  <data name="&gt;&gt;Lbl_FormAbierto.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Lbl_UserName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_UserName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_UserName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>605, 75</value>
+  </data>
+  <data name="Lbl_UserName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="Lbl_UserName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Lbl_UserName.Text" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="&gt;&gt;Lbl_UserName.Name" xml:space="preserve">
+    <value>Lbl_UserName</value>
+  </data>
+  <data name="&gt;&gt;Lbl_UserName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_UserName.Parent" xml:space="preserve">
+    <value>Pnl_User</value>
+  </data>
+  <data name="&gt;&gt;Lbl_UserName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Pic_Perfil.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Pic_Perfil.Location" type="System.Drawing.Point, System.Drawing">
+    <value>617, 2</value>
+  </data>
+  <data name="Pic_Perfil.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="Pic_Perfil.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 69</value>
+  </data>
+  <data name="Pic_Perfil.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="Pic_Perfil.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Pic_Perfil.Name" xml:space="preserve">
+    <value>Pic_Perfil</value>
+  </data>
+  <data name="&gt;&gt;Pic_Perfil.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Pic_Perfil.Parent" xml:space="preserve">
+    <value>Pnl_User</value>
+  </data>
+  <data name="&gt;&gt;Pic_Perfil.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Pnl_User.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 29</value>
+  </data>
+  <data name="Pnl_User.Size" type="System.Drawing.Size, System.Drawing">
+    <value>717, 114</value>
+  </data>
+  <data name="Pnl_User.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;Pnl_User.Name" xml:space="preserve">
+    <value>Pnl_User</value>
+  </data>
+  <data name="&gt;&gt;Pnl_User.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Pnl_User.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Pnl_User.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Pnl_Der.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 149</value>
+  </data>
+  <data name="Pnl_Der.Size" type="System.Drawing.Size, System.Drawing">
+    <value>717, 428</value>
+  </data>
+  <data name="Pnl_Der.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Der.Name" xml:space="preserve">
+    <value>Pnl_Der</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Der.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Der.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Der.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>Pnl_Izq</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>Pnl_Izq</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Pnl_Izq.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="Pnl_Izq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="Pnl_Izq.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 548</value>
+  </data>
+  <data name="Pnl_Izq.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Izq.Name" xml:space="preserve">
+    <value>Pnl_Izq</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Izq.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Izq.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Pnl_Izq.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Name" xml:space="preserve">
+    <value>Btn_Agenda</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.Name" xml:space="preserve">
+    <value>Btn_Settings</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.Name" xml:space="preserve">
+    <value>Btn_Consultas</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.Name" xml:space="preserve">
+    <value>Btn_Chats</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 221</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 326</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>Pnl_Izq</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Btn_Agenda.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Btn_Agenda.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Agenda.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Agenda.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 8</value>
+  </data>
+  <data name="Btn_Agenda.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 57</value>
+  </data>
+  <data name="Btn_Agenda.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Btn_Agenda.Text" xml:space="preserve">
+    <value>MI AGENDA</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Name" xml:space="preserve">
+    <value>Btn_Agenda</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Btn_Settings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Btn_Settings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Settings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Settings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 242</value>
+  </data>
+  <data name="Btn_Settings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 57</value>
+  </data>
+  <data name="Btn_Settings.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Btn_Settings.Text" xml:space="preserve">
+    <value>CONFIGURACIÓN</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.Name" xml:space="preserve">
+    <value>Btn_Settings</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Settings.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Btn_Consultas.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Btn_Consultas.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Consultas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Consultas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 86</value>
+  </data>
+  <data name="Btn_Consultas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 57</value>
+  </data>
+  <data name="Btn_Consultas.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Btn_Consultas.Text" xml:space="preserve">
+    <value>CONSULTAS</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.Name" xml:space="preserve">
+    <value>Btn_Consultas</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Consultas.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Btn_Chats.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Btn_Chats.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Chats.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Chats.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 164</value>
+  </data>
+  <data name="Btn_Chats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 57</value>
+  </data>
+  <data name="Btn_Chats.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Btn_Chats.Text" xml:space="preserve">
+    <value>MIS CHATS</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.Name" xml:space="preserve">
+    <value>Btn_Chats</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Chats.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.Name" xml:space="preserve">
+    <value>Btn_Minimize</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.Name" xml:space="preserve">
+    <value>Btn_Close</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>951, 29</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Btn_Minimize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 9pt</value>
+  </data>
+  <data name="Btn_Minimize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Minimize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>900, 3</value>
+  </data>
+  <data name="Btn_Minimize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="Btn_Minimize.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="Btn_Minimize.Text" xml:space="preserve">
+    <value>─</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.Name" xml:space="preserve">
+    <value>Btn_Minimize</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;Btn_Minimize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Btn_Close.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Btn_Close.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 9pt</value>
+  </data>
+  <data name="Btn_Close.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Close.Location" type="System.Drawing.Point, System.Drawing">
+    <value>925, 3</value>
+  </data>
+  <data name="Btn_Close.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="Btn_Close.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="Btn_Close.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.Name" xml:space="preserve">
+    <value>Btn_Close</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;Btn_Close.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 15</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 200</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>Pnl_Izq</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>951, 577</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAA5RAAAZgAAAICAAAABACAAKAgBAJ9EAABAQAAAAQAgAChCAADHTAEAMDAAAAEA
@@ -2074,5 +2604,20 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAg/8AAAD/AAAAHwAAwA8AAOAHAADw
         AwAA+AEAAPgAAAD4AAAA+AAAAPwAAAD/gAAA/+AAAP/5AAD//wAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Hermes - Chat Institucional</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainFormDocente</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

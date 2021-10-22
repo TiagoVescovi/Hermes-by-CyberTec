@@ -78,19 +78,19 @@ namespace ChatInstitucional.Logica
             return uploaded;
         }
 
-        public DataTable TraerRealizadas(int ci)
+        public DataTable TraerRealizadasAlumno(int ci)
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idAsincronica AND estado = 'Realizada' AND ciAlumno = " + ci + ";");
         }
 
-        public DataTable TraerContestadas(int ci)
+        public DataTable TraerContestadasAlumno(int ci)
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idAsincronica AND estado = 'Contestada' AND ciAlumno = " + ci + ";");
         }
 
-        public DataTable TraerRecibidas(int ci)
+        public DataTable TraerRecibidasAlumno(int ci)
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idAsincronica AND estado = 'Recibida' AND ciAlumno = " + ci + ";");
@@ -115,8 +115,13 @@ namespace ChatInstitucional.Logica
             {
 
             }
-
             return asincronica;
+        }
+
+        public bool ResponderAsincronica(Asincronica a)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Update("UPDATE asincronica SET respuesta = '" + a.GetRespuesta() + "' AND estado = 'Contestada' WHERE idAsincronica = " + a.GetIdConsulta() + ";");
         }
     }
 }

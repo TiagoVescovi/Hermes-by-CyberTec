@@ -216,5 +216,11 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM persona;");
         }
+
+        public bool LogIn(int ci)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Update("UPDATE persona SET logueado = true WHERE cedula = " + ci + ";");
+        }
     }
 }

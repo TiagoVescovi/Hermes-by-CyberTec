@@ -19,8 +19,8 @@ namespace ChatInstitucional.Presentacion
         Docente docente = new Docente();
         PrincipalForm pf = new PrincipalForm();
         ConsultaFormAlumno cf = new ConsultaFormAlumno();
-        ChatFormAlumno chf = new ChatFormAlumno();
-        SettingsFormAlumno sf = new SettingsFormAlumno();
+        ChatForm chf = new ChatForm();
+        SettingsForm sf = new SettingsForm();
         CursosAlumnoForm cuf = new CursosAlumnoForm();
         Fotografia foto = new Fotografia();
         Grupo grupo = new Grupo();

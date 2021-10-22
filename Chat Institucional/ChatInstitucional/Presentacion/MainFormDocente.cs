@@ -18,10 +18,10 @@ namespace ChatInstitucional.Presentacion
         Alumno alumno = new Alumno();
         Docente docente = new Docente();
         PrincipalForm pf = new PrincipalForm();
-        ConsultaFormAlumno cf = new ConsultaFormAlumno();
-        ChatFormAlumno chf = new ChatFormAlumno();
-        SettingsFormAlumno sf = new SettingsFormAlumno();
-        CursosAlumnoForm cuf = new CursosAlumnoForm();
+        ConsultaFormDocente cf = new ConsultaFormDocente();
+        ChatForm chf = new ChatForm();
+        SettingsForm sf = new SettingsForm();
+        AgendaDocenteForm cuf = new AgendaDocenteForm();
         Fotografia foto = new Fotografia();
         Grupo grupo = new Grupo();
 
@@ -42,12 +42,12 @@ namespace ChatInstitucional.Presentacion
         {
             try
             {
-                Lbl_UserName.Text = alumno.BuscarAlumno(Validacion.UsuarioActual).GetNombre() + " " + alumno.BuscarAlumno(Validacion.UsuarioActual).GetApellido();
-                Lbl_UserGrupo.Text = grupo.TraerGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).GetNombre().ToString();
+                // Cambiarlo para Docente
+                Lbl_UserName.Text = docente.BuscarDocente(Validacion.UsuarioActual).GetNombre() + " " + docente.BuscarDocente(Validacion.UsuarioActual).GetApellido();
 
                 //Sigue sin funcionar
-                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto()));
-                Console.WriteLine(foto.ByteToImage(alumno.GetFoto()).ToString());
+                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(docente.BuscarPersona(Validacion.UsuarioActual).GetFoto()));
+                Console.WriteLine(foto.ByteToImage(docente.GetFoto()).ToString());
                 //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
                 //Pic_Perfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto()); -- Este tampoco
             }
@@ -92,7 +92,7 @@ namespace ChatInstitucional.Presentacion
             cuf.AutoScroll = true;
             Pnl_Der.Controls.Add(cuf);
             cuf.Dock = DockStyle.Fill;
-            Lbl_FormAbierto.Text = "MIS CURSOS";
+            Lbl_FormAbierto.Text = "MI AGENDA";
 
             pf.Hide();
             cuf.Show();   //Muestra este

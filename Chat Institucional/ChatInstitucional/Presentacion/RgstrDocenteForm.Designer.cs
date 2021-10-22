@@ -45,8 +45,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.Text_CheckPass = new System.Windows.Forms.TextBox();
             this.Btn_Back = new System.Windows.Forms.Button();
-            this.Combo_Materia = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,8 +53,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Lbl_RgstrDocente = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Combo_Grupo = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -70,7 +72,7 @@
             this.Btn_RegDocente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_RegDocente.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_RegDocente.ForeColor = System.Drawing.Color.White;
-            this.Btn_RegDocente.Location = new System.Drawing.Point(510, 432);
+            this.Btn_RegDocente.Location = new System.Drawing.Point(511, 411);
             this.Btn_RegDocente.Name = "Btn_RegDocente";
             this.Btn_RegDocente.Size = new System.Drawing.Size(225, 33);
             this.Btn_RegDocente.TabIndex = 6;
@@ -80,7 +82,7 @@
             // 
             // Text_Cedula
             // 
-            this.Text_Cedula.Location = new System.Drawing.Point(510, 125);
+            this.Text_Cedula.Location = new System.Drawing.Point(511, 200);
             this.Text_Cedula.Name = "Text_Cedula";
             this.Text_Cedula.Size = new System.Drawing.Size(225, 20);
             this.Text_Cedula.TabIndex = 1;
@@ -90,7 +92,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Cambria", 16F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(494, 68);
+            this.label1.Location = new System.Drawing.Point(496, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 26);
             this.label1.TabIndex = 2;
@@ -101,7 +103,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(607, 103);
+            this.label2.Location = new System.Drawing.Point(608, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 19);
             this.label2.TabIndex = 3;
@@ -112,7 +114,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(587, 148);
+            this.label3.Location = new System.Drawing.Point(588, 223);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 19);
             this.label3.TabIndex = 5;
@@ -120,7 +122,7 @@
             // 
             // Text_Nombre
             // 
-            this.Text_Nombre.Location = new System.Drawing.Point(510, 215);
+            this.Text_Nombre.Location = new System.Drawing.Point(511, 290);
             this.Text_Nombre.Name = "Text_Nombre";
             this.Text_Nombre.Size = new System.Drawing.Size(225, 20);
             this.Text_Nombre.TabIndex = 2;
@@ -130,7 +132,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(587, 193);
+            this.label4.Location = new System.Drawing.Point(588, 268);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 19);
             this.label4.TabIndex = 7;
@@ -138,7 +140,7 @@
             // 
             // Text_Apellido
             // 
-            this.Text_Apellido.Location = new System.Drawing.Point(510, 170);
+            this.Text_Apellido.Location = new System.Drawing.Point(511, 245);
             this.Text_Apellido.Name = "Text_Apellido";
             this.Text_Apellido.Size = new System.Drawing.Size(225, 20);
             this.Text_Apellido.TabIndex = 3;
@@ -148,7 +150,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(576, 238);
+            this.label5.Location = new System.Drawing.Point(577, 313);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 19);
             this.label5.TabIndex = 9;
@@ -156,7 +158,7 @@
             // 
             // Text_Pass
             // 
-            this.Text_Pass.Location = new System.Drawing.Point(510, 260);
+            this.Text_Pass.Location = new System.Drawing.Point(511, 335);
             this.Text_Pass.Name = "Text_Pass";
             this.Text_Pass.Size = new System.Drawing.Size(225, 20);
             this.Text_Pass.TabIndex = 4;
@@ -204,7 +206,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(540, 283);
+            this.label6.Location = new System.Drawing.Point(541, 358);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(165, 19);
             this.label6.TabIndex = 12;
@@ -213,7 +215,7 @@
             // Text_CheckPass
             // 
             this.Text_CheckPass.AcceptsReturn = true;
-            this.Text_CheckPass.Location = new System.Drawing.Point(510, 305);
+            this.Text_CheckPass.Location = new System.Drawing.Point(511, 380);
             this.Text_CheckPass.Name = "Text_CheckPass";
             this.Text_CheckPass.Size = new System.Drawing.Size(225, 20);
             this.Text_CheckPass.TabIndex = 5;
@@ -232,29 +234,6 @@
             this.Btn_Back.Text = "<════";
             this.Btn_Back.UseVisualStyleBackColor = false;
             this.Btn_Back.Click += new System.EventHandler(this.Btn_Back_Click);
-            // 
-            // Combo_Materia
-            // 
-            this.Combo_Materia.FormattingEnabled = true;
-            this.Combo_Materia.Items.AddRange(new object[] {
-            "Materia 1",
-            "Materia 2",
-            "Materia 3"});
-            this.Combo_Materia.Location = new System.Drawing.Point(510, 350);
-            this.Combo_Materia.Name = "Combo_Materia";
-            this.Combo_Materia.Size = new System.Drawing.Size(225, 21);
-            this.Combo_Materia.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(589, 328);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 19);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Materia:";
             // 
             // panel2
             // 
@@ -364,28 +343,66 @@
             this.label11.TabIndex = 9;
             this.label11.Text = "REGÍSTRATE:";
             // 
-            // label8
+            // label17
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(594, 373);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 19);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "Grupo:";
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(495, 200);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(23, 21);
+            this.label17.TabIndex = 44;
+            this.label17.Text = "*";
             // 
-            // Combo_Grupo
+            // label16
             // 
-            this.Combo_Grupo.FormattingEnabled = true;
-            this.Combo_Grupo.Items.AddRange(new object[] {
-            "Grupo 1",
-            "Grupo 2",
-            "Grupo 3"});
-            this.Combo_Grupo.Location = new System.Drawing.Point(510, 395);
-            this.Combo_Grupo.Name = "Combo_Grupo";
-            this.Combo_Grupo.Size = new System.Drawing.Size(225, 21);
-            this.Combo_Grupo.TabIndex = 33;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(495, 244);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(23, 21);
+            this.label16.TabIndex = 43;
+            this.label16.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(495, 289);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 21);
+            this.label15.TabIndex = 42;
+            this.label15.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(495, 334);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(23, 21);
+            this.label14.TabIndex = 41;
+            this.label14.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(495, 380);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 21);
+            this.label13.TabIndex = 40;
+            this.label13.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Cambria", 10F);
+            this.label12.Location = new System.Drawing.Point(504, 468);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 16);
+            this.label12.TabIndex = 45;
+            this.label12.Text = "* Obligatorio";
             // 
             // RgstrDocenteForm
             // 
@@ -394,11 +411,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(747, 514);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.Combo_Grupo);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.Combo_Materia);
             this.Controls.Add(this.Btn_Back);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Text_CheckPass);
@@ -413,6 +427,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Text_Cedula);
             this.Controls.Add(this.Btn_RegDocente);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RgstrDocenteForm";
@@ -446,17 +465,19 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Text_CheckPass;
         private System.Windows.Forms.Button Btn_Back;
-        private System.Windows.Forms.ComboBox Combo_Materia;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Lbl_RgstrAlumno;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label Lbl_RgstrDocente;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox Combo_Grupo;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
