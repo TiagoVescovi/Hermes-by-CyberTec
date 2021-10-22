@@ -56,11 +56,54 @@ namespace ChatInstitucional.Presentacion
                     String pass = Text_Pass.Text;
                     if(validacion.ValidarLogin(cedula, pass))
                     {
-                        MainFormAlumno mfo = new MainFormAlumno();
-                        this.Hide();
-                        Validacion.UsuarioActual = cedula;
-                        mfo.ShowDialog();
-                        this.Show();
+                        Administrador administrador = new Administrador();
+                        Docente docente = new Docente();
+                        Alumno alumno = new Alumno();
+                        Persona persona = new Persona();
+                        int main = 0;
+
+                        for(int i = 0; i < persona.ListarPersonas().Rows.Count; i++)
+                        {
+                            // Aca no se puede usar un Switch -- No entiendo como funciona el switch -- Re raro
+
+                            if (cedula == Convert.ToInt32(administrador.ListarAdmins().Rows[i][0])) // El break esta mal aca
+                            {
+                                // Abre MainFormAdmin
+                                main = 1;
+                                break;
+                            }
+                            else if (cedula == Convert.ToInt32(docente.ListarDocentes().Rows[i][0]))
+                            {
+                                // Abre MainFormDocente
+                                main = 2;
+
+                                MainFormDocente mfd = new MainFormDocente();
+                                this.Hide();
+                                Validacion.UsuarioActual = cedula;
+                                mfd.ShowDialog();
+                                this.Show();
+
+                                break;
+                            }
+                            else if (cedula == Convert.ToInt32(alumno.ListarAlumnos().Rows[i][0]))
+                            {
+                                // Abre MainFormAlumno
+                                main = 3;
+
+                                MainFormAlumno mfo = new MainFormAlumno();
+                                this.Hide();
+                                Validacion.UsuarioActual = cedula;
+                                mfo.ShowDialog();
+                                this.Show();
+
+                                break;
+                            }
+                            else
+                            {
+                                main = 0;
+                            }
+                        }
+                        
                     }
                     else
                     {

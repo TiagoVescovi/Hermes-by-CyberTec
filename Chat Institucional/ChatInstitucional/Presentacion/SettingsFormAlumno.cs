@@ -45,7 +45,8 @@ namespace ChatInstitucional.Presentacion
                 if(a.EliminarAlumno(a))
                 {
                     MessageBox.Show("Usuario eliminado satisfactoriamente");
-                    Application.Exit();
+                    validacion.ValidarLogOut(Validacion.UsuarioActual);
+                    this.Close();
                 }
                 else
                 {

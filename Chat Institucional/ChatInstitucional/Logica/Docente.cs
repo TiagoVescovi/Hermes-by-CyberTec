@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ChatInstitucional.Logica
 {
@@ -13,12 +14,11 @@ namespace ChatInstitucional.Logica
 
         }
 
-        /*public String GetMateria()
+        public DataTable ListarDocentes()
         {
-            //En Materia ---> select m.nombre from materia m, docente d, enseña e where m.idMateria = e.idMateria and d.cedula = e.idProfesor;
-            //Tienen q estar las materias en el combobox
-            return Materia.GetNombre();
-        }*/
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM docente;");
+        }
 
     }
 }

@@ -100,7 +100,7 @@
             // 
             // Btn_BajaUser
             // 
-            this.Btn_BajaUser.Location = new System.Drawing.Point(585, 402);
+            this.Btn_BajaUser.Location = new System.Drawing.Point(539, 392);
             this.Btn_BajaUser.Name = "Btn_BajaUser";
             this.Btn_BajaUser.Size = new System.Drawing.Size(125, 23);
             this.Btn_BajaUser.TabIndex = 6;

@@ -40,13 +40,30 @@ namespace ChatInstitucional.Logica
         public DataTable LlenarChats(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND p.ciAlumno = " + ci + ";");
+            DataTable dataTable = new DataTable();
+            DataTable alumno = validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND ch.idChat = co.idConsulta AND p.ciAlumno = " + ci + " AND ch.horaFin IS NULL AND p.participando = true;");
+            DataTable docente = validacion.Select("SELECT ch.idChat AS 'Código', m.nombre AS 'Tema' FROM chat ch, consulta co, participa p, materia m WHERE ch.idChat = p.idChat AND co.idMateria = m.idMateria AND ch.idChat = co.idConsulta AND p.ciProfesor = " + ci + " AND ch.horaFin IS NULL AND p.participando = true;");
+
+            if (alumno.Rows.Count > 0)  // Cambiar todos los q estan asi por switchs pq son mas rapidos
+            {
+                dataTable = alumno;
+            }
+            else if(alumno.Rows.Count == 0)
+            {
+                dataTable = docente;
+            }
+            else
+            {
+                dataTable = null;
+            }
+
+            return dataTable;
         }
 
         public DataTable Participantes(int id)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM participa pa, chat ch WHERE ch.idChat = pa.idChat AND ch.idChat = " + id + ";");
+            return validacion.Select("SELECT * FROM participa pa, chat ch WHERE ch.idChat = pa.idChat AND ch.idChat = " + id + " AND pa.participando = true;");
         }
 
         public Chat BuscarChat(int id)
@@ -61,11 +78,11 @@ namespace ChatInstitucional.Logica
 
                 chat.SetIdConsulta(Convert.ToInt32(dataTable.Rows[0][0]));
                 chat.SetHoraIni(DateTime.Parse(dataTable.Rows[0][1].ToString()));
-                chat.SetHoraFin(DateTime.Parse(dataTable.Rows[0][2].ToString()));
                 chat.SetCiAlumno(Convert.ToInt32(dataTable.Rows[0][4]));
                 chat.SetCiProfesor(Convert.ToInt32(dataTable.Rows[0][5]));
                 chat.SetIdMateria(Convert.ToInt32(dataTable.Rows[0][6]));
                 chat.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0][7]));
+                chat.SetHoraFin(DateTime.Parse(dataTable.Rows[0][2].ToString()));
             }
             catch
             {
@@ -87,7 +104,7 @@ namespace ChatInstitucional.Logica
 
             try
             {
-                if(validacion.Insert("INSERT INTO chat(idChat,horaIni) VALUES (" + c.GetIdConsulta() + ",'" + c.GetHoraIni() + "';"))
+                if(validacion.Insert("INSERT INTO chat(idChat,horaIni) VALUES (" + c.GetIdConsulta() + ",'" + c.GetHoraIni() + "');"))
                 {
                     created = true;
                 }

@@ -38,19 +38,19 @@
             this.Btn_Settings = new System.Windows.Forms.Button();
             this.Btn_Consultas = new System.Windows.Forms.Button();
             this.Btn_Chats = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Pnl_Der = new System.Windows.Forms.Panel();
             this.Pnl_User = new System.Windows.Forms.Panel();
             this.Lbl_FormAbierto = new System.Windows.Forms.Label();
             this.Lbl_UserGrupo = new System.Windows.Forms.Label();
             this.Lbl_UserName = new System.Windows.Forms.Label();
             this.Pic_Perfil = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.Pnl_Izq.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Pnl_User.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -172,24 +172,11 @@
             this.Btn_Chats.UseVisualStyleBackColor = false;
             this.Btn_Chats.Click += new System.EventHandler(this.Btn_Chats_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "5";
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // Pnl_Der
             // 
             this.Pnl_Der.Location = new System.Drawing.Point(234, 149);
             this.Pnl_Der.Name = "Pnl_Der";
-            this.Pnl_Der.Size = new System.Drawing.Size(717, 427);
+            this.Pnl_Der.Size = new System.Drawing.Size(717, 428);
             this.Pnl_Der.TabIndex = 27;
             // 
             // Pnl_User
@@ -243,6 +230,19 @@
             this.Pic_Perfil.TabIndex = 0;
             this.Pic_Perfil.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "5";
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // MainFormAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,10 +263,10 @@
             this.panel1.ResumeLayout(false);
             this.Pnl_Izq.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Pnl_User.ResumeLayout(false);
             this.Pnl_User.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

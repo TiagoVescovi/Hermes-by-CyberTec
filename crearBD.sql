@@ -106,7 +106,7 @@ respuesta VARCHAR(700),
 FOREIGN KEY(idAsincronica) REFERENCES Consulta(idConsulta),
 PRIMARY KEY(idAsincronica));
 
-/* INGRESO DE DATOS DE PRUEBA*/
+/* INGRESO DE DATOS DE PRUEBA */
 
 INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(429329192,"Juan","Perez","contra123");
 INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(413515145,"Roberto","Díaz","Password321");
@@ -119,17 +119,16 @@ INSERT INTO Administrador(cedula,cargo)VALUES(423643512,"Otro/a");
 
 INSERT INTO ORIENTACION(nombre) VALUES("Robótica");
 
-INSERT INTO GRUPO (nombreGr,idOrientacion) VALUES ("3°BA",1);
+INSERT INTO GRUPO (nombreGr,idOrientacion) VALUES ("3°BA",2021,1);
 
 INSERT INTO Materia(nombre) VALUES("Matemática");
-
 INSERT INTO Materia (nombre) VALUES ("Filosofía");
 
 INSERT INTO Enseña (idMateria,ciProfesor,idGrupo) VALUES(1,429329192,1);
 
 INSERT INTO alumno(cedula,idGrupo) values(145632623,1);
 
-/* SELECTS DE TODAS LAS TABLAS*/
+/* SELECTS DE TODAS LAS TABLAS */
 
 SELECT * FROM administrador;
 SELECT * FROM alumno;

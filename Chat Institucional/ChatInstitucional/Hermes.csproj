@@ -117,6 +117,12 @@
     <Compile Include="Presentacion\MainFormAlumno.Designer.cs">
       <DependentUpon>MainFormAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\MainFormDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\MainFormDocente.Designer.cs">
+      <DependentUpon>MainFormDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\PrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\MainFormAlumno.resx">
       <DependentUpon>MainFormAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\MainFormDocente.resx">
+      <DependentUpon>MainFormDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>

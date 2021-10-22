@@ -64,7 +64,7 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Fin_Click(object sender, EventArgs e)
         {
             // Solo lo ve el Host -- Esta en el Load
-            // Setea la horaFin del chat
+            // Setea la horaFin del chat -- No la setea
             // Cambia todos los participa.participando a 0 de todos los alumnos del chat
             // Al docente le deberia dejar de aparecer -- No estoy seguro de como hacerlo -- Cuando haga la app docente lo arreglo
 

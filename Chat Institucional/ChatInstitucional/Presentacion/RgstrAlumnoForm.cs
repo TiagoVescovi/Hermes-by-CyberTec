@@ -25,7 +25,7 @@ namespace ChatInstitucional.Presentacion
             Grupo grupo = new Grupo();
             for (int i = 0; i < grupo.LlenarComboBox().Rows.Count; i++)
             {
-                Combo_Grupo.Items.Add(grupo.LlenarComboBox().Rows[i]["nombreGr"] + " " + grupo.LlenarComboBox().Rows[i]["nombre"]);
+                Combo_Grupo.Items.Add(grupo.LlenarComboBox().Rows[i]["nombreGr"]);
             }
             
         }
