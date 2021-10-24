@@ -28,7 +28,7 @@ namespace ChatInstitucional.Logica
 
             try
             {
-                dataTable = validacion.Select("SELECT * FROM persona p, docente d WHERE d.cedula = p.cedula AND cedula = " + ci + ";");
+                dataTable = validacion.Select("SELECT * FROM persona p, docente d WHERE p.cedula = d.cedula AND d.cedula = " + ci + ";");
 
                 docente.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
                 docente.SetNombre(dataTable.Rows[0]["nombre"].ToString());

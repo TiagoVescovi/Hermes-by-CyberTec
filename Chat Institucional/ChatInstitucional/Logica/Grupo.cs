@@ -85,5 +85,11 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM grupo g, orientacion o WHERE g.idOrientacion = o.idOrientacion;");
         }
+
+        public DataTable GruposPorOrientacion(int idOri)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM grupo WHERE idOrientacion = " + idOri + ";");
+        }
     }
 }

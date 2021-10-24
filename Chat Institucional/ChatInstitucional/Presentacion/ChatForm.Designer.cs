@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Pnl_Chat = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_Refresh = new System.Windows.Forms.Button();
@@ -88,23 +88,23 @@
             this.Dgv_Chats.AllowUserToDeleteRows = false;
             this.Dgv_Chats.AllowUserToResizeColumns = false;
             this.Dgv_Chats.AllowUserToResizeRows = false;
-            this.Dgv_Chats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
-            this.Dgv_Chats.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.Dgv_Chats.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.Dgv_Chats.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Dgv_Chats.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.Dgv_Chats.ColumnHeadersHeight = 4;
             this.Dgv_Chats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dgv_Chats.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Dgv_Chats.Dock = System.Windows.Forms.DockStyle.Left;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Chats.DefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Chats.EnableHeadersVisualStyles = false;
+            this.Dgv_Chats.GridColor = System.Drawing.Color.Black;
             this.Dgv_Chats.Location = new System.Drawing.Point(0, 34);
             this.Dgv_Chats.MultiSelect = false;
             this.Dgv_Chats.Name = "Dgv_Chats";
@@ -121,15 +121,14 @@
             this.Pnl_Mensajemandar.Controls.Add(this.Btn_Send);
             this.Pnl_Mensajemandar.Controls.Add(this.Text_Mensaje);
             this.Pnl_Mensajemandar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Pnl_Mensajemandar.Location = new System.Drawing.Point(250, 393);
+            this.Pnl_Mensajemandar.Location = new System.Drawing.Point(0, 391);
             this.Pnl_Mensajemandar.Name = "Pnl_Mensajemandar";
-            this.Pnl_Mensajemandar.Size = new System.Drawing.Size(467, 34);
+            this.Pnl_Mensajemandar.Size = new System.Drawing.Size(717, 36);
             this.Pnl_Mensajemandar.TabIndex = 0;
             // 
             // Btn_Send
             // 
-            this.Btn_Send.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Send.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Send.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Send.BackgroundImage = global::ChatInstitucional.Properties.Resources.send;
             this.Btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -138,7 +137,7 @@
             this.Btn_Send.FlatAppearance.BorderSize = 2;
             this.Btn_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Send.Font = new System.Drawing.Font("Impact", 2.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Send.Location = new System.Drawing.Point(422, 8);
+            this.Btn_Send.Location = new System.Drawing.Point(672, 10);
             this.Btn_Send.Name = "Btn_Send";
             this.Btn_Send.Size = new System.Drawing.Size(35, 20);
             this.Btn_Send.TabIndex = 3;
@@ -147,12 +146,10 @@
             // 
             // Text_Mensaje
             // 
-            this.Text_Mensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Text_Mensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Text_Mensaje.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Text_Mensaje.Enabled = false;
-            this.Text_Mensaje.Location = new System.Drawing.Point(6, 8);
+            this.Text_Mensaje.Location = new System.Drawing.Point(256, 10);
             this.Text_Mensaje.Name = "Text_Mensaje";
             this.Text_Mensaje.Size = new System.Drawing.Size(410, 20);
             this.Text_Mensaje.TabIndex = 2;
@@ -205,18 +202,18 @@
             this.Btn_Opciones.UseVisualStyleBackColor = false;
             this.Btn_Opciones.Click += new System.EventHandler(this.Btn_Opciones_Click);
             // 
-            // ChatFormAlumno
+            // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 427);
-            this.Controls.Add(this.Pnl_Arriba);
-            this.Controls.Add(this.Pnl_Mensajemandar);
             this.Controls.Add(this.Dgv_Chats);
+            this.Controls.Add(this.Pnl_Mensajemandar);
+            this.Controls.Add(this.Pnl_Arriba);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Pnl_Chat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ChatFormAlumno";
+            this.Name = "ChatForm";
             this.Text = "ChatForm";
             this.Load += new System.EventHandler(this.ChatFormAlumno_Load);
             this.panel2.ResumeLayout(false);

@@ -23,7 +23,7 @@ namespace ChatInstitucional.Presentacion
         private void PrincipalForm_Load(object sender, EventArgs e)
         {
             Persona persona = new Persona();
-            label1.Text = "BIENVENID@ " + persona.BuscarPersona(Validacion.UsuarioActual).GetNickname();
+            label3.Text = persona.BuscarPersona(Validacion.UsuarioActual).GetNickname();
         }
     }
 }

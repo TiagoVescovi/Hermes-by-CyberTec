@@ -63,5 +63,11 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM materia m, enseña e, persona p, grupo g WHERE m.idMateria = e.idMateria AND p.cedula = e.ciProfesor AND g.idGrupo = e.idGrupo AND g.idGrupo = " + grupo + ";");
         }
+
+        public DataTable MateriasPorGrupo(int idGru)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM materia m, enseña e WHERE e.idMateria = m.idMateria AND idGrupo = " + idGru + ";");
+        }
     }
 }

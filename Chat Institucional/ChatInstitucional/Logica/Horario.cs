@@ -12,6 +12,7 @@ namespace ChatInstitucional.Logica
         protected DateTime horaIni;
         protected DateTime horaFin;
         protected string dia; //Puede ser 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'
+        protected bool activo;
 
         public Horario()
         {
@@ -56,6 +57,16 @@ namespace ChatInstitucional.Logica
         public void SetDia(string day)
         {
             dia = day;
+        }
+
+        public bool GetActivo()
+        {
+            return activo;
+        }
+
+        public void SetActibo(bool act)
+        {
+            activo = act;
         }
     }
 }

@@ -220,7 +220,38 @@ namespace ChatInstitucional.Logica
         public bool LogIn(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE persona SET logueado = true WHERE cedula = " + ci + ";");
+            return validacion.Update("UPDATE persona SET logueado = 1 WHERE cedula = " + ci + ";");
+        }
+
+        public int ActivoLogueado(int ci)
+        {
+            // 0 = no activo
+            // 1 = activo no logueado
+            // 2 = logueado
+            Validacion validacion = new Validacion();
+            int devolver = 0;
+            try
+            {
+                if (Convert.ToInt32(validacion.Select("SELECT cedula, activo, logueado FROM persona WHERE cedula = " + ci + ";").Rows[0][1]) == 1 && Convert.ToInt32(validacion.Select("SELECT cedula, activo, logueado FROM persona WHERE cedula = " + ci + ";").Rows[0][2]) == 0)
+                {
+                    devolver = 1;
+                }
+                else if (Convert.ToInt32(validacion.Select("SELECT cedula, activo, logueado FROM persona WHERE cedula = " + ci + ";").Rows[0][1]) == 1 && Convert.ToInt32(validacion.Select("SELECT cedula, activo, logueado FROM persona WHERE cedula = " + ci + ";").Rows[0][2]) == 1)
+                {
+                    devolver = 2;
+                }
+                else
+                {
+                    devolver = 0;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                devolver = 0;
+            }
+            
+            return devolver;
         }
     }
 }

@@ -68,40 +68,81 @@ namespace ChatInstitucional.Presentacion
                     {
                         if (administrador.ValidarAdmin(int.Parse(ced[0]), pass))
                         {
-                            // Abre MainFormAdmin
-                        }
-                        else if (docente.ValidarDocente(int.Parse(ced[0]), pass))
-                        {
-                            // Abre MainFormDocente
-
-                            MainFormDocente mfd = new MainFormDocente();
-                            Validacion.UsuarioActual = int.Parse(ced[0]);
-                            if (docente.LogIn(Validacion.UsuarioActual))
+                            if(administrador.ActivoLogueado(int.Parse(ced[0])) == 1)
                             {
-                                this.Hide();
-                                mfd.ShowDialog();
-                                this.Show();
+                                // Logueado con exito
+                                // Abre MainFormAdmin
+
+                            }
+                            else if(administrador.ActivoLogueado(int.Parse(ced[0])) == 2)
+                            {
+                                // Ya se logueo
+                                MessageBox.Show("Ya iniciaste sesión");
                             }
                             else
                             {
-                                MessageBox.Show("No se pudo iniciar sesión");
+                                // No esta activo
+                                MessageBox.Show("Usuario no activo\nSi usted no eliminó su usuario contacte a un administrador");
+                            }
+                        }
+                        else if (docente.ValidarDocente(int.Parse(ced[0]), pass))
+                        {
+                            if (docente.ActivoLogueado(int.Parse(ced[0])) == 1)
+                            {
+                                // Logueado con exito
+                                // Abre MainFormDocente
+                                MainFormDocente mfd = new MainFormDocente();
+                                Validacion.UsuarioActual = int.Parse(ced[0]);
+                                if (docente.LogIn(Validacion.UsuarioActual))
+                                {
+                                    this.Hide();
+                                    mfd.ShowDialog();
+                                    this.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo iniciar sesión");
+                                }
+                            }
+                            else if (docente.ActivoLogueado(int.Parse(ced[0])) == 2)
+                            {
+                                // Ya se logueo
+                                MessageBox.Show("Ya iniciaste sesión");
+                            }
+                            else
+                            {
+                                // No esta activo
+                                MessageBox.Show("Usuario no activo\nSi usted no eliminó su usuario contacte a un administrador");
                             }
                         }
                         else if (alumno.ValidarAlumno(int.Parse(ced[0]), pass))
                         {
-                            // Abre MainFormAlumno
-
-                            MainFormAlumno mfa = new MainFormAlumno();
-                            Validacion.UsuarioActual = int.Parse(ced[0]);
-                            if (alumno.LogIn(Validacion.UsuarioActual))
+                            if (alumno.ActivoLogueado(int.Parse(ced[0])) == 1)
                             {
-                                this.Hide();
-                                mfa.ShowDialog();
-                                this.Show();
+                                // Logueado con exito
+                                // Abre MainFormAlumno
+                                MainFormAlumno mfa = new MainFormAlumno();
+                                Validacion.UsuarioActual = int.Parse(ced[0]);
+                                if (alumno.LogIn(Validacion.UsuarioActual))
+                                {
+                                    this.Hide();
+                                    mfa.ShowDialog();
+                                    this.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo iniciar sesión");
+                                }
+                            }
+                            else if (alumno.ActivoLogueado(int.Parse(ced[0])) == 2)
+                            {
+                                // Ya se logueo
+                                MessageBox.Show("Ya iniciaste sesión");
                             }
                             else
                             {
-                                MessageBox.Show("No se pudo iniciar sesión");
+                                // No esta activo
+                                MessageBox.Show("Usuario no activo\nSi usted no eliminó su usuario contacte a un administrador");
                             }
                         }
                         else
@@ -114,7 +155,6 @@ namespace ChatInstitucional.Presentacion
                     {
                         MessageBox.Show("Ingrese una cédula de identidad válida");
                     }
-                        
                 }
                 else
                 {
@@ -130,7 +170,9 @@ namespace ChatInstitucional.Presentacion
         private void Lbl_Forgot_Click(object sender, EventArgs e)
         {
             // Olvidaste tu contraseña?
-            // Que le salga un mensaje al admin q esta cedula olvido la pass
+            // Abre otro form para ingresar la cedula
+            // Le sale un mensaje al admin q esta cedula olvido la pass
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

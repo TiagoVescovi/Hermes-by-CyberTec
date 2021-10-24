@@ -152,6 +152,7 @@ namespace ChatInstitucional.Presentacion
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //PrincipalForm
+            pf.Refresh();
             pf.TopLevel = false;
             pf.AutoScroll = true;
             Pnl_Der.Controls.Add(pf);
@@ -164,6 +165,5 @@ namespace ChatInstitucional.Presentacion
             chf.Hide();
             sf.Hide();
         }
-
     }
 }

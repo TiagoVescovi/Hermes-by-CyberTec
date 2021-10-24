@@ -132,6 +132,7 @@
             this.Dgv_Recibida.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Recibida.Size = new System.Drawing.Size(227, 370);
             this.Dgv_Recibida.TabIndex = 10;
+            this.Dgv_Recibida.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Recibida_CellContentDoubleClick);
             // 
             // Dgv_Contestada
             // 
@@ -175,6 +176,7 @@
             this.Dgv_Contestada.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Contestada.Size = new System.Drawing.Size(227, 370);
             this.Dgv_Contestada.TabIndex = 8;
+            this.Dgv_Contestada.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Contestada_CellContentDoubleClick);
             // 
             // label1
             // 

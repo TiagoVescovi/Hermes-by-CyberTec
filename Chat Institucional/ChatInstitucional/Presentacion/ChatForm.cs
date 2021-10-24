@@ -100,7 +100,24 @@ namespace ChatInstitucional.Presentacion
 
             for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
             {
-                Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                if (Dgv_Chats.Rows.Count > 0)
+                {
+                    for(int j = 0; j < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; j++)
+                    {
+                        if (Dgv_Chats.Rows[i].Cells[0].Value.ToString() == chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString())
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                        }
+                    }
+                }
+                else
+                {
+                    Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                }
             }
         }
 

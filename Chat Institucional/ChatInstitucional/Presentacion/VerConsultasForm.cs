@@ -27,12 +27,11 @@ namespace ChatInstitucional.Presentacion
         private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)
         {
             Asincronica asincronica = new Asincronica();
-            Docente docente = new Docente();
             //Poner el nombre del alumno en el titulo del form -- Capaz q no
             Text_Consulta.Text = asincronica.VerAsincronica(idAsincronica).GetConsulta().ToString();
             Text_Respuesta.Text = asincronica.VerAsincronica(idAsincronica).GetRespuesta().ToString();
 
-            if (cedula == docente.BuscarDocente(cedula).GetCI())
+            if (cedula == asincronica.VerAsincronica(idAsincronica).GetCiProfesor())
             {
                 Btn_Respoder.Enabled = true;
                 Text_Respuesta.ReadOnly = false;
@@ -42,7 +41,14 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Respoder_Click(object sender, EventArgs e)
         {
             Asincronica asincronica = new Asincronica();
-
+            if (asincronica.ResponderAsincronica(idAsincronica, Text_Respuesta.Text))
+            {
+                MessageBox.Show("Se ha respondido la consulta satisfactoriamente");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo enviar la respuesta");
+            }
         }
     }
 }
