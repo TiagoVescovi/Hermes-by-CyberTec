@@ -55,10 +55,10 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.Btn_Minimize);
             this.panel1.Controls.Add(this.Btn_Close);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // Btn_Minimize
@@ -70,34 +70,34 @@
             // 
             // Btn_Close
             // 
-            resources.ApplyResources(this.Btn_Close, "Btn_Close");
             this.Btn_Close.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.Btn_Close, "Btn_Close");
             this.Btn_Close.Name = "Btn_Close";
             this.Btn_Close.UseVisualStyleBackColor = false;
             this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
             // 
             // Pnl_Izq
             // 
-            resources.ApplyResources(this.Pnl_Izq, "Pnl_Izq");
             this.Pnl_Izq.BackColor = System.Drawing.Color.DarkBlue;
             this.Pnl_Izq.Controls.Add(this.panel2);
             this.Pnl_Izq.Controls.Add(this.pictureBox1);
+            resources.ApplyResources(this.Pnl_Izq, "Pnl_Izq");
             this.Pnl_Izq.Name = "Pnl_Izq";
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.Btn_Cursos);
             this.panel2.Controls.Add(this.Btn_Settings);
             this.panel2.Controls.Add(this.Btn_Consultas);
             this.panel2.Controls.Add(this.Btn_Chats);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // Btn_Cursos
             // 
-            resources.ApplyResources(this.Btn_Cursos, "Btn_Cursos");
             this.Btn_Cursos.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Cursos.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Cursos, "Btn_Cursos");
             this.Btn_Cursos.ForeColor = System.Drawing.Color.White;
             this.Btn_Cursos.Name = "Btn_Cursos";
             this.Btn_Cursos.UseVisualStyleBackColor = false;
@@ -105,9 +105,9 @@
             // 
             // Btn_Settings
             // 
-            resources.ApplyResources(this.Btn_Settings, "Btn_Settings");
             this.Btn_Settings.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Settings.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Settings, "Btn_Settings");
             this.Btn_Settings.ForeColor = System.Drawing.Color.White;
             this.Btn_Settings.Name = "Btn_Settings";
             this.Btn_Settings.UseVisualStyleBackColor = false;
@@ -115,9 +115,9 @@
             // 
             // Btn_Consultas
             // 
-            resources.ApplyResources(this.Btn_Consultas, "Btn_Consultas");
             this.Btn_Consultas.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Consultas.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Consultas, "Btn_Consultas");
             this.Btn_Consultas.ForeColor = System.Drawing.Color.White;
             this.Btn_Consultas.Name = "Btn_Consultas";
             this.Btn_Consultas.UseVisualStyleBackColor = false;
@@ -125,9 +125,9 @@
             // 
             // Btn_Chats
             // 
-            resources.ApplyResources(this.Btn_Chats, "Btn_Chats");
             this.Btn_Chats.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Chats.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Chats, "Btn_Chats");
             this.Btn_Chats.ForeColor = System.Drawing.Color.White;
             this.Btn_Chats.Name = "Btn_Chats";
             this.Btn_Chats.UseVisualStyleBackColor = false;
@@ -135,9 +135,9 @@
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "5";
@@ -150,12 +150,12 @@
             // 
             // Pnl_User
             // 
-            resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Pnl_User.Controls.Add(this.Lbl_UserName);
             this.Pnl_User.Controls.Add(this.Lbl_FormAbierto);
             this.Pnl_User.Controls.Add(this.Lbl_UserGrupo);
-            this.Pnl_User.Controls.Add(this.Lbl_UserName);
             this.Pnl_User.Controls.Add(this.Pic_Perfil);
+            resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.Name = "Pnl_User";
             // 
             // Lbl_FormAbierto

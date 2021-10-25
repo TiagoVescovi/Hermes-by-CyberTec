@@ -123,7 +123,6 @@ namespace ChatInstitucional.Logica
 
         public int UnirseChat(Chat c)
         {
-            int joined = 0;
             // 0 = no se pudo unir
             // 1 = se pudo unir
             // 2 = ya se habia unido
@@ -139,33 +138,33 @@ namespace ChatInstitucional.Logica
                     if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ");"))
                     {
                         // Lo agrega al chat
-                        joined = 1;
+                        return 1;
                     }
                     else
                     {
                         if (c.GetIdConsulta() == Convert.ToInt32(dataTable.Rows[0][0]) && c.GetCiAlumno() == Convert.ToInt32(dataTable.Rows[0][1]) && Convert.ToBoolean(dataTable.Rows[0][2]) == true)
                         {
                             // Ya existe el alumno en ese chat
-                            joined = 2;
+                            return 2;
                         }
                         else
                         {
                             // Vuelve al default
-                            joined = 0;
+                            return 0;
                         }
                     }
                 }
                 else 
                 {
-                    joined = 0;
+                    return 0;
                 }
             }
             catch (Exception e)
             {
-                joined = 0;
+
                 Console.WriteLine(e.ToString());
+                return 0;
             }
-            return joined;
         }
 
         public bool ValidarChat(Chat c)

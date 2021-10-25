@@ -226,6 +226,7 @@
             this.Text_Cedula.Name = "Text_Cedula";
             this.Text_Cedula.Size = new System.Drawing.Size(225, 20);
             this.Text_Cedula.TabIndex = 2;
+            this.Text_Cedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Text_Cedula_KeyPress);
             // 
             // Btn_RegAlumno
             // 
@@ -297,6 +298,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
             this.pictureBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox2.Location = new System.Drawing.Point(133, 81);

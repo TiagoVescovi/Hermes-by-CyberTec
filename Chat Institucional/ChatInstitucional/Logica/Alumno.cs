@@ -32,64 +32,51 @@ namespace ChatInstitucional.Logica
         {
             //Alta alumno
             Validacion validacion = new Validacion();
-            bool added = false;
-
-            int ci = a.GetCI();
-            string nickname = a.GetNickname();
-            string nombre = a.GetNombre();
-            string apellido = a.GetApellido();
-            string pass = a.GetPass();
-            int idGrupo = a.GetIdGrupo();
-            byte[] foto = a.GetFoto();
-            bool activo = a.GetActivo();
-            bool logueado = a.GetLogueado();
-
+            
             try
             {
-                if (a.BuscarPersona(ci).GetCI() == ci) //Checkea si existe en persona
+                if (a.BuscarPersona(a.GetCI()).GetCI() == a.GetCI()) //Checkea si existe en persona
                 {
                     // Agregar q el nick no se puede repetir
 
-                    if (a.BuscarAlumno(ci).GetCI() == ci) //Checkea si existe en alumno
+                    if (a.BuscarAlumno(a.GetCI()).GetCI() == a.GetCI()) //Checkea si existe en alumno
                     {
                         // Ya existe el alumno
-                        added = false;
+                        return false;
                     }
                     else
                     {
-                        if (a.ModificarPersona(a))
+                        if (a.EditarPersonaDeAlumno(a))
                         {
                             // Le hace update a Persona
-                            if (validacion.Insert("INSERT INTO Alumno(cedula,idGrupo) VALUES (" + ci + "," + idGrupo + ");"))
+                            if (validacion.Insert("INSERT INTO Alumno(cedula,idGrupo) VALUES (" + a.GetCI() + "," + a.GetIdGrupo() + ");"))
                             {
                                 // Lo inserta en Alumno
-                                added = true;
+                                return true;
                             }
                             else
                             {
-                                added = false;
+                                return false;
                             }
                         }
                         else
                         {
-                            added = false;
+                            return false;
                         }
                     }
                 }
                 else
                 {
                     //No existe una persona con esa cedula
-                    added = false;
+                    return false;
                 }
             }
             catch(Exception ex)
             {
                 //Ocurrio un error en la creacion del alumno
-                added = false;
                 Console.WriteLine(ex.ToString());
+                return false;
             }
-
-            return added;
         }
 
         public bool EliminarAlumno(Alumno a)
@@ -156,6 +143,33 @@ namespace ChatInstitucional.Logica
                 exists = false;
             }
             return exists;
+        }
+
+        private bool EditarPersonaDeAlumno(Alumno a)
+        {
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Update("UPDATE persona SET nombre = '" + a.GetNombre() + "', apellido = '" + a.GetApellido() + "', passwd = '" + a.GetPass() + "', nickname = '" + a.GetNickname() + "', activo = " + a.GetActivo() + ", logueado = " + a.GetLogueado() + " WHERE cedula = " + a.GetCI() + ";"))
+                {
+                    if (validacion.ModifyPicture(a.GetFoto(), a.GetCI()))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
         }
     }
 }

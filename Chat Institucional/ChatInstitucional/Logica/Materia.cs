@@ -69,5 +69,11 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM materia m, enseña e WHERE e.idMateria = m.idMateria AND idGrupo = " + idGru + ";");
         }
+
+        public bool AgregarDocenteAMateria(int mat,int ci, int grupo)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Insert("INSERT INTO enseña(idMateria,ciProfesor,idGrupo) VALUES (" + mat + "," + ci + "," + grupo + ");");
+        }
     }
 }

@@ -23,11 +23,12 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_ChangeNick_Click(object sender, EventArgs e)
         {
-            //Cambia el nickname
+            // Cambia el nickname
+            Persona persona = new Persona();
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su Nickname?","Cambiar Nickname",MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
             {
-                if(validacion.Update("UPDATE persona SET nickname = '" + Text_Nick.Text + "' WHERE cedula = " + Validacion.UsuarioActual + ";"))
+                if (persona.ModificarPersona("nickname", "'" + Text_Nick.Text + "'", Validacion.UsuarioActual))
                 {
                     MessageBox.Show("Nickname cambiado existosamente");
                 }
@@ -36,17 +37,16 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_BajaUser_Click(object sender, EventArgs e)
         {
-            //Elimina logicamente al usuario
-            DialogResult result = MessageBox.Show("¿Está segur@ que desea eliminar su usuario?\nSi lo hace no podrá volver a iniciar sesión", "Eliminar usuario", MessageBoxButtons.YesNo);
+            // Elimina logicamente al usuario
+            Persona persona = new Persona();
+            DialogResult result = MessageBox.Show("¿Está segur@ que desea eliminar su usuario?\nSi lo hace no podrá volver a iniciar sesión\nLa aplicación se cerrará", "Eliminar usuario", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                Alumno a = new Alumno();
-                a.SetCI(Validacion.UsuarioActual);
-                if(a.EliminarAlumno(a))
+                if(persona.EliminarPersona(Validacion.UsuarioActual))
                 {
                     MessageBox.Show("Usuario eliminado satisfactoriamente");
                     validacion.ValidarLogOut(Validacion.UsuarioActual);
-                    this.Close();
+                    Application.Exit();
                 }
                 else
                 {
@@ -57,7 +57,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_SubirFoto_Click(object sender, EventArgs e)
         {
-            //Cambiar foto en el programa -- Parece q esto funciona bien
+            // Cambiar foto en el programa -- Parece q esto funciona bien
             openFileDialog1.Filter = "Imagenes|*.jpg;*.jpeg;*.png;*.gif;";
             openFileDialog1.Title = "Seleccione su nueva imágen";
             
@@ -67,7 +67,6 @@ namespace ChatInstitucional.Presentacion
                 {
                     string imagen = openFileDialog1.FileName;
                     Picture_ImgPerfil.Image = Image.FromFile(imagen);
-                    
                 }
             }
             catch (Exception ex)
@@ -109,6 +108,10 @@ namespace ChatInstitucional.Presentacion
             }else if(Combo_Idioma.SelectedItem.ToString() == "Español")
             {
                 // Aca lo cambia a español
+            }
+            else
+            {
+                // Mensaje de error de q no se selecciono nada
             }
         }
 

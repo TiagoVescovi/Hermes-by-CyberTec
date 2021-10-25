@@ -64,5 +64,52 @@ namespace ChatInstitucional.Logica
             return exists;
         }
 
+        public bool AgregarDocente(Docente d)
+        {
+            // Agrega docentes a la bd
+            Validacion validacion = new Validacion();
+            
+            try
+            {
+                if (d.IngresarPersona(d)) //Checkea si existe en persona
+                {
+                    // Agregar q el nick no se puede repetir
+
+                    if (validacion.Insert("INSERT INTO docente(cedula) VALUES (" + d.GetCI() + ");"))
+                    {
+                        // Ingresa el docente en docente
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    //No existe una persona con esa cedula
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Ocurrio un error en la creacion del docente
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
+        public bool ModificarDocente(string atributo, string cambio, int ci)
+        {
+            // Modifica un docente
+            return false;
+        }
+
+        public bool EliminarDocente(int ci)
+        {
+            // Elimina un docente
+            return false;
+        }
+
     }
 }

@@ -32,6 +32,7 @@
             this.Pnl_User = new System.Windows.Forms.Panel();
             this.Lbl_FormAbierto = new System.Windows.Forms.Label();
             this.Lbl_UserName = new System.Windows.Forms.Label();
+            this.Pic_Perfil = new System.Windows.Forms.PictureBox();
             this.Pnl_Der = new System.Windows.Forms.Panel();
             this.Pnl_Izq = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,24 +40,25 @@
             this.Btn_Settings = new System.Windows.Forms.Button();
             this.Btn_Consultas = new System.Windows.Forms.Button();
             this.Btn_Chats = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Btn_Minimize = new System.Windows.Forms.Button();
             this.Btn_Close = new System.Windows.Forms.Button();
-            this.Pic_Perfil = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.Pnl_User.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).BeginInit();
             this.Pnl_Izq.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Pnl_User
             // 
             this.Pnl_User.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Pnl_User.Controls.Add(this.Lbl_FormAbierto);
             this.Pnl_User.Controls.Add(this.Lbl_UserName);
+            this.Pnl_User.Controls.Add(this.label1);
+            this.Pnl_User.Controls.Add(this.Lbl_FormAbierto);
             this.Pnl_User.Controls.Add(this.Pic_Perfil);
             resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.Name = "Pnl_User";
@@ -71,6 +73,12 @@
             // 
             resources.ApplyResources(this.Lbl_UserName, "Lbl_UserName");
             this.Lbl_UserName.Name = "Lbl_UserName";
+            // 
+            // Pic_Perfil
+            // 
+            resources.ApplyResources(this.Pic_Perfil, "Pic_Perfil");
+            this.Pic_Perfil.Name = "Pic_Perfil";
+            this.Pic_Perfil.TabStop = false;
             // 
             // Pnl_Der
             // 
@@ -134,6 +142,16 @@
             this.Btn_Chats.UseVisualStyleBackColor = false;
             this.Btn_Chats.Click += new System.EventHandler(this.Btn_Chats_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "5";
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
@@ -157,21 +175,10 @@
             this.Btn_Close.UseVisualStyleBackColor = false;
             this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
             // 
-            // Pic_Perfil
+            // label1
             // 
-            resources.ApplyResources(this.Pic_Perfil, "Pic_Perfil");
-            this.Pic_Perfil.Name = "Pic_Perfil";
-            this.Pic_Perfil.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "5";
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // MainFormDocente
             // 
@@ -186,11 +193,11 @@
             this.Load += new System.EventHandler(this.MainFormDocente_Load);
             this.Pnl_User.ResumeLayout(false);
             this.Pnl_User.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).EndInit();
             this.Pnl_Izq.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,5 +219,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Btn_Minimize;
         private System.Windows.Forms.Button Btn_Close;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -55,39 +55,50 @@ namespace ChatInstitucional.Presentacion
             {
                 if(!String.IsNullOrEmpty(Text_Nickname.Text) && !String.IsNullOrEmpty(Text_Cedula.Text) && !String.IsNullOrEmpty(Text_Nombre.Text) && !String.IsNullOrEmpty(Text_Apellido.Text) && !String.IsNullOrEmpty(Text_Pass.Text) && !String.IsNullOrEmpty(Text_PassCheck.Text) && !String.IsNullOrEmpty(Combo_Grupo.SelectedIndex.ToString()))
                 {
-                    if(Text_Pass.Text == Text_PassCheck.Text)
+                    string cedula = Text_Cedula.Text;
+                    string[] ced = cedula.Split('-');
+                    String pass = Text_Pass.Text;
+                    if (CIValidator.Validate(cedula))
                     {
-                        Alumno alumno = new Alumno();
-                        Grupo grupo = new Grupo();
-                        alumno.SetNickname(Text_Nickname.Text);
-                        alumno.SetCI(Convert.ToInt32(Text_Cedula.Text));
-                        alumno.SetNombre(Text_Nombre.Text);
-                        alumno.SetApellido(Text_Apellido.Text);
-                        alumno.SetPass(Text_Pass.Text);
-                        alumno.SetGrupo(Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupo.SelectedIndex][0]));
-                        alumno.SetFoto(foto.GetImagen()); //Hay un lugar en el q esto no funca
-
-                        if (alumno.IngresarAlumno(alumno))
+                        if (Text_Pass.Text == Text_PassCheck.Text)
                         {
-                            DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador valide su usuario para iniciar sesión.", "Usuario creado", MessageBoxButtons.OK);
-                            if (result == DialogResult.OK)
+                            Alumno alumno = new Alumno();
+                            Grupo grupo = new Grupo();
+                            alumno.SetNickname(Text_Nickname.Text);
+                            alumno.SetCI(int.Parse(ced[0]));
+                            alumno.SetNombre(Text_Nombre.Text);
+                            alumno.SetApellido(Text_Apellido.Text);
+                            alumno.SetPass(Text_Pass.Text);
+                            alumno.SetGrupo(Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupo.SelectedIndex][0]));
+                            alumno.SetFoto(foto.GetImagen()); //Hay un lugar en el q esto no funca
+
+                            if (alumno.IngresarAlumno(alumno))
                             {
-                                this.Close();
+                                DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador valide su usuario para iniciar sesión.", "Usuario creado", MessageBoxButtons.OK);
+                                if (result == DialogResult.OK)
+                                {
+                                    this.Close();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrió un error al crear el usuario.\nRegrese e intente nuevamente.");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Ocurrió un error al crear el usuario.\nRegrese e intente nuevamente.");
+                            MessageBox.Show("Las contraseñas no coinciden.");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Las contraseñas no coinciden.");
+                        MessageBox.Show("Ingrese una cédula válida");
                     }
+                        
                 }
                 else
                 {
-                    MessageBox.Show("Debe llenar todas las casillas.");
+                    MessageBox.Show("Debe llenar todos los campos.");
                 }
             }
             catch
@@ -99,6 +110,21 @@ namespace ChatInstitucional.Presentacion
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://cybertecuy.wordpress.com");
+        }
+
+        private void Text_Cedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            {
+                // Solo se pueden poner numeros
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                // No se puede poner mas de un -
+                e.Handled = true;
+            }
         }
     }
 }

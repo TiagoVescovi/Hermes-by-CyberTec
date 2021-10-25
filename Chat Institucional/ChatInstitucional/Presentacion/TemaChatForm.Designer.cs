@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dgv_Participantes = new System.Windows.Forms.DataGridView();
             this.Btn_Volver = new System.Windows.Forms.Button();
             this.Btn_Fin = new System.Windows.Forms.Button();
@@ -46,8 +47,16 @@
             this.Dgv_Participantes.BackgroundColor = System.Drawing.Color.White;
             this.Dgv_Participantes.CausesValidation = false;
             this.Dgv_Participantes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dgv_Participantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Participantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Participantes.GridColor = System.Drawing.Color.Black;
+            this.Dgv_Participantes.GridColor = System.Drawing.Color.DimGray;
             this.Dgv_Participantes.Location = new System.Drawing.Point(21, 29);
             this.Dgv_Participantes.Name = "Dgv_Participantes";
             this.Dgv_Participantes.ReadOnly = true;
