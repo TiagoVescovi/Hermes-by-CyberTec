@@ -49,14 +49,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Btn_Eliminar_Horario = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Dgv_Materias = new System.Windows.Forms.DataGridView();
+            this.Btn_Refresh_Materia = new System.Windows.Forms.Button();
             this.Btn_Eliminar_Materia = new System.Windows.Forms.Button();
             this.Btn_Agregar_Materia = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.Dgv_Materias = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_Refresh_Horario = new System.Windows.Forms.Button();
-            this.Btn_Refresh_Materia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horarios)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).BeginInit();
@@ -314,6 +314,49 @@
             this.panel1.Size = new System.Drawing.Size(358, 428);
             this.panel1.TabIndex = 20;
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(1, 190);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(354, 21);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "TUS MATERIAS";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Dgv_Materias
+            // 
+            this.Dgv_Materias.AllowUserToAddRows = false;
+            this.Dgv_Materias.AllowUserToDeleteRows = false;
+            this.Dgv_Materias.AllowUserToResizeColumns = false;
+            this.Dgv_Materias.AllowUserToResizeRows = false;
+            this.Dgv_Materias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Materias.Location = new System.Drawing.Point(0, 211);
+            this.Dgv_Materias.MultiSelect = false;
+            this.Dgv_Materias.Name = "Dgv_Materias";
+            this.Dgv_Materias.ReadOnly = true;
+            this.Dgv_Materias.RowHeadersVisible = false;
+            this.Dgv_Materias.Size = new System.Drawing.Size(354, 213);
+            this.Dgv_Materias.TabIndex = 18;
+            // 
+            // Btn_Refresh_Materia
+            // 
+            this.Btn_Refresh_Materia.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Refresh_Materia.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh_Materia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Refresh_Materia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Refresh_Materia.FlatAppearance.BorderSize = 0;
+            this.Btn_Refresh_Materia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Refresh_Materia.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refresh_Materia.ForeColor = System.Drawing.Color.White;
+            this.Btn_Refresh_Materia.Location = new System.Drawing.Point(4, 3);
+            this.Btn_Refresh_Materia.Name = "Btn_Refresh_Materia";
+            this.Btn_Refresh_Materia.Size = new System.Drawing.Size(36, 27);
+            this.Btn_Refresh_Materia.TabIndex = 21;
+            this.Btn_Refresh_Materia.UseVisualStyleBackColor = false;
+            this.Btn_Refresh_Materia.Click += new System.EventHandler(this.Btn_Refresh_Materia_Click);
+            // 
             // Btn_Eliminar_Materia
             // 
             this.Btn_Eliminar_Materia.Enabled = false;
@@ -347,32 +390,6 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "AGREGAR MATERIA";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1, 190);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(354, 21);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "TUS MATERIAS";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Dgv_Materias
-            // 
-            this.Dgv_Materias.AllowUserToAddRows = false;
-            this.Dgv_Materias.AllowUserToDeleteRows = false;
-            this.Dgv_Materias.AllowUserToResizeColumns = false;
-            this.Dgv_Materias.AllowUserToResizeRows = false;
-            this.Dgv_Materias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Materias.Location = new System.Drawing.Point(0, 211);
-            this.Dgv_Materias.MultiSelect = false;
-            this.Dgv_Materias.Name = "Dgv_Materias";
-            this.Dgv_Materias.ReadOnly = true;
-            this.Dgv_Materias.RowHeadersVisible = false;
-            this.Dgv_Materias.Size = new System.Drawing.Size(354, 213);
-            this.Dgv_Materias.TabIndex = 18;
             // 
             // panel2
             // 
@@ -415,23 +432,6 @@
             this.Btn_Refresh_Horario.TabIndex = 20;
             this.Btn_Refresh_Horario.UseVisualStyleBackColor = false;
             this.Btn_Refresh_Horario.Click += new System.EventHandler(this.Btn_Refresh_Horario_Click);
-            // 
-            // Btn_Refresh_Materia
-            // 
-            this.Btn_Refresh_Materia.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Refresh_Materia.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
-            this.Btn_Refresh_Materia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Btn_Refresh_Materia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_Refresh_Materia.FlatAppearance.BorderSize = 0;
-            this.Btn_Refresh_Materia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_Refresh_Materia.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Refresh_Materia.ForeColor = System.Drawing.Color.White;
-            this.Btn_Refresh_Materia.Location = new System.Drawing.Point(4, 3);
-            this.Btn_Refresh_Materia.Name = "Btn_Refresh_Materia";
-            this.Btn_Refresh_Materia.Size = new System.Drawing.Size(36, 27);
-            this.Btn_Refresh_Materia.TabIndex = 21;
-            this.Btn_Refresh_Materia.UseVisualStyleBackColor = false;
-            this.Btn_Refresh_Materia.Click += new System.EventHandler(this.Btn_Refresh_Materia_Click);
             // 
             // AgendaDocenteForm
             // 

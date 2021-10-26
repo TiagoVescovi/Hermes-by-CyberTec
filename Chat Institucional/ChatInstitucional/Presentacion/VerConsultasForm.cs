@@ -22,6 +22,7 @@ namespace ChatInstitucional.Presentacion
             InitializeComponent();
 
             idAsincronica = IdAsincronica;
+            cedula = Cedula;
         }
 
         private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)

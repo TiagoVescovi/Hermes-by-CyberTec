@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChatInstitucional.Logica;
+using System.Threading;
 
 namespace ChatInstitucional.Presentacion
 {
@@ -24,6 +25,7 @@ namespace ChatInstitucional.Presentacion
         CursosAlumnoForm cuf = new CursosAlumnoForm();
         Fotografia foto = new Fotografia();
         Grupo grupo = new Grupo();
+
 
         public MainFormAlumno()
         {
@@ -165,6 +167,5 @@ namespace ChatInstitucional.Presentacion
             chf.Hide();
             sf.Hide();
         }
-        
     }
 }

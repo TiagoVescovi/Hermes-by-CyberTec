@@ -60,8 +60,9 @@ namespace ChatInstitucional.De_persistencia
                 command.ExecuteNonQuery();
                 updated = true;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 updated = false;
             }
             finally
@@ -118,61 +119,6 @@ namespace ChatInstitucional.De_persistencia
             return dataTable;
         }
 
-        public bool Buscar(string query)
-        {
-            bool existe = false;
-
-            try
-            {
-                connection.Open();
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.ExecuteNonQuery();
-                existe = true;
-            }
-            catch
-            {
-                existe = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return existe;
-        }
-
-        public bool LogInBDD(int ci, string pass) // INICIAR SESION
-        {
-            bool ExistePersona = false;
-            DataTable dataTable = new DataTable();
-
-            try
-            {
-                connection.Open();
-                MySqlCommand CheckPersona = new MySqlCommand("SELECT cedula FROM persona WHERE cedula = " + ci + " AND activo = true AND logueado = false AND passwd = '" + pass + "';", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(CheckPersona);
-                adapter.Fill(dataTable);
-
-                if (!String.IsNullOrEmpty(dataTable.Rows[0][0].ToString()))
-                {
-                    MySqlCommand UpdateLogueado = new MySqlCommand("UPDATE persona SET logueado = true WHERE cedula = " + ci + ";", connection);
-                    UpdateLogueado.ExecuteNonQuery();
-                    ExistePersona = true;
-                }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.ToString());
-                ExistePersona = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return ExistePersona;
-        }
-
         public bool LogOutBDD(int ci) // CERRAR SESION
         {
             bool Salio = false;
@@ -195,130 +141,6 @@ namespace ChatInstitucional.De_persistencia
 
             return Salio;
         }
-
-        public DataTable TraerIdGrupo()
-        {
-            DataTable idGrupos = new DataTable();
-            try
-            {
-                connection.Open();
-                MySqlCommand comando = new MySqlCommand("SELECT * FROM grupo;", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
-                adapter.Fill(idGrupos);
-            }
-            catch
-            {
-                
-            }
-            finally
-            {
-                connection.Close();
-            }
-                
-            return idGrupos;
-        }
-
-        public Alumno AlumnoActual(int ci)
-        {
-            Alumno alumno = new Alumno();
-            DataTable dataTable = new DataTable();
-            Grupo grupo = new Grupo();
-            Fotografia foto = new Fotografia();
-
-            try
-            {
-                connection.Open();  //En la bdd tenes q cambiar grupo.nombre por grupo.nombreGr sino no te va a funcionar       //Si cambias aca donde dice la cedula por el parametro se buguea
-                MySqlCommand command = new MySqlCommand("SELECT * FROM persona p, alumno a, grupo g WHERE p.cedula = a.cedula AND p.cedula = 145632623 AND a.idGrupo = g.idGrupo;", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                adapter.Fill(dataTable);
-
-                Console.WriteLine(dataTable.Rows.Count);
-
-                alumno.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
-                alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
-                alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
-                alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
-
-                // Ver como agregar atributo foto 
-                alumno.SetFoto(((byte[])dataTable.Rows[0]["foto"]));
-
-                alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
-                alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
-                alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
-                alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
-                grupo.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
-                grupo.SetNombre(dataTable.Rows[0]["nombreGr"].ToString());
-                grupo.SetAno(Convert.ToInt32(dataTable.Rows[0]["año"]));
-                grupo.SetIdOrientacion(Convert.ToInt32(dataTable.Rows[0]["idOrientacion"]));
-
-                Console.WriteLine(dataTable.Rows[0]["cedula"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["nombre"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["apellido"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["passwd"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["nickname"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["activo"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["logueado"].ToString());
-                Console.WriteLine(dataTable.Rows[0]["idGrupo"].ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return alumno;
-        }
-
-        public DataTable TraerIdMateria()
-        {
-            DataTable dataTable = new DataTable();
-            try
-            {
-                connection.Open();
-                MySqlCommand comando = new MySqlCommand("SELECT p.cedula, m.nombre as 'nombreMat', p.nombre, p.apellido, m.idMateria FROM materia m, enseña e, persona p WHERE m.idMateria = e.idMateria AND e.ciProfesor = p.cedula;", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
-                adapter.Fill(dataTable);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return dataTable;
-        }
-
-        /*public bool SubirConsulta(Asincronica a)
-        {
-            bool consulto = false;
-
-            try
-            {   
-                connection.Open();
-                MySqlCommand command = new MySqlCommand("INSERT INTO consulta(ciAlumno,ciProfesor,idMateria,idGrupo) VALUES (" + a.GetCiAlumno() + "," + a.GetCiProfesor() + "," + a.GetIdMateria() + "," + a.GetIdGrupo() + ");", connection);
-                command.ExecuteNonQuery();
-                a.SetIdConsulta(Convert.ToInt32(Select("SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + " AND idConsulta >= ALL (SELECT idConsulta FROM consulta WHERE ciAlumno = " + Validacion.UsuarioActual + ");").Rows[0]["idConsulta"]));
-                MySqlCommand comando = new MySqlCommand("INSERT INTO asincronica(idConsulta,estado,contenido) VALUES (" + a.GetIdConsulta() + ",'" + a.GetEstado() + "','" + a.GetContenido() + "');", connection);
-                comando.ExecuteNonQuery();
-                consulto = true;
-            }
-            catch
-            {
-                consulto = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return consulto;
-        }*/
     }
 }
 

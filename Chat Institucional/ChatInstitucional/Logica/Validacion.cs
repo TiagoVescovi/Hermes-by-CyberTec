@@ -11,9 +11,6 @@ namespace ChatInstitucional.Logica
     class Validacion
     {
         Connect connect = new Connect();
-        Persona persona = new Persona();
-        Alumno alumno = new Alumno();
-        Docente docente = new Docente();
 
         public static int UsuarioActual { get; set; }
 
@@ -42,34 +39,9 @@ namespace ChatInstitucional.Logica
             return connect.Select(query);
         }
 
-        public Alumno AlumnoActual(int ci)
-        {
-            return connect.AlumnoActual(ci);
-        }
-
-        public bool ValidarLogin(int ci, String pass)
-        {
-            return connect.LogInBDD(ci, pass);
-        }
-
         public bool ValidarLogOut(int ci)
         {
             return connect.LogOutBDD(ci);
         }
-
-        //public DataTable TraerGrupo()
-        //{
-        //    return connect.TraerIdGrupo();
-        //}
-
-        public DataTable TraerIdMateria()
-        {
-            return connect.TraerIdMateria();
-        }
-
-        /*public bool SubirConsulta(Asincronica a)
-        {
-            return connect.SubirConsulta(a);
-        }*/
     }
 }

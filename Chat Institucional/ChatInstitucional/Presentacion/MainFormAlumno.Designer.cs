@@ -38,19 +38,19 @@
             this.Btn_Settings = new System.Windows.Forms.Button();
             this.Btn_Consultas = new System.Windows.Forms.Button();
             this.Btn_Chats = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Pnl_Der = new System.Windows.Forms.Panel();
             this.Pnl_User = new System.Windows.Forms.Panel();
+            this.Lbl_UserName = new System.Windows.Forms.Label();
             this.Lbl_FormAbierto = new System.Windows.Forms.Label();
             this.Lbl_UserGrupo = new System.Windows.Forms.Label();
-            this.Lbl_UserName = new System.Windows.Forms.Label();
             this.Pic_Perfil = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.Pnl_Izq.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Pnl_User.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -133,16 +133,6 @@
             this.Btn_Chats.UseVisualStyleBackColor = false;
             this.Btn_Chats.Click += new System.EventHandler(this.Btn_Chats_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "5";
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // Pnl_Der
             // 
             resources.ApplyResources(this.Pnl_Der, "Pnl_Der");
@@ -158,6 +148,11 @@
             resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.Name = "Pnl_User";
             // 
+            // Lbl_UserName
+            // 
+            resources.ApplyResources(this.Lbl_UserName, "Lbl_UserName");
+            this.Lbl_UserName.Name = "Lbl_UserName";
+            // 
             // Lbl_FormAbierto
             // 
             resources.ApplyResources(this.Lbl_FormAbierto, "Lbl_FormAbierto");
@@ -169,16 +164,21 @@
             resources.ApplyResources(this.Lbl_UserGrupo, "Lbl_UserGrupo");
             this.Lbl_UserGrupo.Name = "Lbl_UserGrupo";
             // 
-            // Lbl_UserName
-            // 
-            resources.ApplyResources(this.Lbl_UserName, "Lbl_UserName");
-            this.Lbl_UserName.Name = "Lbl_UserName";
-            // 
             // Pic_Perfil
             // 
             resources.ApplyResources(this.Pic_Perfil, "Pic_Perfil");
             this.Pic_Perfil.Name = "Pic_Perfil";
             this.Pic_Perfil.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "5";
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // MainFormAlumno
             // 
@@ -195,10 +195,10 @@
             this.panel1.ResumeLayout(false);
             this.Pnl_Izq.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Pnl_User.ResumeLayout(false);
             this.Pnl_User.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

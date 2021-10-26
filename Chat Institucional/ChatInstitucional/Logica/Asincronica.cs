@@ -139,7 +139,10 @@ namespace ChatInstitucional.Logica
         public bool ResponderAsincronica(Asincronica a)
         {
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE asincronica SET respuesta = '" + a.GetRespuesta() + "' AND estado = '" + a.GetEstado() + "' WHERE idAsincronica = " + a.GetIdConsulta() + ";");
+            Console.WriteLine(a.GetRespuesta());
+            Console.WriteLine(a.GetIdConsulta());
+            Console.WriteLine(a.GetEstado());
+            return validacion.Update("UPDATE asincronica SET respuesta = '" + a.GetRespuesta() + "', estado = '" + a.GetEstado() + "' WHERE idAsincronica = " + a.GetIdConsulta() + ";");
         }
     }
 }

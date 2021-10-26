@@ -38,10 +38,7 @@ namespace ChatInstitucional.Presentacion
 
             try
             {
-                Asincronica asincronica = new Asincronica();
-                Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
-                Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
-                Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
+                LlenarConsultas();
             }
             catch (Exception ex)
             {
@@ -116,6 +113,14 @@ namespace ChatInstitucional.Presentacion
             }
         }
 
+        private void LlenarConsultas()
+        {
+            Asincronica asincronica = new Asincronica();
+            Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
+            Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
+            Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
+        }
+
         private void Btn_Refresh_Click(object sender, EventArgs e)
         {
             //Lo mismo q el Load
@@ -142,6 +147,7 @@ namespace ChatInstitucional.Presentacion
             IdConsulta = Convert.ToInt32(Dgv_Realizada.Rows[index].Cells[0].Value);
             VerConsultasForm ver = new VerConsultasForm(IdConsulta, Validacion.UsuarioActual);
             ver.ShowDialog();
+            LlenarConsultas();
         }
 
         private void Dgv_Contestada_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -152,6 +158,7 @@ namespace ChatInstitucional.Presentacion
             VerConsultasForm ver = new VerConsultasForm(IdConsulta, Validacion.UsuarioActual);
             validacion.Update("UPDATE asincronica SET estado = 'Recibida' WHERE idAsincronica = " + IdConsulta + ";");
             ver.ShowDialog();
+            LlenarConsultas();
         }
 
         private void Dgv_Recibida_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -161,6 +168,7 @@ namespace ChatInstitucional.Presentacion
             IdConsulta = Convert.ToInt32(Dgv_Recibida.Rows[index].Cells[0].Value);
             VerConsultasForm ver = new VerConsultasForm(IdConsulta, Validacion.UsuarioActual);
             ver.ShowDialog();
+            LlenarConsultas();
         }
     }
 }

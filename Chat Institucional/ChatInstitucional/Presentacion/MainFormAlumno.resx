@@ -213,6 +213,9 @@
   <data name="Btn_Cursos.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cambria, 15.75pt, style=Bold</value>
   </data>
+  <data name="Btn_Cursos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Btn_Cursos.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 8</value>
   </data>
@@ -242,6 +245,9 @@
   </data>
   <data name="Btn_Settings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Settings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Btn_Settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 242</value>
@@ -273,6 +279,9 @@
   <data name="Btn_Consultas.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cambria, 15.75pt, style=Bold</value>
   </data>
+  <data name="Btn_Consultas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Btn_Consultas.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 86</value>
   </data>
@@ -302,6 +311,9 @@
   </data>
   <data name="Btn_Chats.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Chats.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Btn_Chats.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 164</value>
@@ -347,6 +359,9 @@
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 15</value>
@@ -396,6 +411,9 @@
   <data name="&gt;&gt;Pnl_Izq.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="Pnl_Der.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
   <data name="Pnl_Der.Location" type="System.Drawing.Point, System.Drawing">
     <value>234, 149</value>
   </data>
@@ -419,6 +437,9 @@
   </data>
   <data name="Lbl_UserName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
+  </data>
+  <data name="Lbl_UserName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Lbl_UserName.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 75</value>
@@ -453,6 +474,9 @@
   <data name="Lbl_FormAbierto.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cambria, 26.25pt, style=Bold</value>
   </data>
+  <data name="Lbl_FormAbierto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Lbl_FormAbierto.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 30</value>
   </data>
@@ -479,6 +503,9 @@
   </data>
   <data name="Lbl_UserGrupo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
+  </data>
+  <data name="Lbl_UserGrupo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Lbl_UserGrupo.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 88</value>
@@ -507,6 +534,9 @@
   <data name="&gt;&gt;Lbl_UserGrupo.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="Pic_Perfil.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Pic_Perfil.Location" type="System.Drawing.Point, System.Drawing">
     <value>635, 2</value>
   </data>
@@ -533,6 +563,9 @@
   </data>
   <data name="&gt;&gt;Pic_Perfil.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="Pnl_User.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="Pnl_User.Location" type="System.Drawing.Point, System.Drawing">
     <value>234, 29</value>
@@ -2520,6 +2553,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAg/8AAAD/AAAAHwAAwA8AAOAHAADw
         AwAA+AEAAPgAAAD4AAAA+AAAAPwAAAD/gAAA/+AAAP/5AAD//wAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

@@ -19,6 +19,7 @@ namespace ChatInstitucional.Presentacion
         Mensaje mensaje = new Mensaje();
         int IdChat = 0;
         int msgLast = 0;
+        int posicionUltima = 0;
 
         public ChatForm()
         {
@@ -126,27 +127,31 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Chats_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Abre el chat y lo llena con lo q hay en tabla Mensaje
-            //Chat chat = new Chat();
-            //Pnl_Chat.Controls.Clear();
-            //int index = Dgv_Chats.CurrentRow.Index;
-            //chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
-            //IdChat = chat.GetIdConsulta(); 
-            //Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[0].Value.ToString();
+            Chat chat = new Chat();
+            Pnl_Chat.Controls.Clear();
+            int index = Dgv_Chats.CurrentRow.Index;
+            chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
+            IdChat = chat.GetIdConsulta();
+            Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[0].Value.ToString();
 
-            //for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
-            //{
-            //    if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
-            //    {
-            //        Persona persona = new Persona();
-            //        AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
-            //        msgLast = i;
-            //    }
-            //    else
-            //    {
-            //        AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
-            //        msgLast = i;
-            //    }
-            //}
+            for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
+            {
+                if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                {
+                    Persona persona = new Persona();
+                    AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
+                    Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                    msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
+                    posicionUltima = i;
+                }
+                else
+                {
+                    AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
+                    Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                    msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
+                    posicionUltima = i;
+                }
+            }
 
             Timer timer = new Timer { Interval = 500 };
             timer.Enabled = true;
@@ -167,39 +172,40 @@ namespace ChatInstitucional.Presentacion
 
             try
             {
-                if (mensaje.RefrescarMensajes(IdChat).Rows.Count > 0)
+
+                // No consigo q funcione
+                // Creo q no lo pense del todo bien
+
+                if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count > 0)
                 {
-                    if (mensaje.RefrescarMensajes(IdChat).Rows[0][0] != mensaje.TraerMensaje(IdChat).Rows[msgLast][0])
+                    Console.WriteLine("Primer if");
+                    if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows[0][0] != mensaje.TraerMensaje(IdChat).Rows[posicionUltima][0])
                     {
-                        for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
+                        Console.WriteLine("For if");
+                        for (int i = 0; i < mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count; i++)
                         {
-                            if (mensaje.RefrescarMensajes(IdChat).Rows[0][0] == mensaje.TraerMensaje(IdChat).Rows[msgLast][0])
+                            if (!mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
                             {
-                                // No consigo q funcione
-                                // Creo q no lo pense del todo bien
+                                Persona persona = new Persona();
+                                AddIncomming(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["Contenido"].ToString(), mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"])).GetApellido());
+                                Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                                msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
+                                posicionUltima = i;
                             }
                             else
                             {
-                                if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
-                                {
-                                    Persona persona = new Persona();
-                                    AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
-                                    msgLast = i;
-                                }
-                                else
-                                {
-                                    AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
-                                    msgLast = i;
-                                }
+                                AddOutgoing(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["contenido"].ToString());
+                                Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                                msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
+                                posicionUltima = i;
                             }
                         }
                     }
+                    else
+                    {
+                        // A
+                    }
                 }
-                else
-                {
-                    // A
-                }
-                
             }
             catch (Exception ex)
             {
