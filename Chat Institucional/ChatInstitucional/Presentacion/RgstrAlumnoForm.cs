@@ -126,5 +126,10 @@ namespace ChatInstitucional.Presentacion
                 e.Handled = true;
             }
         }
+
+        private void Combo_Grupo_TextUpdate(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

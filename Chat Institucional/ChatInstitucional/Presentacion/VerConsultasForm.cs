@@ -41,14 +41,28 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Respoder_Click(object sender, EventArgs e)
         {
             Asincronica asincronica = new Asincronica();
-            if (asincronica.ResponderAsincronica(idAsincronica, Text_Respuesta.Text))
+            if (!String.IsNullOrEmpty(Text_Respuesta.Text))
             {
-                MessageBox.Show("Se ha respondido la consulta satisfactoriamente");
+                asincronica.SetIdConsulta(idAsincronica);
+                asincronica.SetEstado("Contestada");
+                asincronica.SetConsulta(Text_Consulta.Text);
+                asincronica.SetRespuesta(Text_Respuesta.Text);
+
+                if (asincronica.ResponderAsincronica(asincronica))
+                {
+                    MessageBox.Show("Se ha respondido la consulta satisfactoriamente");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo enviar la respuesta");
+                }
             }
             else
             {
-                MessageBox.Show("No se pudo enviar la respuesta");
+                MessageBox.Show("Debe llenar el campo de respuesta para responder esta consulta");
             }
+            
         }
     }
 }

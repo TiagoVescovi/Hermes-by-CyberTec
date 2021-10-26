@@ -141,56 +141,6 @@ namespace ChatInstitucional.De_persistencia
             return existe;
         }
 
-        /*public bool AgregarDocente(Docente d)
-        {
-            bool added = false;
-
-            try
-            {
-                connection.Open();
-                MySqlCommand CheckPersona = new MySqlCommand("SELECT cedula FROM persona;", connection);
-                CheckPersona.ExecuteNonQuery();
-
-                if (CheckPersona.ToString() == d.GetCI().ToString())
-                {
-                    MySqlCommand CheckDocente = new MySqlCommand("SELECT cedula FROM docente;", connection);
-                    CheckDocente.ExecuteNonQuery();
-
-                    if (CheckPersona.ToString() == CheckDocente.ToString())
-                    {
-                        //El docente ya existe
-                        added = false;
-                    }
-                    else
-                    {
-                        MySqlCommand query = new MySqlCommand("INSERT INTO docente(cedula) VALUES(" + d.GetCI() + ");", connection);
-                        query.ExecuteNonQuery();
-                        MySqlCommand com = new MySqlCommand("SELECT idMateria FROM materia WHERE nombre = '" + d.GetMateria() + "';");
-                        String mate = com.ExecuteNonQuery().ToString();
-                        MySqlCommand materia = new MySqlCommand("INSERT INTO enseña(idMateria,idProfesor) VALUES(" + mate + "'" + d.GetCI() + "');");
-                        materia.ExecuteNonQuery();
-                        added = true;
-                    }
-                }
-                else
-                {
-                    added = false;
-                    //No existe una persona con esa cedula
-                }
-            }
-            catch
-            {
-                //Ocurrio un error en la creacion del docente
-                added = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return added;
-        }*/
-
         public bool LogInBDD(int ci, string pass) // INICIAR SESION
         {
             bool ExistePersona = false;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChatInstitucional.ChatItems;
 using ChatInstitucional.Logica;
-using System.Timers;
+using System.IO;
 
 namespace ChatInstitucional.Presentacion
 {
@@ -23,6 +23,8 @@ namespace ChatInstitucional.Presentacion
         public ChatForm()
         {
             InitializeComponent();
+
+
         }
 
         private void ChatFormAlumno_Load(object sender, EventArgs e)
@@ -124,27 +126,31 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Chats_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Abre el chat y lo llena con lo q hay en tabla Mensaje
-            Chat chat = new Chat();
-            Pnl_Chat.Controls.Clear();
-            int index = Dgv_Chats.CurrentRow.Index;
-            chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
-            IdChat = chat.GetIdConsulta(); 
-            Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[0].Value.ToString();
+            //Chat chat = new Chat();
+            //Pnl_Chat.Controls.Clear();
+            //int index = Dgv_Chats.CurrentRow.Index;
+            //chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
+            //IdChat = chat.GetIdConsulta(); 
+            //Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[0].Value.ToString();
 
-            for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
-            {
-                if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
-                {
-                    Persona persona = new Persona();
-                    AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
-                    msgLast++;
-                }
-                else
-                {
-                    AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
-                    msgLast++;
-                }
-            }
+            //for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
+            //{
+            //    if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+            //    {
+            //        Persona persona = new Persona();
+            //        AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
+            //        msgLast = i;
+            //    }
+            //    else
+            //    {
+            //        AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
+            //        msgLast = i;
+            //    }
+            //}
+
+            Timer timer = new Timer { Interval = 500 };
+            timer.Enabled = true;
+            timer.Tick += new System.EventHandler(RecargarMensajes);
 
             Text_Mensaje.Enabled = true;
             Btn_Send.Enabled = true;
@@ -152,10 +158,54 @@ namespace ChatInstitucional.Presentacion
             Btn_Opciones.Enabled = true;
         }
 
-        //private void RecargarMensajes()
-        //{
-        //    Timer();
-        //}
+        private void RecargarMensajes(object source, EventArgs e)
+        {
+            Chat chat = new Chat();
+            int index = Dgv_Chats.CurrentRow.Index;
+            chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
+            IdChat = chat.GetIdConsulta();
+
+            try
+            {
+                if (mensaje.RefrescarMensajes(IdChat).Rows.Count > 0)
+                {
+                    if (mensaje.RefrescarMensajes(IdChat).Rows[0][0] != mensaje.TraerMensaje(IdChat).Rows[msgLast][0])
+                    {
+                        for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
+                        {
+                            if (mensaje.RefrescarMensajes(IdChat).Rows[0][0] == mensaje.TraerMensaje(IdChat).Rows[msgLast][0])
+                            {
+                                // No consigo q funcione
+                                // Creo q no lo pense del todo bien
+                            }
+                            else
+                            {
+                                if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                                {
+                                    Persona persona = new Persona();
+                                    AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
+                                    msgLast = i;
+                                }
+                                else
+                                {
+                                    AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
+                                    msgLast = i;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // A
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
 
         private void Btn_Tema_Click(object sender, EventArgs e)
         {
@@ -185,17 +235,6 @@ namespace ChatInstitucional.Presentacion
             }
         }
 
-        //private static void Timer()
-        //{
-        //    System.Timers.Timer aTimer = new System.Timers.Timer(20);
-        //    aTimer.Elapsed += OnTimedEvent;
-        //    aTimer.AutoReset = true;
-        //    aTimer.Enabled = true;
-        //}
-
-        //private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-        //{
-        //    Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
-        //}
+        
     }
 }

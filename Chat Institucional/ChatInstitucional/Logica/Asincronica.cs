@@ -99,19 +99,19 @@ namespace ChatInstitucional.Logica
         public DataTable TraerRealizadasDocente(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idAsincronica AND estado = 'Realizada' AND ciProfesor = " + ci + ";");
+            return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciAlumno AND c.idConsulta = a.idAsincronica AND estado = 'Realizada' AND ciProfesor = " + ci + ";");
         }
 
         public DataTable TraerContestadasDocente(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idAsincronica AND estado = 'Contestada' AND ciProfesor = " + ci + ";");
+            return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciAlumno AND c.idConsulta = a.idAsincronica AND estado = 'Contestada' AND ciProfesor = " + ci + ";");
         }
 
         public DataTable TraerRecibidasDocente(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciProfesor AND c.idConsulta = a.idAsincronica AND estado = 'Recibida' AND ciProfesor = " + ci + ";");
+            return validacion.Select("SELECT c.idConsulta AS ' .', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM asincronica a, consulta c, persona p WHERE cedula = ciAlumno AND c.idConsulta = a.idAsincronica AND estado = 'Recibida' AND ciProfesor = " + ci + ";");
         }
 
         public Asincronica VerAsincronica(int id)
@@ -136,10 +136,10 @@ namespace ChatInstitucional.Logica
             return asincronica;
         }
 
-        public bool ResponderAsincronica(int id, string respuesta)
+        public bool ResponderAsincronica(Asincronica a)
         {
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE asincronica SET respuesta = '" + respuesta + "' AND estado = 'Contestada' WHERE idAsincronica = " + id + ";");
+            return validacion.Update("UPDATE asincronica SET respuesta = '" + a.GetRespuesta() + "' AND estado = '" + a.GetEstado() + "' WHERE idAsincronica = " + a.GetIdConsulta() + ";");
         }
     }
 }

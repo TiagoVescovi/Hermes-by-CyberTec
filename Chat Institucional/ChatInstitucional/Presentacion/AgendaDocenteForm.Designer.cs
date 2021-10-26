@@ -49,20 +49,23 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Btn_Eliminar_Horario = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.Dgv_Materias = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.Btn_Eliminar_Materia = new System.Windows.Forms.Button();
             this.Btn_Agregar_Materia = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Dgv_Materias = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Refresh_Horario = new System.Windows.Forms.Button();
+            this.Btn_Refresh_Materia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horarios)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Combo_Materias
             // 
+            this.Combo_Materias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Materias.Enabled = false;
             this.Combo_Materias.FormattingEnabled = true;
             this.Combo_Materias.Location = new System.Drawing.Point(168, 118);
@@ -73,6 +76,7 @@
             // 
             // Combo_Grupos
             // 
+            this.Combo_Grupos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Grupos.Enabled = false;
             this.Combo_Grupos.FormattingEnabled = true;
             this.Combo_Grupos.Location = new System.Drawing.Point(168, 78);
@@ -83,6 +87,7 @@
             // 
             // Combo_Dias
             // 
+            this.Combo_Dias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Dias.FormattingEnabled = true;
             this.Combo_Dias.Items.AddRange(new object[] {
             "Lunes",
@@ -100,6 +105,7 @@
             // 
             // Combo_HoraIni_HH
             // 
+            this.Combo_HoraIni_HH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_HoraIni_HH.Enabled = false;
             this.Combo_HoraIni_HH.FormattingEnabled = true;
             this.Combo_HoraIni_HH.Location = new System.Drawing.Point(26, 93);
@@ -109,6 +115,7 @@
             // 
             // Combo_HoraIni_MM
             // 
+            this.Combo_HoraIni_MM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_HoraIni_MM.Enabled = false;
             this.Combo_HoraIni_MM.FormattingEnabled = true;
             this.Combo_HoraIni_MM.Location = new System.Drawing.Point(90, 93);
@@ -118,6 +125,7 @@
             // 
             // Combo_HoraFin_MM
             // 
+            this.Combo_HoraFin_MM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_HoraFin_MM.Enabled = false;
             this.Combo_HoraFin_MM.FormattingEnabled = true;
             this.Combo_HoraFin_MM.Location = new System.Drawing.Point(268, 93);
@@ -128,6 +136,7 @@
             // 
             // Combo_HoraFin_HH
             // 
+            this.Combo_HoraFin_HH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_HoraFin_HH.Enabled = false;
             this.Combo_HoraFin_HH.FormattingEnabled = true;
             this.Combo_HoraFin_HH.Location = new System.Drawing.Point(203, 93);
@@ -194,7 +203,6 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(0, 190);
             this.label5.Name = "label5";
@@ -205,10 +213,15 @@
             // 
             // Dgv_Horarios
             // 
+            this.Dgv_Horarios.AllowUserToAddRows = false;
+            this.Dgv_Horarios.AllowUserToDeleteRows = false;
+            this.Dgv_Horarios.AllowUserToResizeColumns = false;
+            this.Dgv_Horarios.AllowUserToResizeRows = false;
             this.Dgv_Horarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Horarios.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dgv_Horarios.Location = new System.Drawing.Point(0, 211);
+            this.Dgv_Horarios.MultiSelect = false;
             this.Dgv_Horarios.Name = "Dgv_Horarios";
+            this.Dgv_Horarios.ReadOnly = true;
             this.Dgv_Horarios.RowHeadersVisible = false;
             this.Dgv_Horarios.Size = new System.Drawing.Size(354, 213);
             this.Dgv_Horarios.TabIndex = 13;
@@ -238,6 +251,7 @@
             // 
             // Combo_Orientacion
             // 
+            this.Combo_Orientacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Orientacion.FormattingEnabled = true;
             this.Combo_Orientacion.Location = new System.Drawing.Point(168, 38);
             this.Combo_Orientacion.Name = "Combo_Orientacion";
@@ -282,11 +296,12 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.Dgv_Materias);
+            this.panel1.Controls.Add(this.Btn_Refresh_Materia);
             this.panel1.Controls.Add(this.Btn_Eliminar_Materia);
             this.panel1.Controls.Add(this.Btn_Agregar_Materia);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.Dgv_Materias);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.Combo_Orientacion);
             this.panel1.Controls.Add(this.label7);
@@ -298,64 +313,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 428);
             this.panel1.TabIndex = 20;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.Btn_Eliminar_Horario);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.Btn_Agregar_Horario);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.Combo_HoraFin_MM);
-            this.panel2.Controls.Add(this.Combo_HoraFin_HH);
-            this.panel2.Controls.Add(this.Combo_HoraIni_MM);
-            this.panel2.Controls.Add(this.Combo_HoraIni_HH);
-            this.panel2.Controls.Add(this.Combo_Dias);
-            this.panel2.Controls.Add(this.Dgv_Horarios);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(358, 428);
-            this.panel2.TabIndex = 21;
-            // 
-            // Dgv_Materias
-            // 
-            this.Dgv_Materias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Materias.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Dgv_Materias.Location = new System.Drawing.Point(0, 211);
-            this.Dgv_Materias.Name = "Dgv_Materias";
-            this.Dgv_Materias.RowHeadersVisible = false;
-            this.Dgv_Materias.Size = new System.Drawing.Size(354, 213);
-            this.Dgv_Materias.TabIndex = 18;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(0, 190);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(354, 21);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "TUS MATERIAS";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(0, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(354, 21);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "AGREGAR MATERIA";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Btn_Eliminar_Materia
             // 
@@ -379,6 +336,103 @@
             this.Btn_Agregar_Materia.UseVisualStyleBackColor = true;
             this.Btn_Agregar_Materia.Click += new System.EventHandler(this.Btn_Agregar_Materia_Click);
             // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(0, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(354, 21);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "AGREGAR MATERIA";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(1, 190);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(354, 21);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "TUS MATERIAS";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Dgv_Materias
+            // 
+            this.Dgv_Materias.AllowUserToAddRows = false;
+            this.Dgv_Materias.AllowUserToDeleteRows = false;
+            this.Dgv_Materias.AllowUserToResizeColumns = false;
+            this.Dgv_Materias.AllowUserToResizeRows = false;
+            this.Dgv_Materias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Materias.Location = new System.Drawing.Point(0, 211);
+            this.Dgv_Materias.MultiSelect = false;
+            this.Dgv_Materias.Name = "Dgv_Materias";
+            this.Dgv_Materias.ReadOnly = true;
+            this.Dgv_Materias.RowHeadersVisible = false;
+            this.Dgv_Materias.Size = new System.Drawing.Size(354, 213);
+            this.Dgv_Materias.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.Dgv_Horarios);
+            this.panel2.Controls.Add(this.Btn_Refresh_Horario);
+            this.panel2.Controls.Add(this.Btn_Eliminar_Horario);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.Btn_Agregar_Horario);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.Combo_HoraFin_MM);
+            this.panel2.Controls.Add(this.Combo_HoraFin_HH);
+            this.panel2.Controls.Add(this.Combo_HoraIni_MM);
+            this.panel2.Controls.Add(this.Combo_HoraIni_HH);
+            this.panel2.Controls.Add(this.Combo_Dias);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(358, 428);
+            this.panel2.TabIndex = 21;
+            // 
+            // Btn_Refresh_Horario
+            // 
+            this.Btn_Refresh_Horario.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Refresh_Horario.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh_Horario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Refresh_Horario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Refresh_Horario.FlatAppearance.BorderSize = 0;
+            this.Btn_Refresh_Horario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Refresh_Horario.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refresh_Horario.ForeColor = System.Drawing.Color.White;
+            this.Btn_Refresh_Horario.Location = new System.Drawing.Point(315, 3);
+            this.Btn_Refresh_Horario.Name = "Btn_Refresh_Horario";
+            this.Btn_Refresh_Horario.Size = new System.Drawing.Size(36, 27);
+            this.Btn_Refresh_Horario.TabIndex = 20;
+            this.Btn_Refresh_Horario.UseVisualStyleBackColor = false;
+            this.Btn_Refresh_Horario.Click += new System.EventHandler(this.Btn_Refresh_Horario_Click);
+            // 
+            // Btn_Refresh_Materia
+            // 
+            this.Btn_Refresh_Materia.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Refresh_Materia.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh_Materia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Refresh_Materia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Refresh_Materia.FlatAppearance.BorderSize = 0;
+            this.Btn_Refresh_Materia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_Refresh_Materia.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refresh_Materia.ForeColor = System.Drawing.Color.White;
+            this.Btn_Refresh_Materia.Location = new System.Drawing.Point(4, 3);
+            this.Btn_Refresh_Materia.Name = "Btn_Refresh_Materia";
+            this.Btn_Refresh_Materia.Size = new System.Drawing.Size(36, 27);
+            this.Btn_Refresh_Materia.TabIndex = 21;
+            this.Btn_Refresh_Materia.UseVisualStyleBackColor = false;
+            this.Btn_Refresh_Materia.Click += new System.EventHandler(this.Btn_Refresh_Materia_Click);
+            // 
             // AgendaDocenteForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -392,9 +446,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horarios)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -428,5 +482,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button Btn_Eliminar_Materia;
         private System.Windows.Forms.Button Btn_Agregar_Materia;
+        private System.Windows.Forms.Button Btn_Refresh_Materia;
+        private System.Windows.Forms.Button Btn_Refresh_Horario;
     }
 }

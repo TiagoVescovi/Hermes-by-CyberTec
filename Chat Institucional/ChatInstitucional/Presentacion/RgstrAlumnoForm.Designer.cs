@@ -263,12 +263,16 @@
             // 
             // Combo_Grupo
             // 
+            this.Combo_Grupo.BackColor = System.Drawing.Color.White;
             this.Combo_Grupo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Combo_Grupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Combo_Grupo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Combo_Grupo.FormattingEnabled = true;
             this.Combo_Grupo.Location = new System.Drawing.Point(510, 395);
             this.Combo_Grupo.Name = "Combo_Grupo";
             this.Combo_Grupo.Size = new System.Drawing.Size(225, 21);
             this.Combo_Grupo.TabIndex = 7;
+            this.Combo_Grupo.TextUpdate += new System.EventHandler(this.Combo_Grupo_TextUpdate);
             // 
             // label8
             // 
@@ -475,7 +479,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(747, 514);
             this.Controls.Add(this.label12);

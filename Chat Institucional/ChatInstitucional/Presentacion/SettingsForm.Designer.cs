@@ -112,6 +112,7 @@
             // 
             // Combo_Tema
             // 
+            this.Combo_Tema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Tema.FormattingEnabled = true;
             this.Combo_Tema.Location = new System.Drawing.Point(39, 233);
             this.Combo_Tema.Name = "Combo_Tema";
@@ -120,6 +121,7 @@
             // 
             // Combo_Idioma
             // 
+            this.Combo_Idioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_Idioma.FormattingEnabled = true;
             this.Combo_Idioma.Items.AddRange(new object[] {
             "English",
@@ -173,7 +175,7 @@
             this.Btn_ChangeTheme.UseVisualStyleBackColor = true;
             this.Btn_ChangeTheme.Click += new System.EventHandler(this.Btn_ChangeTheme_Click);
             // 
-            // SettingsFormAlumno
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,7 +194,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Picture_ImgPerfil);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SettingsFormAlumno";
+            this.Name = "SettingsForm";
             this.Text = "ModifyForm";
             ((System.ComponentModel.ISupportInitialize)(this.Picture_ImgPerfil)).EndInit();
             this.ResumeLayout(false);

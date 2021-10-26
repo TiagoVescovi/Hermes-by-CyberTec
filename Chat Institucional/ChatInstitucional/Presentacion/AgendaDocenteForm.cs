@@ -29,8 +29,16 @@ namespace ChatInstitucional.Presentacion
                 Combo_Orientacion.Items.Add(orientacion.ListarOrientaciones().Rows[i][1]);
             }
 
-            LlenarDgvHorarios(Validacion.UsuarioActual);
-            LlenarDgvMaterias(Validacion.UsuarioActual);
+            Dgv_Horarios.Columns.Add("Lunes", "Lunes");
+            Dgv_Horarios.Columns.Add("Martes", "Martes");
+            Dgv_Horarios.Columns.Add("Miércoles", "Miércoles");
+            Dgv_Horarios.Columns.Add("Jueves", "Jueves");
+            Dgv_Horarios.Columns.Add("Viernes", "Viernes");
+            Dgv_Horarios.Columns.Add("Sábado", "Sábado");
+            Dgv_Horarios.Columns.Add("Domingo", "Domingo");
+
+            LlenarDgvHorarios();
+            LlenarDgvMaterias();
         }
 
         private void Combo_Orientacion_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,44 +121,86 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_Agregar_Horario_Click(object sender, EventArgs e)
         {
-            // Agrega en enseña con cedula actual
+            // Agrega en horario
+            Horario horario = new Horario();
+            
+            if(!String.IsNullOrEmpty(Combo_Dias.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_HoraIni_HH.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_HoraIni_MM.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_HoraFin_HH.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_HoraFin_MM.SelectedItem.ToString()))
+            {
+                horario.SetCiProfesor(Validacion.UsuarioActual);
+                horario.SetHoraIni(Combo_HoraIni_HH.SelectedItem.ToString() + ":" + Combo_HoraIni_MM.SelectedItem.ToString());
+                horario.SetHoraFin(Combo_HoraFin_HH.SelectedItem.ToString() + ":" + Combo_HoraFin_MM.SelectedItem.ToString());
+                horario.SetDia(Combo_Dias.SelectedItem.ToString());
+
+                if (horario.AgregarHorario(horario))
+                {
+                    DialogResult dialogResult = MessageBox.Show("Horario añadido exitosamente");
+                    if(dialogResult == DialogResult.OK)
+                    {
+                        LlenarDgvHorarios();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo añadir el horario");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe llenar todos los campos");
+            }
         }
 
         private void Btn_Eliminar_Horario_Click(object sender, EventArgs e)
         {
             // Elimina el horario seleccionado del dia seleccionado
+            Horario horario = new Horario();
+            string horas = Dgv_Horarios.SelectedCells.ToString();
+            string[] hora = horas.Split(' ');
+            horario.SetCiProfesor(Validacion.UsuarioActual);
+            horario.SetHoraIni(hora[0]);
+            horario.SetHoraFin(hora[1]);
+            horario.SetDia(Dgv_Horarios.SelectedColumns[-1].ToString());
         }
 
         private void Dgv_Horarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Habilita Btn_Eliminar_Horario
+            Btn_Eliminar_Horario.Enabled = true;
         }
 
-        private void LlenarDgvHorarios(int ci)
+        private void LlenarDgvHorarios()
         {
             // Las columnas van a ser los dias
             // Ver como hacerlo y que quede bien xd
             Horario horario = new Horario();
             DataTable dataTable = new DataTable();
-            Dgv_Horarios.Columns.Add("Lunes", "Lunes");
-            Dgv_Horarios.Columns.Add("Martes", "Martes");
-            Dgv_Horarios.Columns.Add("Miércoles", "Miércoles");
-            Dgv_Horarios.Columns.Add("Jueves", "Jueves");
-            Dgv_Horarios.Columns.Add("Viernes", "Viernes");
-            Dgv_Horarios.Columns.Add("Sábado", "Sábado");
-            Dgv_Horarios.Columns.Add("Domingo", "Domingo");
             
             if(horario.HorariosProfe(Validacion.UsuarioActual).Rows.Count > 0)
             {
                 dataTable = horario.HorariosProfe(Validacion.UsuarioActual);
 
-                for(int i = 0; i < dataTable.Rows.Count; i++)
+                try
                 {
-                    //if(dataTable.Rows[i][3].ToString() == "Lunes")
-                    //{
-                    //    Dgv_Horarios.Rows.Add
-                    //}
+                    for(int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        // Cada columna va a ser un dia
+
+                        Dgv_Horarios.Rows.Add(
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][2],
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][2],
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][2],
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][2],
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][2],
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][2],
+                            horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][2]
+                            );
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                
             }
         }
 
@@ -193,12 +243,12 @@ namespace ChatInstitucional.Presentacion
                 Materia materia = new Materia();
                 Grupo grupo = new Grupo();
                 Orientacion orientacion = new Orientacion();
-                if (materia.AgregarDocenteAMateria(Convert.ToInt32(materia.MateriasPorGrupo(idGrupo).Rows[Combo_Materias.SelectedIndex][0]), Validacion.UsuarioActual, Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[Combo_Grupos.SelectedIndex][0])))
+                if (materia.AgregarEnsenia(Convert.ToInt32(materia.MateriasPorGrupo(idGrupo).Rows[Combo_Materias.SelectedIndex][0]), Validacion.UsuarioActual, Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[Combo_Grupos.SelectedIndex][0])))
                 {
                     DialogResult dialogResult = MessageBox.Show("Materia agregada exitosamente");
                     if (dialogResult == DialogResult.OK)
                     {
-                        // Se tiene q recargar Dgv_Materias
+                        LlenarDgvMaterias();
                     }
                 }
                 else
@@ -217,7 +267,17 @@ namespace ChatInstitucional.Presentacion
             // Elimina la materia seleccionada
         }
 
-        private void LlenarDgvMaterias(int ci)
+        private void Btn_Refresh_Horario_Click(object sender, EventArgs e)
+        {
+            LlenarDgvHorarios();
+        }
+
+        private void Btn_Refresh_Materia_Click(object sender, EventArgs e)
+        {
+            LlenarDgvMaterias();
+        }
+
+        private void LlenarDgvMaterias()
         {
             // Enseña
         }
