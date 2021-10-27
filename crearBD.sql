@@ -1,28 +1,29 @@
 CREATE TABLE Persona(
-cedula int(8) NOT NULL,
-nombre varchar(30) NOT NULL,
-apellido varchar(30) NOT NULL,
-passwd varchar(25) NOT NULL,
+cedula int(7) NOT NULL,
+nombre varchar(30),
+apellido varchar(30),
+passwd varchar(25),
 foto BLOB,
 nickname VARCHAR(30),
-activo boolean default true,
-logueado boolean default false,
+activo bool default true,
+logueado bool default false,
+idioma ENUM('ES','EN') default 'ES',
 PRIMARY KEY(cedula));
 
 CREATE TABLE Alumno(
-cedula int(8) NOT NULL,
+cedula int(7) NOT NULL,
 idGrupo INT(5),
 FOREIGN KEY(cedula) REFERENCES Persona(cedula),
 PRIMARY KEY(cedula));
 
 CREATE TABLE Administrador(
-cedula int(8) NOT NULL,
+cedula int(7) NOT NULL,
 cargo ENUM('Director/a','Subdirector/a','Adscripto/a','Secretario/a','Otro/a') NOT NULL,
 FOREIGN KEY(cedula) REFERENCES Persona(cedula),
 PRIMARY KEY(cedula));
 
 CREATE TABLE Docente(
-cedula int(8) NOT NULL,
+cedula int(7) NOT NULL,
 FOREIGN KEY(cedula) REFERENCES Persona(cedula),
 PRIMARY KEY(cedula));
 
@@ -34,9 +35,10 @@ UNIQUE KEY (nombre));
 
 CREATE TABLE Horario(
 ciProfesor INT(8) NOT NULL,
-horaIni DATETIME NOT NULL,
-horaFin DATETIME NOT NULL,
+horaIni TIME NOT NULL,
+horaFin TIME NOT NULL,
 dia ENUM('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo') NOT NULL,
+activo bool default true,
 FOREIGN KEY(ciProfesor) REFERENCES Docente(cedula),
 PRIMARY KEY (ciProfesor,horaIni,horaFin,dia));
 
@@ -47,7 +49,7 @@ PRIMARY KEY(idOrientacion));
 
 CREATE TABLE Grupo(
 idGrupo INT(5) NOT NULL auto_increment,
-nombreGr VARCHAR(10),
+nombre VARCHAR(10),
 año INT(4),
 idOrientacion INT(4),
 FOREIGN KEY(idOrientacion) REFERENCES Orientacion(idOrientacion),
@@ -55,16 +57,17 @@ PRIMARY KEY(idGrupo));
 
 CREATE TABLE Enseña(
 idMateria INT(5) NOT NULL,
-ciProfesor INT(8) NOT NULL,
+ciProfesor INT(7) NOT NULL,
 idGrupo INT(5) NOT NULL,
+activo bool default true,
 FOREIGN KEY(ciProfesor) REFERENCES Docente(cedula),
 FOREIGN KEY(idGrupo) REFERENCES Grupo(idGrupo),
 PRIMARY KEY(idMateria,ciProfesor));
 
 CREATE TABLE Consulta(
 idConsulta INT(20) NOT NULL auto_increment,
-ciAlumno INT(8) NOT NULL,
-ciProfesor INT(8),
+ciAlumno INT(7) NOT NULL,
+ciProfesor INT(7),
 idMateria INT(5),
 idGrupo INT(5),
 FOREIGN KEY(ciAlumno) REFERENCES Alumno(cedula),
@@ -85,7 +88,7 @@ idMensaje INT NOT NULL auto_increment,
 contenido VARCHAR(700) NOT NULL,
 hora DATETIME,
 idChat INT(20) NOT NULL,
-idAutor INT(8) NOT NULL,
+idAutor INT(7) NOT NULL,
 FOREIGN KEY(idChat) REFERENCES Chat(idChat),
 FOREIGN KEY(idAutor) REFERENCES Persona(cedula),
 PRIMARY KEY(idMensaje));
@@ -108,25 +111,22 @@ PRIMARY KEY(idAsincronica));
 
 /* INGRESO DE DATOS DE PRUEBA */
 
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(429329192,"Juan","Perez","contra123");
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(413515145,"Roberto","Díaz","Password321");
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(566434567,"Agustina","Ferreira","contraseña");
+INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5490150,"Juan","Reyes","5678");
 INSERT INTO docente SELECT cedula from persona;
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(145162774,"Javier","González","javidi102");
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(145632623,"Martín","Fernández","estoesunacontraseña");
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(423643512,"Mariana","Acosta","contraseña");
-INSERT INTO Administrador(cedula,cargo)VALUES(423643512,"Otro/a");
+INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5355782,"Ismael","Aloy","4321");
+INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5461182,"Tiago","Vescovi","1234");
+INSERT INTO Administrador(cedula,cargo)VALUES(5355782,"Otro/a");
 
 INSERT INTO ORIENTACION(nombre) VALUES("Robótica");
 
-INSERT INTO GRUPO (nombreGr,idOrientacion) VALUES ("3°BA",2021,1);
+INSERT INTO GRUPO (nombre,año,idOrientacion) VALUES ("3°BA",2021,1);
 
 INSERT INTO Materia(nombre) VALUES("Matemática");
 INSERT INTO Materia (nombre) VALUES ("Filosofía");
 
-INSERT INTO Enseña (idMateria,ciProfesor,idGrupo) VALUES(1,429329192,1);
+INSERT INTO Enseña (idMateria,ciProfesor,idGrupo) VALUES(1,5490150,1);
 
-INSERT INTO alumno(cedula,idGrupo) values(145632623,1);
+INSERT INTO alumno(cedula,idGrupo) values(5461182,1);
 
 /* SELECTS DE TODAS LAS TABLAS */
 
