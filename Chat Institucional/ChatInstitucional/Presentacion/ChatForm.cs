@@ -33,12 +33,24 @@ namespace ChatInstitucional.Presentacion
             //Llenar el Dgv_Chats
             Chat chat = new Chat();
             Grupo grupo = new Grupo();
+            Docente docente = new Docente();
             Dgv_Chats.Columns.Add("materia", "materia");
             Dgv_Chats.Columns.Add("grupo", "grupo");
 
-            for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
+            // Comparar para caundo sea docente q sea Rows[i][9] no 12
+            if(Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
             {
-                Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
+                {
+                    Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][9].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                }
+            }
+            else
+            {
+                for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
+                {
+                    Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                }
             }
         }
 
@@ -63,6 +75,8 @@ namespace ChatInstitucional.Presentacion
             {
                 MessageBox.Show("No se pudo enviar el mensaje");
             }
+
+            Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
         }
 
         void AddIncomming(string msg, string fecha, string nombre)
@@ -107,19 +121,19 @@ namespace ChatInstitucional.Presentacion
                 {
                     for(int j = 0; j < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; j++)
                     {
-                        if (Dgv_Chats.Rows[i].Cells[0].Value.ToString() == chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString())
+                        if (Dgv_Chats.Rows[i].Cells[0].Value.ToString() == chat.LlenarChats(Validacion.UsuarioActual).Rows[i][13].ToString())
                         {
                             return;
                         }
                         else
                         {
-                            Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                            Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][13].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
                         }
                     }
                 }
                 else
                 {
-                    Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
+                    Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][13].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
                 }
             }
         }
@@ -174,7 +188,7 @@ namespace ChatInstitucional.Presentacion
             {
 
                 // No consigo q funcione
-                // Creo q no lo pense del todo bien
+                // Creo q no lo pense del todo bien -- Ya funciona
 
                 if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count > 0)
                 {
@@ -194,8 +208,8 @@ namespace ChatInstitucional.Presentacion
                             }
                             else
                             {
-                                AddOutgoing(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["contenido"].ToString());
-                                Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                                //AddOutgoing(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["contenido"].ToString());
+                                //Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
                                 msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
                                 posicionUltima = i;
                             }

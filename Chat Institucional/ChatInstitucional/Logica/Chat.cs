@@ -99,26 +99,31 @@ namespace ChatInstitucional.Logica
 
         public bool CrearChat(Chat c)
         {
-            bool created = false;
             Validacion validacion = new Validacion();
 
             try
             {
                 if(validacion.Insert("INSERT INTO chat(idChat,horaIni) VALUES (" + c.GetIdConsulta() + ",'" + c.GetHoraIni() + "');"))
                 {
-                    created = true;
+                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ");"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                    created = false;
+                    return false;
                 }
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.ToString());
-                created = false;
+                return false;
             }
-            return created;
         }
 
         public int UnirseChat(Chat c)

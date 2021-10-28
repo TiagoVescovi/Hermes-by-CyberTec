@@ -31,7 +31,7 @@ namespace ChatInstitucional.Presentacion
 
             for (int i = 0; i < materia.LlenarComboBoxConsulta().Rows.Count; i++)
             {
-                Combo_Materia.Items.Add(materia.LlenarComboBoxConsulta().Rows[i][1] + " - " + materia.LlenarComboBoxConsulta().Rows[i][6] + " " + materia.LlenarComboBoxConsulta().Rows[i][7] + " - " + materia.LlenarComboBoxConsulta().Rows[i][14]); //Agregarle el grupo al lado del nombre
+                Combo_Materia.Items.Add(materia.LlenarComboBoxConsulta().Rows[i][1] + " - " + materia.LlenarComboBoxConsulta().Rows[i][7] + " " + materia.LlenarComboBoxConsulta().Rows[i][8] + " - " + materia.LlenarComboBoxConsulta().Rows[i][16]); //Agregarle el grupo al lado del nombre
             }
 
             //Llena los DataGridView

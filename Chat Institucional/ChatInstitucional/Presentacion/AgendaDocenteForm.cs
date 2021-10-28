@@ -29,13 +29,13 @@ namespace ChatInstitucional.Presentacion
                 Combo_Orientacion.Items.Add(orientacion.ListarOrientaciones().Rows[i][1]);
             }
 
-            Dgv_Horarios.Columns.Add("Lunes", "Lunes");
-            Dgv_Horarios.Columns.Add("Martes", "Martes");
-            Dgv_Horarios.Columns.Add("Miércoles", "Miércoles");
-            Dgv_Horarios.Columns.Add("Jueves", "Jueves");
-            Dgv_Horarios.Columns.Add("Viernes", "Viernes");
-            Dgv_Horarios.Columns.Add("Sábado", "Sábado");
-            Dgv_Horarios.Columns.Add("Domingo", "Domingo");
+            //Dgv_Horarios.Columns.Add("Lunes", "Lunes");
+            //Dgv_Horarios.Columns.Add("Martes", "Martes");
+            //Dgv_Horarios.Columns.Add("Miércoles", "Miércoles");
+            //Dgv_Horarios.Columns.Add("Jueves", "Jueves");
+            //Dgv_Horarios.Columns.Add("Viernes", "Viernes");
+            //Dgv_Horarios.Columns.Add("Sábado", "Sábado");
+            //Dgv_Horarios.Columns.Add("Domingo", "Domingo");
 
             LlenarDgvHorarios();
             LlenarDgvMaterias();
@@ -154,12 +154,14 @@ namespace ChatInstitucional.Presentacion
         {
             // Elimina el horario seleccionado del dia seleccionado
             Horario horario = new Horario();
-            string horas = Dgv_Horarios.SelectedCells.ToString();
-            string[] hora = horas.Split(' ');
+
             horario.SetCiProfesor(Validacion.UsuarioActual);
-            horario.SetHoraIni(hora[0]);
-            horario.SetHoraFin(hora[1]);
-            horario.SetDia(Dgv_Horarios.SelectedColumns[-1].ToString());
+            horario.SetHoraIni(horario.HorariosProfe(Validacion.UsuarioActual).Rows[Dgv_Horarios.CurrentRow.Index][1].ToString());
+            horario.SetHoraFin(horario.HorariosProfe(Validacion.UsuarioActual).Rows[Dgv_Horarios.CurrentRow.Index][2].ToString());
+            horario.SetDia(horario.HorariosProfe(Validacion.UsuarioActual).Rows[Dgv_Horarios.CurrentRow.Index][0].ToString());
+
+            horario.EliminarHorario(horario);
+            LlenarDgvHorarios();
         }
 
         private void Dgv_Horarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -181,20 +183,19 @@ namespace ChatInstitucional.Presentacion
 
                 try
                 {
-                    for(int i = 0; i < dataTable.Rows.Count; i++)
-                    {
-                        // Cada columna va a ser un dia
+                    Dgv_Horarios.DataSource = dataTable;
 
-                        Dgv_Horarios.Rows.Add(
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][2],
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][2],
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][2],
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][2],
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][2],
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][2],
-                            horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][2]
-                            );
-                    }
+                    // Cada columna va a ser un dia -- No funco
+
+                    //Dgv_Horarios.Rows.Add(
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][2],
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][2],
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][2],
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][2],
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][2],
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][2],
+                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][2]
+                    //    );
                 }
                 catch (Exception ex)
                 {
@@ -265,6 +266,17 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Eliminar_Materia_Click(object sender, EventArgs e)
         {
             // Elimina la materia seleccionada
+            Materia materia = new Materia();
+            if (materia.EliminarEnsenia(Convert.ToInt32(materia.ListarEnsenia(Validacion.UsuarioActual).Rows[Dgv_Materias.CurrentRow.Index][0]), Validacion.UsuarioActual, Convert.ToInt32(materia.ListarEnsenia(Validacion.UsuarioActual).Rows[Dgv_Materias.CurrentRow.Index][2])))
+            {
+                MessageBox.Show("Se eliminó la materia");
+                LlenarDgvMaterias();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar la materia");
+                LlenarDgvMaterias();
+            }
         }
 
         private void Btn_Refresh_Horario_Click(object sender, EventArgs e)
@@ -277,9 +289,16 @@ namespace ChatInstitucional.Presentacion
             LlenarDgvMaterias();
         }
 
+        private void Dgv_Materias_MouseClick(object sender, MouseEventArgs e)
+        {
+            Btn_Eliminar_Materia.Enabled = true;
+        }
+
         private void LlenarDgvMaterias()
         {
             // Enseña
+            Materia materia = new Materia();
+            Dgv_Materias.DataSource = materia.LlenarDgvEnsenia(Validacion.UsuarioActual);
         }
     }
 }

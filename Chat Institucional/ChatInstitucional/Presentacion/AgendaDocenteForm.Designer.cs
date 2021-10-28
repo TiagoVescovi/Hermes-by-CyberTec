@@ -223,6 +223,7 @@
             this.Dgv_Horarios.Name = "Dgv_Horarios";
             this.Dgv_Horarios.ReadOnly = true;
             this.Dgv_Horarios.RowHeadersVisible = false;
+            this.Dgv_Horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Horarios.Size = new System.Drawing.Size(354, 213);
             this.Dgv_Horarios.TabIndex = 13;
             this.Dgv_Horarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Horarios_CellContentClick);
@@ -337,8 +338,11 @@
             this.Dgv_Materias.Name = "Dgv_Materias";
             this.Dgv_Materias.ReadOnly = true;
             this.Dgv_Materias.RowHeadersVisible = false;
+            this.Dgv_Materias.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Dgv_Materias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Materias.Size = new System.Drawing.Size(354, 213);
             this.Dgv_Materias.TabIndex = 18;
+            this.Dgv_Materias.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Dgv_Materias_MouseClick);
             // 
             // Btn_Refresh_Materia
             // 

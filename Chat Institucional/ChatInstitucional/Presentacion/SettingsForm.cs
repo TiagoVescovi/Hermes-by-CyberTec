@@ -101,17 +101,38 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_ChangeLang_Click(object sender, EventArgs e)
         {
-            if(Combo_Idioma.SelectedItem.ToString() == "English")
+            Persona persona = new Persona();
+            switch(Combo_Idioma.SelectedIndex)
             {
-                // Agregar en bd atributo idioma
-                // Aca lo cambiaria a ingles
-            }else if(Combo_Idioma.SelectedItem.ToString() == "Español")
-            {
-                // Aca lo cambia a español
-            }
-            else
-            {
-                // Mensaje de error de q no se selecciono nada
+                case 0:
+                    // Agregar en bd atributo idioma
+                    // Aca lo cambiaria a ingles
+                    if (persona.ModificarPersona("isioma", "EN", Validacion.UsuarioActual))
+                    {
+                        MessageBox.Show("Idioma Cambiado con éxito");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo cambiar el idioma");
+                    }
+                    break;
+
+                case 1:
+                    // Aca lo cambia a español
+                    if (persona.ModificarPersona("isioma", "ES", Validacion.UsuarioActual))
+                    {
+                        MessageBox.Show("Idioma Cambiado con éxito");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo cambiar el idioma");
+                    }
+                    break;
+
+                default:
+                    // Mensaje de error de q no selecciono nada
+                    MessageBox.Show("Seleccione una opción válida");
+                    break;
             }
         }
 

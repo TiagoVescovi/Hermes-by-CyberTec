@@ -112,6 +112,7 @@ namespace ChatInstitucional.Logica
                 alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
                 alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                 alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
+                alumno.SetIdioma(dataTable.Rows[0]["idioma"].ToString());
                 alumno.SetFoto((byte[])dataTable.Rows[0]["foto"]); // MAS RARO ESTO PERO FUNCIONA
             }
             catch(Exception e)
@@ -130,19 +131,16 @@ namespace ChatInstitucional.Logica
 
         public bool ValidarAlumno(int ci, string pass)
         {
-            Alumno alumno = new Alumno();
             Validacion validacion = new Validacion();
-            bool exists = false;
 
             if (validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND a.cedula = " + ci + " AND passwd = '" + pass + "';").Rows.Count > 0) 
             {
-                exists = true;
+                return true;
             }
             else
             {
-                exists = false;
+                return false;
             }
-            return exists;
         }
 
         private bool EditarPersonaDeAlumno(Alumno a)

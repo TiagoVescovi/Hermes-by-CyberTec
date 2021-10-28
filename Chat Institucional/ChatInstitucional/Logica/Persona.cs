@@ -17,6 +17,7 @@ namespace ChatInstitucional.Logica
         protected byte[] foto;
         protected bool Activo;
         protected bool Logueado;
+        protected string idioma;
 
         public Persona()
         {
@@ -92,13 +93,25 @@ namespace ChatInstitucional.Logica
         {
             Logueado = log;
         }
+
         public byte[] GetFoto()
         {
             return foto;
         }
+
         public void SetFoto(byte[] picture)
         {
-            picture = foto;
+            foto = picture;
+        }
+
+        public string GetIdioma()
+        {
+            return idioma;
+        }
+
+        public void SetIdioma(string lang)
+        {
+            idioma = lang;
         }
 
                                     // Comienzo da ABM
@@ -116,6 +129,7 @@ namespace ChatInstitucional.Logica
             byte[] foto = p.GetFoto();
             bool activo = p.GetActivo();
             bool logueado = p.GetLogueado();
+            string idioma = p.GetIdioma();
 
             try
             {
@@ -127,7 +141,7 @@ namespace ChatInstitucional.Logica
                 else
                 {
                     // No existe
-                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,activo,logueado) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "'," + activo + "," + logueado + ");"))
+                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,activo,logueado,idioma) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "'," + activo + "," + logueado + "," + idioma + ");")) 
                     {
                         return true;
                     }
@@ -152,6 +166,7 @@ namespace ChatInstitucional.Logica
 
         public bool ModificarPersona(string atributo, string cambio, int ci)
         {
+            // Usar para el idioma
             // Modificar
             Validacion validacion = new Validacion();
             try
@@ -193,7 +208,8 @@ namespace ChatInstitucional.Logica
                     persona.SetNickname(dataTable.Rows[0]["nickname"].ToString());
                     persona.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                     persona.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
-                    //persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                    persona.SetIdioma(dataTable.Rows[0]["idioma"].ToString());
+                    persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
                 }
                 else
                 {
@@ -204,7 +220,8 @@ namespace ChatInstitucional.Logica
                     persona.SetNickname("");
                     persona.SetActivo(false);
                     persona.SetLogueado(false);
-                    //persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                    persona.SetIdioma("ES");
+                    persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
                 }
             }
             catch (Exception e)

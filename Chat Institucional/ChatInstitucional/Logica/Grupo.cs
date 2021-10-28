@@ -69,7 +69,7 @@ namespace ChatInstitucional.Logica
                 dataTable = validacion.Select("SELECT * FROM grupo WHERE idGrupo = " + id + ";");
 
                 grupo.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
-                grupo.SetNombre(dataTable.Rows[0]["nombreGr"].ToString());
+                grupo.SetNombre(dataTable.Rows[0]["nombre"].ToString());
                 grupo.SetAno(Convert.ToInt32(dataTable.Rows[0]["año"]));
                 grupo.SetIdOrientacion(Convert.ToInt32(dataTable.Rows[0]["idOrientacion"]));
             }

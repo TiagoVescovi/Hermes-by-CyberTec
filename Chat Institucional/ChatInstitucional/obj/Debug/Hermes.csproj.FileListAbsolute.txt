@@ -98,5 +98,4 @@ C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitu
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.VerConsultasForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AgendaDocenteForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.SettingsForm.resources
-C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\Hermes.csproj.AssemblyReference.cache
-C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.LoadingForm.resources
+C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\Hermes.csprojAssemblyReference.cache
