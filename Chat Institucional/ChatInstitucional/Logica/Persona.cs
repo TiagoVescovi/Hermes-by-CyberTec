@@ -127,8 +127,6 @@ namespace ChatInstitucional.Logica
             string apellido = p.GetApellido();
             string pass = p.GetPass();
             byte[] foto = p.GetFoto();
-            bool activo = p.GetActivo();
-            bool logueado = p.GetLogueado();
             string idioma = p.GetIdioma();
 
             try
@@ -141,7 +139,7 @@ namespace ChatInstitucional.Logica
                 else
                 {
                     // No existe
-                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,activo,logueado,idioma) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "'," + activo + "," + logueado + "," + idioma + ");")) 
+                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,idioma) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "','" + idioma + "');")) 
                     {
                         return true;
                     }

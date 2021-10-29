@@ -105,11 +105,11 @@ namespace ChatInstitucional.Logica
             {
                 Console.WriteLine(e.ToString());
 
-                horario.SetCiProfesor(0);
-                horario.SetHoraIni("");
-                horario.SetHoraFin("");
-                horario.SetDia("");
-                horario.SetActivo(false);
+                //horario.SetCiProfesor(0);
+                //horario.SetHoraIni("");
+                //horario.SetHoraFin("");
+                //horario.SetDia("");
+                //horario.SetActivo(false);
             }
 
             return horario;

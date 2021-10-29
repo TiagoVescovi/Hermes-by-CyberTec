@@ -32,7 +32,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Lbl_RgstrDocente_Click(object sender, EventArgs e)
         {
-            RgstrDocenteForm df = new RgstrDocenteForm();
+            DocenteRgstrForm df = new DocenteRgstrForm();
             this.Hide();
             df.ShowDialog();
             this.Show();
@@ -40,7 +40,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Lbl_RgstrAlumno_Click(object sender, EventArgs e)
         {
-            RgstrAlumnoForm af = new RgstrAlumnoForm();
+            AlumnoRegstrForm af = new AlumnoRegstrForm();
             this.Hide();
             af.ShowDialog();
             this.Show();
@@ -91,7 +91,7 @@ namespace ChatInstitucional.Presentacion
                             {
                                 // Logueado con exito
                                 // Abre MainFormDocente
-                                MainFormDocente mfd = new MainFormDocente();
+                                DocenteMainForm mfd = new DocenteMainForm();
                                 Validacion.UsuarioActual = int.Parse(ced[0]);
                                 if (docente.LogIn(Validacion.UsuarioActual))
                                 {
@@ -121,7 +121,7 @@ namespace ChatInstitucional.Presentacion
                             {
                                 // Logueado con exito
                                 // Abre MainFormAlumno
-                                MainFormAlumno mfa = new MainFormAlumno();
+                                AlumnoMainForm mfa = new AlumnoMainForm();
                                 Validacion.UsuarioActual = int.Parse(ced[0]);
                                 if (alumno.LogIn(Validacion.UsuarioActual))
                                 {

@@ -28,14 +28,20 @@ namespace ChatInstitucional.Presentacion
         private void VerConsultasAlumnoForm_Load(object sender, EventArgs e)
         {
             Asincronica asincronica = new Asincronica();
+            Docente docente = new Docente();
             //Poner el nombre del alumno en el titulo del form -- Capaz q no
             Text_Consulta.Text = asincronica.VerAsincronica(idAsincronica).GetConsulta().ToString();
             Text_Respuesta.Text = asincronica.VerAsincronica(idAsincronica).GetRespuesta().ToString();
 
-            if (cedula == asincronica.VerAsincronica(idAsincronica).GetCiProfesor())
+            if (cedula == docente.BuscarDocente(cedula).GetCI())
             {
                 Btn_Respoder.Enabled = true;
                 Text_Respuesta.ReadOnly = false;
+            }
+            else
+            {
+                Btn_Respoder.Enabled = false;
+                Text_Respuesta.ReadOnly = true;
             }
         }
 

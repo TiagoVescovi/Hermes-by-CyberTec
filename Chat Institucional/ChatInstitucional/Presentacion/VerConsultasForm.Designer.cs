@@ -108,7 +108,6 @@
             this.Text_Respuesta.Margin = new System.Windows.Forms.Padding(6);
             this.Text_Respuesta.Multiline = true;
             this.Text_Respuesta.Name = "Text_Respuesta";
-            this.Text_Respuesta.ReadOnly = true;
             this.Text_Respuesta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Text_Respuesta.Size = new System.Drawing.Size(770, 165);
             this.Text_Respuesta.TabIndex = 1;
@@ -133,7 +132,6 @@
             // 
             // Btn_Respoder
             // 
-            this.Btn_Respoder.Enabled = false;
             this.Btn_Respoder.Font = new System.Drawing.Font("Segoe UI", 11.75F);
             this.Btn_Respoder.Location = new System.Drawing.Point(287, 409);
             this.Btn_Respoder.Name = "Btn_Respoder";

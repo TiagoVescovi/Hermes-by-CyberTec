@@ -39,7 +39,7 @@ namespace ChatInstitucional.Logica
         public byte[] ImageToByte(Image imagenIn)
         {
             MemoryStream ms = new MemoryStream();
-            imagenIn.Save(ms, ImageFormat.Jpeg);
+            imagenIn.Save(ms, ImageFormat.Png);
 
             return ms.ToArray();
         }

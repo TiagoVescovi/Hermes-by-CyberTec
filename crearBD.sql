@@ -5,7 +5,7 @@ apellido varchar(30),
 passwd varchar(25),
 foto BLOB,
 nickname VARCHAR(30),
-activo bool default true,
+activo bool default false,
 logueado bool default false,
 idioma ENUM('ES','EN') default 'ES',
 PRIMARY KEY(cedula));
