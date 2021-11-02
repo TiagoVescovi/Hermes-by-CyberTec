@@ -27,73 +27,61 @@ namespace ChatInstitucional.De_persistencia
 
         public bool ModifyPicture(byte[] picture, int ci)
         {
-            bool modified = false;
-
             try
             {
                 connection.Open();
                 MySqlCommand command = new MySqlCommand("UPDATE persona SET foto = @foto WHERE cedula = " + ci + ";", connection);
                 command.Parameters.AddWithValue("@foto", picture);
                 command.ExecuteNonQuery();
-                modified = true;
+                return true;
             }
             catch
             {
-                modified = false;
+                return false;
             }
             finally
             {
                 connection.Close();
             }
-
-            return modified;
         }
 
         public bool Update(string query)
         {
-            bool updated = false;
-
             try
             {
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
-                updated = true;
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-                updated = false;
+                return false;
             }
             finally
             {
                 connection.Close();
             }
-
-            return updated;
         }
 
         public bool Insert(string query)
         {
-            bool insertado = false; //Generalizar los Inserts y Selects
-
             try
             {
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
-                insertado = true;
+                return true;
             }
             catch
             {
-                insertado = false;
+                return false;
             }
             finally
             {
                 connection.Close();
             }
-
-            return insertado;
         }
 
         public DataTable Select(string query)
@@ -119,27 +107,42 @@ namespace ChatInstitucional.De_persistencia
             return dataTable;
         }
 
-        public bool LogOutBDD(int ci) // CERRAR SESION
+        public bool Delete(string query)
         {
-            bool Salio = false;
-
             try
             {
                 connection.Open();
-                MySqlCommand UpdateLogueado = new MySqlCommand("UPDATE persona SET logueado = false WHERE cedula = " + ci + ";", connection);
-                UpdateLogueado.ExecuteNonQuery();
-                Salio = true;
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                return true;
             }
             catch
             {
-                Salio = false;
+                return false;
             }
             finally
             {
                 connection.Close();
             }
+        }
 
-            return Salio;
+        public bool LogOutBDD(int ci) // CERRAR SESION
+        {
+            try
+            {
+                connection.Open();
+                MySqlCommand UpdateLogueado = new MySqlCommand("UPDATE persona SET logueado = false WHERE cedula = " + ci + ";", connection);
+                UpdateLogueado.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

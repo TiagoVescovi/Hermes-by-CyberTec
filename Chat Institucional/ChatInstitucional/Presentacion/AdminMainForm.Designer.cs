@@ -35,6 +35,7 @@
             this.Pnl_Izq = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_Alumnos = new System.Windows.Forms.Button();
+            this.Btn_MateGrupOri = new System.Windows.Forms.Button();
             this.Btn_Settings = new System.Windows.Forms.Button();
             this.Btn_Docentes = new System.Windows.Forms.Button();
             this.Btn_Admins = new System.Windows.Forms.Button();
@@ -45,8 +46,6 @@
             this.Lbl_UserGrupo = new System.Windows.Forms.Label();
             this.Pic_Perfil = new System.Windows.Forms.PictureBox();
             this.Pnl_Der = new System.Windows.Forms.Panel();
-            this.Btn_MateGrupOri = new System.Windows.Forms.Button();
-            this.Btn_Users = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.Pnl_Izq.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -107,7 +106,6 @@
             // 
             this.panel2.Controls.Add(this.Btn_Alumnos);
             this.panel2.Controls.Add(this.Btn_MateGrupOri);
-            this.panel2.Controls.Add(this.Btn_Users);
             this.panel2.Controls.Add(this.Btn_Settings);
             this.panel2.Controls.Add(this.Btn_Docentes);
             this.panel2.Controls.Add(this.Btn_Admins);
@@ -128,9 +126,25 @@
             this.Btn_Alumnos.Name = "Btn_Alumnos";
             this.Btn_Alumnos.Size = new System.Drawing.Size(234, 50);
             this.Btn_Alumnos.TabIndex = 1;
-            this.Btn_Alumnos.Text = "EDITAR ALUMNOS";
+            this.Btn_Alumnos.Text = "ALUMNOS";
             this.Btn_Alumnos.UseVisualStyleBackColor = false;
             this.Btn_Alumnos.Click += new System.EventHandler(this.Btn_Alumnos_Click);
+            // 
+            // Btn_MateGrupOri
+            // 
+            this.Btn_MateGrupOri.BackColor = System.Drawing.Color.DarkBlue;
+            this.Btn_MateGrupOri.FlatAppearance.BorderSize = 0;
+            this.Btn_MateGrupOri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_MateGrupOri.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
+            this.Btn_MateGrupOri.ForeColor = System.Drawing.Color.White;
+            this.Btn_MateGrupOri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Btn_MateGrupOri.Location = new System.Drawing.Point(0, 206);
+            this.Btn_MateGrupOri.Name = "Btn_MateGrupOri";
+            this.Btn_MateGrupOri.Size = new System.Drawing.Size(234, 50);
+            this.Btn_MateGrupOri.TabIndex = 4;
+            this.Btn_MateGrupOri.Text = "CURSOS";
+            this.Btn_MateGrupOri.UseVisualStyleBackColor = false;
+            this.Btn_MateGrupOri.Click += new System.EventHandler(this.Btn_MateGrupOri_Click);
             // 
             // Btn_Settings
             // 
@@ -140,7 +154,7 @@
             this.Btn_Settings.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.Btn_Settings.ForeColor = System.Drawing.Color.White;
             this.Btn_Settings.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_Settings.Location = new System.Drawing.Point(3, 273);
+            this.Btn_Settings.Location = new System.Drawing.Point(3, 272);
             this.Btn_Settings.Name = "Btn_Settings";
             this.Btn_Settings.Size = new System.Drawing.Size(234, 50);
             this.Btn_Settings.TabIndex = 4;
@@ -156,11 +170,11 @@
             this.Btn_Docentes.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.Btn_Docentes.ForeColor = System.Drawing.Color.White;
             this.Btn_Docentes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_Docentes.Location = new System.Drawing.Point(0, 64);
+            this.Btn_Docentes.Location = new System.Drawing.Point(0, 74);
             this.Btn_Docentes.Name = "Btn_Docentes";
             this.Btn_Docentes.Size = new System.Drawing.Size(234, 50);
             this.Btn_Docentes.TabIndex = 2;
-            this.Btn_Docentes.Text = "EDITAR DOCENTES";
+            this.Btn_Docentes.Text = "DOCENTES";
             this.Btn_Docentes.UseVisualStyleBackColor = false;
             this.Btn_Docentes.Click += new System.EventHandler(this.Btn_Docentes_Click);
             // 
@@ -172,11 +186,11 @@
             this.Btn_Admins.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.Btn_Admins.ForeColor = System.Drawing.Color.White;
             this.Btn_Admins.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_Admins.Location = new System.Drawing.Point(0, 117);
+            this.Btn_Admins.Location = new System.Drawing.Point(0, 140);
             this.Btn_Admins.Name = "Btn_Admins";
             this.Btn_Admins.Size = new System.Drawing.Size(234, 50);
             this.Btn_Admins.TabIndex = 3;
-            this.Btn_Admins.Text = "EDITAR ADMINISTRADORES";
+            this.Btn_Admins.Text = "ADMINISTRADORES";
             this.Btn_Admins.UseVisualStyleBackColor = false;
             this.Btn_Admins.Click += new System.EventHandler(this.Btn_Admins_Click);
             // 
@@ -192,6 +206,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "5";
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Pnl_User
             // 
@@ -237,8 +252,8 @@
             this.Lbl_UserGrupo.Name = "Lbl_UserGrupo";
             this.Lbl_UserGrupo.Size = new System.Drawing.Size(715, 24);
             this.Lbl_UserGrupo.TabIndex = 2;
-            this.Lbl_UserGrupo.Text = ".";
-            this.Lbl_UserGrupo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.Lbl_UserGrupo.Text = "Cargo";
+            this.Lbl_UserGrupo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Pic_Perfil
             // 
@@ -259,39 +274,7 @@
             this.Pnl_Der.Size = new System.Drawing.Size(717, 428);
             this.Pnl_Der.TabIndex = 29;
             // 
-            // Btn_MateGrupOri
-            // 
-            this.Btn_MateGrupOri.BackColor = System.Drawing.Color.DarkBlue;
-            this.Btn_MateGrupOri.FlatAppearance.BorderSize = 0;
-            this.Btn_MateGrupOri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_MateGrupOri.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
-            this.Btn_MateGrupOri.ForeColor = System.Drawing.Color.White;
-            this.Btn_MateGrupOri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_MateGrupOri.Location = new System.Drawing.Point(0, 167);
-            this.Btn_MateGrupOri.Name = "Btn_MateGrupOri";
-            this.Btn_MateGrupOri.Size = new System.Drawing.Size(234, 50);
-            this.Btn_MateGrupOri.TabIndex = 4;
-            this.Btn_MateGrupOri.Text = "EDITAR CURSOS";
-            this.Btn_MateGrupOri.UseVisualStyleBackColor = false;
-            this.Btn_MateGrupOri.Click += new System.EventHandler(this.Btn_MateGrupOri_Click);
-            // 
-            // Btn_Users
-            // 
-            this.Btn_Users.BackColor = System.Drawing.Color.DarkBlue;
-            this.Btn_Users.FlatAppearance.BorderSize = 0;
-            this.Btn_Users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Users.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
-            this.Btn_Users.ForeColor = System.Drawing.Color.White;
-            this.Btn_Users.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_Users.Location = new System.Drawing.Point(0, 220);
-            this.Btn_Users.Name = "Btn_Users";
-            this.Btn_Users.Size = new System.Drawing.Size(234, 50);
-            this.Btn_Users.TabIndex = 4;
-            this.Btn_Users.Text = "EDITAR USUARIOS";
-            this.Btn_Users.UseVisualStyleBackColor = false;
-            this.Btn_Users.Click += new System.EventHandler(this.Btn_Settings_Click);
-            // 
-            // MainFormAdmin
+            // AdminMainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -302,7 +285,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MainFormAdmin";
+            this.Name = "AdminMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hermes - Chat Institucional";
             this.Load += new System.EventHandler(this.MainFormAdmin_Load);
@@ -336,6 +319,5 @@
         private System.Windows.Forms.PictureBox Pic_Perfil;
         private System.Windows.Forms.Panel Pnl_Der;
         private System.Windows.Forms.Button Btn_MateGrupOri;
-        private System.Windows.Forms.Button Btn_Users;
     }
 }

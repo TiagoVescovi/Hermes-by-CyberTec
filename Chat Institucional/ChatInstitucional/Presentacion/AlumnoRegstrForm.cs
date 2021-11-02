@@ -27,7 +27,6 @@ namespace ChatInstitucional.Presentacion
             {
                 Combo_Grupo.Items.Add(grupo.LlenarComboBox().Rows[i]["nombre"]);
             }
-            
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)

@@ -126,7 +126,7 @@ namespace ChatInstitucional.Logica
         public DataTable ListarAlumnos()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM alumno;");
+            return validacion.Select("SELECT a.cedula as 'Cédula', p.nombre as 'Nombre', p.apellido as 'Apellido', g.nombre as 'Grupo' FROM alumno a, persona p, grupo g WHERE a.cedula = p.cedula AND a.idGrupo = g.idGrupo AND p.activo = true;");
         }
 
         public bool ValidarAlumno(int ci, string pass)

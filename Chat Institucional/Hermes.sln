@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hermes", "ChatInstitucional\Hermes.csproj", "{CACC7B0B-EAC3-4CAA-B848-5EB72BB99161}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6E4FBDD7-0618-4FFC-B34D-D68007B35097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CACC7B0B-EAC3-4CAA-B848-5EB72BB99161}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CACC7B0B-EAC3-4CAA-B848-5EB72BB99161}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CACC7B0B-EAC3-4CAA-B848-5EB72BB99161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E4FBDD7-0618-4FFC-B34D-D68007B35097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E4FBDD7-0618-4FFC-B34D-D68007B35097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E4FBDD7-0618-4FFC-B34D-D68007B35097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E4FBDD7-0618-4FFC-B34D-D68007B35097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

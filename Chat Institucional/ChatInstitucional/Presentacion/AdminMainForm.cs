@@ -21,7 +21,7 @@ namespace ChatInstitucional.Presentacion
         PrincipalForm pf = new PrincipalForm();
         AdminAlumnoForm aaluF = new AdminAlumnoForm();
         AdminDocenteForm adocF = new AdminDocenteForm();
-        AdminUsersForm ausrF = new AdminUsersForm();
+        AdminCursosForm acurF = new AdminCursosForm();
         SettingsForm sf = new SettingsForm();
         AdminAdminForm aadmF = new AdminAdminForm();
         Fotografia foto = new Fotografia();
@@ -37,6 +37,7 @@ namespace ChatInstitucional.Presentacion
             try
             {
                 Lbl_UserName.Text = admin.BuscarAdmin(Validacion.UsuarioActual).GetNombre() + " " + admin.BuscarAdmin(Validacion.UsuarioActual).GetApellido();
+                Lbl_UserGrupo.Text = admin.BuscarAdmin(Validacion.UsuarioActual).GetCargo();
 
                 //Sigue sin funcionar
                 Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(admin.BuscarAdmin(Validacion.UsuarioActual).GetFoto()));
@@ -80,27 +81,104 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_Alumnos_Click(object sender, EventArgs e)
         {
+            // AdminAlumnoForm
+            aaluF.TopLevel = false;
+            aaluF.AutoScroll = true;
+            Pnl_Der.Controls.Add(aaluF);
+            aaluF.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "EDITAR ALUMNOS";
 
+            pf.Hide();
+            aaluF.Show();   //Muestra este
+            adocF.Hide();
+            aadmF.Hide();
+            acurF.Hide();
+            sf.Hide();
         }
 
         private void Btn_Docentes_Click(object sender, EventArgs e)
         {
+            // AdminDocenteForm
+            adocF.TopLevel = false;
+            adocF.AutoScroll = true;
+            Pnl_Der.Controls.Add(adocF);
+            adocF.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "EDITAR DOCENTES";
 
+            pf.Hide();
+            aaluF.Hide();
+            adocF.Show();   //Muestra este
+            aadmF.Hide();
+            acurF.Hide();
+            sf.Hide();
         }
 
         private void Btn_Admins_Click(object sender, EventArgs e)
         {
+            // AdminAdminForm
+            aadmF.TopLevel = false;
+            aadmF.AutoScroll = true;
+            Pnl_Der.Controls.Add(aadmF);
+            aadmF.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "EDITAR ADMINISTRADORES";
 
+            pf.Hide();
+            aaluF.Hide();
+            adocF.Hide();
+            aadmF.Show();   //Muestra este
+            acurF.Hide();
+            sf.Hide();
         }
 
         private void Btn_Settings_Click(object sender, EventArgs e)
         {
+            // Settings
+            sf.TopLevel = false;
+            sf.AutoScroll = true;
+            Pnl_Der.Controls.Add(sf);
+            sf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "CONFIGURACIÓN";
 
+            pf.Hide();
+            aaluF.Hide();   
+            adocF.Hide();
+            aadmF.Hide();
+            acurF.Hide();
+            sf.Show();      //Muestra este
         }
 
         private void Btn_MateGrupOri_Click(object sender, EventArgs e)
         {
+            // AdminCursosForm
+            acurF.TopLevel = false;
+            acurF.AutoScroll = true;
+            Pnl_Der.Controls.Add(acurF);
+            acurF.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "EDITAR CURSOS";
 
+            pf.Hide();
+            aaluF.Hide();
+            adocF.Hide();
+            aadmF.Hide();
+            acurF.Show();   //Muestra este
+            sf.Hide();      
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // PrincipalForm
+            pf.TopLevel = false;
+            pf.AutoScroll = true;
+            Pnl_Der.Controls.Add(pf);
+            pf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "PRINCIPAL";
+
+            pf.Show();      //Muestra este
+            aaluF.Hide();
+            adocF.Hide();
+            aadmF.Hide();
+            acurF.Hide();   
+            sf.Hide();
         }
     }
 }

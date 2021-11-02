@@ -30,6 +30,7 @@ PRIMARY KEY(cedula));
 CREATE TABLE Materia(
 idMateria INT(5) NOT NULL auto_increment,
 nombre VARCHAR(30) NOT NULL,
+activo bool default true,
 PRIMARY KEY(idMateria),
 UNIQUE KEY (nombre));
 
@@ -45,6 +46,7 @@ PRIMARY KEY (ciProfesor,horaIni,horaFin,dia));
 CREATE TABLE Orientacion(
 idOrientacion INT(4) NOT NULL auto_increment,
 nombre VARCHAR(20),
+activo bool default true,
 PRIMARY KEY(idOrientacion));
 
 CREATE TABLE Grupo(
@@ -52,6 +54,7 @@ idGrupo INT(5) NOT NULL auto_increment,
 nombre VARCHAR(10),
 año INT(4),
 idOrientacion INT(4),
+activo bool default true,
 FOREIGN KEY(idOrientacion) REFERENCES Orientacion(idOrientacion),
 PRIMARY KEY(idGrupo));
 

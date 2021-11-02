@@ -39,6 +39,11 @@ namespace ChatInstitucional.Logica
             return connect.Select(query);
         }
 
+        public bool Delete(string query)
+        {
+            return connect.Delete(query);
+        }
+
         public bool ValidarLogOut(int ci)
         {
             return connect.LogOutBDD(ci);

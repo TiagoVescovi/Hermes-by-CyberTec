@@ -149,8 +149,9 @@ namespace ChatInstitucional.Logica
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 return false;
             }
         }
@@ -178,9 +179,9 @@ namespace ChatInstitucional.Logica
                     return false;
                 }    
             }
-            catch
+            catch (Exception e)
             {
-                Console.WriteLine("NO SE PUDO");
+                Console.WriteLine(e.ToString());
                 return false;
             }
         }
@@ -209,18 +210,18 @@ namespace ChatInstitucional.Logica
                     persona.SetIdioma(dataTable.Rows[0]["idioma"].ToString());
                     persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
                 }
-                else
-                {
-                    persona.SetCI(0);
-                    persona.SetNombre("");
-                    persona.SetApellido("");
-                    persona.SetPass("");
-                    persona.SetNickname("");
-                    persona.SetActivo(false);
-                    persona.SetLogueado(false);
-                    persona.SetIdioma("ES");
-                    persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
-                }
+                //else
+                //{
+                //    persona.SetCI(0);
+                //    persona.SetNombre("");
+                //    persona.SetApellido("");
+                //    persona.SetPass("");
+                //    persona.SetNickname("");
+                //    persona.SetActivo(false);
+                //    persona.SetLogueado(false);
+                //    persona.SetIdioma("ES");
+                //    persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                //}
             }
             catch (Exception e)
             {

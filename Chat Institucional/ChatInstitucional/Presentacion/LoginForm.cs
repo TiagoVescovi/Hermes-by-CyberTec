@@ -72,6 +72,18 @@ namespace ChatInstitucional.Presentacion
                             {
                                 // Logueado con exito
                                 // Abre MainFormAdmin
+                                AdminMainForm adf = new AdminMainForm();
+                                Validacion.UsuarioActual = int.Parse(ced[0]);
+                                if (administrador.LogIn(Validacion.UsuarioActual))
+                                {
+                                    this.Hide();
+                                    adf.ShowDialog();
+                                    this.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo iniciar sesión");
+                                }
 
                             }
                             else if(administrador.ActivoLogueado(int.Parse(ced[0])) == 2)

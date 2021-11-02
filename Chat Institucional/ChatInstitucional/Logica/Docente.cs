@@ -17,7 +17,7 @@ namespace ChatInstitucional.Logica
         public DataTable ListarDocentes()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM docente;");
+            return validacion.Select("SELECT d.cedula as 'Cédula', p.nombre as 'Nombre', p.apellido as 'Apellido' FROM docente d, persona p WHERE d.cedula = p.cedula AND p.activo = true;");
         }
 
         public Docente BuscarDocente(int ci)
@@ -37,7 +37,7 @@ namespace ChatInstitucional.Logica
                 docente.SetNickname(dataTable.Rows[0]["nickname"].ToString());
                 docente.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                 docente.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
-                //persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                docente.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
             }
             catch (Exception e)
             {
@@ -102,13 +102,30 @@ namespace ChatInstitucional.Logica
         public bool ModificarDocente(string atributo, string cambio, int ci)
         {
             // Modifica un docente
-            return false;
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Update("UPDATE persona SET " + atributo + " = " + cambio + " WHERE cedula = " + ci + ";"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
         }
 
         public bool EliminarDocente(int ci)
         {
             // Elimina un docente
-            return false;
+            Validacion validacion = new Validacion();
+            return validacion.Update("UPDATE persona SET activo = 0 WHERE cedula = " + ci + ";");
         }
 
     }
