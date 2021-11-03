@@ -105,4 +105,6 @@ C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitu
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.DocenteMainForm.es-UY.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminCursosForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminValidarForm.resources
-C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminAltaMod.resources
+C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminAltaModForm.resources
+C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminDocenteAgendaForm.resources
+C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminCursosAMForm.resources

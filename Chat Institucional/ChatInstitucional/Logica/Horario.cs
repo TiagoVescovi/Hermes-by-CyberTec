@@ -153,7 +153,13 @@ namespace ChatInstitucional.Logica
         public bool EliminarHorario(Horario h)
         {
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE horario SET activo = false WHERE ciProfesor = " + h.GetCiProfesor() + " AND horaIni = '" + h.GetHoraIni() + "' AND horaFin = '" + h.GetHoraFin() + "' AND dia = '" + h.GetDia() + "';");
+            return validacion.Delete("DELETE FROM horario WHERE ciProfesor = " + h.GetCiProfesor() + " AND horaIni = '" + h.GetHoraIni() + "' AND horaFin = '" + h.GetHoraFin() + "' AND dia = '" + h.GetDia() + "';");
+        }
+
+        public DataTable HorariosPorDia(int ci, string dia)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT horaIni as 'Desde', horaFin as 'Hasta' FROM horario WHERE ciProfesor = " + ci + " AND dia = '" + dia + "' AND activo = true;");
         }
     }
 }

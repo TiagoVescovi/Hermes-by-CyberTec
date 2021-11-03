@@ -78,5 +78,12 @@ namespace ChatInstitucional.Presentacion
             Btn_Materias.Enabled = true;
             Btn_Mod.Enabled = true;
         }
+
+        private void Btn_Materias_Click(object sender, EventArgs e)
+        {
+            AdminDocenteAgendaForm form = new AdminDocenteAgendaForm(Convert.ToInt32(Dgv_Docentes.CurrentRow.Cells[0].Value));
+            form.ShowDialog();
+            RecargarDocentes();
+        }
     }
 }

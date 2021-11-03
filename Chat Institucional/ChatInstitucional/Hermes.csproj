@@ -99,6 +99,12 @@
     <Compile Include="Presentacion\AdminAlumnoForm.Designer.cs">
       <DependentUpon>AdminAlumnoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\AdminCursosAMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\AdminCursosAMForm.Designer.cs">
+      <DependentUpon>AdminCursosAMForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\AdminDocenteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,11 +117,11 @@
     <Compile Include="Presentacion\AdminCursosForm.Designer.cs">
       <DependentUpon>AdminCursosForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\AdminDocenteMateriasForm.cs">
+    <Compile Include="Presentacion\AdminDocenteAgendaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\AdminDocenteMateriasForm.Designer.cs">
-      <DependentUpon>AdminDocenteMateriasForm.cs</DependentUpon>
+    <Compile Include="Presentacion\AdminDocenteAgendaForm.Designer.cs">
+      <DependentUpon>AdminDocenteAgendaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\AdminValidarForm.cs">
       <SubType>Form</SubType>
@@ -236,14 +242,17 @@
     <EmbeddedResource Include="Presentacion\AdminAlumnoForm.resx">
       <DependentUpon>AdminAlumnoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\AdminCursosAMForm.resx">
+      <DependentUpon>AdminCursosAMForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\AdminDocenteForm.resx">
       <DependentUpon>AdminDocenteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\AdminCursosForm.resx">
       <DependentUpon>AdminCursosForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\AdminDocenteMateriasForm.resx">
-      <DependentUpon>AdminDocenteMateriasForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\AdminDocenteAgendaForm.resx">
+      <DependentUpon>AdminDocenteAgendaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\AdminValidarForm.resx">
       <DependentUpon>AdminValidarForm.cs</DependentUpon>

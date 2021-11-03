@@ -152,7 +152,7 @@
             this.Btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_Refresh.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Refresh.ForeColor = System.Drawing.Color.White;
-            this.Btn_Refresh.Location = new System.Drawing.Point(349, 2);
+            this.Btn_Refresh.Location = new System.Drawing.Point(677, 4);
             this.Btn_Refresh.Name = "Btn_Refresh";
             this.Btn_Refresh.Size = new System.Drawing.Size(36, 27);
             this.Btn_Refresh.TabIndex = 45;

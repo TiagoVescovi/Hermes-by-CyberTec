@@ -39,6 +39,34 @@ namespace ChatInstitucional.Presentacion
 
             LlenarDgvHorarios();
             LlenarDgvMaterias();
+
+            for (int i = 00; i < 24; i++)
+            {
+                if (i < 10)
+                {
+                    Combo_HoraIni_HH.Items.Add("0" + i);
+                    Combo_HoraFin_HH.Items.Add("0" + i);
+                }
+                else
+                {
+                    Combo_HoraIni_HH.Items.Add(i);
+                    Combo_HoraFin_HH.Items.Add(i);
+                }
+            }
+
+            for (int i = 00; i < 60; i++)
+            {
+                if (i < 10)
+                {
+                    Combo_HoraIni_MM.Items.Add("0" + i);
+                    Combo_HoraFin_MM.Items.Add("0" + i);
+                }
+                else
+                {
+                    Combo_HoraIni_MM.Items.Add(i);
+                    Combo_HoraFin_MM.Items.Add(i);
+                }
+            }
         }
 
         private void Combo_Orientacion_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,33 +107,8 @@ namespace ChatInstitucional.Presentacion
         private void Combo_Dias_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Habilita los horarios
-            for (int i = 00; i < 24; i++)
-            {
-                if (i < 10)
-                {
-                    Combo_HoraIni_HH.Items.Add("0" + i);
-                    Combo_HoraFin_HH.Items.Add("0" + i);
-                }
-                else
-                {
-                    Combo_HoraIni_HH.Items.Add(i);
-                    Combo_HoraFin_HH.Items.Add(i);
-                }
-            }
 
-            for (int i = 00; i < 60; i++)
-            {
-                if (i < 10)
-                {
-                    Combo_HoraIni_MM.Items.Add("0" + i);
-                    Combo_HoraFin_MM.Items.Add("0" + i);
-                }
-                else
-                {
-                    Combo_HoraIni_MM.Items.Add(i);
-                    Combo_HoraFin_MM.Items.Add(i);
-                }
-            }
+            LlenarDgvHorarios();
 
             Combo_HoraIni_HH.Enabled = true;
             Combo_HoraIni_MM.Enabled = true;
@@ -182,33 +185,13 @@ namespace ChatInstitucional.Presentacion
             // Las columnas van a ser los dias
             // Ver como hacerlo y que quede bien xd
             Horario horario = new Horario();
-            DataTable dataTable = new DataTable();
-            
-            if(horario.HorariosProfe(Validacion.UsuarioActual).Rows.Count > 0)
+            try
             {
-                dataTable = horario.HorariosProfe(Validacion.UsuarioActual);
-
-                try
-                {
-                    Dgv_Horarios.DataSource = dataTable;
-
-                    // Cada columna va a ser un dia -- No funco
-
-                    //Dgv_Horarios.Rows.Add(
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Lunes").Rows[i][2],
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Martes").Rows[i][2],
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Miercoles").Rows[i][2],
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Jueves").Rows[i][2],
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Viernes").Rows[i][2],
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Sabado").Rows[i][2],
-                    //    horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][1] + " \n" + horario.HorariosPorDia(Validacion.UsuarioActual, "Domingo").Rows[i][2]
-                    //    );
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-                
+                Dgv_Horarios.DataSource = horario.HorariosPorDia(Validacion.UsuarioActual, Combo_Dias.SelectedItem.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 

@@ -30,6 +30,20 @@ namespace ChatInstitucional.Presentacion
         public AdminMainForm()
         {
             InitializeComponent();
+
+            // PrincipalForm
+            pf.TopLevel = false;
+            pf.AutoScroll = true;
+            Pnl_Der.Controls.Add(pf);
+            pf.Dock = DockStyle.Fill;
+            Lbl_FormAbierto.Text = "PRINCIPAL";
+
+            pf.Show();      //Muestra este
+            aaluF.Hide();
+            adocF.Hide();
+            aadmF.Hide();
+            acurF.Hide();
+            sf.Hide();
         }
 
         private void MainFormAdmin_Load(object sender, EventArgs e)

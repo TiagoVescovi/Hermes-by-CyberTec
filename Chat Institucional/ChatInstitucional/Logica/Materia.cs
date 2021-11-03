@@ -11,6 +11,7 @@ namespace ChatInstitucional.Logica
     {
         protected string Nombre;
         protected int IdMateria;
+        protected bool activo;
 
         public Materia()
         {
@@ -32,11 +33,21 @@ namespace ChatInstitucional.Logica
             return IdMateria;
         }
 
+        public void SetAvtivo(bool act)
+        {
+            activo = act;
+        }
+
+        public bool GetActivo()
+        {
+            return activo;
+        }
+
         public void SetIdMateria(int idmat)
         {
             IdMateria = idmat;
         }
-        
+
         public DataTable LlenarComboBoxConsulta()
         {
             Validacion validacion = new Validacion();
@@ -99,6 +110,87 @@ namespace ChatInstitucional.Logica
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM enseña WHERE ciProfesor = " + ci + " AND activo = true;");
+        }
+
+        public Materia BuscarMateria(int id)
+        {
+            Validacion validacion = new Validacion();
+            DataTable dataTable = new DataTable();
+            Materia materia = new Materia();
+
+            try
+            {
+                if(validacion.Select("SELECT * FROM materia WHERE idMAteria = "+id+";").Rows.Count > 0)
+                {
+                    dataTable = validacion.Select("SELECT * FROM materia WHERE idMAteria = " + id + ";");
+
+                    materia.SetIdMateria(Convert.ToInt32(dataTable.Rows[0][0]));
+                    materia.SetNombre(dataTable.Rows[0][1].ToString());
+                    materia.SetAvtivo(Convert.ToBoolean(dataTable.Rows[0][2]));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return materia;
+        }
+
+        public DataTable ListarSoloMaterias()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM materia;");
+        }
+
+        public bool EliminarMateria(int id)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Update("UPDATE materia SET activo = false WHERE idMateria = " + id + ";");
+        }
+
+        public bool AgregarMateria(Materia m)
+        {
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Insert("INSERT INTO materia(nombre) VALUES ('" + m.GetNombre() + "');"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
+            
+        }
+
+        public bool ModificarMateria(string atributo, string cambio, int id)
+        {
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Update("UPDATE materia SET " + atributo + " = " + cambio + " WHERE idMateria = " + id + ";"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
         }
     }
 }

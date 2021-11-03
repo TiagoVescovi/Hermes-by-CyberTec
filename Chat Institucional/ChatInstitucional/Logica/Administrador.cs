@@ -35,7 +35,7 @@ namespace ChatInstitucional.Logica
         public DataTable ListarAdmins()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM administrador;");
+            return validacion.Select("SELECT a.cedula as 'Cédula', p.nombre as 'Nombre', p.apellido as 'Apellido', a.cargo as 'Cargo' FROM administrador a, persona p WHERE a.cedula = p.cedula AND p.activo = true;");
         }
 
         public Administrador BuscarAdmin(int ci)
@@ -98,7 +98,30 @@ namespace ChatInstitucional.Logica
         public bool AgregarAlumno(int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Insert("INSERT INTO persona(cedula) VALUES (" + ci + ");");
+            Alumno alumno = new Alumno();
+
+            if (alumno.BuscarPersona(ci).GetCI() == ci)
+            {
+                if (alumno.BuscarAlumno(ci).GetCI() == ci)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (validacion.Insert("INSERT INTO persona(cedula) VALUES (" + ci + ");"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool EliminarAdmin(int ci)
@@ -118,6 +141,135 @@ namespace ChatInstitucional.Logica
             }
             else
             {
+                return false;
+            }
+        }
+
+        public bool AgregarEnDocente(int ci)
+        {
+            Validacion validacion = new Validacion();
+            Docente docente = new Docente();
+
+            if(docente.BuscarPersona(ci).GetCI() == ci)
+            {
+                if(docente.BuscarDocente(ci).GetCI() == ci)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (validacion.Insert("INSERT INTO docente(cedula) VALUES (" + ci + ");"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AgregarEnAdmin(int ci, string cargo)
+        {
+            Validacion validacion = new Validacion();
+            Administrador administrador = new Administrador();
+
+            if (administrador.BuscarPersona(ci).GetCI() == ci)
+            {
+                if (administrador.BuscarAdmin(ci).GetCI() == ci)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (validacion.Insert("INSERT INTO administrador(cedula,cargo) VALUES (" + ci + ",'" + cargo + "');")) 
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AgregarEnAlumno(int ci, int grupo)
+        {
+            Validacion validacion = new Validacion();
+            Alumno alumno = new Alumno();
+
+            if (alumno.BuscarPersona(ci).GetCI() == ci)
+            {
+                if (alumno.BuscarAlumno(ci).GetCI() == ci)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (validacion.Insert("INSERT INTO alumno(cedula,idGrupo) VALUES (" + ci + "," + grupo + ");")) 
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AgregarAdmin(Administrador a)
+        {
+            Validacion validacion = new Validacion();
+
+            if (a.IngresarPersona(a))
+            {
+                if (validacion.Insert("INSERT INTO administrador(cedula,cargo) VALUES (" + a.GetCI() + ",'" + a.GetCargo() + "');"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool ModificarAdmin(string atributo, string cambio, int ci)
+        {
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Update("UPDATE administrador SET " + atributo + " = " + cambio + " WHERE cedula = " + ci + ";"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
                 return false;
             }
         }

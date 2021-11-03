@@ -151,10 +151,11 @@
             this.Btn_Materias.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Materias.Location = new System.Drawing.Point(0, 316);
             this.Btn_Materias.Name = "Btn_Materias";
-            this.Btn_Materias.Size = new System.Drawing.Size(333, 79);
+            this.Btn_Materias.Size = new System.Drawing.Size(333, 76);
             this.Btn_Materias.TabIndex = 10;
-            this.Btn_Materias.Text = "EDITAR MATERIAS";
+            this.Btn_Materias.Text = "VER AGENDA";
             this.Btn_Materias.UseVisualStyleBackColor = true;
+            this.Btn_Materias.Click += new System.EventHandler(this.Btn_Materias_Click);
             // 
             // Btn_Refresh
             // 
@@ -166,7 +167,7 @@
             this.Btn_Refresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_Refresh.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Refresh.ForeColor = System.Drawing.Color.White;
-            this.Btn_Refresh.Location = new System.Drawing.Point(349, 2);
+            this.Btn_Refresh.Location = new System.Drawing.Point(677, 5);
             this.Btn_Refresh.Name = "Btn_Refresh";
             this.Btn_Refresh.Size = new System.Drawing.Size(36, 27);
             this.Btn_Refresh.TabIndex = 7;

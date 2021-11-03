@@ -16,6 +16,7 @@ namespace ChatInstitucional.Presentacion
         int TipoUser;
         int Accion;
         int CI;
+        string[] cargos = { "Director/a", "Subdirector/a", "Adscripto/a", "Secretario/a", "Otro/a" };
 
         public AdminAltaModForm(int userType, int action)   //Este añade
         {
@@ -39,6 +40,7 @@ namespace ChatInstitucional.Presentacion
             Text_Nick.ForeColor = Color.Black;
             Text_Pass.ForeColor = Color.Black;
             Text_PassCheck.ForeColor = Color.Black;
+            Combo_Nuevo_Existenete.ForeColor = Color.Black;
 
             switch (TipoUser)
             {
@@ -81,7 +83,9 @@ namespace ChatInstitucional.Presentacion
                     Text_Nick.Enabled = true;
                     Text_Pass.Enabled = true;
                     Text_PassCheck.Enabled = true;
-                    Combo_Grupos.Enabled = false;
+                    Combo_Grupos.Enabled = true;
+
+                    Combo_Grupos.Items.AddRange(cargos);
                     break;
 
                 default:
@@ -103,6 +107,7 @@ namespace ChatInstitucional.Presentacion
             Accion = action;
             CI = ci;
 
+            Combo_Nuevo_Existenete.Enabled = false;
             Text_Cedula.ForeColor = Color.Gray;
             Text_Nombre.ForeColor = Color.Black;
             Text_Apellido.ForeColor = Color.Black;
@@ -166,6 +171,7 @@ namespace ChatInstitucional.Presentacion
                     Combo_Grupos.Enabled = false;
 
                     //Llenar el combo box con los cargos
+                    Combo_Grupos.Items.AddRange(cargos);
 
                     Text_Cedula.Text = administrador.BuscarAdmin(CI).GetCI().ToString();
                     Text_Nombre.Text = administrador.BuscarAdmin(CI).GetNombre();
@@ -200,12 +206,116 @@ namespace ChatInstitucional.Presentacion
                         {
                             case 1:
                                 //Añadir
+                                if(Combo_Nuevo_Existenete.SelectedIndex == 0)
+                                {
+                                    Fotografia foto = new Fotografia();
 
+                                    foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+
+                                    try
+                                    {
+                                        if (!String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Pass.Text) && Text_Pass.Text != "Contaseña" && !String.IsNullOrEmpty(Text_PassCheck.Text) && Text_PassCheck.Text != "Confirmar Contraseña")
+                                        {
+                                            string cedula = Text_Cedula.Text;
+                                            string[] ced = cedula.Split('-');
+                                            if (CIValidator.Validate(cedula))
+                                            {
+                                                if (Text_Pass.Text == Text_PassCheck.Text)
+                                                {
+                                                    Docente docente = new Docente();
+                                                    docente.SetNickname(Text_Nick.Text);
+                                                    docente.SetCI(int.Parse(ced[0]));
+                                                    docente.SetNombre(Text_Nombre.Text);
+                                                    docente.SetApellido(Text_Apellido.Text);
+                                                    docente.SetPass(Text_Pass.Text);
+                                                    docente.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
+
+                                                    if (docente.AgregarDocente(docente))
+                                                    {
+                                                        DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador valide su usuario para iniciar sesión.", "Usuario creado", MessageBoxButtons.OK);
+                                                        if (result == DialogResult.OK)
+                                                        {
+                                                            this.Close();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Ocurrió un error al crear el usuario.\nRegrese e intente nuevamente.");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Las contraseñas no coinciden.");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Ingrese una cédula válida");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Debe llenar todos los campos.");
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        MessageBox.Show("Ocurrió un error, intente otra vez.");
+                                    }
+                                }
+                                else if (Combo_Nuevo_Existenete.SelectedIndex == 1)
+                                {
+                                    if (!String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Pass.Text) && Text_Pass.Text != "Contaseña" && !String.IsNullOrEmpty(Text_PassCheck.Text) && Text_PassCheck.Text != "Confirmar Contraseña")
+                                    {
+                                        Administrador administrador = new Administrador();
+                                        string cedula = Text_Cedula.Text;
+                                        string[] ced = cedula.Split('-');
+                                        if (CIValidator.Validate(cedula))
+                                        {
+                                            if (administrador.AgregarEnDocente(int.Parse(ced[0])))
+                                            {
+                                                MessageBox.Show("Docente agregado satisfacttoriamente");
+                                                this.Close();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("El docente ya está creado u ocurrió un error en su creación");
+                                                this.Close();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Ingrese una cédula válida");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Debe llenar todos los campos.");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Debe seleccionar el estado de la persona");
+                                }
                                 break;
 
                             case 2:
                                 //Modificar
+                                if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname")
+                                {
+                                    Docente docente = new Docente();
+                                    int cedula = int.Parse(Text_Cedula.Text);
 
+                                    if (docente.ModificarPersona("nombre", "'" + Text_Nombre.Text + "'", cedula) && docente.ModificarPersona("apellido", "'" + Text_Apellido.Text + "'", cedula) && docente.ModificarPersona("nickname", "'" + Text_Nick.Text + "'", cedula))
+                                    {
+                                        MessageBox.Show("Usuario actualizado correctamente");
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se pudo actualizar el usuario");
+                                    }
+                                }
                                 break;
 
                             default:
@@ -222,25 +332,69 @@ namespace ChatInstitucional.Presentacion
                         {
                             case 1:
                                 //Añadir
-                                DialogResult dialogResult = MessageBox.Show("Solo se ingresará la cédula para que luego un alumno se registre\n¿Desea continuar?", "Añadir usuario", MessageBoxButtons.YesNo);
-                                if (dialogResult == DialogResult.Yes)
+                                if(Combo_Nuevo_Existenete.SelectedIndex == 0)
                                 {
-                                    if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula")
+                                    try
+                                    {
+                                        DialogResult dialogResult = MessageBox.Show("Solo se ingresará la cédula para que luego un alumno se registre\n¿Desea continuar?", "Añadir usuario", MessageBoxButtons.YesNo);
+                                        if (dialogResult == DialogResult.Yes)
+                                        {
+                                            // No ser fija si existe
+                                            if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula")
+                                            {
+                                                Administrador administrador = new Administrador();
+                                                string cedula = Text_Cedula.Text;
+                                                string[] ced = cedula.Split('-');
+
+                                                if (CIValidator.Validate(cedula))
+                                                {
+                                                    if (administrador.AgregarAlumno(int.Parse(ced[0])))
+                                                    {
+                                                        MessageBox.Show("Usuario Ingresado\nDebe esperar a que un alumno se registre para poder editarlo");
+                                                        this.Close();
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("No se pudo ingresar el usuario");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Ingrese una cédula válida");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Debe llenar el campo de cédula.");
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.ToString());
+                                        this.Close();
+                                    }
+                                }
+                                else if(Combo_Nuevo_Existenete.SelectedIndex == 1)
+                                {
+
+                                    if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
                                     {
                                         Administrador administrador = new Administrador();
+                                        Grupo grupo = new Grupo();
                                         string cedula = Text_Cedula.Text;
                                         string[] ced = cedula.Split('-');
-
                                         if (CIValidator.Validate(cedula))
                                         {
-                                            if (administrador.AgregarAlumno(int.Parse(ced[0])))
+                                            if (administrador.AgregarEnAlumno(int.Parse(ced[0]),Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupos.SelectedIndex][0])))
                                             {
-                                                MessageBox.Show("Usuario Ingresado\nDebe esperar a que un alumno se registre para poder editarlo");
+                                                MessageBox.Show("Alumno agregado satisfactoriamente");
                                                 this.Close();
                                             }
                                             else
                                             {
-                                                MessageBox.Show("No se pudo ingresar el usuario");
+                                                MessageBox.Show("El alumno ya está creado u ocurrió un error en su creación");
+                                                this.Close();
                                             }
                                         }
                                         else
@@ -248,12 +402,20 @@ namespace ChatInstitucional.Presentacion
                                             MessageBox.Show("Ingrese una cédula válida");
                                         }
                                     }
+                                    else
+                                    {
+                                        MessageBox.Show("Debe llenar todos los campos.");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Debe seleccionar el estado de la persona");
                                 }
                                 break;
 
                             case 2:
                                 //Modificar
-                                if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Nombre.Text) && !String.IsNullOrEmpty(Text_Apellido.Text) && !String.IsNullOrEmpty(Text_Nick.Text) && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
+                                if (!String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre"  && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
                                 {
                                     Alumno alumno = new Alumno();
                                     Grupo grupo = new Grupo();
@@ -286,10 +448,118 @@ namespace ChatInstitucional.Presentacion
                         {
                             case 1:
                                 //Añadir
+                                if(Combo_Nuevo_Existenete.SelectedIndex == 0)
+                                {
+                                    Fotografia foto = new Fotografia();
+
+                                    foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+
+                                    try
+                                    {
+                                        if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Pass.Text) && Text_Pass.Text != "Contaseña" && !String.IsNullOrEmpty(Text_PassCheck.Text) && Text_PassCheck.Text != "Confirmar Contraseña")
+                                        {
+                                            string cedula = Text_Cedula.Text;
+                                            string[] ced = cedula.Split('-');
+                                            if (CIValidator.Validate(cedula))
+                                            {
+                                                if (Text_Pass.Text == Text_PassCheck.Text)
+                                                {
+                                                    Administrador admin = new Administrador();
+                                                    admin.SetNickname(Text_Nick.Text);
+                                                    admin.SetCI(int.Parse(ced[0]));
+                                                    admin.SetNombre(Text_Nombre.Text);
+                                                    admin.SetApellido(Text_Apellido.Text);
+                                                    admin.SetPass(Text_Pass.Text);
+                                                    admin.SetCargo(Combo_Grupos.SelectedItem.ToString());
+                                                    admin.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
+
+                                                    if (admin.AgregarAdmin(admin))
+                                                    {
+                                                        DialogResult result = MessageBox.Show("Usuario creado satisfactoriamente.\nEspere a que un administrador valide su usuario para iniciar sesión.", "Usuario creado", MessageBoxButtons.OK);
+                                                        if (result == DialogResult.OK)
+                                                        {
+                                                            this.Close();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Ocurrió un error al crear el usuario.\nRegrese e intente nuevamente.");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Las contraseñas no coinciden.");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Ingrese una cédula válida");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Debe llenar todos los campos.");
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        MessageBox.Show("Ocurrió un error, intente otra vez.");
+                                    }
+                                }
+                                else if(Combo_Nuevo_Existenete.SelectedIndex == 1)
+                                {
+
+                                    if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
+                                    {
+                                        Administrador administrador = new Administrador();
+                                        string cedula = Text_Cedula.Text;
+                                        string[] ced = cedula.Split('-');
+                                        if (CIValidator.Validate(cedula))
+                                        {
+                                            if (administrador.AgregarEnAdmin(int.Parse(ced[0]), Combo_Grupos.SelectedItem.ToString()))
+                                            {
+                                                MessageBox.Show("Administrador agregado satisfactoriamente");
+                                                this.Close();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("El administrador ya está creado u ocurrió un error en su creación");
+                                                this.Close();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Ingrese una cédula válida");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Debe llenar todos los campos.");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Debe seleccionar el estado de la persona");
+                                }
                                 break;
 
                             case 2:
                                 //Modificar
+                                if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Pass.Text) && Text_Pass.Text != "Contaseña" && !String.IsNullOrEmpty(Text_PassCheck.Text) && Text_PassCheck.Text != "Confirmar Contraseña" && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
+                                {
+                                    Administrador admin = new Administrador();
+                                    int cedula = int.Parse(Text_Cedula.Text);
+
+                                    if (admin.ModificarPersona("nombre", "'" + Text_Nombre.Text + "'", cedula) && admin.ModificarPersona("apellido", "'" + Text_Apellido.Text + "'", cedula) && admin.ModificarPersona("nickname", "'" + Text_Nick.Text + "'", cedula) && admin.ModificarAdmin("cargo", "'" + Combo_Grupos.SelectedItem.ToString() + "'", cedula)) 
+                                    {
+                                        MessageBox.Show("Usuario actualizado correctamente");
+                                        this.Close();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se pudo actualizar el usuario");
+                                    }
+                                }
                                 break;
 
                             default:
@@ -333,11 +603,42 @@ namespace ChatInstitucional.Presentacion
         private void Btn_ImgDefault_Click(object sender, EventArgs e)
         {
             // Le pone la imagen default a esa cedula
-        }
-
-        private void ColorTexto(object sender, KeyPressEventArgs e)
-        {
-            // Cambian de color cuando estan encima de los text box y ademas se borra el texto pero despues aparece de nuevo
+            Fotografia fotografia = new Fotografia();
+            Persona persona = new Persona();
+            try
+            {
+                if(!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula")
+                {
+                    string cedula = Text_Cedula.Text;
+                    string[] ced = cedula.Split('-');
+                    if (CIValidator.Validate(cedula))
+                    {
+                        fotografia.SetImagen(fotografia.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+                        if (persona.ModificarPersona("foto", "'" + fotografia.GetImagen() + "'", Convert.ToInt32(Text_Cedula.Text)))
+                        {
+                            MessageBox.Show("Imágen actualizada exitosamente");
+                        }
+                        else
+                        {
+                            MessageBox.Show("La imágen no se pudo actualizar");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese una cédula válida");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debes llenar el campo de cédula");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("Ocurrió un error.\nPor favor vuelva a intentar");
+                this.Close();
+            }
         }
     }
 }

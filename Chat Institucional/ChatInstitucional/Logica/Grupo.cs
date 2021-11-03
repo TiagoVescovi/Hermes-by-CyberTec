@@ -13,6 +13,7 @@ namespace ChatInstitucional.Logica
         protected string NombreGr;
         protected int Ano;
         protected int IdOrientacion;
+        protected bool activo;
 
         public Grupo()
         {
@@ -58,7 +59,17 @@ namespace ChatInstitucional.Logica
         {
             IdOrientacion = idori;
         }
-        
+
+        public bool GetActivo()
+        {
+            return activo;
+        }
+
+        public void SetActivo(bool act)
+        {
+            activo = act;
+        }
+
         public Grupo TraerGrupo(int id)
         {
             Grupo grupo = new Grupo();
@@ -83,13 +94,67 @@ namespace ChatInstitucional.Logica
         public DataTable LlenarComboBox()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM grupo g, orientacion o WHERE g.idOrientacion = o.idOrientacion;");
+            return validacion.Select("SELECT * FROM grupo g, orientacion o WHERE g.idOrientacion = o.idOrientacion AND g.activo = true;");
         }
 
         public DataTable GruposPorOrientacion(int idOri)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM grupo WHERE idOrientacion = " + idOri + ";");
+            return validacion.Select("SELECT * FROM grupo WHERE idOrientacion = " + idOri + " AND g.activo = true;");
+        }
+
+        public DataTable ListarGrupos()
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM grupo;");
+        }
+
+        public bool EliminarGrupo(int id)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Update("UPDATE grupo SET activo = false WHERE idGrupo = " + id + ";");
+        }
+
+        public bool AgregarGrupo(Grupo g)
+        {
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Insert("INSERT INTO grupo(nombre,año,idOrientacion) VALUES ('" + g.GetNombre() + "'," + g.GetAno() + "," + g.GetIdOrientacion() + ");"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
+        }
+
+        public bool ModificarGrupo(string atributo, string cambio, int id)
+        {
+            Validacion validacion = new Validacion();
+            try
+            {
+                if (validacion.Update("UPDATE grupo SET " + atributo + " = " + cambio + " WHERE idGrupo = " + id + ";"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
         }
     }
 }

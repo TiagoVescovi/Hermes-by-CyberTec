@@ -139,7 +139,7 @@ namespace ChatInstitucional.Logica
                 else
                 {
                     // No existe
-                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname,idioma) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "','" + idioma + "');")) 
+                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "');")) 
                     {
                         return true;
                     }
@@ -233,7 +233,7 @@ namespace ChatInstitucional.Logica
         public DataTable ListarPersonas()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM persona;");
+            return validacion.Select("SELECT cedula as 'Cédula', nombre as 'Nombre', apellido as 'Apellido' FROM persona WHERE activo = true;");
         }
 
         public bool LogIn(int ci)

@@ -57,6 +57,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Btn_Refresh_Horario = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horarios)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).BeginInit();
@@ -195,7 +196,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(354, 21);
+            this.label4.Size = new System.Drawing.Size(354, 30);
             this.label4.TabIndex = 11;
             this.label4.Text = "AGREGAR HORARIO DE ATENCIÓN";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -390,7 +391,7 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(354, 21);
+            this.label11.Size = new System.Drawing.Size(354, 30);
             this.label11.TabIndex = 21;
             this.label11.Text = "AGREGAR MATERIA";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -399,6 +400,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.Dgv_Horarios);
             this.panel2.Controls.Add(this.Btn_Refresh_Horario);
@@ -437,14 +439,26 @@
             this.Btn_Refresh_Horario.UseVisualStyleBackColor = false;
             this.Btn_Refresh_Horario.Click += new System.EventHandler(this.Btn_Refresh_Horario_Click);
             // 
-            // AgendaDocenteForm
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(0, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(354, 21);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "SELECCIONE UN DIA PARA VER SUS HORARIOS";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DocenteAgendaForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(717, 428);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AgendaDocenteForm";
+            this.Name = "DocenteAgendaForm";
             this.Text = "AgendaDocente";
             this.Load += new System.EventHandler(this.AgendaDocenteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horarios)).EndInit();
@@ -488,5 +502,6 @@
         private System.Windows.Forms.Button Btn_Agregar_Materia;
         private System.Windows.Forms.Button Btn_Refresh_Materia;
         private System.Windows.Forms.Button Btn_Refresh_Horario;
+        private System.Windows.Forms.Label label12;
     }
 }
