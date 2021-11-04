@@ -27,6 +27,7 @@ namespace ChatInstitucional.Presentacion
             {
                 Dgv_Materias.Columns.Add("Materia","nombre");
                 Dgv_Materias.Rows.Add(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[i][1]);
+                Dgv_Materias.Columns[0].Width = Dgv_Materias.Width;
             }
             // Ver como hacer q solo muestre el nombre de las materias
         }
@@ -52,7 +53,6 @@ namespace ChatInstitucional.Presentacion
                 chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][2]));
                 chat.SetIdGrupo(idgrupo);
                 chat.SetIdConsulta(chat.ConseguirIdChat(chat));
-                Console.WriteLine(chat.GetIdConsulta()); // sacar
 
                 if (chat.UnirseChat(chat) == 0)
                 {
@@ -93,8 +93,8 @@ namespace ChatInstitucional.Presentacion
             try
             {
                 chat.SetCiAlumno(Validacion.UsuarioActual);
-                chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][3]));
-                chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][2]));
+                chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][4]));
+                chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][0]));
                 chat.SetIdGrupo(idgrupo);
 
                 if (chat.SubirConsulta(chat))

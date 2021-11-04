@@ -152,6 +152,7 @@
             this.Text_Mensaje.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Text_Mensaje.Enabled = false;
             this.Text_Mensaje.Location = new System.Drawing.Point(256, 10);
+            this.Text_Mensaje.MaxLength = 700;
             this.Text_Mensaje.Name = "Text_Mensaje";
             this.Text_Mensaje.Size = new System.Drawing.Size(410, 20);
             this.Text_Mensaje.TabIndex = 2;
@@ -204,7 +205,7 @@
             this.Btn_Opciones.UseVisualStyleBackColor = false;
             this.Btn_Opciones.Click += new System.EventHandler(this.Btn_Opciones_Click);
             // 
-            // ChatForm
+            // FormChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -215,7 +216,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Pnl_Chat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ChatForm";
+            this.Name = "FormChat";
             this.Text = "ChatForm";
             this.Load += new System.EventHandler(this.ChatFormAlumno_Load);
             this.panel2.ResumeLayout(false);

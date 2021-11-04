@@ -60,12 +60,6 @@ namespace ChatInstitucional.Logica
             return validacion.Select("SELECT * FROM materia m, enseña e, persona p, grupo g WHERE m.idMateria = e.idMateria AND p.cedula = e.ciProfesor AND g.idGrupo = e.idGrupo AND g.idGrupo = " + grupo + ";");
         }
 
-        public DataTable MateriasPorGrupo(int idGru)
-        {
-            Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM materia m, enseña e WHERE e.idMateria = m.idMateria AND idGrupo = " + idGru + ";");
-        }
-
         public bool AgregarEnsenia(int mat, int ci, int grupo)
         {
             Validacion validacion = new Validacion();
@@ -140,7 +134,7 @@ namespace ChatInstitucional.Logica
         public DataTable ListarSoloMaterias()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM materia;");
+            return validacion.Select("SELECT * FROM materia WHERE activo = true;");
         }
 
         public bool EliminarMateria(int id)

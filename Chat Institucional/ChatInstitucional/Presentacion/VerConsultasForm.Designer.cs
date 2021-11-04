@@ -91,6 +91,7 @@
             this.Text_Consulta.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Text_Consulta.Location = new System.Drawing.Point(15, 37);
             this.Text_Consulta.Margin = new System.Windows.Forms.Padding(6);
+            this.Text_Consulta.MaxLength = 700;
             this.Text_Consulta.Multiline = true;
             this.Text_Consulta.Name = "Text_Consulta";
             this.Text_Consulta.ReadOnly = true;
@@ -106,6 +107,7 @@
             this.Text_Respuesta.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Text_Respuesta.Location = new System.Drawing.Point(15, 237);
             this.Text_Respuesta.Margin = new System.Windows.Forms.Padding(6);
+            this.Text_Respuesta.MaxLength = 700;
             this.Text_Respuesta.Multiline = true;
             this.Text_Respuesta.Name = "Text_Respuesta";
             this.Text_Respuesta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

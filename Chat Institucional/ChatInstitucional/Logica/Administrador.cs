@@ -56,7 +56,7 @@ namespace ChatInstitucional.Logica
                 administrador.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                 administrador.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
                 administrador.SetCargo(dataTable.Rows[0]["cargo"].ToString());
-                //persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                administrador.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
             }
             catch (Exception e)
             {
@@ -102,6 +102,10 @@ namespace ChatInstitucional.Logica
 
             if (alumno.BuscarPersona(ci).GetCI() == ci)
             {
+                return false;
+            }
+            else
+            {
                 if (alumno.BuscarAlumno(ci).GetCI() == ci)
                 {
                     return false;
@@ -117,10 +121,6 @@ namespace ChatInstitucional.Logica
                         return false;
                     }
                 }
-            }
-            else
-            {
-                return false;
             }
         }
 
@@ -208,28 +208,37 @@ namespace ChatInstitucional.Logica
             Validacion validacion = new Validacion();
             Alumno alumno = new Alumno();
 
-            if (alumno.BuscarPersona(ci).GetCI() == ci)
+            try
             {
-                if (alumno.BuscarAlumno(ci).GetCI() == ci)
+                if (alumno.BuscarPersona(ci).GetCI() == ci)
                 {
-                    return false;
-                }
-                else
-                {
-                    if (validacion.Insert("INSERT INTO alumno(cedula,idGrupo) VALUES (" + ci + "," + grupo + ");")) 
-                    {
-                        return true;
-                    }
-                    else
+                    if (alumno.BuscarAlumno(ci).GetCI() == ci)
                     {
                         return false;
                     }
+                    else
+                    {
+                        if (validacion.Insert("INSERT INTO alumno(cedula,idGrupo) VALUES (" + ci + "," + grupo + ");"))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 return false;
             }
+            
         }
 
         public bool AgregarAdmin(Administrador a)
@@ -240,7 +249,15 @@ namespace ChatInstitucional.Logica
             {
                 if (validacion.Insert("INSERT INTO administrador(cedula,cargo) VALUES (" + a.GetCI() + ",'" + a.GetCargo() + "');"))
                 {
-                    return true;
+                    if (a.ModificarPersona("activo", "true", a.GetCI()))
+                    {
+                        return true;
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {

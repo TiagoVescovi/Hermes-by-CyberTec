@@ -54,8 +54,7 @@ namespace ChatInstitucional.Presentacion
                 Lbl_UserGrupo.Text = admin.BuscarAdmin(Validacion.UsuarioActual).GetCargo();
 
                 //Sigue sin funcionar
-                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(admin.BuscarAdmin(Validacion.UsuarioActual).GetFoto()));
-                Console.WriteLine(foto.ByteToImage(admin.BuscarAdmin(Validacion.UsuarioActual).GetFoto()).ToString());
+                Pic_Perfil.Image = foto.ByteToImage(admin.BuscarPersona(Validacion.UsuarioActual).GetFoto());
                 //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
                 //Pic_Perfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto()); -- Este tampoco
             }

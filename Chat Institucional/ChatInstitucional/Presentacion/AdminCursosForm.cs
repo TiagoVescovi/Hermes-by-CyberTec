@@ -150,7 +150,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_Add_Mat_Click(object sender, EventArgs e)
         {
-            AdminCursosAMForm adminCursosAMForm = new AdminCursosAMForm(3, 2);
+            AdminCursosAMForm adminCursosAMForm = new AdminCursosAMForm(3, 1);
             adminCursosAMForm.ShowDialog();
             LlenarDgvOri();
             LlenarDgvGrupos();
@@ -162,14 +162,14 @@ namespace ChatInstitucional.Presentacion
             Materia materia = new Materia();
             if (materia.EliminarMateria(Convert.ToInt32(materia.ListarSoloMaterias().Rows[Dgv_Materias.CurrentRow.Index][0])))
             {
-                MessageBox.Show("Grupo eliminado satisfactoriamente");
+                MessageBox.Show("Materia eliminada satisfactoriamente");
                 LlenarDgvOri();
                 LlenarDgvGrupos();
                 LlenarDgvMaterias();
             }
             else
             {
-                MessageBox.Show("No se pudo eliminar el grupo");
+                MessageBox.Show("No se pudo eliminar la materia");
             }
         }
 

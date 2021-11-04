@@ -30,21 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocenteMainForm));
             this.Pnl_User = new System.Windows.Forms.Panel();
-            this.Lbl_FormAbierto = new System.Windows.Forms.Label();
             this.Lbl_UserName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Lbl_FormAbierto = new System.Windows.Forms.Label();
             this.Pic_Perfil = new System.Windows.Forms.PictureBox();
             this.Pnl_Der = new System.Windows.Forms.Panel();
             this.Pnl_Izq = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Btn_Agenda = new System.Windows.Forms.Button();
             this.Btn_Settings = new System.Windows.Forms.Button();
+            this.Btn_Agenda = new System.Windows.Forms.Button();
             this.Btn_Consultas = new System.Windows.Forms.Button();
             this.Btn_Chats = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Btn_Minimize = new System.Windows.Forms.Button();
             this.Btn_Close = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.Pnl_User.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Perfil)).BeginInit();
             this.Pnl_Izq.SuspendLayout();
@@ -63,16 +63,21 @@
             resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.Name = "Pnl_User";
             // 
+            // Lbl_UserName
+            // 
+            resources.ApplyResources(this.Lbl_UserName, "Lbl_UserName");
+            this.Lbl_UserName.Name = "Lbl_UserName";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // Lbl_FormAbierto
             // 
             resources.ApplyResources(this.Lbl_FormAbierto, "Lbl_FormAbierto");
             this.Lbl_FormAbierto.ForeColor = System.Drawing.Color.MediumBlue;
             this.Lbl_FormAbierto.Name = "Lbl_FormAbierto";
-            // 
-            // Lbl_UserName
-            // 
-            resources.ApplyResources(this.Lbl_UserName, "Lbl_UserName");
-            this.Lbl_UserName.Name = "Lbl_UserName";
             // 
             // Pic_Perfil
             // 
@@ -95,22 +100,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.Btn_Agenda);
             this.panel2.Controls.Add(this.Btn_Settings);
+            this.panel2.Controls.Add(this.Btn_Agenda);
             this.panel2.Controls.Add(this.Btn_Consultas);
             this.panel2.Controls.Add(this.Btn_Chats);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            // 
-            // Btn_Agenda
-            // 
-            this.Btn_Agenda.BackColor = System.Drawing.Color.DarkBlue;
-            this.Btn_Agenda.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.Btn_Agenda, "Btn_Agenda");
-            this.Btn_Agenda.ForeColor = System.Drawing.Color.White;
-            this.Btn_Agenda.Name = "Btn_Agenda";
-            this.Btn_Agenda.UseVisualStyleBackColor = false;
-            this.Btn_Agenda.Click += new System.EventHandler(this.Btn_Cursos_Click);
             // 
             // Btn_Settings
             // 
@@ -121,6 +116,16 @@
             this.Btn_Settings.Name = "Btn_Settings";
             this.Btn_Settings.UseVisualStyleBackColor = false;
             this.Btn_Settings.Click += new System.EventHandler(this.Btn_Settings_Click);
+            // 
+            // Btn_Agenda
+            // 
+            this.Btn_Agenda.BackColor = System.Drawing.Color.DarkBlue;
+            this.Btn_Agenda.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Agenda, "Btn_Agenda");
+            this.Btn_Agenda.ForeColor = System.Drawing.Color.White;
+            this.Btn_Agenda.Name = "Btn_Agenda";
+            this.Btn_Agenda.UseVisualStyleBackColor = false;
+            this.Btn_Agenda.Click += new System.EventHandler(this.Btn_Cursos_Click);
             // 
             // Btn_Consultas
             // 
@@ -175,12 +180,7 @@
             this.Btn_Close.UseVisualStyleBackColor = false;
             this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // MainFormDocente
+            // DocenteMainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
@@ -189,7 +189,7 @@
             this.Controls.Add(this.Pnl_Izq);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MainFormDocente";
+            this.Name = "DocenteMainForm";
             this.Load += new System.EventHandler(this.MainFormDocente_Load);
             this.Pnl_User.ResumeLayout(false);
             this.Pnl_User.PerformLayout();

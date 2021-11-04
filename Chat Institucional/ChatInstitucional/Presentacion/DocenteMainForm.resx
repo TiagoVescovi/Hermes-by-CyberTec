@@ -345,18 +345,6 @@
   <data name="&gt;&gt;Pnl_Izq.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;Btn_Agenda.Name" xml:space="preserve">
-    <value>Btn_Agenda</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;Btn_Settings.Name" xml:space="preserve">
     <value>Btn_Settings</value>
   </data>
@@ -367,6 +355,18 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;Btn_Settings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Name" xml:space="preserve">
+    <value>Btn_Agenda</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;Btn_Consultas.Name" xml:space="preserve">
@@ -414,39 +414,6 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Btn_Agenda.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="Btn_Agenda.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Cambria, 15.75pt, style=Bold</value>
-  </data>
-  <data name="Btn_Agenda.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Btn_Agenda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 4</value>
-  </data>
-  <data name="Btn_Agenda.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 78</value>
-  </data>
-  <data name="Btn_Agenda.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="Btn_Agenda.Text" xml:space="preserve">
-    <value>MI AGENDA</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.Name" xml:space="preserve">
-    <value>Btn_Agenda</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;Btn_Agenda.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Btn_Settings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -457,10 +424,10 @@
     <value>NoControl</value>
   </data>
   <data name="Btn_Settings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 238</value>
+    <value>0, 252</value>
   </data>
   <data name="Btn_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 78</value>
+    <value>234, 72</value>
   </data>
   <data name="Btn_Settings.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -478,6 +445,39 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;Btn_Settings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Btn_Agenda.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="Btn_Agenda.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 15.75pt, style=Bold</value>
+  </data>
+  <data name="Btn_Agenda.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Btn_Agenda.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, -3</value>
+  </data>
+  <data name="Btn_Agenda.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 72</value>
+  </data>
+  <data name="Btn_Agenda.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Btn_Agenda.Text" xml:space="preserve">
+    <value>MI AGENDA</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Name" xml:space="preserve">
+    <value>Btn_Agenda</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;Btn_Agenda.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="Btn_Consultas.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -493,7 +493,7 @@
     <value>0, 82</value>
   </data>
   <data name="Btn_Consultas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 78</value>
+    <value>234, 72</value>
   </data>
   <data name="Btn_Consultas.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -523,10 +523,10 @@
     <value>NoControl</value>
   </data>
   <data name="Btn_Chats.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 160</value>
+    <value>0, 167</value>
   </data>
   <data name="Btn_Chats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 78</value>
+    <value>234, 72</value>
   </data>
   <data name="Btn_Chats.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2654,7 +2654,7 @@
     <value>Hermes - Chat Institucional</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainFormDocente</value>
+    <value>DocenteMainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

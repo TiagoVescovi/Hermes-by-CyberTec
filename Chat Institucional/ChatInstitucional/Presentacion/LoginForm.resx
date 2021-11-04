@@ -213,6 +213,9 @@
   <data name="Text_Pass.Location" type="System.Drawing.Point, System.Drawing">
     <value>512, 281</value>
   </data>
+  <data name="Text_Pass.MaxLength" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
   <data name="Text_Pass.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 26</value>
   </data>

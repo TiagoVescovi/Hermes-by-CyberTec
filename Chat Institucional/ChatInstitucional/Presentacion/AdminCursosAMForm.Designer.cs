@@ -45,6 +45,7 @@
             // Text_Grado
             // 
             this.Text_Grado.Location = new System.Drawing.Point(113, 36);
+            this.Text_Grado.MaxLength = 3;
             this.Text_Grado.Name = "Text_Grado";
             this.Text_Grado.Size = new System.Drawing.Size(62, 29);
             this.Text_Grado.TabIndex = 0;
@@ -53,6 +54,7 @@
             // Text_Dist
             // 
             this.Text_Dist.Location = new System.Drawing.Point(113, 76);
+            this.Text_Dist.MaxLength = 7;
             this.Text_Dist.Name = "Text_Dist";
             this.Text_Dist.Size = new System.Drawing.Size(62, 29);
             this.Text_Dist.TabIndex = 1;
@@ -60,7 +62,7 @@
             // Text_Nombre
             // 
             this.Text_Nombre.Location = new System.Drawing.Point(113, 150);
-            this.Text_Nombre.MaxLength = 20;
+            this.Text_Nombre.MaxLength = 30;
             this.Text_Nombre.Name = "Text_Nombre";
             this.Text_Nombre.Size = new System.Drawing.Size(163, 29);
             this.Text_Nombre.TabIndex = 2;

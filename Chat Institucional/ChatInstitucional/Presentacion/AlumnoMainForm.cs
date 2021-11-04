@@ -48,8 +48,8 @@ namespace ChatInstitucional.Presentacion
                 Lbl_UserGrupo.Text = grupo.TraerGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).GetNombre().ToString();
 
                 //Sigue sin funcionar
-                Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto()));
-                Console.WriteLine(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto()).ToString());
+                Fotografia fotografia = new Fotografia();
+                Pic_Perfil.Image = fotografia.ByteToImage(alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto());
                 //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
                 //Pic_Perfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto()); -- Este tampoco
             }

@@ -99,6 +99,7 @@ namespace ChatInstitucional.Logica
             Alumno alumno = new Alumno();
             DataTable dataTable = new DataTable();
             Validacion validacion = new Validacion();
+            Fotografia fotografia = new Fotografia();
 
             try
             {
@@ -146,6 +147,7 @@ namespace ChatInstitucional.Logica
         private bool EditarPersonaDeAlumno(Alumno a)
         {
             Validacion validacion = new Validacion();
+            Fotografia fotografia = new Fotografia();
             try
             {
                 if (validacion.Update("UPDATE persona SET nombre = '" + a.GetNombre() + "', apellido = '" + a.GetApellido() + "', passwd = '" + a.GetPass() + "', nickname = '" + a.GetNickname() + "', activo = " + a.GetActivo() + ", logueado = " + a.GetLogueado() + " WHERE cedula = " + a.GetCI() + ";"))

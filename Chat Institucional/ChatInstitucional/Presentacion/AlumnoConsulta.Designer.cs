@@ -86,6 +86,7 @@
             // Text_Consulta
             // 
             this.Text_Consulta.Location = new System.Drawing.Point(414, 12);
+            this.Text_Consulta.MaxLength = 700;
             this.Text_Consulta.Multiline = true;
             this.Text_Consulta.Name = "Text_Consulta";
             this.Text_Consulta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -260,7 +261,7 @@
             this.Btn_Refresh.UseVisualStyleBackColor = false;
             this.Btn_Refresh.Click += new System.EventHandler(this.Btn_Refresh_Click);
             // 
-            // ConsultaFormAlumno
+            // AlumnoConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,7 +278,7 @@
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ConsultaFormAlumno";
+            this.Name = "AlumnoConsulta";
             this.ShowInTaskbar = false;
             this.Text = "ConsultaForm";
             this.Load += new System.EventHandler(this.ConsultaFormAlumno_Load);

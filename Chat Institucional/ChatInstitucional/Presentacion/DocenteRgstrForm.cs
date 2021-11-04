@@ -56,7 +56,7 @@ namespace ChatInstitucional.Presentacion
                             docente.SetNombre(Text_Nombre.Text);
                             docente.SetApellido(Text_Apellido.Text);
                             docente.SetPass(Text_Pass.Text);
-                            docente.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
+                            //docente.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
 
                             if (docente.AgregarDocente(docente))
                             {

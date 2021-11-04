@@ -29,18 +29,18 @@ namespace ChatInstitucional.Logica
         }
 
         //Convierte Byte a Imagen
-        public MemoryStream ByteToImage(byte[] array)
+        public Image ByteToImage(byte[] array)
         {
-            MemoryStream ms = new MemoryStream((byte[])array);
-            return ms;
+            MemoryStream ms = new MemoryStream(array);
+            return Image.FromStream(ms);
         }
 
         //Convierte Imagen a Byte
         public byte[] ImageToByte(Image imagenIn)
         {
             MemoryStream ms = new MemoryStream();
-            imagenIn.Save(ms, ImageFormat.Png);
-
+            ImageFormat imf = imagenIn.RawFormat;
+            imagenIn.Save(ms, imf);
             return ms.ToArray();
         }
 

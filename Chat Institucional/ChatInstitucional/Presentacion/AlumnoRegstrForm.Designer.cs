@@ -101,6 +101,7 @@
             // 
             this.Text_PassCheck.AcceptsReturn = true;
             this.Text_PassCheck.Location = new System.Drawing.Point(510, 350);
+            this.Text_PassCheck.MaxLength = 20;
             this.Text_PassCheck.Name = "Text_PassCheck";
             this.Text_PassCheck.Size = new System.Drawing.Size(225, 20);
             this.Text_PassCheck.TabIndex = 6;
@@ -157,6 +158,7 @@
             // Text_Pass
             // 
             this.Text_Pass.Location = new System.Drawing.Point(510, 305);
+            this.Text_Pass.MaxLength = 20;
             this.Text_Pass.Name = "Text_Pass";
             this.Text_Pass.Size = new System.Drawing.Size(225, 20);
             this.Text_Pass.TabIndex = 5;
@@ -176,6 +178,7 @@
             // Text_Apellido
             // 
             this.Text_Apellido.Location = new System.Drawing.Point(510, 260);
+            this.Text_Apellido.MaxLength = 30;
             this.Text_Apellido.Name = "Text_Apellido";
             this.Text_Apellido.Size = new System.Drawing.Size(225, 20);
             this.Text_Apellido.TabIndex = 4;
@@ -194,6 +197,7 @@
             // Text_Nombre
             // 
             this.Text_Nombre.Location = new System.Drawing.Point(510, 215);
+            this.Text_Nombre.MaxLength = 30;
             this.Text_Nombre.Name = "Text_Nombre";
             this.Text_Nombre.Size = new System.Drawing.Size(225, 20);
             this.Text_Nombre.TabIndex = 3;
@@ -257,6 +261,7 @@
             // Text_Nickname
             // 
             this.Text_Nickname.Location = new System.Drawing.Point(510, 125);
+            this.Text_Nickname.MaxLength = 30;
             this.Text_Nickname.Name = "Text_Nickname";
             this.Text_Nickname.Size = new System.Drawing.Size(225, 20);
             this.Text_Nickname.TabIndex = 1;
@@ -475,7 +480,7 @@
             this.label19.TabIndex = 39;
             this.label19.Text = "*";
             // 
-            // RgstrAlumnoForm
+            // AlumnoRegstrForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -511,7 +516,7 @@
             this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RgstrAlumnoForm";
+            this.Name = "AlumnoRegstrForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro Alumno";
             this.panel1.ResumeLayout(false);

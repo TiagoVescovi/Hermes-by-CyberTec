@@ -84,9 +84,9 @@ namespace ChatInstitucional.Logica
                 grupo.SetAno(Convert.ToInt32(dataTable.Rows[0]["año"]));
                 grupo.SetIdOrientacion(Convert.ToInt32(dataTable.Rows[0]["idOrientacion"]));
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.ToString());
             }
             return grupo;
         }
@@ -100,13 +100,13 @@ namespace ChatInstitucional.Logica
         public DataTable GruposPorOrientacion(int idOri)
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM grupo WHERE idOrientacion = " + idOri + " AND g.activo = true;");
+            return validacion.Select("SELECT * FROM grupo WHERE idOrientacion = " + idOri + " AND activo = true;");
         }
 
         public DataTable ListarGrupos()
         {
             Validacion validacion = new Validacion();
-            return validacion.Select("SELECT * FROM grupo;");
+            return validacion.Select("SELECT * FROM grupo WHERE activo = true;");
         }
 
         public bool EliminarGrupo(int id)

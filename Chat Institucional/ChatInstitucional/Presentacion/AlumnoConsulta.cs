@@ -31,7 +31,7 @@ namespace ChatInstitucional.Presentacion
 
             for (int i = 0; i < materia.LlenarComboBoxConsulta().Rows.Count; i++)
             {
-                Combo_Materia.Items.Add(materia.LlenarComboBoxConsulta().Rows[i][1] + " - " + materia.LlenarComboBoxConsulta().Rows[i][7] + " " + materia.LlenarComboBoxConsulta().Rows[i][8] + " - " + materia.LlenarComboBoxConsulta().Rows[i][16]); //Agregarle el grupo al lado del nombre
+                Combo_Materia.Items.Add(materia.LlenarComboBoxConsulta().Rows[i][1] + " - " + materia.LlenarComboBoxConsulta().Rows[i][8] + " " + materia.LlenarComboBoxConsulta().Rows[i][9] + " - " + materia.LlenarComboBoxConsulta().Rows[i][17]); //Agregarle el grupo al lado del nombre
             }
 
             //Llena los DataGridView
@@ -83,9 +83,7 @@ namespace ChatInstitucional.Presentacion
                             DialogResult dialogResult = MessageBox.Show("Consulta enviada satisfactoriamente", "Consulta enviada", MessageBoxButtons.OK);
                             if(dialogResult == DialogResult.OK)
                             {
-                                Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
-                                Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
-                                Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
+                                LlenarConsultas();
                             }
                             else
                             {
@@ -127,10 +125,7 @@ namespace ChatInstitucional.Presentacion
 
             try
             {
-                Asincronica asincronica = new Asincronica();
-                Dgv_Realizada.DataSource = asincronica.TraerRealizadasAlumno(Validacion.UsuarioActual);
-                Dgv_Contestada.DataSource = asincronica.TraerContestadasAlumno(Validacion.UsuarioActual);
-                Dgv_Recibida.DataSource = asincronica.TraerRecibidasAlumno(Validacion.UsuarioActual);
+                LlenarConsultas();
             }
             catch (Exception ex)
             {

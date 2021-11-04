@@ -254,6 +254,12 @@
     <EmbeddedResource Include="Presentacion\AdminDocenteAgendaForm.resx">
       <DependentUpon>AdminDocenteAgendaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\AdminMainForm.en-DE.resx">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\AdminMainForm.es-UY.resx">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\AdminValidarForm.resx">
       <DependentUpon>AdminValidarForm.cs</DependentUpon>
     </EmbeddedResource>

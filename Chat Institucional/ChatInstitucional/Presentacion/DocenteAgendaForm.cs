@@ -90,9 +90,9 @@ namespace ChatInstitucional.Presentacion
             Grupo grupo = new Grupo();
             Orientacion orientacion = new Orientacion();
             idGrupo = Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[0][0]);
-            for (int i = 0; i < materia.MateriasPorGrupo(idGrupo).Rows.Count; i++)
+            for (int i = 0; i < materia.ListarSoloMaterias().Rows.Count; i++)
             {
-                Combo_Materias.Items.Add(materia.MateriasPorGrupo(idGrupo).Rows[i][1].ToString());
+                Combo_Materias.Items.Add(materia.ListarSoloMaterias().Rows[i][1].ToString());
             }
 
             Combo_Materias.Enabled = true;
@@ -234,7 +234,7 @@ namespace ChatInstitucional.Presentacion
                 Materia materia = new Materia();
                 Grupo grupo = new Grupo();
                 Orientacion orientacion = new Orientacion();
-                if (materia.AgregarEnsenia(Convert.ToInt32(materia.MateriasPorGrupo(idGrupo).Rows[Combo_Materias.SelectedIndex][0]), Validacion.UsuarioActual, Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[Combo_Grupos.SelectedIndex][0])))
+                if (materia.AgregarEnsenia(Convert.ToInt32(materia.ListarSoloMaterias().Rows[Combo_Materias.SelectedIndex][0]), Validacion.UsuarioActual, Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[Combo_Grupos.SelectedIndex][0])))
                 {
                     DialogResult dialogResult = MessageBox.Show("Materia agregada exitosamente");
                     if (dialogResult == DialogResult.OK)

@@ -133,7 +133,7 @@ namespace ChatInstitucional.Logica
             // 2 = ya se habia unido
             Validacion validacion = new Validacion();
             DataTable dataTable = new DataTable();
-            dataTable = validacion.Select("SELECT * FROM participa WHERE idChat = " + c.GetIdConsulta() + " AND ciAlumno = " + c.GetCiAlumno() + ";");
+            dataTable = validacion.Select("SELECT * FROM participa WHERE idChat = " + c.GetIdConsulta() + " AND ciAlumno = " + c.GetCiAlumno() + " AND participando = true;");
 
             try
             {
@@ -180,14 +180,14 @@ namespace ChatInstitucional.Logica
 
             try
             {
-                if (validacion.Select("SELECT idMateria, idGrupo FROM consulta, chat WHERE idConsulta = idChat AND idMateria = " + c.GetIdMateria() + " AND idGrupo = " + c.GetIdGrupo() + ";") == null)
+                if (validacion.Select("SELECT co.idMateria, co.idGrupo FROM consulta co, chat ch WHERE co.idConsulta = ch.idChat AND co.idMateria = " + c.GetIdMateria() + " AND co.idGrupo = " + c.GetIdGrupo() + " AND horaFin IS NOT NULL;").Rows.Count == 0)
                 {
                     validated = false;
                 }
                 else
                 {
                     DataTable dataTable = new DataTable();
-                    dataTable = validacion.Select("SELECT * FROM consulta, chat WHERE idConsulta = idChat AND idMateria = " + c.GetIdMateria() + " AND idGrupo = " + c.GetIdGrupo() + ";");
+                    dataTable = validacion.Select("SELECT * FROM consulta co, chat ch WHERE co.idConsulta = ch.idChat AND co.idMateria = " + c.GetIdMateria() + " AND co.idGrupo = " + c.GetIdGrupo() + " AND horaFin IS NOT NULL;");
                     for(int i = 0; i < dataTable.Rows.Count; i++)
                     {
                         if(c.GetIdMateria() == Convert.ToInt32(dataTable.Rows[i][3]) && c.GetIdGrupo() == Convert.ToInt32(dataTable.Rows[i][4]) && !String.IsNullOrEmpty(dataTable.Rows[i][6].ToString()) && String.IsNullOrEmpty(dataTable.Rows[i][7].ToString()))

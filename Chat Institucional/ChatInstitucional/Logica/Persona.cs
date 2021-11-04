@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Drawing;
 
 namespace ChatInstitucional.Logica
 {
@@ -139,9 +140,16 @@ namespace ChatInstitucional.Logica
                 else
                 {
                     // No existe
-                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,foto,nickname) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + foto + "','" + nickname + "');")) 
+                    if (validacion.Insert("INSERT INTO persona(cedula,nombre,apellido,passwd,nickname) VALUES (" + ci + ",'" + nombre + "','" + apellido + "','" + pass + "','" + nickname + "');")) 
                     {
-                        return true;
+                        if (validacion.ModifyPicture(foto, ci))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
@@ -200,6 +208,7 @@ namespace ChatInstitucional.Logica
                 {
                     dataTable = validacion.Select("SELECT * FROM persona WHERE cedula = " + ci + ";");
 
+                    Fotografia fotografia = new Fotografia();
                     persona.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
                     persona.SetNombre(dataTable.Rows[0]["nombre"].ToString());
                     persona.SetApellido(dataTable.Rows[0]["apellido"].ToString());

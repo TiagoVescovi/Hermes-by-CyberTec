@@ -2,7 +2,7 @@ CREATE TABLE Persona(
 cedula int(7) NOT NULL,
 nombre varchar(30),
 apellido varchar(30),
-passwd varchar(25),
+passwd varchar(20),
 foto BLOB,
 nickname VARCHAR(30),
 activo bool default false,
@@ -31,8 +31,7 @@ CREATE TABLE Materia(
 idMateria INT(5) NOT NULL auto_increment,
 nombre VARCHAR(30) NOT NULL,
 activo bool default true,
-PRIMARY KEY(idMateria),
-UNIQUE KEY (nombre));
+PRIMARY KEY(idMateria));
 
 CREATE TABLE Horario(
 ciProfesor INT(8) NOT NULL,

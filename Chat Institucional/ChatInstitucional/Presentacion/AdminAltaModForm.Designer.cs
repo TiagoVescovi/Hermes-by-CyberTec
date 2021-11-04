@@ -49,11 +49,12 @@
             this.Text_PassCheck.Font = new System.Drawing.Font("Segoe UI", 13F);
             this.Text_PassCheck.ForeColor = System.Drawing.Color.Gray;
             this.Text_PassCheck.Location = new System.Drawing.Point(12, 322);
-            this.Text_PassCheck.MaxLength = 30;
+            this.Text_PassCheck.MaxLength = 20;
             this.Text_PassCheck.Name = "Text_PassCheck";
             this.Text_PassCheck.Size = new System.Drawing.Size(234, 31);
             this.Text_PassCheck.TabIndex = 53;
             this.Text_PassCheck.Text = "Confirmar Contraseña";
+            this.Text_PassCheck.UseSystemPasswordChar = true;
             // 
             // Text_Pass
             // 
@@ -61,11 +62,12 @@
             this.Text_Pass.Font = new System.Drawing.Font("Segoe UI", 13F);
             this.Text_Pass.ForeColor = System.Drawing.Color.Gray;
             this.Text_Pass.Location = new System.Drawing.Point(12, 275);
-            this.Text_Pass.MaxLength = 30;
+            this.Text_Pass.MaxLength = 20;
             this.Text_Pass.Name = "Text_Pass";
             this.Text_Pass.Size = new System.Drawing.Size(234, 31);
             this.Text_Pass.TabIndex = 52;
             this.Text_Pass.Text = "Contraseña";
+            this.Text_Pass.UseSystemPasswordChar = true;
             // 
             // Text_Nombre
             // 
@@ -170,6 +172,7 @@
             this.Combo_Nuevo_Existenete.Name = "Combo_Nuevo_Existenete";
             this.Combo_Nuevo_Existenete.Size = new System.Drawing.Size(228, 31);
             this.Combo_Nuevo_Existenete.TabIndex = 58;
+            this.Combo_Nuevo_Existenete.SelectedIndexChanged += new System.EventHandler(this.Combo_Nuevo_Existenete_SelectedIndexChanged);
             // 
             // label1
             // 

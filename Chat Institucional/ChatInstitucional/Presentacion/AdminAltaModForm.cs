@@ -228,7 +228,7 @@ namespace ChatInstitucional.Presentacion
                                                     docente.SetNombre(Text_Nombre.Text);
                                                     docente.SetApellido(Text_Apellido.Text);
                                                     docente.SetPass(Text_Pass.Text);
-                                                    docente.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
+                                                    //docente.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
 
                                                     if (docente.AgregarDocente(docente))
                                                     {
@@ -386,7 +386,7 @@ namespace ChatInstitucional.Presentacion
                                         string[] ced = cedula.Split('-');
                                         if (CIValidator.Validate(cedula))
                                         {
-                                            if (administrador.AgregarEnAlumno(int.Parse(ced[0]),Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupos.SelectedIndex][0])))
+                                            if (administrador.AgregarEnAlumno(int.Parse(ced[0]), Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupos.SelectedIndex][0])) && administrador.ModificarPersona("activo", "false", int.Parse(ced[0])))
                                             {
                                                 MessageBox.Show("Alumno agregado satisfactoriamente");
                                                 this.Close();
@@ -471,7 +471,7 @@ namespace ChatInstitucional.Presentacion
                                                     admin.SetApellido(Text_Apellido.Text);
                                                     admin.SetPass(Text_Pass.Text);
                                                     admin.SetCargo(Combo_Grupos.SelectedItem.ToString());
-                                                    admin.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
+                                                    //admin.SetFoto(foto.GetImagen()); // Hay un lugar en el q esto no funca
 
                                                     if (admin.AgregarAdmin(admin))
                                                     {
@@ -638,6 +638,20 @@ namespace ChatInstitucional.Presentacion
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show("Ocurrió un error.\nPor favor vuelva a intentar");
                 this.Close();
+            }
+        }
+
+        private void Combo_Nuevo_Existenete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(Combo_Nuevo_Existenete.SelectedIndex == 1)
+            {
+                Combo_Grupos.Enabled = true;
+
+                Grupo grupo = new Grupo();
+                for (int i = 0; i < grupo.LlenarComboBox().Rows.Count; i++)
+                {
+                    Combo_Grupos.Items.Add(grupo.LlenarComboBox().Rows[i]["nombre"]);
+                }
             }
         }
     }

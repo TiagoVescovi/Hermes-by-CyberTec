@@ -30,6 +30,7 @@ namespace ChatInstitucional.Presentacion
                     Text_Ano.Enabled = false;
                     Text_Grado.Enabled = false;
                     Text_Dist.Enabled = false;
+                    Text_Nombre.MaxLength = 20;
                     break;
 
                 case 2:
@@ -45,6 +46,7 @@ namespace ChatInstitucional.Presentacion
                     Text_Ano.Enabled = false;
                     Text_Grado.Enabled = false;
                     Text_Dist.Enabled = false;
+                    Text_Nombre.MaxLength = 30;
                     break;
             }
         }
@@ -248,11 +250,11 @@ namespace ChatInstitucional.Presentacion
                                 {
                                     if (materia.ModificarMateria("nombre", "'" + Text_Nombre.Text + "'", ID))
                                     {
-                                        MessageBox.Show("Orientación actualizada satisfactoriamente");
+                                        MessageBox.Show("Materia actualizada satisfactoriamente");
                                     }
                                     else
                                     {
-                                        MessageBox.Show("No se pudo actualizar la orientación");
+                                        MessageBox.Show("No se pudo actualizar la materia");
                                     }
                                 }
                                 else
@@ -305,6 +307,7 @@ namespace ChatInstitucional.Presentacion
                     Text_Ano.Enabled = false;
                     Text_Grado.Enabled = false;
                     Text_Dist.Enabled = false;
+                    Text_Nombre.MaxLength = 20;
 
                     Text_Nombre.Text = orientacion.BuscarOrientacion(ID).GetNombre();
                     break;
@@ -327,6 +330,7 @@ namespace ChatInstitucional.Presentacion
                     Text_Ano.Enabled = false;
                     Text_Grado.Enabled = false;
                     Text_Dist.Enabled = false;
+                    Text_Nombre.MaxLength = 30;
 
                     Text_Nombre.Text = materia.BuscarMateria(ID).GetNombre();
                     break;

@@ -41,39 +41,44 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Agregar_Materia_Click(object sender, EventArgs e)
         {
             // Agrega la materia si no la da
-            if (!String.IsNullOrEmpty(Combo_Orientacion.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_Grupos.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_Materias.SelectedItem.ToString()))
+            try
             {
-                Materia materia = new Materia();
-                Grupo grupo = new Grupo();
-                Orientacion orientacion = new Orientacion();
-                if (materia.AgregarEnsenia(Convert.ToInt32(materia.MateriasPorGrupo(idGrupo).Rows[Combo_Materias.SelectedIndex][0]), CI, Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[Combo_Grupos.SelectedIndex][0])))
+                if (!String.IsNullOrEmpty(Combo_Orientacion.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_Grupos.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_Materias.SelectedItem.ToString()))
                 {
-                    DialogResult dialogResult = MessageBox.Show("Materia agregada exitosamente");
-                    if (dialogResult == DialogResult.OK)
+                    Materia materia = new Materia();
+                    Grupo grupo = new Grupo();
+                    Orientacion orientacion = new Orientacion();
+                    if (materia.AgregarEnsenia(Convert.ToInt32(materia.ListarSoloMaterias().Rows[Combo_Materias.SelectedIndex][0]), CI, Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[Combo_Grupos.SelectedIndex][0])))
                     {
-                        LlenarDgvMaterias();
+                        DialogResult dialogResult = MessageBox.Show("Materia agregada exitosamente");
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            LlenarDgvMaterias();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error y no se pudo agregar la materia");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrió un error y no se pudo agregar la materia");
+                    MessageBox.Show("Ocurrió un error al tomar los datos.\nAsegúrese de que sean válidos");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al tomar los datos.\nAsegúrese de que sean válidos");
+                Console.WriteLine(ex.ToString());
             }
+            
         }
 
         private void Combo_Grupos_SelectedIndexChanged(object sender, EventArgs e)
         {
             Materia materia = new Materia();
-            Grupo grupo = new Grupo();
-            Orientacion orientacion = new Orientacion();
-            idGrupo = Convert.ToInt32(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[0][0]);
-            for (int i = 0; i < materia.MateriasPorGrupo(idGrupo).Rows.Count; i++)
+            for (int i = 0; i < materia.ListarSoloMaterias().Rows.Count; i++)
             {
-                Combo_Materias.Items.Add(materia.MateriasPorGrupo(idGrupo).Rows[i][1].ToString());
+                Combo_Materias.Items.Add(materia.ListarSoloMaterias().Rows[i][1].ToString());
             }
 
             Combo_Materias.Enabled = true;
@@ -130,13 +135,18 @@ namespace ChatInstitucional.Presentacion
 
         private void Combo_Orientacion_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Combo_Grupos.Items.Clear();
             Grupo grupo = new Grupo();
             Orientacion orientacion = new Orientacion();
-            for (int i = 0; i < grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows.Count; i++)
-            {
-                Combo_Grupos.Items.Add(grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows[i][1].ToString());
-            }
+            Combo_Grupos.DataSource = grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Columns[1];
 
+            for(int i = 0; i < Combo_Grupos.Items.Count; i++)
+            {
+                if(Combo_Grupos.Items[i] != grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Columns[1])
+                {
+                    Combo_Grupos.Items.Remove(Combo_Grupos.Items[1]);
+                }
+            }
             Combo_Grupos.Enabled = true;
         }
     }

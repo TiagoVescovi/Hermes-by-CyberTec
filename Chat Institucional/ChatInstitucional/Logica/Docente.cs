@@ -51,17 +51,15 @@ namespace ChatInstitucional.Logica
         {
             Docente docente = new Docente();
             Validacion validacion = new Validacion();
-            bool exists = false;
 
             if (validacion.Select("SELECT * FROM docente d, persona p WHERE d.cedula = p.cedula AND d.cedula = " + ci + " AND passwd = '" + pass + "';").Rows.Count > 0) 
             {
-                exists = true;
+                return true;
             }
             else
             {
-                exists = false;
+                return false;
             }
-            return exists;
         }
 
         public bool AgregarDocente(Docente d)
