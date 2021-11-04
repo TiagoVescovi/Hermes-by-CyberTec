@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ChatInstitucional.De_persistencia;
 using System.Data;
+using System.Drawing;
 
 namespace ChatInstitucional.Logica
 {

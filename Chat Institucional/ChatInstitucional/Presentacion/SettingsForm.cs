@@ -14,11 +14,18 @@ namespace ChatInstitucional.Presentacion
     public partial class SettingsForm : Form
     {
         Validacion validacion = new Validacion();
-        Fotografia fotografia = new Fotografia();
+        Fotografia foto = new Fotografia();
+        Persona persona = new Persona();
 
         public SettingsForm()
         {
             InitializeComponent();
+            
+            if (persona.BuscarPersona(Validacion.UsuarioActual).GetFoto() != null) //esto devuelve false cuando deberia devolver true
+            {
+                Picture_ImgPerfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto());
+            }
+            
         }
 
         private void Btn_ChangeNick_Click(object sender, EventArgs e)
@@ -60,7 +67,8 @@ namespace ChatInstitucional.Presentacion
             // Cambiar foto en el programa -- Parece q esto funciona bien
             openFileDialog1.Filter = "Imagenes|*.jpg;*.jpeg;*.png;*.gif;";
             openFileDialog1.Title = "Seleccione su nueva imágen";
-            
+
+
             try
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -79,18 +87,16 @@ namespace ChatInstitucional.Presentacion
         private void Btn_ChangeFoto_Click(object sender, EventArgs e)
         {
             //Subir imagen a bdd -- Arreglar
-            byte[] foto = fotografia.ImageToByte(Picture_ImgPerfil.Image);
-
+           byte[] actualiza = foto.ImageToByte(Picture_ImgPerfil.Image);
 
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 Fotografia fotografia = new Fotografia();
-                fotografia.SetImagen(foto);
-                if(fotografia.CambiarImagen(foto, Validacion.UsuarioActual))
+                fotografia.SetImagen(actualiza);
+                if (fotografia.CambiarImagen(actualiza, Validacion.UsuarioActual))
                 {
                     MessageBox.Show("La imágen se subió correctamente");
-                    // Cuando se suba q aparezca arriba
                 }
                 else
                 {

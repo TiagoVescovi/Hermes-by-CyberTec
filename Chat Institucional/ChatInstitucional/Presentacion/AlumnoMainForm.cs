@@ -46,12 +46,10 @@ namespace ChatInstitucional.Presentacion
             {
                 Lbl_UserName.Text = alumno.BuscarAlumno(Validacion.UsuarioActual).GetNombre() + " " + alumno.BuscarAlumno(Validacion.UsuarioActual).GetApellido();
                 Lbl_UserGrupo.Text = grupo.TraerGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).GetNombre().ToString();
-
-                //Sigue sin funcionar
-                Fotografia fotografia = new Fotografia();
-                Pic_Perfil.Image = fotografia.ByteToImage(alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto());
-                //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
-                //Pic_Perfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto()); -- Este tampoco
+                if (alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto() != null)
+                {
+                    Pic_Perfil.Image = foto.ByteToImage(alumno.BuscarPersona(Validacion.UsuarioActual).GetFoto());
+                }
             }
             catch (Exception ex)
             {

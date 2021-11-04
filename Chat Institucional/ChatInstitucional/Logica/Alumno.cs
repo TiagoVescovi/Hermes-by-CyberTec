@@ -26,13 +26,13 @@ namespace ChatInstitucional.Logica
             IdGrupo = idgroup;
         }
 
-                    // Comienzo de ABM con BuscarAlumno() abajo
+        // Comienzo de ABM con BuscarAlumno() abajo
 
         public bool IngresarAlumno(Alumno a)
         {
             //Alta alumno
             Validacion validacion = new Validacion();
-            
+
             try
             {
                 if (a.BuscarPersona(a.GetCI()).GetCI() == a.GetCI()) //Checkea si existe en persona
@@ -71,7 +71,7 @@ namespace ChatInstitucional.Logica
                     return false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //Ocurrio un error en la creacion del alumno
                 Console.WriteLine(ex.ToString());
@@ -165,7 +165,8 @@ namespace ChatInstitucional.Logica
                 {
                     return false;
                 }
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
                 return false;

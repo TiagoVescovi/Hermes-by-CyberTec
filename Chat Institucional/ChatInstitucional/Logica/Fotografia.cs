@@ -39,15 +39,15 @@ namespace ChatInstitucional.Logica
         public byte[] ImageToByte(Image imagenIn)
         {
             MemoryStream ms = new MemoryStream();
-            ImageFormat imf = imagenIn.RawFormat;
-            imagenIn.Save(ms, imf);
+            imagenIn.Save(ms, imagenIn.RawFormat);
             return ms.ToArray();
         }
 
         public bool CambiarImagen(byte[] foto, int ci)
         {
             Validacion validacion = new Validacion();
-            return validacion.Update("UPDATE persona SET foto = '" + foto + "' WHERE cedula = " + ci + ";");
+            //return validacion.Update("UPDATE persona SET foto = '" + foto + "' WHERE cedula = " + ci + ";");
+            return validacion.ModifyPicture(foto, ci);
         }
     }
 }

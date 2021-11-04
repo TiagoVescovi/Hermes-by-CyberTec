@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using ChatInstitucional.Logica;
 using System.Data;
+using System.Drawing;
+using System.IO;
 
 namespace ChatInstitucional.De_persistencia
 {
@@ -17,7 +19,7 @@ namespace ChatInstitucional.De_persistencia
         {
             try
             {
-                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=bd_chat; Uid=root; Password=;SSL MODE = 0");
+                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=bd_chat2; Uid=root; Password=SQL@123;SSL MODE = 0");
             }
             catch
             {

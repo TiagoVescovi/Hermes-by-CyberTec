@@ -44,12 +44,11 @@ namespace ChatInstitucional.Presentacion
             {
                 // Cambiarlo para Docente
                 Lbl_UserName.Text = docente.BuscarDocente(Validacion.UsuarioActual).GetNombre() + " " + docente.BuscarDocente(Validacion.UsuarioActual).GetApellido();
-
-                //Sigue sin funcionar
-                Fotografia fotografia = new Fotografia();
-                Pic_Perfil.Image = fotografia.ByteToImage(docente.BuscarPersona(Validacion.UsuarioActual).GetFoto());
-                //Pic_Perfil.Image = Image.FromStream(foto.ByteToImage(alumno.BuscarAlumno(Validacion.UsuarioActual).GetFoto())); -- Tampoco funco
-                //Pic_Perfil.Image = foto.ByteToImage(persona.BuscarPersona(Validacion.UsuarioActual).GetFoto()); -- Este tampoco
+                
+                if (docente.BuscarPersona(Validacion.UsuarioActual).GetFoto() != null)
+                {
+                    Pic_Perfil.Image = foto.ByteToImage(docente.BuscarPersona(Validacion.UsuarioActual).GetFoto());
+                }
             }
             catch (Exception ex)
             {
