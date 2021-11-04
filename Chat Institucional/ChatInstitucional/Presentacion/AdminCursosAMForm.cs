@@ -144,7 +144,7 @@ namespace ChatInstitucional.Presentacion
                             //Agrega
                             try
                             {
-                                if (!String.IsNullOrEmpty(Text_Grado.Text) && !String.IsNullOrEmpty(Text_Dist.Text) && !String.IsNullOrEmpty(Text_Ano.Text) && !String.IsNullOrEmpty(Combo_Ori.SelectedItem.ToString()) && !String.IsNullOrEmpty(Combo_Ori.Text))
+                                if (!String.IsNullOrEmpty(Text_Grado.Text) && !String.IsNullOrEmpty(Text_Dist.Text) && !String.IsNullOrEmpty(Text_Ano.Text) && Combo_Ori.SelectedIndex != -1)
                                 {
                                     Orientacion ori = new Orientacion();
                                     grupo.SetNombre(Text_Grado.Text + "°" + Text_Dist.Text);

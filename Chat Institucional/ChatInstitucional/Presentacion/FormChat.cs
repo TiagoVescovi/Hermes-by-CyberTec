@@ -31,30 +31,7 @@ namespace ChatInstitucional.Presentacion
         private void ChatFormAlumno_Load(object sender, EventArgs e)
         {
             //Llenar el Dgv_Chats
-            Chat chat = new Chat();
-            Grupo grupo = new Grupo();
-            Docente docente = new Docente();
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("materia");
-            dataTable.Columns.Add("grupo");
-
-            // Comparar para caundo sea docente q sea Rows[i][9] no 12
-            if(Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
-            {
-                for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
-                {
-                    dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][9].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
-                }
-            }
-            else
-            {
-                for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
-                {
-                    dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
-                }
-            }
-
-            Dgv_Chats.DataSource = dataTable;
+            RecargarChats();
         }
 
         private void Btn_Send_Click(object sender, EventArgs e)
@@ -113,51 +90,8 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Refresh_Click(object sender, EventArgs e)
         {
             //Refresca el Dgv_Chats
-            Chat chat = new Chat();
-            Grupo grupo = new Grupo();
-            Docente docente = new Docente();
-            DataTable dataTable = new DataTable();
-            Dgv_Chats.Columns.Add("materia","materia");
-            Dgv_Chats.Columns.Add("grupo", "grupo");
 
-            if (Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
-            {
-                for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
-                {
-                    dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][9].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
-                }
-            }
-            else
-            {
-                for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
-                {
-                    dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
-                }
-            }
-
-            Dgv_Chats.DataSource = dataTable;
-
-            //for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
-            //{
-            //    if (Dgv_Chats.Rows.Count > 0)
-            //    {
-            //        for(int j = 0; j < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; j++)
-            //        {
-            //            if (Dgv_Chats.Rows[i].Cells[0].Value.ToString() == chat.LlenarChats(Validacion.UsuarioActual).Rows[i][13].ToString())
-            //            {
-            //                return;
-            //            }
-            //            else
-            //            {
-            //                Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][13].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Dgv_Chats.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][13].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre().ToString());
-            //    }
-            //}
+            RecargarChats();
         }
 
         private void Dgv_Chats_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -171,33 +105,49 @@ namespace ChatInstitucional.Presentacion
             IdChat = chat.GetIdConsulta();
             Btn_Tema.Text = Dgv_Chats.Rows[index].Cells[0].Value.ToString() + " - " + grupo.TraerGrupo(chat.BuscarConsulta(IdChat).GetIdGrupo()).GetNombre();
 
-            for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
+            if(chat.BuscarChat(IdChat).GetHoraFin() == null)
             {
-                if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                for (int i = 0; i < mensaje.TraerMensaje(IdChat).Rows.Count; i++)
                 {
-                    Persona persona = new Persona();
-                    AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
-                    Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
-                    msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
-                    posicionUltima = i;
+                    if (!mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                    {
+                        Persona persona = new Persona();
+                        AddIncomming(mensaje.TraerMensaje(IdChat).Rows[i]["Contenido"].ToString(), mensaje.TraerMensaje(IdChat).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i]["idAutor"])).GetApellido());
+                        Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                        msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
+                        posicionUltima = i;
+                    }
+                    else
+                    {
+                        AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
+                        Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                        msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
+                        posicionUltima = i;
+                    }
                 }
-                else
+
+                Timer timer = new Timer { Interval = 500 };
+                timer.Enabled = true;
+                timer.Tick += new System.EventHandler(RecargarMensajes);
+
+                Docente docente = new Docente();
+                if (Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
                 {
-                    AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
-                    Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
-                    msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
-                    posicionUltima = i;
+                    Btn_Opciones.Enabled = false;
                 }
+
+                Text_Mensaje.Enabled = true;
+                Btn_Send.Enabled = true;
+                Btn_Tema.Enabled = true;
+                Btn_Opciones.Enabled = true;
             }
-
-            Timer timer = new Timer { Interval = 500 };
-            timer.Enabled = true;
-            timer.Tick += new System.EventHandler(RecargarMensajes);
-
-            Text_Mensaje.Enabled = true;
-            Btn_Send.Enabled = true;
-            Btn_Tema.Enabled = true;
-            Btn_Opciones.Enabled = true;
+            else
+            {
+                Text_Mensaje.Enabled = false;
+                Btn_Send.Enabled = false;
+                Btn_Tema.Enabled = false;
+                Btn_Opciones.Enabled = false;
+            }
         }
 
         private void RecargarMensajes(object source, EventArgs e)
@@ -278,6 +228,39 @@ namespace ChatInstitucional.Presentacion
             }
         }
 
+        private void RecargarChats()
+        {
+            try
+            {
+                Chat chat = new Chat();
+                Grupo grupo = new Grupo();
+                Docente docente = new Docente();
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("materia");
+                dataTable.Columns.Add("grupo");
+
+                if (Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
+                {
+                    for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
+                    {
+                        dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][9].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre());
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
+                    {
+                        dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre());
+                    }
+                }
+
+                Dgv_Chats.DataSource = dataTable;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
         
     }
 }

@@ -204,15 +204,9 @@ namespace ChatInstitucional.Presentacion
 
         private void Text_User_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 // Solo se pueden poner numeros
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
-            {
-                // No se puede poner mas de un -
                 e.Handled = true;
             }
 

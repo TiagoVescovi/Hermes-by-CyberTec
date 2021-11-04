@@ -72,6 +72,7 @@ namespace ChatInstitucional.Presentacion
         private void Combo_Orientacion_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Cambian los grupos cada vez q se cambia la orientacion
+            Combo_Grupos.Items.Clear();
             Grupo grupo = new Grupo();
             Orientacion orientacion = new Orientacion();
             for (int i = 0; i < grupo.GruposPorOrientacion(Convert.ToInt32(orientacion.ListarOrientaciones().Rows[Combo_Orientacion.SelectedIndex][0])).Rows.Count; i++)
@@ -85,7 +86,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Combo_Grupos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Cambian las materias cada vez q se cambia el grupo
+            Combo_Materias.Items.Clear();
             Materia materia = new Materia();
             Grupo grupo = new Grupo();
             Orientacion orientacion = new Orientacion();
@@ -174,12 +175,6 @@ namespace ChatInstitucional.Presentacion
             }
         }
 
-        private void Dgv_Horarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Habilita Btn_Eliminar_Horario
-            Btn_Eliminar_Horario.Enabled = true;
-        }
-
         private void LlenarDgvHorarios()
         {
             // Las columnas van a ser los dias
@@ -256,16 +251,20 @@ namespace ChatInstitucional.Presentacion
         private void Btn_Eliminar_Materia_Click(object sender, EventArgs e)
         {
             // Elimina la materia seleccionada
-            Materia materia = new Materia();
-            if (materia.EliminarEnsenia(Convert.ToInt32(materia.ListarEnsenia(Validacion.UsuarioActual).Rows[Dgv_Materias.CurrentRow.Index][0]), Validacion.UsuarioActual, Convert.ToInt32(materia.ListarEnsenia(Validacion.UsuarioActual).Rows[Dgv_Materias.CurrentRow.Index][2])))
+            DialogResult dialogResult = MessageBox.Show("¿Está segur@ de que quiere eliminar el horario?", "Eliminar horario", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Se eliminó la materia");
-                LlenarDgvMaterias();
-            }
-            else
-            {
-                MessageBox.Show("No se pudo eliminar la materia");
-                LlenarDgvMaterias();
+                Materia materia = new Materia();
+                if (materia.EliminarEnsenia(Convert.ToInt32(materia.ListarEnsenia(Validacion.UsuarioActual).Rows[Dgv_Materias.CurrentRow.Index][0]), Validacion.UsuarioActual, Convert.ToInt32(materia.ListarEnsenia(Validacion.UsuarioActual).Rows[Dgv_Materias.CurrentRow.Index][2])))
+                {
+                    MessageBox.Show("Se eliminó la materia");
+                    LlenarDgvMaterias();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar la materia");
+                    LlenarDgvMaterias();
+                }
             }
         }
 
@@ -282,6 +281,11 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Materias_MouseClick(object sender, MouseEventArgs e)
         {
             Btn_Eliminar_Materia.Enabled = true;
+        }
+
+        private void Dgv_Horarios_MouseClick(object sender, MouseEventArgs e)
+        {
+            Btn_Eliminar_Horario.Enabled = true;
         }
 
         private void LlenarDgvMaterias()

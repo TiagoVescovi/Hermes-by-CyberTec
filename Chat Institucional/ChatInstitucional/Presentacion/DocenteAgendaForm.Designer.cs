@@ -56,8 +56,8 @@
             this.Btn_Agregar_Materia = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Btn_Refresh_Horario = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.Btn_Refresh_Horario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horarios)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).BeginInit();
@@ -227,7 +227,7 @@
             this.Dgv_Horarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Horarios.Size = new System.Drawing.Size(354, 213);
             this.Dgv_Horarios.TabIndex = 13;
-            this.Dgv_Horarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Horarios_CellContentClick);
+            this.Dgv_Horarios.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Dgv_Horarios_MouseClick);
             // 
             // label6
             // 
@@ -422,6 +422,18 @@
             this.panel2.Size = new System.Drawing.Size(358, 428);
             this.panel2.TabIndex = 21;
             // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(0, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(354, 21);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "SELECCIONE UN DIA PARA VER SUS HORARIOS";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Btn_Refresh_Horario
             // 
             this.Btn_Refresh_Horario.BackColor = System.Drawing.Color.Transparent;
@@ -438,18 +450,6 @@
             this.Btn_Refresh_Horario.TabIndex = 20;
             this.Btn_Refresh_Horario.UseVisualStyleBackColor = false;
             this.Btn_Refresh_Horario.Click += new System.EventHandler(this.Btn_Refresh_Horario_Click);
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(0, 30);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(354, 21);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "SELECCIONE UN DIA PARA VER SUS HORARIOS";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DocenteAgendaForm
             // 

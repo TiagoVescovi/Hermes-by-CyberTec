@@ -103,18 +103,21 @@ namespace ChatInstitucional.Logica
 
             try
             {
-                dataTable = validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND p.cedula = " + ced + ";");
+                if(validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND p.cedula = " + ced + ";").Rows.Count > 0)
+                {
+                    dataTable = validacion.Select("SELECT * FROM alumno a, persona p WHERE a.cedula = p.cedula AND p.cedula = " + ced + ";");
 
-                alumno.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
-                alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
-                alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
-                alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
-                alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
-                alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
-                alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
-                alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
-                alumno.SetIdioma(dataTable.Rows[0]["idioma"].ToString());
-                alumno.SetFoto((byte[])dataTable.Rows[0]["foto"]); // MAS RARO ESTO PERO FUNCIONA
+                    alumno.SetCI(Convert.ToInt32(dataTable.Rows[0]["cedula"]));
+                    alumno.SetGrupo(Convert.ToInt32(dataTable.Rows[0]["idGrupo"]));
+                    alumno.SetNombre(dataTable.Rows[0]["nombre"].ToString());
+                    alumno.SetApellido(dataTable.Rows[0]["apellido"].ToString());
+                    alumno.SetPass(dataTable.Rows[0]["passwd"].ToString());
+                    alumno.SetNickname(dataTable.Rows[0]["nickname"].ToString());
+                    alumno.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
+                    alumno.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
+                    alumno.SetIdioma(dataTable.Rows[0]["idioma"].ToString());
+                    alumno.SetFoto((byte[])dataTable.Rows[0]["foto"]); // MAS RARO ESTO PERO FUNCIONA
+                }
             }
             catch(Exception e)
             {

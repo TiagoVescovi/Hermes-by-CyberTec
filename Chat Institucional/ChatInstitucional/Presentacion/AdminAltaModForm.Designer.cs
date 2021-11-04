@@ -55,6 +55,7 @@
             this.Text_PassCheck.TabIndex = 53;
             this.Text_PassCheck.Text = "Confirmar Contraseña";
             this.Text_PassCheck.UseSystemPasswordChar = true;
+            this.Text_PassCheck.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Texts_KeyPress);
             // 
             // Text_Pass
             // 
@@ -68,6 +69,7 @@
             this.Text_Pass.TabIndex = 52;
             this.Text_Pass.Text = "Contraseña";
             this.Text_Pass.UseSystemPasswordChar = true;
+            this.Text_Pass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Texts_KeyPress);
             // 
             // Text_Nombre
             // 
@@ -80,6 +82,7 @@
             this.Text_Nombre.Size = new System.Drawing.Size(234, 31);
             this.Text_Nombre.TabIndex = 49;
             this.Text_Nombre.Text = "Nombre";
+            this.Text_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Texts_KeyPress);
             // 
             // Text_Nick
             // 
@@ -92,6 +95,7 @@
             this.Text_Nick.Size = new System.Drawing.Size(234, 31);
             this.Text_Nick.TabIndex = 51;
             this.Text_Nick.Text = "Nickname";
+            this.Text_Nick.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Texts_KeyPress);
             // 
             // Text_Cedula
             // 
@@ -104,6 +108,7 @@
             this.Text_Cedula.Size = new System.Drawing.Size(234, 31);
             this.Text_Cedula.TabIndex = 48;
             this.Text_Cedula.Text = "Cedula";
+            this.Text_Cedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Text_Cedula_KeyPress_1);
             // 
             // Text_Apellido
             // 
@@ -116,6 +121,7 @@
             this.Text_Apellido.Size = new System.Drawing.Size(234, 31);
             this.Text_Apellido.TabIndex = 50;
             this.Text_Apellido.Text = "Apellido";
+            this.Text_Apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Texts_KeyPress);
             // 
             // Btn_ImgDefault
             // 
