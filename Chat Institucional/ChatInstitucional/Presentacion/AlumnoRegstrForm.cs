@@ -52,19 +52,27 @@ namespace ChatInstitucional.Presentacion
 
             try
             {
-                if(!String.IsNullOrEmpty(Text_Nickname.Text) && !String.IsNullOrEmpty(Text_Cedula.Text) && !String.IsNullOrEmpty(Text_Nombre.Text) && !String.IsNullOrEmpty(Text_Apellido.Text) && !String.IsNullOrEmpty(Text_Pass.Text) && !String.IsNullOrEmpty(Text_PassCheck.Text) && !String.IsNullOrEmpty(Combo_Grupo.SelectedIndex.ToString()))
+                if (!String.IsNullOrEmpty(Text_Nickname.Text) && !String.IsNullOrEmpty(Text_Cedula.Text) && !String.IsNullOrEmpty(Text_Nombre.Text) && !String.IsNullOrEmpty(Text_Apellido.Text) && !String.IsNullOrEmpty(Text_Pass.Text) && !String.IsNullOrEmpty(Text_PassCheck.Text) && !String.IsNullOrEmpty(Combo_Grupo.SelectedIndex.ToString()))
                 {
                     string cedula = Text_Cedula.Text;
-                    string[] ced = cedula.Split('-');
-                    String pass = Text_Pass.Text;
-                    if (CIValidator.Validate(cedula))
+                    string pass = Text_Pass.Text;
+                    string ced = "1111111";
+                    string iden = "2";
+
+                    if (cedula.Length == 8)
+                    {
+                        ced = cedula.Substring(0, 7);
+                        iden = cedula.Substring(7, 1);
+                    }
+
+                    if (CIValidator.Validate(ced+"-"+iden))
                     {
                         if (Text_Pass.Text == Text_PassCheck.Text)
                         {
                             Alumno alumno = new Alumno();
                             Grupo grupo = new Grupo();
                             alumno.SetNickname(Text_Nickname.Text);
-                            alumno.SetCI(int.Parse(ced[0]));
+                            alumno.SetCI(int.Parse(ced));
                             alumno.SetNombre(Text_Nombre.Text);
                             alumno.SetApellido(Text_Apellido.Text);
                             alumno.SetPass(Text_Pass.Text);

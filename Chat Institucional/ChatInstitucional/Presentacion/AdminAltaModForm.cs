@@ -21,7 +21,6 @@ namespace ChatInstitucional.Presentacion
         public AdminAltaModForm(int userType, int action)   //Este añade
         {
             InitializeComponent();
-            
             // TipoUser
                 // 1 = docente
                 // 2 = alumno
@@ -143,6 +142,7 @@ namespace ChatInstitucional.Presentacion
                     Text_PassCheck.Enabled = false;
                     Combo_Grupos.Enabled = true;
 
+
                     //Llena el Combo_Grupos
                     Grupo grupo = new Grupo();
                     for (int i = 0; i < grupo.LlenarComboBox().Rows.Count; i++)
@@ -217,14 +217,23 @@ namespace ChatInstitucional.Presentacion
                                         if (!String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Pass.Text) && Text_Pass.Text != "Contaseña" && !String.IsNullOrEmpty(Text_PassCheck.Text) && Text_PassCheck.Text != "Confirmar Contraseña")
                                         {
                                             string cedula = Text_Cedula.Text;
-                                            string[] ced = cedula.Split('-');
-                                            if (CIValidator.Validate(cedula))
+                                            string pass = Text_Pass.Text;
+                                            string ced = "1111111";
+                                            string iden = "2";
+
+                                            if (cedula.Length == 8)
+                                            {
+                                                ced = cedula.Substring(0, 7);
+                                                iden = cedula.Substring(7, 1);
+                                            }
+
+                                            if (CIValidator.Validate(ced + "-" + iden))
                                             {
                                                 if (Text_Pass.Text == Text_PassCheck.Text)
                                                 {
                                                     Docente docente = new Docente();
                                                     docente.SetNickname(Text_Nick.Text);
-                                                    docente.SetCI(int.Parse(ced[0]));
+                                                    docente.SetCI(int.Parse(ced));
                                                     docente.SetNombre(Text_Nombre.Text);
                                                     docente.SetApellido(Text_Apellido.Text);
                                                     docente.SetPass(Text_Pass.Text);
@@ -269,10 +278,19 @@ namespace ChatInstitucional.Presentacion
                                     {
                                         Administrador administrador = new Administrador();
                                         string cedula = Text_Cedula.Text;
-                                        string[] ced = cedula.Split('-');
-                                        if (CIValidator.Validate(cedula))
+                                        string pass = Text_Pass.Text;
+                                        string ced = "1111111";
+                                        string iden = "2";
+
+                                        if (cedula.Length == 8)
                                         {
-                                            if (administrador.AgregarEnDocente(int.Parse(ced[0])))
+                                            ced = cedula.Substring(0, 7);
+                                            iden = cedula.Substring(7, 1);
+                                        }
+
+                                        if (CIValidator.Validate(ced + "-" + iden))
+                                        {
+                                            if (administrador.AgregarEnDocente(int.Parse(ced)))
                                             {
                                                 MessageBox.Show("Docente agregado satisfacttoriamente");
                                                 this.Close();
@@ -344,11 +362,19 @@ namespace ChatInstitucional.Presentacion
                                             {
                                                 Administrador administrador = new Administrador();
                                                 string cedula = Text_Cedula.Text;
-                                                string[] ced = cedula.Split('-');
+                                                string pass = Text_Pass.Text;
+                                                string ced = "1111111";
+                                                string iden = "2";
 
-                                                if (CIValidator.Validate(cedula))
+                                                if (cedula.Length == 8)
                                                 {
-                                                    if (administrador.AgregarAlumno(int.Parse(ced[0])))
+                                                    ced = cedula.Substring(0, 7);
+                                                    iden = cedula.Substring(7, 1);
+                                                }
+
+                                                if (CIValidator.Validate(ced + "-" + iden))
+                                                {
+                                                    if (administrador.AgregarAlumno(int.Parse(ced)))
                                                     {
                                                         MessageBox.Show("Usuario Ingresado\nDebe esperar a que un alumno se registre para poder editarlo");
                                                         this.Close();
@@ -383,10 +409,18 @@ namespace ChatInstitucional.Presentacion
                                         Administrador administrador = new Administrador();
                                         Grupo grupo = new Grupo();
                                         string cedula = Text_Cedula.Text;
-                                        string[] ced = cedula.Split('-');
-                                        if (CIValidator.Validate(cedula))
+                                        string ced = "1111111";
+                                        string iden = "2";
+
+                                        if (cedula.Length == 8)
                                         {
-                                            if (administrador.AgregarEnAlumno(int.Parse(ced[0]), Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupos.SelectedIndex][0])) && administrador.ModificarPersona("activo", "false", int.Parse(ced[0])))
+                                            ced = cedula.Substring(0, 7);
+                                            iden = cedula.Substring(7, 1);
+                                        }
+
+                                        if (CIValidator.Validate(ced + "-" + iden))
+                                        {
+                                            if (administrador.AgregarEnAlumno(int.Parse(ced), Convert.ToInt32(grupo.LlenarComboBox().Rows[Combo_Grupos.SelectedIndex][0])) && administrador.ModificarPersona("activo", "false", int.Parse(ced)))
                                             {
                                                 MessageBox.Show("Alumno agregado satisfactoriamente");
                                                 this.Close();
@@ -459,14 +493,22 @@ namespace ChatInstitucional.Presentacion
                                         if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre" && !String.IsNullOrEmpty(Text_Pass.Text) && Text_Pass.Text != "Contaseña" && !String.IsNullOrEmpty(Text_PassCheck.Text) && Text_PassCheck.Text != "Confirmar Contraseña")
                                         {
                                             string cedula = Text_Cedula.Text;
-                                            string[] ced = cedula.Split('-');
-                                            if (CIValidator.Validate(cedula))
+                                            string ced = "1111111";
+                                            string iden = "2";
+
+                                            if (cedula.Length == 8)
+                                            {
+                                                ced = cedula.Substring(0, 7);
+                                                iden = cedula.Substring(7, 1);
+                                            }
+
+                                            if (CIValidator.Validate(ced + "-" + iden))
                                             {
                                                 if (Text_Pass.Text == Text_PassCheck.Text)
                                                 {
                                                     Administrador admin = new Administrador();
                                                     admin.SetNickname(Text_Nick.Text);
-                                                    admin.SetCI(int.Parse(ced[0]));
+                                                    admin.SetCI(int.Parse(ced));
                                                     admin.SetNombre(Text_Nombre.Text);
                                                     admin.SetApellido(Text_Apellido.Text);
                                                     admin.SetPass(Text_Pass.Text);
@@ -513,10 +555,18 @@ namespace ChatInstitucional.Presentacion
                                     {
                                         Administrador administrador = new Administrador();
                                         string cedula = Text_Cedula.Text;
-                                        string[] ced = cedula.Split('-');
-                                        if (CIValidator.Validate(cedula))
+                                        string ced = "1111111";
+                                        string iden = "2";
+
+                                        if (cedula.Length == 8)
                                         {
-                                            if (administrador.AgregarEnAdmin(int.Parse(ced[0]), Combo_Grupos.SelectedItem.ToString()))
+                                            ced = cedula.Substring(0, 7);
+                                            iden = cedula.Substring(7, 1);
+                                        }
+
+                                        if (CIValidator.Validate(ced + "-" + iden))
+                                        {
+                                            if (administrador.AgregarEnAdmin(int.Parse(ced), Combo_Grupos.SelectedItem.ToString()))
                                             {
                                                 MessageBox.Show("Administrador agregado satisfactoriamente");
                                                 this.Close();
@@ -610,8 +660,16 @@ namespace ChatInstitucional.Presentacion
                 if(!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula")
                 {
                     string cedula = Text_Cedula.Text;
-                    string[] ced = cedula.Split('-');
-                    if (CIValidator.Validate(cedula))
+                    string ced = "1111111";
+                    string iden = "2";
+
+                    if (cedula.Length == 8)
+                    {
+                        ced = cedula.Substring(0, 7);
+                        iden = cedula.Substring(7, 1);
+                    }
+
+                    if (CIValidator.Validate(ced + "-" + iden))
                     {
                         fotografia.SetImagen(fotografia.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
                         if (persona.ModificarPersona("foto", "'" + fotografia.GetImagen() + "'", Convert.ToInt32(Text_Cedula.Text)))
@@ -654,5 +712,7 @@ namespace ChatInstitucional.Presentacion
                 }
             }
         }
+
+        
     }
 }
