@@ -404,7 +404,7 @@ namespace ChatInstitucional.Presentacion
                                 else if(Combo_Nuevo_Existenete.SelectedIndex == 1)
                                 {
 
-                                    if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
+                                    if (!String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && Combo_Grupos.SelectedIndex != -1)
                                     {
                                         Administrador administrador = new Administrador();
                                         Grupo grupo = new Grupo();
@@ -449,7 +449,7 @@ namespace ChatInstitucional.Presentacion
 
                             case 2:
                                 //Modificar
-                                if (!String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre"  && !String.IsNullOrEmpty(Combo_Grupos.SelectedIndex.ToString()))
+                                if (!String.IsNullOrEmpty(Text_Nick.Text) && Text_Nick.Text != "Nickname" && !String.IsNullOrEmpty(Text_Cedula.Text) && Text_Cedula.Text != "Cedula" && !String.IsNullOrEmpty(Text_Apellido.Text) && Text_Apellido.Text != "Apellido" && !String.IsNullOrEmpty(Text_Nombre.Text) && Text_Nombre.Text != "Nombre"  && Combo_Grupos.SelectedIndex != -1)
                                 {
                                     Alumno alumno = new Alumno();
                                     Grupo grupo = new Grupo();
@@ -632,15 +632,9 @@ namespace ChatInstitucional.Presentacion
         private void Text_Cedula_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Solo numeros y un guion
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 // Solo se pueden poner numeros
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
-            {
-                // No se puede poner mas de un -
                 e.Handled = true;
             }
         }
@@ -713,6 +707,23 @@ namespace ChatInstitucional.Presentacion
             }
         }
 
-        
+        private void Texts_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char chr = Convert.ToChar("'");
+            if (e.KeyChar == chr)
+            {
+                // Solo se pueden poner numeros
+                e.Handled = true;
+            }
+        }
+
+        private void Text_Cedula_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Solo se pueden poner numeros
+                e.Handled = true;
+            }
+        }
     }
 }

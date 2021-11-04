@@ -29,7 +29,7 @@ namespace ChatInstitucional.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.Dgv_Materias = new System.Windows.Forms.DataGridView();
             this.Btn_Crear = new System.Windows.Forms.Button();
@@ -58,14 +58,14 @@ namespace ChatInstitucional.Presentacion
             this.Dgv_Materias.BackgroundColor = System.Drawing.Color.White;
             this.Dgv_Materias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dgv_Materias.ColumnHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_Materias.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_Materias.DefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Materias.GridColor = System.Drawing.Color.White;
             this.Dgv_Materias.Location = new System.Drawing.Point(44, 62);
             this.Dgv_Materias.Name = "Dgv_Materias";
@@ -80,7 +80,7 @@ namespace ChatInstitucional.Presentacion
             // Btn_Crear
             // 
             this.Btn_Crear.Enabled = false;
-            this.Btn_Crear.Location = new System.Drawing.Point(457, 62);
+            this.Btn_Crear.Location = new System.Drawing.Point(470, 109);
             this.Btn_Crear.Name = "Btn_Crear";
             this.Btn_Crear.Size = new System.Drawing.Size(158, 23);
             this.Btn_Crear.TabIndex = 2;
@@ -91,7 +91,7 @@ namespace ChatInstitucional.Presentacion
             // Btn_Unirse
             // 
             this.Btn_Unirse.Enabled = false;
-            this.Btn_Unirse.Location = new System.Drawing.Point(457, 91);
+            this.Btn_Unirse.Location = new System.Drawing.Point(470, 138);
             this.Btn_Unirse.Name = "Btn_Unirse";
             this.Btn_Unirse.Size = new System.Drawing.Size(158, 23);
             this.Btn_Unirse.TabIndex = 3;
@@ -102,7 +102,7 @@ namespace ChatInstitucional.Presentacion
             // Text_NomDocente
             // 
             this.Text_NomDocente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Text_NomDocente.Location = new System.Drawing.Point(457, 293);
+            this.Text_NomDocente.Location = new System.Drawing.Point(470, 90);
             this.Text_NomDocente.Name = "Text_NomDocente";
             this.Text_NomDocente.ReadOnly = true;
             this.Text_NomDocente.Size = new System.Drawing.Size(158, 13);
@@ -112,16 +112,17 @@ namespace ChatInstitucional.Presentacion
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(494, 265);
+            this.label2.Location = new System.Drawing.Point(507, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "Docente";
             // 
-            // CursosAlumnoForm
+            // AlumnoCursosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(717, 428);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Text_NomDocente);
@@ -130,7 +131,7 @@ namespace ChatInstitucional.Presentacion
             this.Controls.Add(this.Dgv_Materias);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CursosAlumnoForm";
+            this.Name = "AlumnoCursosForm";
             this.Text = "CursosAlumnoForm";
             this.Load += new System.EventHandler(this.CursosAlumnoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Materias)).EndInit();

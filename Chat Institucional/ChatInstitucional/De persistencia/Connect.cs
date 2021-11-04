@@ -19,7 +19,7 @@ namespace ChatInstitucional.De_persistencia
         {
             try
             {
-                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=bd_chat2; Uid=root; Password=SQL@123;SSL MODE = 0");
+                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=bd_chat; Uid=root; Password=;SSL MODE = 0");
             }
             catch
             {
