@@ -62,18 +62,26 @@ namespace ChatInstitucional.Presentacion
                 if (!String.IsNullOrEmpty(Text_User.Text) && !String.IsNullOrEmpty(Text_Pass.Text))
                 {
                     string cedula = Text_User.Text;
-                    string[] ced = cedula.Split('-');
-                    String pass = Text_Pass.Text;
-                    if (CIValidator.Validate(cedula))
+                    string ced = "1111111";
+                    string iden = "2";
+                    string pass = Text_Pass.Text;
+
+                    if (cedula.Length == 8)
                     {
-                        if (administrador.ValidarAdmin(int.Parse(ced[0]), pass))
+                        ced = cedula.Substring(0, 7);
+                        iden = cedula.Substring(7, 1);
+                    }
+
+                    if (CIValidator.Validate(ced+"-"+iden))
+                    {
+                        if (administrador.ValidarAdmin(int.Parse(ced), pass))
                         {
-                            if(administrador.ActivoLogueado(int.Parse(ced[0])) == 1)
+                            if(administrador.ActivoLogueado(int.Parse(ced)) == 1)
                             {
                                 // Logueado con exito
                                 // Abre MainFormAdmin
                                 AdminMainForm adf = new AdminMainForm();
-                                Validacion.UsuarioActual = int.Parse(ced[0]);
+                                Validacion.UsuarioActual = int.Parse(ced);
                                 if (administrador.LogIn(Validacion.UsuarioActual))
                                 {
                                     this.Hide();
@@ -86,7 +94,7 @@ namespace ChatInstitucional.Presentacion
                                 }
 
                             }
-                            else if(administrador.ActivoLogueado(int.Parse(ced[0])) == 2)
+                            else if(administrador.ActivoLogueado(int.Parse(ced)) == 2)
                             {
                                 // Ya se logueo
                                 MessageBox.Show("Ya iniciaste sesión");
@@ -97,14 +105,14 @@ namespace ChatInstitucional.Presentacion
                                 MessageBox.Show("Usuario no activo\nSi usted no eliminó su usuario contacte a un administrador");
                             }
                         }
-                        else if (docente.ValidarDocente(int.Parse(ced[0]), pass))
+                        else if (docente.ValidarDocente(int.Parse(ced), pass))
                         {
-                            if (docente.ActivoLogueado(int.Parse(ced[0])) == 1)
+                            if (docente.ActivoLogueado(int.Parse(ced)) == 1)
                             {
                                 // Logueado con exito
                                 // Abre MainFormDocente
                                 DocenteMainForm mfd = new DocenteMainForm();
-                                Validacion.UsuarioActual = int.Parse(ced[0]);
+                                Validacion.UsuarioActual = int.Parse(ced);
                                 if (docente.LogIn(Validacion.UsuarioActual))
                                 {
                                     this.Hide();
@@ -116,7 +124,7 @@ namespace ChatInstitucional.Presentacion
                                     MessageBox.Show("No se pudo iniciar sesión");
                                 }
                             }
-                            else if (docente.ActivoLogueado(int.Parse(ced[0])) == 2)
+                            else if (docente.ActivoLogueado(int.Parse(ced)) == 2)
                             {
                                 // Ya se logueo
                                 MessageBox.Show("Ya iniciaste sesión");
@@ -127,14 +135,14 @@ namespace ChatInstitucional.Presentacion
                                 MessageBox.Show("Usuario no activo\nSi usted no eliminó su usuario contacte a un administrador");
                             }
                         }
-                        else if (alumno.ValidarAlumno(int.Parse(ced[0]), pass))
+                        else if (alumno.ValidarAlumno(int.Parse(ced), pass))
                         {
-                            if (alumno.ActivoLogueado(int.Parse(ced[0])) == 1)
+                            if (alumno.ActivoLogueado(int.Parse(ced)) == 1)
                             {
                                 // Logueado con exito
                                 // Abre MainFormAlumno
                                 AlumnoMainForm mfa = new AlumnoMainForm();
-                                Validacion.UsuarioActual = int.Parse(ced[0]);
+                                Validacion.UsuarioActual = int.Parse(ced);
                                 if (alumno.LogIn(Validacion.UsuarioActual))
                                 {
                                     this.Hide();
@@ -146,7 +154,7 @@ namespace ChatInstitucional.Presentacion
                                     MessageBox.Show("No se pudo iniciar sesión");
                                 }
                             }
-                            else if (alumno.ActivoLogueado(int.Parse(ced[0])) == 2)
+                            else if (alumno.ActivoLogueado(int.Parse(ced)) == 2)
                             {
                                 // Ya se logueo
                                 MessageBox.Show("Ya iniciaste sesión");
