@@ -39,7 +39,7 @@ namespace ChatInstitucional.Presentacion
             Dgv_Participantes.Columns.Add("Nombre", "NOMBRE");
             Dgv_Participantes.Columns.Add("Apellido", "APELLIDO");
             Dgv_Participantes.Columns.Add("Tipo", "TIPO");
-
+            
             Dgv_Participantes.Rows.Add(persona.BuscarPersona(chat.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[0][0])).GetCiProfesor()).GetNombre(), persona.BuscarPersona(chat.BuscarConsulta(Convert.ToInt32(chat.Participantes(idCh).Rows[0][0])).GetCiProfesor()).GetApellido(), "Docente");
 
             for (int i = 0; i < chat.Participantes(idCh).Rows.Count; i++)

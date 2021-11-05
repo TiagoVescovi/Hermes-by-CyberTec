@@ -50,6 +50,9 @@ namespace ChatInstitucional.Presentacion
                 case 2:
                     MessageBox.Show("Ya eres parte del chat");
                     break;
+                case 3:
+                    MessageBox.Show("Te has vuelto a unir al chat");
+                    break;
 
                 case 0:
                     MessageBox.Show("No te has podido unir al chat");

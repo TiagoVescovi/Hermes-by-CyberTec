@@ -217,7 +217,10 @@ namespace ChatInstitucional.Logica
                     persona.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                     persona.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
                     persona.SetIdioma(dataTable.Rows[0]["idioma"].ToString());
-                    persona.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                    if (dataTable.Rows[0]["foto"] != null)
+                    {
+                        persona.SetFoto((byte[])dataTable.Rows[0]["foto"]);
+                    } 
                 }
                 //else
                 //{

@@ -56,7 +56,10 @@ namespace ChatInstitucional.Logica
                 administrador.SetActivo(Convert.ToBoolean(dataTable.Rows[0]["activo"]));
                 administrador.SetLogueado(Convert.ToBoolean(dataTable.Rows[0]["logueado"]));
                 administrador.SetCargo(dataTable.Rows[0]["cargo"].ToString());
-                administrador.SetFoto((byte[])dataTable.Rows[0]["foto"]); //XDDDDDDDD SIGUE FUNCIONANDO
+                if (dataTable.Rows[0]["foto"] != null)
+                {
+                    administrador.SetFoto((byte[])dataTable.Rows[0]["foto"]);
+                }
             }
             catch (Exception e)
             {

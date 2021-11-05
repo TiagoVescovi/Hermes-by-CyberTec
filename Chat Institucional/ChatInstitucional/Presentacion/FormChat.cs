@@ -119,20 +119,25 @@ namespace ChatInstitucional.Presentacion
                     }
                     else
                     {
-                        AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
-                        Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
-                        msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
-                        posicionUltima = i;
+                        if (participando == true)
+                        {
+                            AddOutgoing(mensaje.TraerMensaje(IdChat).Rows[i]["contenido"].ToString());
+                            Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                            msgLast = Convert.ToInt32(mensaje.TraerMensaje(IdChat).Rows[i][0]);
+                            posicionUltima = i;
+                        }
                     }
                 }
 
                 // ACA ESTA EL TIMER
                 // ACA
                 // ESTE TENES Q SUBIR             // 1000 capaz o 750
-                Timer timer = new Timer { Interval = 1000 };
-                timer.Enabled = true;
-                timer.Tick += new System.EventHandler(RecargarMensajes);
-                
+                if (participando == true)
+                {
+                    Timer timer = new Timer { Interval = 1000 };
+                    timer.Enabled = true;
+                    timer.Tick += new System.EventHandler(RecargarMensajes);
+                }
 
 
                 Docente docente = new Docente();
@@ -161,11 +166,11 @@ namespace ChatInstitucional.Presentacion
             {
                 Chat chat = new Chat();
                 int index = Dgv_Chats.CurrentRow.Index;
-                chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
-                IdChat = chat.GetIdConsulta();
-
+               
                 try
                 {
+                    chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
+                    IdChat = chat.GetIdConsulta();
                     if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count > 0)
                     {
                         Console.WriteLine("Primer if");
@@ -184,8 +189,11 @@ namespace ChatInstitucional.Presentacion
                                 }
                                 else
                                 {
-                                    msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
-                                    posicionUltima = i;
+                                    if (participando == true)
+                                    {
+                                        msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
+                                        posicionUltima = i;
+                                    }
                                 }
                             }
                         }
@@ -203,10 +211,12 @@ namespace ChatInstitucional.Presentacion
             // Lista de personas q perticipan en el chat
             // Conectados/desconectados -- FALTA ESTO
             // Diferencia al Host y al Docente
+            if (participando == true) { 
             TemaChatForm tCF = new TemaChatForm(IdChat);
             tCF.ShowDialog();
             Text_Mensaje.Enabled = false;
             Btn_Send.Enabled = false;
+        }
         }
 
         private void Btn_Opciones_Click(object sender, EventArgs e)
@@ -218,7 +228,10 @@ namespace ChatInstitucional.Presentacion
                 if(validacion.Update("UPDATE participa SET participando = false WHERE ciAlumno = " + Validacion.UsuarioActual + ";"))
                 {
                     MessageBox.Show("Abandonaste el chat");
+                    Btn_Tema.Enabled = false;
+                    Btn_Tema.Text = "Tema chat";
                     participando = false;
+                    RecargarChats();
                 }
                 else
                 {

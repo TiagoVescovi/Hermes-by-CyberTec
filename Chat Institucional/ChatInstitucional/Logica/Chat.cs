@@ -159,14 +159,16 @@ namespace ChatInstitucional.Logica
             // 2 = ya se habia unido
             Validacion validacion = new Validacion();
             DataTable dataTable = new DataTable();
-            dataTable = validacion.Select("SELECT * FROM participa WHERE idChat = " + c.GetIdConsulta() + " AND ciAlumno = " + c.GetCiAlumno() + " AND participando = true;");
-
+            dataTable = validacion.Select("SELECT * FROM participa WHERE idChat = " + c.GetIdConsulta() + " AND ciAlumno = " + Validacion.UsuarioActual +";");
+            Console.WriteLine(dataTable.Rows[0][0].ToString());
+            Console.WriteLine(dataTable.Rows[0][1].ToString());
+            Console.WriteLine(dataTable.Rows[0][2].ToString());
             try
             {
-                if (dataTable.Rows.Count == 0)
+                if (dataTable.Rows.Count == 1)
                 {
                     // No pertenece al chat entonces lo agrega
-                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ");"))
+                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + Validacion.UsuarioActual + ");"))
                     {
                         // Lo agrega al chat
                         return 1;
@@ -176,17 +178,30 @@ namespace ChatInstitucional.Logica
                         if (c.GetIdConsulta() == Convert.ToInt32(dataTable.Rows[0][0]) && c.GetCiAlumno() == Convert.ToInt32(dataTable.Rows[0][1]) && Convert.ToBoolean(dataTable.Rows[0][2]) == true)
                         {
                             // Ya existe el alumno en ese chat
+                            Console.Write("2");
+
                             return 2;
                         }
-                        else
+                        else if (c.GetIdConsulta() == Convert.ToInt32(dataTable.Rows[0][0]) && c.GetCiAlumno() == Convert.ToInt32(dataTable.Rows[0][1]) && Convert.ToBoolean(dataTable.Rows[0][2]) == false)
                         {
-                            // Vuelve al default
-                            return 0;
+                            // El alumno vuelve a unirse en el chat
+                            Console.WriteLine(c.GetIdConsulta());
+                            validacion.Update("UPDATE participa set participando=1 where idChat="+c.GetIdConsulta()+" AND ciAlumno="+Validacion.UsuarioActual+";");
+                            Console.Write("3");
+                            return 3;
+                        }
+                        else { 
+
+                            Console.WriteLine("entra acá1");
+
+                        // Vuelve al default
+                        return 0;
                         }
                     }
                 }
                 else
                 {
+                    Console.WriteLine("entra acá");
                     return 0;
                 }
             }
