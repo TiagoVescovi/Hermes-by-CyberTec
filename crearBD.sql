@@ -115,16 +115,17 @@ PRIMARY KEY(idAsincronica));
 
 INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5490150,"Juan","Reyes","5678");
 INSERT INTO docente SELECT cedula from persona;
-INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5355782,"Ismael","Aloy","4321");
+INSERT INTO Persona(cedula,nombre,apellido,passwd,activo)VALUES(5355782,"Ismael","Aloy","4321",true);
 INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5461182,"Tiago","Vescovi","1234");
 INSERT INTO Administrador(cedula,cargo)VALUES(5355782,"Otro/a");
 
 INSERT INTO ORIENTACION(nombre) VALUES("Robótica");
+INSERT INTO ORIENTACION(nombre) VALUES("Informática");
 
 INSERT INTO GRUPO (nombre,año,idOrientacion) VALUES ("3°BA",2021,1);
 
-INSERT INTO Materia(nombre) VALUES("Matemática");
-INSERT INTO Materia (nombre) VALUES ("Filosofía");
+INSERT INTO Materia(nombre) VALUES("Sistemas Operativos II");
+INSERT INTO Materia (nombre) VALUES ("Base de Datos I");
 
 INSERT INTO Enseña (idMateria,ciProfesor,idGrupo) VALUES(1,5490150,1);
 
