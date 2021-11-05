@@ -120,7 +120,7 @@ INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5461182,"Tiago","Vescov
 INSERT INTO Administrador(cedula,cargo)VALUES(5355782,"Otro/a");
 
 INSERT INTO ORIENTACION(nombre) VALUES("Robótica");
-INSERT INTO ORIENTACION(nombre) VALUES("Informática");
+INSERT INTO ORIENTACION(nombre) VALUES("Desarrollo y Soporte");
 
 INSERT INTO GRUPO (nombre,año,idOrientacion) VALUES ("3°BA",2021,1);
 
@@ -131,19 +131,3 @@ INSERT INTO Enseña (idMateria,ciProfesor,idGrupo) VALUES(1,5490150,1);
 
 INSERT INTO alumno(cedula,idGrupo) values(5461182,1);
 
-/* SELECTS DE TODAS LAS TABLAS */
-
-SELECT * FROM administrador;
-SELECT * FROM alumno;
-SELECT * FROM asincronica;
-SELECT * FROM chat;
-SELECT * FROM consulta;
-SELECT * FROM docente;
-SELECT * FROM enseña;
-SELECT * FROM grupo;
-SELECT * FROM horario;
-SELECT * FROM materia;
-SELECT * FROM mensaje;
-SELECT * FROM orientacion;
-SELECT * FROM participa;
-SELECT * FROM persona;

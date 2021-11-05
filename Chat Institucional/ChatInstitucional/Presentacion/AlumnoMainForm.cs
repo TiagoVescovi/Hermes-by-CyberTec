@@ -19,7 +19,7 @@ namespace ChatInstitucional.Presentacion
         Alumno alumno = new Alumno();
         Docente docente = new Docente();
         PrincipalForm pf = new PrincipalForm();
-        AlumnoConsulta cf = new AlumnoConsulta();
+        AlumnoConsultaForm cf = new AlumnoConsultaForm();
         FormChat chf = new FormChat();
         SettingsForm sf = new SettingsForm();
         AlumnoCursosForm cuf = new AlumnoCursosForm();

@@ -81,6 +81,7 @@
             // 
             // Pic_Perfil
             // 
+            this.Pic_Perfil.Image = global::ChatInstitucional.Properties.Resources.descarga;
             resources.ApplyResources(this.Pic_Perfil, "Pic_Perfil");
             this.Pic_Perfil.Name = "Pic_Perfil";
             this.Pic_Perfil.TabStop = false;

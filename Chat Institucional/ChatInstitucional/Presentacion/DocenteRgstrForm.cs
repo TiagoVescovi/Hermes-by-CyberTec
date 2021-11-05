@@ -94,7 +94,7 @@ namespace ChatInstitucional.Presentacion
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://cybertecuy.wordpress.com");
+            System.Diagnostics.Process.Start("https://unruffled-snyder-7aa318.netlify.app");
         }
 
         private void Text_Cedula_KeyPress(object sender, KeyPressEventArgs e)

@@ -141,11 +141,11 @@
     <Compile Include="Presentacion\FormChat.Designer.cs">
       <DependentUpon>FormChat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\AlumnoConsulta.cs">
+    <Compile Include="Presentacion\AlumnoConsultaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\AlumnoConsulta.Designer.cs">
-      <DependentUpon>AlumnoConsulta.cs</DependentUpon>
+    <Compile Include="Presentacion\AlumnoConsultaForm.Designer.cs">
+      <DependentUpon>AlumnoConsultaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\DocenteConsultaForm.cs">
       <SubType>Form</SubType>
@@ -269,8 +269,8 @@
     <EmbeddedResource Include="Presentacion\FormChat.resx">
       <DependentUpon>FormChat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\AlumnoConsulta.resx">
-      <DependentUpon>AlumnoConsulta.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\AlumnoConsultaForm.resx">
+      <DependentUpon>AlumnoConsultaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\DocenteConsultaForm.resx">
       <DependentUpon>DocenteConsultaForm.cs</DependentUpon>

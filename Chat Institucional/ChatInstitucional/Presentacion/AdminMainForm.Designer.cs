@@ -56,10 +56,10 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.Btn_Minimize);
             this.panel1.Controls.Add(this.Btn_Close);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // Btn_Minimize
@@ -71,35 +71,35 @@
             // 
             // Btn_Close
             // 
-            resources.ApplyResources(this.Btn_Close, "Btn_Close");
             this.Btn_Close.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.Btn_Close, "Btn_Close");
             this.Btn_Close.Name = "Btn_Close";
             this.Btn_Close.UseVisualStyleBackColor = false;
             this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
             // 
             // Pnl_Izq
             // 
-            resources.ApplyResources(this.Pnl_Izq, "Pnl_Izq");
             this.Pnl_Izq.BackColor = System.Drawing.Color.DarkBlue;
             this.Pnl_Izq.Controls.Add(this.panel2);
             this.Pnl_Izq.Controls.Add(this.pictureBox1);
+            resources.ApplyResources(this.Pnl_Izq, "Pnl_Izq");
             this.Pnl_Izq.Name = "Pnl_Izq";
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.Btn_Alumnos);
             this.panel2.Controls.Add(this.Btn_MateGrupOri);
             this.panel2.Controls.Add(this.Btn_Settings);
             this.panel2.Controls.Add(this.Btn_Docentes);
             this.panel2.Controls.Add(this.Btn_Admins);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // Btn_Alumnos
             // 
-            resources.ApplyResources(this.Btn_Alumnos, "Btn_Alumnos");
             this.Btn_Alumnos.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Alumnos.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Alumnos, "Btn_Alumnos");
             this.Btn_Alumnos.ForeColor = System.Drawing.Color.White;
             this.Btn_Alumnos.Name = "Btn_Alumnos";
             this.Btn_Alumnos.UseVisualStyleBackColor = false;
@@ -107,9 +107,9 @@
             // 
             // Btn_MateGrupOri
             // 
-            resources.ApplyResources(this.Btn_MateGrupOri, "Btn_MateGrupOri");
             this.Btn_MateGrupOri.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_MateGrupOri.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_MateGrupOri, "Btn_MateGrupOri");
             this.Btn_MateGrupOri.ForeColor = System.Drawing.Color.White;
             this.Btn_MateGrupOri.Name = "Btn_MateGrupOri";
             this.Btn_MateGrupOri.UseVisualStyleBackColor = false;
@@ -117,9 +117,9 @@
             // 
             // Btn_Settings
             // 
-            resources.ApplyResources(this.Btn_Settings, "Btn_Settings");
             this.Btn_Settings.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Settings.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Settings, "Btn_Settings");
             this.Btn_Settings.ForeColor = System.Drawing.Color.White;
             this.Btn_Settings.Name = "Btn_Settings";
             this.Btn_Settings.UseVisualStyleBackColor = false;
@@ -127,9 +127,9 @@
             // 
             // Btn_Docentes
             // 
-            resources.ApplyResources(this.Btn_Docentes, "Btn_Docentes");
             this.Btn_Docentes.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Docentes.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Docentes, "Btn_Docentes");
             this.Btn_Docentes.ForeColor = System.Drawing.Color.White;
             this.Btn_Docentes.Name = "Btn_Docentes";
             this.Btn_Docentes.UseVisualStyleBackColor = false;
@@ -137,9 +137,9 @@
             // 
             // Btn_Admins
             // 
-            resources.ApplyResources(this.Btn_Admins, "Btn_Admins");
             this.Btn_Admins.BackColor = System.Drawing.Color.DarkBlue;
             this.Btn_Admins.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.Btn_Admins, "Btn_Admins");
             this.Btn_Admins.ForeColor = System.Drawing.Color.White;
             this.Btn_Admins.Name = "Btn_Admins";
             this.Btn_Admins.UseVisualStyleBackColor = false;
@@ -147,9 +147,9 @@
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "5";
@@ -157,12 +157,12 @@
             // 
             // Pnl_User
             // 
-            resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Pnl_User.Controls.Add(this.Lbl_UserName);
             this.Pnl_User.Controls.Add(this.Lbl_FormAbierto);
             this.Pnl_User.Controls.Add(this.Lbl_UserGrupo);
             this.Pnl_User.Controls.Add(this.Pic_Perfil);
+            resources.ApplyResources(this.Pnl_User, "Pnl_User");
             this.Pnl_User.Name = "Pnl_User";
             // 
             // Lbl_UserName
@@ -183,6 +183,7 @@
             // 
             // Pic_Perfil
             // 
+            this.Pic_Perfil.Image = global::ChatInstitucional.Properties.Resources.descarga;
             resources.ApplyResources(this.Pic_Perfil, "Pic_Perfil");
             this.Pic_Perfil.Name = "Pic_Perfil";
             this.Pic_Perfil.TabStop = false;
@@ -194,9 +195,9 @@
             // 
             // AdminMainForm
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Pnl_Der);
             this.Controls.Add(this.Pnl_User);
             this.Controls.Add(this.Pnl_Izq);

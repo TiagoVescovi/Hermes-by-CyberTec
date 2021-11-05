@@ -85,7 +85,6 @@ C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitu
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminDocenteForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.DocenteAgendaForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.FormChat.resources
-C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AlumnoConsulta.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.DocenteConsultaForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AlumnoCursosForm.resources
 C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AdminMainForm.resources
@@ -224,3 +223,4 @@ C:\Users\Tiago\Desktop\a\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional
 C:\Users\Tiago\Desktop\a\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\Hermes.csproj.CopyComplete
 C:\Users\Tiago\Desktop\a\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.exe
 C:\Users\Tiago\Desktop\a\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.pdb
+C:\Users\Ismael\Desktop\ES ACA\Hermes-by-CyberTec\Chat Institucional\ChatInstitucional\obj\Debug\ChatInstitucional.Presentacion.AlumnoConsultaForm.resources

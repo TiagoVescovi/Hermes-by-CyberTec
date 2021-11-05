@@ -86,7 +86,7 @@ namespace ChatInstitucional.Presentacion
 
         private void Btn_ChangeFoto_Click(object sender, EventArgs e)
         {
-            //Subir imagen a bdd -- Arreglar
+           //Subir imagen a bdd -- Arreglar
            byte[] actualiza = foto.ImageToByte(Picture_ImgPerfil.Image);
 
             DialogResult result = MessageBox.Show("¿Está segur@ que desea cambiar su foto de perfil?", "Cambiar imágen", MessageBoxButtons.YesNo);
@@ -96,7 +96,7 @@ namespace ChatInstitucional.Presentacion
                 fotografia.SetImagen(actualiza);
                 if (fotografia.CambiarImagen(actualiza, Validacion.UsuarioActual))
                 {
-                    MessageBox.Show("La imágen se subió correctamente");
+                    MessageBox.Show("La imágen se subió correctamente.\nReinicie la aplicación para aplicar los cambios");
                 }
                 else
                 {

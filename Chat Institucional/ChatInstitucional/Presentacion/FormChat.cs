@@ -267,6 +267,8 @@ namespace ChatInstitucional.Presentacion
                 }
 
                 Dgv_Chats.DataSource = dataTable;
+                Dgv_Chats.Columns[0].Width = 200;
+                Dgv_Chats.Columns[1].Width = 50;
             }
             catch (Exception e)
             {
