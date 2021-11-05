@@ -7,10 +7,13 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
+
     class Chat : Consulta
     {
         protected string HoraIni;
         protected string HoraFin;
+
+        int IdChat;
 
         public Chat()
         {
@@ -84,9 +87,9 @@ namespace ChatInstitucional.Logica
                 chat.SetIdGrupo(Convert.ToInt32(dataTable.Rows[0][7]));
                 chat.SetHoraFin(DateTime.Parse(dataTable.Rows[0][2].ToString()));
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.ToString());
             }
             return chat;
         }
@@ -97,17 +100,40 @@ namespace ChatInstitucional.Logica
             return validacion.Select("SELECT * FROM chat;");
         }
 
+        public DataTable EncontrarEnConsulta(int idMat, int idGr)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM consulta WHERE idMateria = " + idMat + " AND idGrupo = " + idGr + ";");
+        }
+
+        public DataTable EncontrarEnChat(int idChat)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM chat WHERE idChat = " + idChat + " AND horaFin IS NULL;");
+        }
+
         public bool CrearChat(Chat c)
         {
             Validacion validacion = new Validacion();
 
             try
             {
-                if(validacion.Insert("INSERT INTO chat(idChat,horaIni) VALUES (" + c.GetIdConsulta() + ",'" + c.GetHoraIni() + "');"))
+                if (c.SubirConsulta(c))
                 {
-                    if (validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ");"))
+                    c.SetIdConsulta(c.ConseguirIdConsulta(Validacion.UsuarioActual));
+                    c.SetHoraIni(DateTime.Now);
+                    Console.WriteLine(c.GetHoraIni());
+
+                    if(validacion.Insert("INSERT INTO chat(idChat,horaIni) VALUES (" + c.GetIdConsulta() + ",'" + c.GetHoraIni() + "');"))
                     {
-                        return true;
+                        if(validacion.Insert("INSERT INTO participa(idChat,ciAlumno) VALUES (" + c.GetIdConsulta() + "," + c.GetCiAlumno() + ");"))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
@@ -159,7 +185,7 @@ namespace ChatInstitucional.Logica
                         }
                     }
                 }
-                else 
+                else
                 {
                     return 0;
                 }
@@ -174,42 +200,33 @@ namespace ChatInstitucional.Logica
 
         public bool ValidarChat(Chat c)
         {
-            bool validated = false;
-            Validacion validacion = new Validacion();
-            Chat chat = new Chat();
-
+            // Busca si existe en consulta y luego en chat
             try
             {
-                if (validacion.Select("SELECT co.idMateria, co.idGrupo FROM consulta co, chat ch WHERE co.idConsulta = ch.idChat AND co.idMateria = " + c.GetIdMateria() + " AND co.idGrupo = " + c.GetIdGrupo() + " AND horaFin IS NOT NULL;").Rows.Count == 0)
+                if (c.EncontrarEnConsulta(c.GetIdMateria(),c.GetIdGrupo()).Rows.Count > 0)
                 {
-                    validated = false;
+                    c.SetIdConsulta(c.ConseguirIdChat(c));
+                        
+                    if (c.EncontrarEnChat(c.GetIdConsulta()).Rows.Count > 0)
+                    {
+                        IdChat = c.GetIdConsulta();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                    DataTable dataTable = new DataTable();
-                    dataTable = validacion.Select("SELECT * FROM consulta co, chat ch WHERE co.idConsulta = ch.idChat AND co.idMateria = " + c.GetIdMateria() + " AND co.idGrupo = " + c.GetIdGrupo() + " AND horaFin IS NOT NULL;");
-                    for(int i = 0; i < dataTable.Rows.Count; i++)
-                    {
-                        if(c.GetIdMateria() == Convert.ToInt32(dataTable.Rows[i][3]) && c.GetIdGrupo() == Convert.ToInt32(dataTable.Rows[i][4]) && !String.IsNullOrEmpty(dataTable.Rows[i][6].ToString()) && String.IsNullOrEmpty(dataTable.Rows[i][7].ToString()))
-                        {
-                            // Existe un chat al q se puede unir
-                            validated = true;
-                        }
-                        else
-                        {
-                            // Tiene q crear el chat
-                            validated = false;
-                        }
-                    }
+                    return false;
                 }
             }
             catch (Exception e)
             {
-                validated = false;
                 Console.WriteLine(e.ToString());
+                return false;
             }
-
-            return validated;
         }
 
         public int ConseguirIdChat(Chat c)
@@ -225,7 +242,7 @@ namespace ChatInstitucional.Logica
 
             try
             {
-                if (validacion.Update("UPDATE chat SET horaFin = '" + c.GetHoraFin() + "' WHERE idChat = " + c.GetIdConsulta() + ";"))
+                if (validacion.Update("UPDATE chat SET horaFin = current_timestamp() WHERE idChat = " + c.GetIdConsulta() + ";"))
                 {
                     if (validacion.Update("UPDATE participa SET participando = false WHERE idChat = " + c.GetIdConsulta() + ";"))
                     {

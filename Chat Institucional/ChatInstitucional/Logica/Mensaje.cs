@@ -91,7 +91,7 @@ namespace ChatInstitucional.Logica
             return validacion.Select("SELECT * FROM mensaje WHERE idChat = " + idChat + ";");
         }
 
-        public DataTable RefrescarMensajes(int idChat, int ultimo) // Creo q es este
+        public DataTable RefrescarMensajes(int idChat, int ultimo)
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM mensaje WHERE idMensaje > " + ultimo + " AND idChat = " + idChat + ";");

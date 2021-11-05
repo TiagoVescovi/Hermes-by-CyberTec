@@ -13,6 +13,8 @@ namespace ChatInstitucional.Presentacion
 {
     public partial class AlumnoCursosForm : Form
     {
+        int index;
+
         public AlumnoCursosForm()
         {
             InitializeComponent();
@@ -20,141 +22,103 @@ namespace ChatInstitucional.Presentacion
 
         private void CursosAlumnoForm_Load(object sender, EventArgs e)
         {
-            //  Llena el Dgv_Materias
-            Materia materia = new Materia();
-            Alumno alumno = new Alumno();
-            for(int i = 0; i < materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows.Count; i++)
-            {
-                Dgv_Materias.Columns.Add("Materia","nombre");
-                Dgv_Materias.Rows.Add(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[i][1]);
-                Dgv_Materias.Columns[0].Width = Dgv_Materias.Width;
-            }
-            // Ver como hacer q solo muestre el nombre de las materias
+            //  Llena el Dgv_Materias --- Con enseña
+            RecargarChats();
         }
 
         private void Btn_Unirse_Click(object sender, EventArgs e)
         {
             // Se une a un chat q ya exista de esa materia
-
-            DataTable dataTable = new DataTable();
+            // Como esta enabled --> existe
             Chat chat = new Chat();
-            Consulta consulta = new Consulta();
-            Validacion validacion = new Validacion();
-            Materia materia = new Materia();
             Alumno alumno = new Alumno();
+            Materia materia = new Materia();
 
-            int idgrupo = alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo();
-            int index = Dgv_Materias.CurrentRow.Index;
+            chat.SetCiAlumno(Validacion.UsuarioActual);
+            chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[Dgv_Materias.CurrentRow.Index][4]));
+            chat.SetIdGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo());
+            chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[Dgv_Materias.CurrentRow.Index][0]));
 
-            try
+            chat.SetIdConsulta(chat.ConseguirIdChat(chat));
+
+            switch (chat.UnirseChat(chat))
             {
-                chat.SetCiAlumno(Validacion.UsuarioActual);
-                chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][3]));
-                chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][2]));
-                chat.SetIdGrupo(idgrupo);
-                chat.SetIdConsulta(chat.ConseguirIdChat(chat));
+                case 1:
+                    MessageBox.Show("Te has unido al chat");
+                    break;
 
-                if (chat.UnirseChat(chat) == 0)
-                {
+                case 2:
+                    MessageBox.Show("Ya eres parte del chat");
+                    break;
+
+                case 0:
                     MessageBox.Show("No te has podido unir al chat");
-                }
-                else 
-                {
-                    if (chat.UnirseChat(chat) == 1)
-                    {
-                        MessageBox.Show("Te has unido al chat");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ya eres parte del chat");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                    break;
             }
         }
 
         private void Btn_Crear_Click(object sender, EventArgs e)
         {
             // Crea un chat de esa materia si no existe
-
-            DataTable dataTable = new DataTable();
+            // Como esta enabled--> no existe
             Chat chat = new Chat();
-            Consulta consulta = new Consulta();
-            Validacion validacion = new Validacion();
             Materia materia = new Materia();
             Alumno alumno = new Alumno();
 
-            int idgrupo = alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo();
-            int index = Dgv_Materias.CurrentRow.Index;
+            chat.SetCiAlumno(Validacion.UsuarioActual);
+            chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[Dgv_Materias.CurrentRow.Index][4]));
+            chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[Dgv_Materias.CurrentRow.Index][0]));
+            chat.SetIdGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo());
 
-            try
+            if (chat.CrearChat(chat))
             {
-                chat.SetCiAlumno(Validacion.UsuarioActual);
-                chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][4]));
-                chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][0]));
-                chat.SetIdGrupo(idgrupo);
-
-                if (chat.SubirConsulta(chat))
-                {
-                    chat.SetIdConsulta(chat.ConseguirIdConsulta(Validacion.UsuarioActual));
-                    chat.SetHoraIni(DateTime.Now);
-
-                    if (chat.CrearChat(chat))
-                    {
-                        MessageBox.Show("Chat creado exitosamente");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo crear el chat");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrió un error y no se pudo crear el chat");
-                }
+                MessageBox.Show("Chat creado satisfactoriamente.\nYa se te ha incluído en el chat");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show("No se ha podido crear el chat");
             }
         }
 
-        private void Dgv_Materias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void RecargarChats()
         {
-            // Se activan los botones dependiendo de si hay o no un chat ya creado
-            DataTable dataTable = new DataTable();
-            Chat chat = new Chat();
-            Validacion validacion = new Validacion();
+            Dgv_Materias.Rows.Clear();
             Materia materia = new Materia();
             Alumno alumno = new Alumno();
+            DataTable dataTable = new DataTable();
 
-            int idgrupo = alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo();
-            int index = Dgv_Materias.CurrentRow.Index;
-
-            try
+            for(int i = 0; i < materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows.Count; i++)
             {
-                chat.SetCiAlumno(Validacion.UsuarioActual);
-                chat.SetCiProfesor(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][3]));
-                chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(idgrupo).Rows[index][2]));
-                chat.SetIdGrupo(idgrupo);
-
-                if (chat.ValidarChat(chat))
-                {
-                    Btn_Crear.Enabled = false;
-                    Btn_Unirse.Enabled = true;
-                }
-                else
-                {
-                    Btn_Crear.Enabled = true;
-                    Btn_Unirse.Enabled = false;
-                }
+                Dgv_Materias.Rows.Add(materia.BuscarMateria(Convert.ToInt32(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[i][0])).GetNombre());
+                Dgv_Materias.Columns[0].Width = Dgv_Materias.Width;
+                Dgv_Materias.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            catch(Exception ex)
+        }
+
+        private void Btn_Refresh_Click(object sender, EventArgs e)
+        {
+            RecargarChats();
+        }
+
+        private void Dgv_Materias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Se activan los botones dependiendo de si hay o no un chat ya creado
+            Chat chat = new Chat();
+            Alumno alumno = new Alumno();
+            Materia materia = new Materia();
+
+            chat.SetIdMateria(Convert.ToInt32(materia.ListarMaterias(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo()).Rows[Dgv_Materias.CurrentRow.Index][0]));
+            chat.SetIdGrupo(alumno.BuscarAlumno(Validacion.UsuarioActual).GetIdGrupo());
+
+            if (chat.ValidarChat(chat))
             {
-                Console.WriteLine(ex.ToString());
+                Btn_Crear.Enabled = false;
+                Btn_Unirse.Enabled = true;
+            }
+            else
+            {
+                Btn_Crear.Enabled = true;
+                Btn_Unirse.Enabled = false;
             }
         }
     }

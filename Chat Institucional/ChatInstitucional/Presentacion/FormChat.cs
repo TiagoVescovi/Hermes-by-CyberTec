@@ -20,12 +20,11 @@ namespace ChatInstitucional.Presentacion
         int IdChat = 0;
         int msgLast = 0;
         int posicionUltima = 0;
+        bool participando = true;
 
         public FormChat()
         {
             InitializeComponent();
-
-
         }
 
         private void ChatFormAlumno_Load(object sender, EventArgs e)
@@ -97,6 +96,7 @@ namespace ChatInstitucional.Presentacion
         private void Dgv_Chats_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Abre el chat y lo llena con lo q hay en tabla Mensaje
+            participando = true;
             Chat chat = new Chat();
             Grupo grupo = new Grupo();
             Pnl_Chat.Controls.Clear();
@@ -126,9 +126,14 @@ namespace ChatInstitucional.Presentacion
                     }
                 }
 
-                Timer timer = new Timer { Interval = 500 };
+                // ACA ESTA EL TIMER
+                // ACA
+                // ESTE TENES Q SUBIR             // 1000 capaz o 750
+                Timer timer = new Timer { Interval = 1000 };
                 timer.Enabled = true;
                 timer.Tick += new System.EventHandler(RecargarMensajes);
+                
+
 
                 Docente docente = new Docente();
                 if (Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
@@ -152,51 +157,44 @@ namespace ChatInstitucional.Presentacion
 
         private void RecargarMensajes(object source, EventArgs e)
         {
-            Chat chat = new Chat();
-            int index = Dgv_Chats.CurrentRow.Index;
-            chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
-            IdChat = chat.GetIdConsulta();
-
-            try
+            if(participando == true)
             {
+                Chat chat = new Chat();
+                int index = Dgv_Chats.CurrentRow.Index;
+                chat.SetIdConsulta(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[index][0]));
+                IdChat = chat.GetIdConsulta();
 
-                // No consigo q funcione
-                // Creo q no lo pense del todo bien -- Ya funciona
-
-                if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count > 0)
+                try
                 {
-                    Console.WriteLine("Primer if");
-                    if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows[0][0] != mensaje.TraerMensaje(IdChat).Rows[posicionUltima][0])
+                    if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count > 0)
                     {
-                        Console.WriteLine("For if");
-                        for (int i = 0; i < mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count; i++)
+                        Console.WriteLine("Primer if");
+                        if (mensaje.RefrescarMensajes(IdChat, msgLast).Rows[0][0] != mensaje.TraerMensaje(IdChat).Rows[posicionUltima][0])
                         {
-                            if (!mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                            Console.WriteLine("For if");
+                            for (int i = 0; i < mensaje.RefrescarMensajes(IdChat, msgLast).Rows.Count; i++)
                             {
-                                Persona persona = new Persona();
-                                AddIncomming(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["Contenido"].ToString(), mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"])).GetApellido());
-                                Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
-                                msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
-                                posicionUltima = i;
-                            }
-                            else
-                            {
-                                //AddOutgoing(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["contenido"].ToString());
-                                //Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
-                                msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
-                                posicionUltima = i;
+                                if (!mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"].Equals(Validacion.UsuarioActual))
+                                {
+                                    Persona persona = new Persona();
+                                    AddIncomming(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["Contenido"].ToString(), mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["hora"].ToString(), persona.BuscarPersona(Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"])).GetNombre() + " " + persona.BuscarPersona(Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i]["idAutor"])).GetApellido());
+                                    Pnl_Chat.VerticalScroll.Value = Pnl_Chat.VerticalScroll.Maximum;
+                                    msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
+                                    posicionUltima = i;
+                                }
+                                else
+                                {
+                                    msgLast = Convert.ToInt32(mensaje.RefrescarMensajes(IdChat, msgLast).Rows[i][0]);
+                                    posicionUltima = i;
+                                }
                             }
                         }
                     }
-                    else
-                    {
-                        // A
-                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
         }
 
@@ -207,6 +205,8 @@ namespace ChatInstitucional.Presentacion
             // Diferencia al Host y al Docente
             TemaChatForm tCF = new TemaChatForm(IdChat);
             tCF.ShowDialog();
+            Text_Mensaje.Enabled = false;
+            Btn_Send.Enabled = false;
         }
 
         private void Btn_Opciones_Click(object sender, EventArgs e)
@@ -214,12 +214,11 @@ namespace ChatInstitucional.Presentacion
             DialogResult dialogResult = MessageBox.Show("¿Seguro@ que quiere salir del chat?", "Abandonar chat", MessageBoxButtons.YesNo);
             if(dialogResult == DialogResult.Yes)
             {
-                // AAAAAAAAAAAAAAAAAAAAAA HAY Q VOLVER A CAMBIAR LA BD
-                // HAY Q HACERLE BAJA LOGICA EN PARTICIPA
-                // Esto lo voy a dejar para recordar el momento exacto en el q me quise matar al enterarme q habia q cambiar por 190391810° vez la BD
+                // Por alguna razon aca explota todo
                 if(validacion.Update("UPDATE participa SET participando = false WHERE ciAlumno = " + Validacion.UsuarioActual + ";"))
                 {
                     MessageBox.Show("Abandonaste el chat");
+                    participando = false;
                 }
                 else
                 {
@@ -234,23 +233,23 @@ namespace ChatInstitucional.Presentacion
             {
                 Chat chat = new Chat();
                 Grupo grupo = new Grupo();
-                Docente docente = new Docente();
+                Alumno alumno = new Alumno();
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("materia");
                 dataTable.Columns.Add("grupo");
 
-                if (Validacion.UsuarioActual == docente.BuscarDocente(Validacion.UsuarioActual).GetCI())
+                if (Validacion.UsuarioActual == alumno.BuscarAlumno(Validacion.UsuarioActual).GetCI())
                 {
                     for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
                     {
-                        dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][9].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre());
+                        dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre());
                     }
                 }
                 else
                 {
                     for (int i = 0; i < chat.LlenarChats(Validacion.UsuarioActual).Rows.Count; i++)
                     {
-                        dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][12].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre());
+                        dataTable.Rows.Add(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][9].ToString(), grupo.TraerGrupo(Convert.ToInt32(chat.LlenarChats(Validacion.UsuarioActual).Rows[i][7])).GetNombre());
                     }
                 }
 

@@ -15,7 +15,7 @@ namespace ChatInstitucional.Logica
 
         public Materia()
         {
-            //Nombre = GetNombre();
+            
         }
 
         public string GetNombre()
@@ -104,6 +104,12 @@ namespace ChatInstitucional.Logica
         {
             Validacion validacion = new Validacion();
             return validacion.Select("SELECT * FROM enseña WHERE ciProfesor = " + ci + " AND activo = true;");
+        }
+
+        public DataTable MateriasPorGrupo(int id)
+        {
+            Validacion validacion = new Validacion();
+            return validacion.Select("SELECT * FROM enseña WHERE idGrupo = "+id+" AND activo = true;");
         }
 
         public Materia BuscarMateria(int id)

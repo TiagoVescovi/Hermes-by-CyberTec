@@ -66,17 +66,17 @@ namespace ChatInstitucional.Presentacion
             // Solo lo ve el Host -- Esta en el Load
             // Setea la horaFin del chat -- No la setea
             // Cambia todos los participa.participando a 0 de todos los alumnos del chat
-            // Al docente le deberia dejar de aparecer -- No estoy seguro de como hacerlo -- Cuando haga la app docente lo arreglo
 
             Chat chat = new Chat();
             Validacion validacion = new Validacion();
 
             chat.BuscarChat(idCh).SetHoraFin(DateTime.Now);
+            chat.BuscarChat(idCh).SetIdConsulta(idCh);
 
             DialogResult dialogResult = MessageBox.Show("¿Está segur@ de que quiere finalizar el chat?\nNo podrá volver a acceder a él una vez terminado", "Terminar chat", MessageBoxButtons.YesNo);
-            if(dialogResult == DialogResult.Yes)
+            if (dialogResult == DialogResult.Yes)
             {
-                if (chat.TerminarChat(chat))
+                if (chat.TerminarChat(chat.BuscarChat(idCh)))
                 {
                     MessageBox.Show("Finalizaste el chat");
                     this.Close();
