@@ -111,7 +111,7 @@
             // Btn_Refresh_Materia
             // 
             this.Btn_Refresh_Materia.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Refresh_Materia.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh_Materia.BackgroundImage = global::Hermes.Properties.Resources.refresh;
             this.Btn_Refresh_Materia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Refresh_Materia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Refresh_Materia.FlatAppearance.BorderSize = 0;
@@ -306,7 +306,7 @@
             // Btn_Refresh_Horario
             // 
             this.Btn_Refresh_Horario.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Refresh_Horario.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh_Horario.BackgroundImage = global::Hermes.Properties.Resources.refresh;
             this.Btn_Refresh_Horario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Refresh_Horario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Refresh_Horario.FlatAppearance.BorderSize = 0;

@@ -38,7 +38,7 @@ namespace ChatInstitucional.Presentacion
             // Metodo para el insert a bdd de Docente
             Fotografia foto = new Fotografia();
 
-            foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+            foto.SetImagen(foto.ImageToByte(Hermes.Properties.Resources.descarga));
 
             try
             {

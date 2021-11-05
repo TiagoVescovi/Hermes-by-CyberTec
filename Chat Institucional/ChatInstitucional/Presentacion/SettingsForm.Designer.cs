@@ -47,7 +47,7 @@
             // 
             // Picture_ImgPerfil
             // 
-            this.Picture_ImgPerfil.Image = global::ChatInstitucional.Properties.Resources.descarga;
+            this.Picture_ImgPerfil.Image = global::Hermes.Properties.Resources.descarga;
             this.Picture_ImgPerfil.Location = new System.Drawing.Point(536, 68);
             this.Picture_ImgPerfil.Name = "Picture_ImgPerfil";
             this.Picture_ImgPerfil.Size = new System.Drawing.Size(150, 150);

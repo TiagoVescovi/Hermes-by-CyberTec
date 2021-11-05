@@ -68,7 +68,7 @@
             // Btn_Refresh
             // 
             this.Btn_Refresh.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Refresh.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh.BackgroundImage = global::Hermes.Properties.Resources.refresh;
             this.Btn_Refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Refresh.FlatAppearance.BorderSize = 0;
@@ -132,7 +132,7 @@
             // 
             this.Btn_Send.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Send.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Send.BackgroundImage = global::ChatInstitucional.Properties.Resources.send;
+            this.Btn_Send.BackgroundImage = global::Hermes.Properties.Resources.send;
             this.Btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Send.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Send.Enabled = false;
@@ -191,7 +191,7 @@
             // 
             this.Btn_Opciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Opciones.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Opciones.BackgroundImage = global::ChatInstitucional.Properties.Resources.menu_vertical;
+            this.Btn_Opciones.BackgroundImage = global::Hermes.Properties.Resources.menu_vertical;
             this.Btn_Opciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Opciones.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Opciones.Enabled = false;

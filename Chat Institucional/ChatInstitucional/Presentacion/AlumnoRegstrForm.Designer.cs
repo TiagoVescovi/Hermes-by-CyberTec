@@ -308,7 +308,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            this.pictureBox2.Image = global::Hermes.Properties.Resources.HermesLogo;
             this.pictureBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox2.Location = new System.Drawing.Point(133, 81);
             this.pictureBox2.Name = "pictureBox2";
@@ -335,7 +335,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.LogoPNG;
+            this.pictureBox1.Image = global::Hermes.Properties.Resources.LogoPNG;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox1.Location = new System.Drawing.Point(378, 1);
             this.pictureBox1.Name = "pictureBox1";

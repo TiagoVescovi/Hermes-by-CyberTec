@@ -19,7 +19,7 @@ namespace ChatInstitucional.De_persistencia
         {
             try
             {
-                connection = new MySqlConnection("server=127.0.0.1;Port=3306; database=new_schema; Uid=root;SSL MODE = 0");
+                connection = new MySqlConnection("server=192.168.5.50;Port=3306; database=cyber_tec; user id=tiago.vescovi;password=54611821;SSL MODE = 0");
             }
             catch
             {

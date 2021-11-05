@@ -166,7 +166,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            this.pictureBox2.Image = global::Hermes.Properties.Resources.HermesLogo;
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
@@ -182,7 +182,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.LogoPNG;
+            this.pictureBox1.Image = global::Hermes.Properties.Resources.LogoPNG;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;

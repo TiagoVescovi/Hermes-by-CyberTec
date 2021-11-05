@@ -13,7 +13,7 @@ namespace ChatInstitucional.Presentacion
 {
     public partial class AdminDocenteAgendaForm : Form
     {
-        int CI, idGrupo;
+        int CI;
         public AdminDocenteAgendaForm(int ci)
         {
             InitializeComponent();

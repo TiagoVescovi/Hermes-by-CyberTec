@@ -210,7 +210,7 @@ namespace ChatInstitucional.Presentacion
                                 {
                                     Fotografia foto = new Fotografia();
 
-                                    foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+                                    foto.SetImagen(foto.ImageToByte(Hermes.Properties.Resources.descarga));
 
                                     try
                                     {
@@ -486,7 +486,7 @@ namespace ChatInstitucional.Presentacion
                                 {
                                     Fotografia foto = new Fotografia();
 
-                                    foto.SetImagen(foto.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+                                    foto.SetImagen(foto.ImageToByte(Hermes.Properties.Resources.descarga));
 
                                     try
                                     {
@@ -665,7 +665,7 @@ namespace ChatInstitucional.Presentacion
 
                     if (CIValidator.Validate(ced + "-" + iden))
                     {
-                        fotografia.SetImagen(fotografia.ImageToByte(ChatInstitucional.Properties.Resources.descarga));
+                        fotografia.SetImagen(fotografia.ImageToByte(Hermes.Properties.Resources.descarga));
                         if (persona.ModificarPersona("foto", "'" + fotografia.GetImagen() + "'", Convert.ToInt32(Text_Cedula.Text)))
                         {
                             MessageBox.Show("Imágen actualizada exitosamente");

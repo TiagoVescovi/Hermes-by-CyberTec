@@ -117,6 +117,7 @@ INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5490150,"Juan","Reyes",
 INSERT INTO docente SELECT cedula from persona;
 INSERT INTO Persona(cedula,nombre,apellido,passwd,activo)VALUES(5355782,"Ismael","Aloy","4321",true);
 INSERT INTO Persona(cedula,nombre,apellido,passwd)VALUES(5461182,"Tiago","Vescovi","1234");
+INSERT INTO persona(cedula,nombre,apellido,passwd) VALUES (4192404,'Gustavo','De Los Santos','1234'); /* -7 */
 INSERT INTO Administrador(cedula,cargo)VALUES(5355782,"Otro/a");
 
 INSERT INTO ORIENTACION(nombre) VALUES("Robótica");

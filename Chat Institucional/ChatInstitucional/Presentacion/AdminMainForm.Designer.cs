@@ -148,7 +148,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::ChatInstitucional.Properties.Resources.HermesLogo;
+            this.pictureBox1.Image = global::Hermes.Properties.Resources.HermesLogo;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
@@ -183,7 +183,7 @@
             // 
             // Pic_Perfil
             // 
-            this.Pic_Perfil.Image = global::ChatInstitucional.Properties.Resources.descarga;
+            this.Pic_Perfil.Image = global::Hermes.Properties.Resources.descarga;
             resources.ApplyResources(this.Pic_Perfil, "Pic_Perfil");
             this.Pic_Perfil.Name = "Pic_Perfil";
             this.Pic_Perfil.TabStop = false;

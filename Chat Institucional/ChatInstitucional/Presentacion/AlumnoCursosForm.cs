@@ -13,8 +13,6 @@ namespace ChatInstitucional.Presentacion
 {
     public partial class AlumnoCursosForm : Form
     {
-        int index;
-
         public AlumnoCursosForm()
         {
             InitializeComponent();

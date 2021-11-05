@@ -154,7 +154,7 @@
             // Btn_Refresh
             // 
             this.Btn_Refresh.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_Refresh.BackgroundImage = global::ChatInstitucional.Properties.Resources.refresh;
+            this.Btn_Refresh.BackgroundImage = global::Hermes.Properties.Resources.refresh;
             this.Btn_Refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Refresh.FlatAppearance.BorderSize = 0;
