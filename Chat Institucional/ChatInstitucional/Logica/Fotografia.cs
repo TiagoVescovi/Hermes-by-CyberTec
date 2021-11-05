@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace ChatInstitucional.Logica
 {
-    class Fotografia
+    public class Fotografia
     {
         protected byte[] Imagen;
 

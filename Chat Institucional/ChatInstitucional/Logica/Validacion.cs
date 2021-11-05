@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace ChatInstitucional.Logica
 {
-    class Validacion
+    public class Validacion
     {
         Connect connect = new Connect();
 

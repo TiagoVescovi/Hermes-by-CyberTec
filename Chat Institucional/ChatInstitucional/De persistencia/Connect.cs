@@ -11,7 +11,7 @@ using System.IO;
 
 namespace ChatInstitucional.De_persistencia
 {
-    class Connect
+    public class Connect
     {
         MySqlConnection connection = new MySqlConnection();
 

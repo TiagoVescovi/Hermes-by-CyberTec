@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
-    class Orientacion
+    public class Orientacion
     {
         protected int IdOrientacion;
         protected string Nombre;

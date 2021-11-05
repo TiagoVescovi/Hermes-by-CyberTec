@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
-    class Horario
+    public class Horario
     {
         protected int ciProfesor;
         protected string horaIni; // Esto ahora es Time en bd

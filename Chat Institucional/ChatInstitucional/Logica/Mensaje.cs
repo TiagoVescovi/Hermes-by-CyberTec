@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
-    class Mensaje
+    public class Mensaje
     {
         protected int idMensaje;
         protected string contenido;

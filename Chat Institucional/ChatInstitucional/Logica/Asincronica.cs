@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
-    class Asincronica : Consulta
+    public class Asincronica : Consulta
     {
         protected string Estado;
         protected string consulta;

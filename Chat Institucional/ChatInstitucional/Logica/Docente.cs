@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
-    class Docente : Persona
+    public class Docente : Persona
     {
         public Docente()
         {

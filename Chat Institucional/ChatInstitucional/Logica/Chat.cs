@@ -8,7 +8,7 @@ using System.Data;
 namespace ChatInstitucional.Logica
 {
 
-    class Chat : Consulta
+    public class Chat : Consulta
     {
         protected string HoraIni;
         protected string HoraFin;

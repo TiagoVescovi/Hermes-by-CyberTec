@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ChatInstitucional.Logica
 {
-    class Administrador : Persona
+    public class Administrador : Persona
     {
         protected string Cargo;
 
