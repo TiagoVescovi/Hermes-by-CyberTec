@@ -1,0 +1,37 @@
+/* 1. Mostrar el nombre de los docentes de la asignatura "Bases de Datos" que respondieron más consultas en el último mes (30 días anteriores) que algún docente de Progrmación */
+SELECT p.nombre as "Nombre"
+FROM persona p, consulta c, asincronica a, enseña e, materia m
+WHERE p.cedula = c.ciAlumno AND c.idConsulta = a.idAsincronica AND e.ciProfesor = c.ciProfesor AND m.idmateria = e.idMateria AND m.nombre = 'Bases de Datos' AND a.fecha >= (curdate() - interval 30 day)
+GROUP BY p.cedula
+HAVING COUNT(p.cedula) >= ALL (SELECT COUNT(c.ciProfesor)
+                               FROM asincronica a, persona p, enseña e, materia m, consulta c
+                               WHERE p.cedula = e.ciProfesor AND e.idMateria = m.idMateria AND c.idConsulta = a.idAsincronica AND e.ciProfesor = c.ciProfesor AND m.nombre = 'Programacion'
+                               GROUP BY p.cedula);
+                               
+/* 2. Mostrar el total de consultas asincrónicas realizadas en los meses de agosto, setiembre y octubre. Deberán aparecer tres líneas, una para cada mes indicando la cantidad de consultas. */
+Select count(c.ciProfesor) as "Consultas en Agosto, Setiembre y Octubre"
+from  consulta c, asincronica a
+where a.idAsincronica = c.idConsulta AND month(a.fecha)=8
+union
+Select count(c.ciProfesor) 
+from  consulta c, asincronica a
+where a.idAsincronica = c.idConsulta AND month(a.fecha)=9
+union
+Select count(c.ciProfesor) 
+from  consulta c, asincronica a
+where a.idAsincronica = c.idConsulta AND month(a.fecha)=10;
+
+/* 3. Mostrar el nombre de los alumnos que no participaron en chats en el último mes. */
+select nombre
+from persona p, alumno a
+where p.cedula = a.cedula and a.cedula not in (select a.cedula
+                                    from persona p, alumno a, chat ch, mensaje m, consulta co
+                                    where p.cedula = a.cedula and a.cedula = co.ciAlumno and m.idChat = ch.idChat and co.idConsulta = ch.idChat AND m.hora >= (curdate()-interval 30 day)
+                                    group by a.cedula);
+                                    
+/*4. Mostrar la cantidad de veces que hubo chats para cada asignatura los últimos
+30 días.
+Mostrar únicamente aquellos que hayan tenido más de tres chats*/
+select count (c.idChat),
+from docente d, chat c, enseña e, materia m, mensaje m
+where d.cedula,= c.
